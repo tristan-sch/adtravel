@@ -2,54 +2,35 @@ import React from "react";
 import Link from "next/link";
 import styles from "./Nav.module.scss";
 
-import { getAllMenusForHome } from "../../lib/api";
+import Image from "next/image";
+import logo from "../../../public/logo.png";
 
 export default function Nav({ allMenus }) {
-  console.log(allMenus);
+  //   console.log(allMenus);
   return (
-    <>
-      {/* <div>
-        {allMenus.edges.map(({ node, index }) => (
-          <h1 key={index} className={styles.title}>
-            {node.name}
-          </h1>
-        ))}
-      </div> */}
-
-      <div className={styles.navBar}>
-        <ul className={styles.navMenu}>
-          <li>
-            <Link href="/" passHref>
-              <h5>
-                <a>About</a>
-              </h5>
-            </Link>
-          </li>
-          <li>
-            <Link href="/" passHref>
-              <h5>
-                <a>Content</a>
-              </h5>
-            </Link>
-          </li>
-
-          <li className={styles.navSubMenu}>
-            <Link href="https://horsemern.xyz/">
-              <a target="_blank" rel="noreferrer">
-                <button className={styles.button}>Login</button>
-              </a>
-            </Link>
-          </li>
-        </ul>
+    <div className={styles.navBar}>
+      <div className={styles.navLogo}>
+        <Link href="/">
+          <a>
+            <Image src={logo} alt="AD Travel Logo" width={114} height={80} />
+          </a>
+        </Link>
       </div>
-    </>
+      <div className={styles.navMenu}>
+        {allMenus.nodes.map((menu) => (
+          <ul className={styles.navMenu}>
+            {menu.menuItems.edges.map(({ node }) => (
+              <li key={node.id}>
+                <Link href={node.path} passHref>
+                  <h5>
+                    <a>{node.label}</a>
+                  </h5>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
+    </div>
   );
-}
-
-export async function getStaticProps() {
-  const allMenus = await getAllMenusForHome();
-
-  return {
-    props: { allMenus },
-  };
 }

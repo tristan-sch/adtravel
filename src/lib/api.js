@@ -30,8 +30,7 @@ export async function getAllPostsForHome() {
               excerpt
               slug
               date
-             
-             
+
             }
           }
         }
@@ -46,33 +45,26 @@ export async function getAllMenusForHome() {
   const data = await fetchAPI(
     `
       query allMenus {
-        menu {
-          edges {
-            node {
-              id
-              menuItems {
-                edges {
-                  node {
-                    cssClasses
-                    id
-                    parentId
-                    label
-                    title
-                    target
-                    path
-                  }
+        menus {
+          nodes {
+            id
+            databaseId
+            name
+            menuItems {
+              edges {
+                node {
+                  id
+                  label
+                  parentId
+                  path
                 }
               }
-              name
-              slug
-              locations
             }
           }
         }
       }
-      }
     `
   );
 
-  return data?.menu;
+  return data?.menus;
 }
