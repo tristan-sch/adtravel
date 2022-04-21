@@ -7,15 +7,15 @@ import Image from "next/image";
 import arrowDown from "../../../public/arrowDown.png";
 // import arrowDown2 from "../../../public/arrowDown2.png";
 
-export default function Nav({ heroURL }) {
-  // console.log(heroURL);
+export default function Nav({ hero }) {
+  // console.log(hero);
   return (
     <div className={styles.header}>
       <Image
         // width={1920}
         // height={1080}
-        alt={heroURL.heroURL.altText}
-        src={heroURL.heroURL.sourceUrl}
+        alt={hero.hero.altText}
+        src={hero.hero.sourceUrl}
         layout="fill"
         objectFit="cover"
       />

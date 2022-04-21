@@ -79,10 +79,10 @@ export async function getHero() {
     `
   );
 
-  const heroURL = data?.page.hero.heroImg;
+  const hero = data?.page.hero.heroImg;
 
   return {
-    heroURL,
+    hero,
   };
 }
 

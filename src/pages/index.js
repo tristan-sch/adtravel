@@ -6,14 +6,14 @@ import Header from "../components/Header/Header";
 
 import { getMenus, getSettings, getHero } from "../lib/api";
 
-export default function Home({ menus, settings, heroURL }) {
+export default function Home({ menus, settings, hero }) {
   // console.log(allPosts);
   // console.log(allMenus);
   return (
     <div>
       <div className={styles.navHeaderContainer}>
         <div className={styles.navHeader}>
-          <Header heroURL={heroURL} />
+          <Header hero={hero} />
         </div>
         <div className={styles.navContainer}>
           <Nav menus={menus} settings={settings} />
@@ -80,9 +80,9 @@ export default function Home({ menus, settings, heroURL }) {
 export async function getStaticProps() {
   const menus = await getMenus();
   const settings = await getSettings();
-  const heroURL = await getHero();
+  const hero = await getHero();
 
   return {
-    props: { menus, settings, heroURL },
+    props: { menus, settings, hero },
   };
 }
