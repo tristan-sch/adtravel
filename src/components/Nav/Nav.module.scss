@@ -5,23 +5,24 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin: 0;
-  width: 100%;
-  top: 2rem;
-  // position: sticky;
-  // z-index: 99;
-  // background-color: white;
 }
 
 .navLogo {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 
-  &:hover {
+  a:hover {
     cursor: pointer;
+  }
+}
+
+.navDescription {
+  padding-left: 8rem;
+
+  h5 {
+    color: white;
   }
 }
 
@@ -34,20 +35,21 @@
   margin: 0;
 
   li {
+    h5,
+    a {
+      color: white;
+    }
+
     position: relative;
     z-index: 1;
     margin: 0 0.25em;
 
-    h5 {
-      font-weight: normal;
-    }
-
     &:first-child {
-      margin-right: 1.5rem;
+      margin-right: 3.5rem;
     }
 
     &:nth-child(2) {
-      margin-right: 1.5rem;
+      margin-right: 3.5rem;
     }
 
     &:last-child {

@@ -19,32 +19,26 @@ async function fetchAPI(query) {
   return json.data;
 }
 
-export async function getAllPostsForHome() {
+export async function getSettings() {
   const data = await fetchAPI(
     `
-      query allPosts {
-        posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
-          edges {
-            node {
-              title
-              excerpt
-              slug
-              date
-
-            }
-          }
+      query settings {
+        generalSettings {
+          title
+          description
+          url
         }
       }
     `
   );
 
-  return data?.posts;
+  return data?.generalSettings;
 }
 
-export async function getAllMenusForHome() {
+export async function getMenus() {
   const data = await fetchAPI(
     `
-      query allMenus {
+      query menus {
         menus {
           nodes {
             id
@@ -68,3 +62,47 @@ export async function getAllMenusForHome() {
 
   return data?.menus;
 }
+
+export async function getHero() {
+  const data = await fetchAPI(
+    `
+      query hero {
+        page(id: "/homepage", idType: URI) {
+          hero {
+            heroImg {
+              sourceUrl
+            }
+          }
+        }
+      }
+    `
+  );
+
+  const heroURL = data?.page.hero.heroImg.sourceUrl;
+
+  return {
+    heroURL,
+  };
+}
+
+// export async function getAllPostsForHome() {
+//   const data = await fetchAPI(
+//     `
+//       query allPosts {
+//         posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
+//           edges {
+//             node {
+//               title
+//               excerpt
+//               slug
+//               date
+
+//             }
+//           }
+//         }
+//       }
+//     `
+//   );
+
+//   return data?.posts;
+// }
