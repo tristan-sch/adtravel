@@ -7,18 +7,18 @@ import Image from "next/image";
 import arrowDown from "../../../public/arrowDown.png";
 // import arrowDown2 from "../../../public/arrowDown2.png";
 
-export default function Nav(heroURL) {
-  console.log(heroURL);
+export default function Nav({ heroURL }) {
+  // console.log(heroURL);
   return (
     <div className={styles.header}>
-      {/* <Image
+      <Image
         // width={1920}
         // height={1080}
-        alt="Image of Iceland"
-        src={heroURL}
+        alt={heroURL.heroURL.altText}
+        src={heroURL.heroURL.sourceUrl}
         layout="fill"
         objectFit="cover"
-      /> */}
+      />
 
       <div className={styles.headerContainer}>
         <div className={styles.headlinesWrap}>

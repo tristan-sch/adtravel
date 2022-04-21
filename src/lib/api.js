@@ -71,6 +71,7 @@ export async function getHero() {
           hero {
             heroImg {
               sourceUrl
+              altText
             }
           }
         }
@@ -78,7 +79,7 @@ export async function getHero() {
     `
   );
 
-  const heroURL = data?.page.hero.heroImg.sourceUrl;
+  const heroURL = data?.page.hero.heroImg;
 
   return {
     heroURL,
