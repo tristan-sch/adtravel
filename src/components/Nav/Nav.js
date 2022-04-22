@@ -20,8 +20,8 @@ export default function Nav({ menus, settings }) {
         </div>
       </div>
       <div className={styles.navMenu}>
-        {menus.nodes.map((menu) => (
-          <ul className={styles.navMenu}>
+        {menus.nodes.map((menu, index) => (
+          <ul key={index} className={styles.navMenu}>
             {menu.menuItems.edges.map(({ node }) => (
               <li key={node.id}>
                 <Link href={node.path} passHref>

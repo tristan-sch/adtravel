@@ -21,14 +21,12 @@ export default function Nav({ hero }) {
       />
 
       <div className={styles.headerContainer}>
-        <div className={styles.headlinesWrap}>
+        <div className={styles.headlinesContainer}>
           <h1>Begin your ADventure</h1>
           <h2>with AD Travel, your Iceland Specialist</h2>
         </div>
-        <div className={styles.arrowDownContainer}>
-          <div className={styles.arrowDown}>
-            <Image src={arrowDown} alt="Arrow down" width={50} height={50} />
-          </div>
+        <div className={styles.arrowDown}>
+          <Image src={arrowDown} alt="Arrow down" width={50} height={50} />
         </div>
       </div>
     </div>
