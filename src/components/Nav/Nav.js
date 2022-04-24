@@ -8,7 +8,7 @@ import logo from "../../../public/logo.png";
 export default function Nav({ menus, settings }) {
   //   console.log(menus);
   return (
-    <div className={styles.navBar}>
+    <div className={styles.nav}>
       <div className={styles.navLogo}>
         <Link href="/">
           <a>

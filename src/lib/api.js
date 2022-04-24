@@ -63,27 +63,80 @@ export async function getMenus() {
   return data?.menus;
 }
 
-export async function getHero() {
+export async function getHeader() {
   const data = await fetchAPI(
     `
-      query hero {
+      query header {
         page(id: "/homepage", idType: URI) {
-          hero {
+          header {
             heroImg {
               sourceUrl
               altText
             }
+            headline
           }
         }
       }
     `
   );
 
-  const hero = data?.page.hero.heroImg;
+  const header = data?.page.header;
 
   return {
-    hero,
+    header,
   };
+}
+
+export async function getContact() {
+  const data = await fetchAPI(
+    `
+    query contact {
+      page(id: "/homepage", idType: URI) {
+        contact {
+          email
+          phone
+          adress
+          logo1 {
+            sourceUrl
+            altText
+          }
+            logo2 {
+            sourceUrl
+            altText
+          }
+        }
+       
+      }
+    }
+    `
+  );
+
+  const contact = data?.page.contact;
+
+  return {
+    contact,
+  };
+}
+
+export async function getTeam() {
+  const data = await fetchAPI(
+    `
+    query team {
+      teams {
+        edges {
+          node {
+            content
+            date
+            id
+            slug
+          }
+        }
+      }
+    }
+    `
+  );
+
+  return data?.teams;
 }
 
 // export async function getAllPostsForHome() {

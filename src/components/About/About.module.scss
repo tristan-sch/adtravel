@@ -14,13 +14,32 @@
   .headlinesGrid {
     position: relative;
     display: grid;
-    grid-row-start: 2;
-    align-items: end;
-    justify-content: center;
+    grid-row-start: 1;
 
     h1 {
-      color: white;
+      align-self: end;
       text-align: center;
+    }
+
+    h2 {
+      align-self: start;
+      text-align: center;
+    }
+  }
+
+  .contentGrid {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-row-start: 2;
+
+    .content {
+      display: grid;
+      // grid-template-rows: auto;
+      align-self: center;
+      justify-content: center;
+      padding-right: 5rem;
+      padding-left: 5rem;
     }
   }
 
@@ -30,10 +49,6 @@
     grid-row-start: 3;
     align-items: end;
     justify-content: center;
-
-    h3 {
-      color: white;
-    }
   }
 
   .arrowDownGrid {
