@@ -46,17 +46,19 @@
       .teamGrid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
+  
 
-      .teamSubGrid {
-        display: grid;
-        grid-template-rows: 1fr 1fr 1fr;
-        align-self: space-evenly;
-        justify-content: center;
+      // .teamSubGrid {
+      //   display: grid;
+      //   grid-template-rows: 1fr 1fr 1fr;
+      //   align-self: space-evenly;
+      //   justify-content: center;
 
         .teamItem {
           align-self: center;
+          justify-self: center;
         }
-      }
+      // }
       }
      
     }

@@ -20,39 +20,11 @@ export default function Team({ menus, team }) {
 
           <div className={styles.teamContainer}>
             <div className={styles.teamGrid}>
-              <div className={styles.teamSubGrid}>
-                <div className={styles.teamItem}>
-                  <h3>IMG</h3>
+              {team.map(({ node }) => (
+                <div key={node.id} className={styles.teamItem}>
+                  <h3>{node.title}</h3>
                 </div>
-                <div className={styles.teamItem}>
-                  <h3>Name</h3>
-                </div>
-                <div className={styles.teamItem}>
-                  <h3>Position</h3>
-                </div>
-              </div>
-              <div className={styles.teamSubGrid}>
-                <div className={styles.teamItem}>
-                  <h3>IMG</h3>
-                </div>
-                <div className={styles.teamItem}>
-                  <h3>Name</h3>
-                </div>
-                <div className={styles.teamItem}>
-                  <h3>Position</h3>
-                </div>
-              </div>
-              <div className={styles.teamSubGrid}>
-                <div className={styles.teamItem}>
-                  <h3>IMG</h3>
-                </div>
-                <div className={styles.teamItem}>
-                  <h3>Name</h3>
-                </div>
-                <div className={styles.teamItem}>
-                  <h3>Position</h3>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 

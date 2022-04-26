@@ -19,7 +19,7 @@ import {
 export default function Home({ menus, settings, header, contact, team }) {
   // console.log(allPosts);
   // console.log(allMenus);
-  console.log(team);
+  // console.log(team);
   return (
     <>
       <div className={styles.navHeaderContainer}>
