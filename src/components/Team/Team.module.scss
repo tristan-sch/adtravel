@@ -9,7 +9,6 @@
 
 .grid {
   display: grid;
-  grid-template-rows: auto auto auto auto;
 
   .headlinesGrid {
     position: relative;
@@ -30,16 +29,36 @@
   .contentGrid {
     position: relative;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 3fr 1fr;
     grid-row-start: 2;
 
-    .content {
+    .arrowContainer{
+      align-self: center;
+      justify-self: center;
+    }
+
+    .teamContainer {
       display: grid;
       grid-template-rows: auto;
-      align-self: center;
-      justify-content: center;
-      padding-right: 5rem;
-      padding-left: 5rem;
+      // align-self: center;
+      // justify-content: center;
+
+      .teamGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      .teamSubGrid {
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        align-self: space-evenly;
+        justify-content: center;
+
+        .teamItem {
+          align-self: center;
+        }
+      }
+      }
+     
     }
   }
 

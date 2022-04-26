@@ -16,10 +16,10 @@ import {
   getTeam,
 } from "../lib/api";
 
-export default function Home({ menus, settings, header, contact, teams }) {
+export default function Home({ menus, settings, header, contact, team }) {
   // console.log(allPosts);
   // console.log(allMenus);
-  console.log(teams);
+  console.log(team);
   return (
     <>
       <div className={styles.navHeaderContainer}>
@@ -34,7 +34,7 @@ export default function Home({ menus, settings, header, contact, teams }) {
         <About menus={menus} />
       </div>
       <div className={styles.teamContainer}>
-        <Team menus={menus} />
+        <Team menus={menus} team={team} />
       </div>
       <div className={styles.contactContainer}>
         <Contact contact={contact} />
@@ -49,9 +49,9 @@ export async function getStaticProps() {
   const settings = await getSettings();
   const header = await getHeader();
   const contact = await getContact();
-  const teams = await getTeam();
+  const team = await getTeam();
 
   return {
-    props: { menus, settings, header, contact, teams },
+    props: { menus, settings, header, contact, team },
   };
 }

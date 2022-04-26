@@ -122,13 +122,12 @@ export async function getTeam() {
   const data = await fetchAPI(
     `
     query team {
-      teams {
+      team {
         edges {
           node {
-            content
-            date
             id
-            slug
+            title
+            content
           }
         }
       }
@@ -136,7 +135,7 @@ export async function getTeam() {
     `
   );
 
-  return data?.teams;
+  return data?.team.edges;
 }
 
 // export async function getAllPostsForHome() {
