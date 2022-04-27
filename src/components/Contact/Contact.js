@@ -24,6 +24,9 @@ export default function Contact({ contact }) {
               // style="border:0;"
               // allowfullscreen=""
               loading="lazy"
+              // allowFullScreen=""
+              // aria-hidden="false"
+              // tabIndex="0"
               // referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>

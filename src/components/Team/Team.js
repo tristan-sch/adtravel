@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import styles from "./Team.module.scss";
+
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 import Image from "next/image";
 import arrowDownYellow from "../../../public/arrowDownYellow.png";
 
 export default function Team({ menus, team }) {
+  const [current, setCurrent] = useState(0);
+  const length = team.length;
+
+  const nextSlide = () => {
+    setCurrent(current === length - 1 ? 0 : current + 1);
+  };
+
+  const prevSlide = () => {
+    setCurrent(current === 0 ? length - 1 : current - 1);
+  };
+
   return (
     <div id="team" className={styles.container}>
       <div className={styles.grid}>
@@ -15,21 +28,92 @@ export default function Team({ menus, team }) {
         </div>
         <div className={styles.contentGrid}>
           <div className={styles.arrowContainer}>
-            <h3>Arrow Left</h3>
+            <FaChevronLeft className="leftArrow" onClick={prevSlide} />
           </div>
 
           <div className={styles.teamContainer}>
             <div className={styles.teamGrid}>
-              {team.map(({ node }) => (
-                <div key={node.id} className={styles.teamItem}>
-                  <h3>{node.title}</h3>
-                </div>
-              ))}
+              {team.map((node, index) => {
+                let i = index;
+                if (index > team.length - 3) i = team.length - 3;
+                return (
+                  <div key={index}>
+                    {index === current && (
+                      <Image
+                        width={100}
+                        height={100}
+                        alt={team[i].node.featuredImage.node.altText}
+                        src={team[i].node.featuredImage.node.sourceUrl}
+                      />
+                    )}
+                    {index === current && <h3>{team[i].node.title}</h3>}
+                    {index === current && (
+                      <h3
+                        dangerouslySetInnerHTML={{
+                          __html: team[i].node.content,
+                        }}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+            <div className={styles.teamGrid}>
+              {team.map((node, index) => {
+                let i = index;
+                if (index > team.length - 3) i = team.length - 3;
+                return (
+                  <div key={index}>
+                    {index === current && (
+                      <Image
+                        width={100}
+                        height={100}
+                        alt={team[i + 1].node.featuredImage.node.altText}
+                        src={team[i + 1].node.featuredImage.node.sourceUrl}
+                      />
+                    )}
+                    {index === current && <h3>{team[i + 1].node.title}</h3>}
+                    {index === current && (
+                      <h3
+                        dangerouslySetInnerHTML={{
+                          __html: team[i + 1].node.content,
+                        }}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+            <div className={styles.teamGrid}>
+              {team.map((node, index) => {
+                let i = index;
+                if (index > team.length - 3) i = team.length - 3;
+                return (
+                  <div key={index}>
+                    {index === current && (
+                      <Image
+                        width={100}
+                        height={100}
+                        alt={team[i + 2].node.featuredImage.node.altText}
+                        src={team[i + 2].node.featuredImage.node.sourceUrl}
+                      />
+                    )}
+                    {index === current && <h3>{team[i + 2].node.title}</h3>}
+                    {index === current && (
+                      <h3
+                        dangerouslySetInnerHTML={{
+                          __html: team[i + 2].node.content,
+                        }}
+                      />
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
 
           <div className={styles.arrowContainer}>
-            <h3>Arrow right</h3>
+            <FaChevronRight className="rightArrow" onClick={nextSlide} />
           </div>
         </div>
         {menus.nodes.map((menu, index) => (

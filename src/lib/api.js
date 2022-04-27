@@ -125,9 +125,19 @@ export async function getTeam() {
       team {
         edges {
           node {
+            modified
             id
             title
+            featuredImage {
+              node {
+                altText
+                sourceUrl
+              }
+            }
             content
+            teamOrder {
+              order
+            }
           }
         }
       }
