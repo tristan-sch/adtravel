@@ -24,7 +24,7 @@ export default function Team({ menus, team }) {
       <div className={styles.grid}>
         <div className={styles.headlinesGrid}>
           <h1>Meet our team</h1>
-          <h2>Please fill out the form or contact us directly </h2>
+          <h3>Please fill out the form or contact us directly </h3>
         </div>
         <div className={styles.contentGrid}>
           <div className={styles.arrowContainer}>
@@ -40,15 +40,16 @@ export default function Team({ menus, team }) {
                   <div key={index}>
                     {index === current && (
                       <Image
-                        width={100}
-                        height={100}
+                        className={styles.teamImage}
+                        width={200}
+                        height={200}
                         alt={team[i].node.featuredImage.node.altText}
                         src={team[i].node.featuredImage.node.sourceUrl}
                       />
                     )}
-                    {index === current && <h3>{team[i].node.title}</h3>}
+                    {index === current && <h4>{team[i].node.title}</h4>}
                     {index === current && (
-                      <h3
+                      <h5
                         dangerouslySetInnerHTML={{
                           __html: team[i].node.content,
                         }}
@@ -66,15 +67,16 @@ export default function Team({ menus, team }) {
                   <div key={index}>
                     {index === current && (
                       <Image
-                        width={100}
-                        height={100}
+                        className={styles.teamImage}
+                        width={200}
+                        height={200}
                         alt={team[i + 1].node.featuredImage.node.altText}
                         src={team[i + 1].node.featuredImage.node.sourceUrl}
                       />
                     )}
-                    {index === current && <h3>{team[i + 1].node.title}</h3>}
+                    {index === current && <h4>{team[i + 1].node.title}</h4>}
                     {index === current && (
-                      <h3
+                      <h5
                         dangerouslySetInnerHTML={{
                           __html: team[i + 1].node.content,
                         }}
@@ -92,15 +94,16 @@ export default function Team({ menus, team }) {
                   <div key={index}>
                     {index === current && (
                       <Image
-                        width={100}
-                        height={100}
+                        className={styles.teamImage}
+                        width={200}
+                        height={200}
                         alt={team[i + 2].node.featuredImage.node.altText}
                         src={team[i + 2].node.featuredImage.node.sourceUrl}
                       />
                     )}
-                    {index === current && <h3>{team[i + 2].node.title}</h3>}
+                    {index === current && <h4>{team[i + 2].node.title}</h4>}
                     {index === current && (
-                      <h3
+                      <h5
                         dangerouslySetInnerHTML={{
                           __html: team[i + 2].node.content,
                         }}

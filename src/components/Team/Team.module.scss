@@ -18,11 +18,14 @@
     h1 {
       align-self: end;
       text-align: center;
+      color: $primary-dark;
     }
 
-    h2 {
+    h3 {
       align-self: start;
       text-align: center;
+      font-weight: 500;
+      color: $secondary-main;
     }
   }
 
@@ -35,19 +38,41 @@
     .arrowContainer {
       align-self: center;
       justify-self: center;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .teamContainer {
       display: grid;
       grid-template-rows: auto;
-      grid-template-columns: 1fr 1fr 1fr;
-      // align-self: center;
-      // justify-content: center;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 6rem;
 
       .teamGrid {
         display: grid;
         align-self: center;
         justify-self: center;
+
+        .teamImage {
+          border-radius: 100px;
+        }
+
+        h4,
+        h5 {
+          text-align: center;
+        }
+
+        h4 {
+          text-transform: uppercase;
+          padding-top: 2rem;
+          padding-bottom: 1rem;
+        }
+
+        h5 {
+          font-weight: 500;
+        }
       }
     }
   }

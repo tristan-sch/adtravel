@@ -1,17 +1,17 @@
 .button {
   font-size: $font-size-h5;
   font-family: $open-sans;
-  color: $secondary-250;
+  color: $secondary-main;
   background-color: white;
-  border: solid 2px $secondary-200;
+  border: solid 2px $secondary-main;
   border-radius: 24px;
   padding: 5px 30px;
   cursor: pointer;
   text-decoration: none;
 
   &:hover {
-    background-color: $secondary-200;
-    color: $neutral-50;
+    background-color: $secondary-main;
+    color: $neutral-light;
     border-color: white;
   }
 }
@@ -19,9 +19,9 @@
 .buttonBrowse {
   font-size: $font-size-h5;
   font-family: $open-sans;
-  color: $secondary-250;
+  color: $secondary-main;
   background-color: white;
-  border: solid 2px $secondary-200;
+  border: solid 2px $secondary-main;
   border-radius: 24px;
   padding: 5px 30px;
   cursor: pointer;
@@ -35,17 +35,17 @@
 .buttonTag {
   font-size: $font-caption;
   font-family: $open-sans;
-  color: $primary-200;
+  color: $primary-main;
   font-weight: 600;
-  background-color: $neutral-150;
+  background-color: $neutral-main;
   background-color: white;
-  border: solid 1px $neutral-250;
+  border: solid 1px $neutral-main;
   border-radius: 12px;
   padding: 4px 16px;
   cursor: pointer;
   text-decoration: none;
 
   &:hover {
-    border-color: $primary-150;
+    border-color: $primary-main;
   }
 }

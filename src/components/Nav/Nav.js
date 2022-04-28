@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./Nav.module.scss";
 
 import Image from "next/image";
-import logo from "../../../public/logo.png";
+import logo from "../../../public/logo-white.png";
 
 export default function Nav({ menus, settings }) {
   //   console.log(menus);

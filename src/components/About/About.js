@@ -11,7 +11,7 @@ export default function About({ menus }) {
       <div className={styles.grid}>
         <div className={styles.headlinesGrid}>
           <h1>AD Travel</h1>
-          <h2>Your Icelandic Specialist</h2>
+          <h3>Your Icelandic Specialist</h3>
         </div>
         <div className={styles.contentGrid}>
           <div className={styles.content}>

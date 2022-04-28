@@ -18,11 +18,11 @@ body {
 }
 
 body {
-  color: $neutral-500;
+  color: $neutral-dark;
 }
 
 a {
-  color: $primary-250;
+  color: $primary-main;
   text-decoration: none;
   // transition: 0.3s ease-in-out;
 
@@ -40,7 +40,7 @@ h4,
 h5,
 h6 {
   font-family: $nunito;
-  color: $neutral-500;
+  color: $neutral-dark;
 }
 
 h1 {
@@ -70,6 +70,6 @@ h6 {
 
 p {
   font-family: $open-sans;
-  color: $neutral-500;
+  color: $neutral-dark;
   font-size: $font-size-p;
 }
