@@ -24,7 +24,7 @@ export default function Team({ menus, team }) {
       <div className={styles.grid}>
         <div className={styles.headlinesGrid}>
           <h1>Meet our team</h1>
-          <h3>Please fill out the form or contact us directly </h3>
+          <h3>Dedicated to you</h3>
         </div>
         <div className={styles.contentGrid}>
           <div className={styles.arrowContainer}>

@@ -31,7 +31,7 @@ export default function Home({ menus, settings, header, contact, team }) {
         </nav>
       </div>
       <div className={styles.aboutContainer}>
-        <About menus={menus} />
+        <About menus={menus} settings={settings} />
       </div>
       <div className={styles.teamContainer}>
         <Team menus={menus} team={team} />

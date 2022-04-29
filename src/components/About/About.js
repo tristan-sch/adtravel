@@ -5,13 +5,13 @@ import styles from "./About.module.scss";
 import Image from "next/image";
 import arrowDownYellow from "../../../public/arrowDownYellow.png";
 
-export default function About({ menus }) {
+export default function About({ menus, settings }) {
   return (
     <div id="about" className={styles.container}>
       <div className={styles.grid}>
         <div className={styles.headlinesGrid}>
-          <h1>AD Travel</h1>
-          <h3>Your Icelandic Specialist</h3>
+          <h1>{settings.title}</h1>
+          <h3>{settings.description}</h3>
         </div>
         <div className={styles.contentGrid}>
           <div className={styles.content}>
