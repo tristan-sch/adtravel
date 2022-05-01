@@ -5,7 +5,6 @@ import styles from "./Team.module.scss";
 import { FaChevronRight, FaChevronLeft, FaChevronDown } from "react-icons/fa";
 
 import Image from "next/image";
-import arrowDownYellow from "../../../public/arrowDownYellow.png";
 
 export default function Team({ menus, team }) {
   const [current, setCurrent] = useState(0);
@@ -41,8 +40,8 @@ export default function Team({ menus, team }) {
                     {index === current && (
                       <Image
                         className={styles.teamImage}
-                        width={200}
-                        height={200}
+                        width={150}
+                        height={150}
                         alt={team[i].node.featuredImage.node.altText}
                         src={team[i].node.featuredImage.node.sourceUrl}
                       />
@@ -55,6 +54,13 @@ export default function Team({ menus, team }) {
                         }}
                       />
                     )}
+                    {index === current && (
+                      <h5>
+                        <button className={styles.teamButton}>
+                          Send email
+                        </button>
+                      </h5>
+                    )}
                   </div>
                 );
               })}
@@ -68,8 +74,8 @@ export default function Team({ menus, team }) {
                     {index === current && (
                       <Image
                         className={styles.teamImage}
-                        width={200}
-                        height={200}
+                        width={150}
+                        height={150}
                         alt={team[i + 1].node.featuredImage.node.altText}
                         src={team[i + 1].node.featuredImage.node.sourceUrl}
                       />
@@ -82,6 +88,13 @@ export default function Team({ menus, team }) {
                         }}
                       />
                     )}
+                    {index === current && (
+                      <h5>
+                        <button className={styles.teamButton}>
+                          Send email
+                        </button>
+                      </h5>
+                    )}
                   </div>
                 );
               })}
@@ -95,8 +108,8 @@ export default function Team({ menus, team }) {
                     {index === current && (
                       <Image
                         className={styles.teamImage}
-                        width={200}
-                        height={200}
+                        width={150}
+                        height={150}
                         alt={team[i + 2].node.featuredImage.node.altText}
                         src={team[i + 2].node.featuredImage.node.sourceUrl}
                       />
@@ -108,6 +121,13 @@ export default function Team({ menus, team }) {
                           __html: team[i + 2].node.content,
                         }}
                       />
+                    )}
+                    {index === current && (
+                      <h5>
+                        <button className={styles.teamButton}>
+                          Send email
+                        </button>
+                      </h5>
                     )}
                   </div>
                 );

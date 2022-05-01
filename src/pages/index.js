@@ -6,7 +6,6 @@ import Header from "../components/Header/Header";
 import About from "../components/About/About";
 import Team from "../components/Team/Team";
 import Contact from "../components/Contact/Contact";
-import Footer from "../components/Footer/Footer";
 
 import {
   getMenus,
@@ -38,7 +37,6 @@ export default function Home({ menus, settings, header, contact, team }) {
       </div>
       <div className={styles.contactContainer}>
         <Contact contact={contact} />
-        <Footer contact={contact} />
       </div>
     </>
   );

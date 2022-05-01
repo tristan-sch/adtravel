@@ -1,34 +1,37 @@
-.button {
+.primaryButton {
   font-size: $font-size-h5;
-  font-family: $open-sans;
-  color: $secondary-main;
-  background-color: white;
-  border: solid 2px $secondary-main;
-  border-radius: 24px;
+  font-family: $nunito;
+  color: white;
+  background-color: $primary-dark;
+  border: none;
+  border-radius: 5px;
   padding: 5px 30px;
   cursor: pointer;
   text-decoration: none;
+  width: 13rem;
+  height: 3rem;
 
   &:hover {
     background-color: $secondary-main;
-    color: $neutral-light;
-    border-color: white;
   }
 }
 
-.buttonBrowse {
-  font-size: $font-size-h5;
-  font-family: $open-sans;
-  color: $secondary-main;
-  background-color: white;
-  border: solid 2px $secondary-main;
-  border-radius: 24px;
+.teamButton {
+  font-size: $font-size-h6;
+  font-family: $nunito;
+  color: white;
+  background-color: $secondary-dark;
+  border: none;
+  border-radius: 5px;
   padding: 5px 30px;
   cursor: pointer;
   text-decoration: none;
+  width: 10rem;
+  height: 2rem;
+  // text-transform: uppercase;
 
-  &:focus {
-    border-bottom: none;
+  &:hover {
+    background-color: $primary-dark;
   }
 }
 

@@ -14,10 +14,10 @@
   .headlinesGrid {
     position: relative;
     display: grid;
-    grid-row-start: 2;
-    align-items: center;
+    grid-row-start: 3;
+    align-items: start;
     justify-content: center;
-    padding-top: 4rem;
+    // padding-top: 4rem;
 
     h1 {
       font-size: $font-size-display-sm;

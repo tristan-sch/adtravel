@@ -1,66 +1,173 @@
 @import "../../styles/variables/__variables";
 
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-}
+@media (max-width: 768px) {
+  .nav {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: grid;
+  }
 
-.navLogo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
-  a:hover {
+    .navLogo {
+      position: relative;
+      padding: 2.5rem 5rem 2.5rem 3rem;
+      display: block;
+      align-items: right;
+      justify-content: right;
+      z-index: 1;
+
+      a:hover {
+        cursor: pointer;
+      }
+
+      .navDescription {
+        visibility: hidden;
+      }
+    }
+  }
+
+  //Hidden part Mobile
+  .navMenuGrid {
+    position: absolute;
+    flex-direction: column;
+    grid-template-rows: auto;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary-dark;
+    opacity: 0.8;
+    display: none;
+  }
+
+  .navMenuGridExpended {
+    position: absolute;
+    flex-direction: column;
+    grid-template-rows: auto;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary-dark;
+    display: flex;
+
+    .navMenu {
+      text-align: center;
+      list-style: none;
+
+      li {
+        width: 100%;
+        h5,
+        a {
+          font-size: $font-size-h1;
+          color: white;
+          font-weight: 500;
+
+          &:hover {
+            text-decoration: underline;
+            text-underline-offset: 0.5rem;
+          }
+        }
+
+        &:first-child {
+          padding-bottom: 5em;
+        }
+
+        &:nth-child(2) {
+          padding-bottom: 5rem;
+        }
+      }
+    }
+  }
+
+  .hamburger {
+    position: relative;
+    padding: 2.5rem 5rem 2.5rem 3rem;
+    display: grid;
+    align-items: center;
+    justify-content: right;
+    color: white;
+    font-size: 20px;
     cursor: pointer;
   }
 }
 
-.navDescription {
-  padding-left: 3rem;
+/* Responsiveness */
 
-  h5 {
-    color: white;
-    font-weight: 500;
-  }
-}
-
-.navMenu {
-  display: flex;
-  align-items: center;
-  flex-grow: 0;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  li {
-    h5,
-    a {
-      color: white;
-      font-weight: 500;
-
-      &:hover {
-        text-decoration: underline;
-        text-underline-offset: 0.5rem;
-      }
-    }
-
+@media (min-width: 768px) {
+  .nav {
     position: relative;
-    z-index: 1;
-    margin: 0 0.25em;
+    height: 100%;
+    width: 100%;
+    display: grid;
 
-    &:first-child {
-      margin-right: 3.5rem;
-    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
 
-    &:nth-child(2) {
-      margin-right: 3.5rem;
-    }
+      .navLogo {
+        display: grid;
+        justify-content: left;
 
-    &:last-child {
-      margin-right: 0;
+        a:hover {
+          cursor: pointer;
+        }
+        .navHamburger {
+          visibility: hidden;
+        }
+      }
+
+      .navMenuGrid {
+        display: grid;
+        align-items: center;
+        justify-content: right;
+
+        .navMenu {
+          display: flex;
+          align-items: center;
+          flex-grow: 0;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            h5,
+            a {
+              color: white;
+              font-weight: 500;
+
+              &:hover {
+                text-decoration: underline;
+                text-underline-offset: 0.5rem;
+              }
+            }
+
+            position: relative;
+            z-index: 1;
+            margin: 0 0.25em;
+
+            &:first-child {
+              margin-right: 3.5rem;
+            }
+
+            &:nth-child(2) {
+              margin-right: 3.5rem;
+            }
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+
+        .navHamburger {
+          display: none;
+        }
+      }
     }
   }
 }

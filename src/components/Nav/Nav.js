@@ -1,38 +1,63 @@
-import React from "react";
+import { useState } from "react";
 import Link from "next/link";
 import styles from "./Nav.module.scss";
+
+import { FaBars } from "react-icons/fa";
 
 import Image from "next/image";
 import logo from "../../../public/logo-white.png";
 
 export default function Nav({ menus, settings }) {
-  //   console.log(menus);
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
+
   return (
     <div className={styles.nav}>
-      <div className={styles.navLogo}>
-        <Link href="/">
-          <a>
-            <Image src={logo} alt="AD Travel Logo" width={133} height={94} />
-          </a>
-        </Link>
-        <div className={styles.navDescription}>
-          <h5>{settings.description}</h5>
+      <div className={styles.grid}>
+        <div className={styles.navLogo}>
+          <Link href="/">
+            <a>
+              <Image
+                className={styles.logoImage}
+                src={logo}
+                alt="AD Travel Logo"
+                width={133}
+                height={94}
+                // layout="responsive"
+              />
+            </a>
+          </Link>
         </div>
-      </div>
-      <div className={styles.navMenu}>
-        {menus.nodes.map((menu, index) => (
-          <ul key={index} className={styles.navMenu}>
-            {menu.menuItems.edges.map(({ node }) => (
-              <li key={node.id}>
-                <Link href={node.path} passHref>
-                  <h5>
-                    <a>{node.label}</a>
-                  </h5>
-                </Link>
-              </li>
+
+        <div
+          className={styles.navMenuGrid}
+          className={
+            isNavExpanded ? styles.navMenuGridExpended : styles.navMenuGrid
+          }
+        >
+          <div className={styles.navMenu}>
+            {menus.nodes.map((menu, index) => (
+              <ul key={index} className={styles.navMenu}>
+                {menu.menuItems.edges.map(({ node }) => (
+                  <li key={node.id}>
+                    <Link href={node.path} passHref>
+                      <h5>
+                        <a>{node.label}</a>
+                      </h5>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             ))}
-          </ul>
-        ))}
+          </div>
+        </div>
+        <div
+          className={styles.hamburger}
+          onClick={() => {
+            setIsNavExpanded(!isNavExpanded);
+          }}
+        >
+          <FaBars className={styles.navHamburger} />
+        </div>
       </div>
     </div>
   );
