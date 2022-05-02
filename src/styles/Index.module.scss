@@ -1,45 +1,46 @@
 @import "../styles/variables/__variables";
 
 @media (max-width: 768px) {
+  .navHeaderContainer {
+    // width: 100vw;
+    height: 100vh;
+    min-height: 75rem;
 
-.navHeaderContainer {
-  // width: 100vw;
-  height: 100vh;
-  min-height: 80rem;
-  .navContainer {
-    width: 100%;
-    z-index: 9;
+    .navContainer {
+      width: 100%;
+      z-index: 9;
+    }
+
+    .headerContainer {
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      margin: 0;
+      // display: grid;
+      // align-items: center;
+      // justify-content: center;
+    }
   }
 
-
-  .headerContainer {
-    width: 100%;
+  .aboutContainer {
+    // width: 100%;
     height: 100vh;
-    position: absolute;
-    margin: 0;
-    // display: grid;
-    // align-items: center;
-    // justify-content: center;
+    min-height: 75rem;
+    // padding-top: 3.5rem;
   }
-}
 
-.aboutContainer {
-  // width: 100%;
-  height: 100vh;
-  min-height: 80rem;
-  // padding-top: 3.5rem;
-}
-
-.teamContainer {
-    width: 100%;
+  .teamContainer {
     height: 100vh;
+    width: 100vh;
+    min-height: 75rem;
     background-color: #f8f8f8;
     // padding-top: 3.5rem;
   }
 
   .contactContainer {
-    width: 100%;
     height: 100vh;
+    // width: 100vh;
+    min-height: 75rem;
     // padding-top: 3.5rem;
   }
 }

@@ -67,14 +67,14 @@ export default function Contact({ contact }) {
                   // layout="fill"
                   // objectFit="cover"
                 />
-                {/* <Image
+                <Image
                   width={115}
                   height={115}
                   alt={contact.contact.logo2.altText}
                   src={contact.contact.logo2.sourceUrl}
                   // layout="fill"
                   // objectFit="cover"
-                /> */}
+                />
               </div>
             </div>
           </div>

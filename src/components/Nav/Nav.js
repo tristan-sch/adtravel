@@ -7,7 +7,7 @@ import { FaBars } from "react-icons/fa";
 import Image from "next/image";
 import logo from "../../../public/logo-white.png";
 
-export default function Nav({ menus, settings }) {
+export default function Nav({ menus }) {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
 
   return (

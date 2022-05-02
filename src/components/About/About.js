@@ -14,16 +14,10 @@ export default function About({ menus, settings }) {
           <h1>{settings.title}</h1>
           <h3>{settings.description}</h3>
         </div>
-        <div className={styles.subHeadlines}>
-          <div className={styles.subHeadlinesItemWho}>
-            <h3>Who we are</h3>
-          </div>
-          <div className={styles.subHeadlinesItemOffer}>
-            <h3>Who we are</h3>
-          </div>
-        </div>
+
         <div className={styles.contentGrid}>
           <div className={styles.content}>
+            <h3>Who we are</h3>
             <p>
               We are an Icelandic family-owned incoming wholesale Tour Operator.
               We work exclusively as incoming operator for Travel Agencies and
@@ -43,40 +37,35 @@ export default function About({ menus, settings }) {
             </p>
           </div>
 
-          <div className={styles.offerGrid}>
-            <div className={styles.pictoGrid}>
-              <div className={styles.pictoItem}>
-                <FaBus />
-              </div>
-              <div className={styles.pictoItem}>
-                <FaHiking />
-              </div>
-              <div className={styles.pictoItem}>
-                <FaCar />
-              </div>
-              <div className={styles.pictoItem}>
-                <FaStar />
-              </div>
-            </div>
-            <div className={styles.pictoTextGrid}>
-              <div className={styles.pictoTextItem}>
-                <h5>Guided tours</h5>
-              </div>
-              <div className={styles.pictoTextItem}>
-                <h5>Hiking tours</h5>
-              </div>
-              <div className={styles.pictoTextItem}>
-                <h5>Self-drive tours</h5>
-              </div>
-              <div className={styles.pictoTextItem}>
-                <h5>Tailor-made services</h5>
-              </div>
-            </div>
+          <div className={styles.offer}>
+            <ul>
+              <h3>What we offer</h3>
+              <li>
+                <h5>
+                  <FaBus /> Guided tours
+                </h5>
+              </li>
+              <li>
+                <h5>
+                  <FaHiking /> Hiking tours
+                </h5>
+              </li>
+              <li>
+                <h5>
+                  <FaCar /> Self-drive tours
+                </h5>
+              </li>
+              <li>
+                <h5>
+                  <FaStar /> Tailor-made services
+                </h5>
+              </li>
+            </ul>
           </div>
         </div>
 
         <div className={styles.ctaGrid}>
-          <button className={styles.primaryButton}>Drop us a line</button>
+          <button className={styles.primaryButton}>Contact us</button>
         </div>
         <div className={styles.arrowDownGrid}>
           {menus.nodes.map((menu) => (

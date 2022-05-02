@@ -1,19 +1,18 @@
 @import "../../styles/variables/__variables";
 
-
 @media (max-width: 768px) {
   .container {
     position: relative;
     height: 100%;
-    min-height: 80rem;
+    min-height: 75rem;
     width: 100vh;
     display: grid;
   }
-  
+
   .grid {
     display: grid;
     grid-template-rows: auto;
-  
+
     .headlinesGrid {
       position: relative;
       display: grid;
@@ -21,38 +20,38 @@
       align-items: start;
       justify-content: center;
       // padding-top: 4rem;
-  
+
       h1 {
         font-size: $font-size-display-sm;
         color: white;
       }
     }
-  
+
     .arrowDownGrid {
       position: relative;
       display: grid;
       grid-row-start: 4;
       align-self: center;
       justify-content: center;
-  
+
       h4 {
         text-align: center;
         color: white;
         font-weight: 500;
         padding-bottom: 1rem;
       }
-  
+
       a {
         text-align: center;
         color: white;
         font-size: 24px;
       }
-  
+
       .arrow {
         -moz-animation: bounce 3s infinite;
         -webkit-animation: bounce 2s infinite;
         animation: bounce 2s infinite;
-  
+
         @keyframes bounce {
           0%,
           20%,
@@ -73,7 +72,6 @@
   }
 }
 
-
 @media (min-width: 768px) {
   .container {
     position: relative;
@@ -81,11 +79,11 @@
     width: 100%;
     display: grid;
   }
-  
+
   .grid {
     display: grid;
     grid-template-rows: auto;
-  
+
     .headlinesGrid {
       position: relative;
       display: grid;
@@ -93,38 +91,38 @@
       align-items: start;
       justify-content: center;
       // padding-top: 4rem;
-  
+
       h1 {
         font-size: $font-size-display-sm;
         color: white;
       }
     }
-  
+
     .arrowDownGrid {
       position: relative;
       display: grid;
       grid-row-start: 4;
       align-self: center;
       justify-content: center;
-  
+
       h4 {
         text-align: center;
         color: white;
         font-weight: 500;
         padding-bottom: 1rem;
       }
-  
+
       a {
         text-align: center;
         color: white;
         font-size: 24px;
       }
-  
+
       .arrow {
         -moz-animation: bounce 3s infinite;
         -webkit-animation: bounce 2s infinite;
         animation: bounce 2s infinite;
-  
+
         @keyframes bounce {
           0%,
           20%,

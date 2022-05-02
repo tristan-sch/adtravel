@@ -1,146 +1,240 @@
 @import "../../styles/variables/__variables";
 
-.container {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  display: grid;
-}
-
-.grid {
-  display: grid;
-  grid-template-rows: auto;
-
-  .headlinesGrid {
+@media (max-width: 768px) {
+  .container {
     position: relative;
+    height: 100%;
+    min-height: 75rem;
+    width: 100vh;
     display: grid;
-    // grid-row-start: 1;
-
-    h1 {
-      align-self: end;
-      text-align: center;
-      color: $primary-dark;
-    }
-
-    h3 {
-      align-self: start;
-      text-align: center;
-      font-weight: 500;
-      color: $secondary-main;
-    }
   }
 
-  .subHeadlines {
-    // grid-row-start: 2;
-    position: relative;
+  .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-left: 5rem;
+    grid-template-rows: auto;
 
-    .subHeadlinesItemWho {
-      align-self: end;
-    }
-    .subHeadlinesItemOffer {
-      align-self: end;
-      justify-self: left;
-      padding-left: 8rem;
-    }
-  }
-
-  .contentGrid {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    .content {
+    .headlinesGrid {
+      position: relative;
       display: grid;
-      align-self: center;
-      // justify-content: center;
-      padding-left: 5rem;
+      // grid-row-start: 1;
 
-      p {
-        text-align: justify;
+      h1 {
+        align-self: end;
+        text-align: center;
+        color: $primary-dark;
+      }
+
+      h3 {
+        align-self: start;
+        text-align: center;
+        font-weight: 500;
+        color: $secondary-main;
       }
     }
 
-    .offerGrid {
+    .contentGrid {
+      position: relative;
       display: grid;
-      grid-template-rows: auto;
-      grid-template-columns: 1fr 2fr;
+      // grid-template-columns: 2fr 1fr;
       padding-top: 2rem;
 
-      .pictoGrid {
-        display: grid;
-        align-self: start;
-        justify-content: right;
-        padding-right: 3rem;
-      }
-      .pictoItem {
-        align-self: end;
-        padding-top: 1.5rem;
-        font-size: 20px;
+      h3 {
+        padding-bottom: 2rem;
       }
 
-      .pictoTextGrid {
+      .content {
         display: grid;
+        align-self: start;
+        padding-left: 5rem;
+        padding-right: 5rem;
+
+        p {
+          text-align: justify;
+        }
+      }
+
+      .offer {
+        display: grid;
+
         align-self: start;
         justify-content: left;
+        padding-left: 5rem;
+        padding-right: 5rem;
+
+        li {
+          list-style: none;
+          padding-top: 1rem;
+          h5 {
+            font-weight: 500;
+          }
+        }
       }
-      .pictoTextItem {
+    }
+
+    .ctaGrid {
+      position: relative;
+      display: grid;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .arrowDownGrid {
+      position: relative;
+      display: grid;
+      align-self: center;
+      justify-content: center;
+
+      h4 {
+        text-align: center;
+
+        font-weight: 500;
+        padding-bottom: 1rem;
+      }
+
+      a {
+        text-align: center;
+        color: $secondary-main;
+        font-size: 24px;
+      }
+
+      .arrow {
+        -moz-animation: bounce 3s infinite;
+        -webkit-animation: bounce 2s infinite;
+        animation: bounce 2s infinite;
+
+        @keyframes bounce {
+          0%,
+          20%,
+          50%,
+          80%,
+          100% {
+            transform: translateY(0);
+          }
+          40% {
+            transform: translateY(-0.5rem);
+          }
+          60% {
+            transform: translateY(-0.5rem);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: grid;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-rows: auto;
+
+    .headlinesGrid {
+      position: relative;
+      display: grid;
+      // grid-row-start: 1;
+
+      h1 {
         align-self: end;
-        padding-top: 1.5rem;
+        text-align: center;
+        color: $primary-dark;
+      }
 
-        h5 {
-          font-weight: 500;
+      h3 {
+        align-self: start;
+        text-align: center;
+        font-weight: 500;
+        color: $secondary-main;
+      }
+    }
+
+    .contentGrid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      padding-top: 2rem;
+
+      h3 {
+        padding-bottom: 2rem;
+      }
+
+      .content {
+        display: grid;
+        align-self: start;
+        padding-left: 5rem;
+        padding-right: 5rem;
+
+        p {
+          text-align: justify;
+        }
+      }
+
+      .offer {
+        display: grid;
+
+        align-self: start;
+        justify-content: center;
+
+        li {
+          list-style: none;
+          padding-top: 1rem;
+          h5 {
+            font-weight: 500;
+          }
         }
       }
     }
-  }
 
-  .ctaGrid {
-    position: relative;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .arrowDownGrid {
-    position: relative;
-    display: grid;
-    align-self: center;
-    justify-content: center;
-
-    h4 {
-      text-align: center;
-
-      font-weight: 500;
-      padding-bottom: 1rem;
+    .ctaGrid {
+      position: relative;
+      display: grid;
+      align-items: center;
+      justify-content: center;
     }
 
-    a {
-      text-align: center;
-      color: $secondary-main;
-      font-size: 24px;
-    }
+    .arrowDownGrid {
+      position: relative;
+      display: grid;
+      align-self: center;
+      justify-content: center;
 
-    .arrow {
-      -moz-animation: bounce 3s infinite;
-      -webkit-animation: bounce 2s infinite;
-      animation: bounce 2s infinite;
+      h4 {
+        text-align: center;
 
-      @keyframes bounce {
-        0%,
-        20%,
-        50%,
-        80%,
-        100% {
-          transform: translateY(0);
-        }
-        40% {
-          transform: translateY(-0.5rem);
-        }
-        60% {
-          transform: translateY(-0.5rem);
+        font-weight: 500;
+        padding-bottom: 1rem;
+      }
+
+      a {
+        text-align: center;
+        color: $secondary-main;
+        font-size: 24px;
+      }
+
+      .arrow {
+        -moz-animation: bounce 3s infinite;
+        -webkit-animation: bounce 2s infinite;
+        animation: bounce 2s infinite;
+
+        @keyframes bounce {
+          0%,
+          20%,
+          50%,
+          80%,
+          100% {
+            transform: translateY(0);
+          }
+          40% {
+            transform: translateY(-0.5rem);
+          }
+          60% {
+            transform: translateY(-0.5rem);
+          }
         }
       }
     }
