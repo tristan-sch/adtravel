@@ -35,6 +35,7 @@
     flex-direction: column;
     grid-template-rows: auto;
     height: 100vh;
+    min-height: 80rem;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -48,6 +49,7 @@
     flex-direction: column;
     grid-template-rows: auto;
     height: 100vh;
+    min-height: 80rem;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -101,8 +103,6 @@
 @media (min-width: 768px) {
   .nav {
     position: relative;
-    height: 100%;
-    width: 100%;
     display: grid;
 
     .grid {
