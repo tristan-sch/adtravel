@@ -60,20 +60,16 @@ export default function Contact({ contact }) {
               </div>
               <div className={styles.contactLogo}>
                 <Image
-                  width={150}
-                  height={150}
+                  width={163}
+                  height={115}
                   alt={contact.contact.logo1.altText}
                   src={contact.contact.logo1.sourceUrl}
-                  // layout="fill"
-                  // objectFit="cover"
                 />
                 <Image
                   width={115}
                   height={115}
                   alt={contact.contact.logo2.altText}
                   src={contact.contact.logo2.sourceUrl}
-                  // layout="fill"
-                  // objectFit="cover"
                 />
               </div>
             </div>

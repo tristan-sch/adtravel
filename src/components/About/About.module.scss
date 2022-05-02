@@ -1,5 +1,6 @@
 @import "../../styles/variables/__variables";
 
+//Mobile
 @media (max-width: 768px) {
   .container {
     position: relative;
@@ -16,7 +17,6 @@
     .headlinesGrid {
       position: relative;
       display: grid;
-      // grid-row-start: 1;
 
       h1 {
         align-self: end;
@@ -33,13 +33,10 @@
     }
 
     .contentGrid {
-      position: relative;
       display: grid;
-      // grid-template-columns: 2fr 1fr;
-      padding-top: 2rem;
 
       h3 {
-        padding-bottom: 2rem;
+        text-align: center;
       }
 
       .content {
@@ -48,34 +45,54 @@
         padding-left: 5rem;
         padding-right: 5rem;
 
-        p {
-          text-align: justify;
+        h3 {
+          padding-bottom: 2rem;
         }
       }
 
-      .offer {
+      .subHeadline {
         display: grid;
+        align-self: end;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
 
-        align-self: start;
-        justify-content: left;
+      .offerGrid {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr 2fr;
         padding-left: 5rem;
         padding-right: 5rem;
 
-        li {
-          list-style: none;
-          padding-top: 1rem;
+        h5 {
+          font-weight: 500;
+        }
+
+        .offerIcons {
+          display: grid;
+          align-items: start;
+          justify-content: center;
+
           h5 {
-            font-weight: 500;
+            font-size: 24px;
+            padding-bottom: 1rem;
+            color: $primary-dark;
           }
+        }
+
+        .offerText {
+          display: grid;
+          align-items: start;
+          justify-content: left;
         }
       }
     }
 
     .ctaGrid {
-      position: relative;
-      display: grid;
-      align-items: center;
-      justify-content: center;
+      // position: relative;
+      // display: grid;
+      // align-items: center;
+      // justify-content: center;
+      display: none;
     }
 
     .arrowDownGrid {
@@ -122,6 +139,7 @@
   }
 }
 
+//Desktop
 @media (min-width: 768px) {
   .container {
     position: relative;
@@ -137,7 +155,6 @@
     .headlinesGrid {
       position: relative;
       display: grid;
-      // grid-row-start: 1;
 
       h1 {
         align-self: end;
@@ -154,14 +171,7 @@
     }
 
     .contentGrid {
-      position: relative;
       display: grid;
-      grid-template-columns: 2fr 1fr;
-      padding-top: 2rem;
-
-      h3 {
-        padding-bottom: 2rem;
-      }
 
       .content {
         display: grid;
@@ -169,32 +179,56 @@
         padding-left: 5rem;
         padding-right: 5rem;
 
-        p {
-          text-align: justify;
+        h3 {
+          padding-bottom: 2rem;
         }
       }
 
-      .offer {
+      .subHeadline {
         display: grid;
+        align-self: end;
+        padding-left: 5rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
 
-        align-self: start;
-        justify-content: center;
+      .offerGrid {
+        display: grid;
+        grid-template-columns: 1fr 6fr 1fr 6fr;
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-bottom: 3rem;
 
-        li {
-          list-style: none;
-          padding-top: 1rem;
+        h5 {
+          font-weight: 500;
+        }
+
+        .offerIcons {
+          display: grid;
+          align-items: start;
+          justify-content: left;
+
           h5 {
-            font-weight: 500;
+            font-size: 24px;
+            padding-bottom: 1rem;
+            color: $primary-dark;
           }
+        }
+
+        .offerText {
+          display: grid;
+          align-items: start;
+          justify-content: left;
         }
       }
     }
 
     .ctaGrid {
-      position: relative;
-      display: grid;
-      align-items: center;
-      justify-content: center;
+      // position: relative;
+      // display: grid;
+      // align-items: center;
+      // justify-content: center;
+      display: none;
     }
 
     .arrowDownGrid {

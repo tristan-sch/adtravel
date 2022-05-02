@@ -37,52 +37,57 @@ export default function About({ menus, settings }) {
             </p>
           </div>
 
-          <div className={styles.offer}>
-            <ul>
+          <div>
+            <div className={styles.subHeadline}>
               <h3>What we offer</h3>
-              <li>
+            </div>
+            <div className={styles.offerGrid}>
+              <div className={styles.offerIcons}>
                 <h5>
-                  <FaBus /> Guided tours
+                  <FaBus />
                 </h5>
-              </li>
-              <li>
                 <h5>
-                  <FaHiking /> Hiking tours
+                  <FaHiking />
                 </h5>
-              </li>
-              <li>
+              </div>
+              <div className={styles.offerText}>
+                <h5>Guided tours</h5>
+                <h5>Hiking toursz</h5>
+              </div>
+              <div className={styles.offerIcons}>
                 <h5>
-                  <FaCar /> Self-drive tours
+                  <FaCar />
                 </h5>
-              </li>
-              <li>
                 <h5>
-                  <FaStar /> Tailor-made services
+                  <FaStar />
                 </h5>
-              </li>
-            </ul>
+              </div>
+              <div className={styles.offerText}>
+                <h5>Self-drive tours</h5>
+                <h5>Tailor-made services</h5>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div className={styles.ctaGrid}>
-          <button className={styles.primaryButton}>Contact us</button>
-        </div>
-        <div className={styles.arrowDownGrid}>
-          {menus.nodes.map((menu) => (
-            <h4 key={menu.menuItems.edges[1].node.id}>
-              {menu.menuItems.edges[1].node.label}
-            </h4>
-          ))}
-          {menus.nodes.map((menu) => (
-            <Link
-              key={menu.menuItems.edges[1].node.id}
-              href={menu.menuItems.edges[1].node.path}
-            >
-              <a className={styles.arrow}>
-                <FaChevronDown />
-              </a>
-            </Link>
-          ))}
+          <div className={styles.ctaGrid}>
+            <button className={styles.primaryButton}>Contact us</button>
+          </div>
+          <div className={styles.arrowDownGrid}>
+            {menus.nodes.map((menu) => (
+              <h4 key={menu.menuItems.edges[1].node.id}>
+                {menu.menuItems.edges[1].node.label}
+              </h4>
+            ))}
+            {menus.nodes.map((menu) => (
+              <Link
+                key={menu.menuItems.edges[1].node.id}
+                href={menu.menuItems.edges[1].node.path}
+              >
+                <a className={styles.arrow}>
+                  <FaChevronDown />
+                </a>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -34,14 +34,11 @@
     .contentGrid {
       position: relative;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-row-start: 2;
 
       .content {
         display: grid;
         align-self: start;
         justify-content: center;
-        padding-left: 5rem;
         padding-top: 1.5rem;
 
         .iframe {
@@ -53,6 +50,7 @@
         display: grid;
         grid-template-rows: auto;
         grid-template-columns: 1fr 2fr;
+        align-self: center;
 
         .headlinesGrid {
           display: grid;
@@ -66,7 +64,6 @@
 
         .itemGrid {
           display: grid;
-
           align-self: start;
           justify-content: left;
         }
@@ -173,7 +170,7 @@
         }
 
         .contactLogo {
-          padding-top: 1.5rem;
+          padding-top: 2.5rem;
           padding-right: 1.5rem;
         }
       }
