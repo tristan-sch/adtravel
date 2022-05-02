@@ -16,9 +16,6 @@ import {
 } from "../lib/api";
 
 export default function Home({ menus, settings, header, contact, team }) {
-  // console.log(allPosts);
-  // console.log(allMenus);
-  // console.log(team);
   return (
     <>
       <div className={styles.navHeaderContainer}>
