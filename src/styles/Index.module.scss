@@ -5,11 +5,12 @@
 
 .navHeaderContainer {
   
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 
   .navContainer {
-    
+    width: 100%;
+    height: 100%;
     z-index: 9;
   }
 
@@ -24,6 +25,25 @@
     // justify-content: center;
   }
 }
+
+.aboutContainer {
+  width: 100%;
+  height: 100vh;
+  // padding-top: 3.5rem;
+}
+
+.teamContainer {
+    width: 100%;
+    height: 100vh;
+    background-color: #f8f8f8;
+    // padding-top: 3.5rem;
+  }
+
+  .contactContainer {
+    width: 100%;
+    height: 100vh;
+    // padding-top: 3.5rem;
+  }
 }
 
 @media (min-width: 768px) {
