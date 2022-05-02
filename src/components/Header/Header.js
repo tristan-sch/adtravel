@@ -20,11 +20,6 @@ export default function Nav({ header, menus }) {
         <div className={styles.headlinesGrid}>
           <h1>{header.header.headline}</h1>
         </div>
-        {/* {menus.nodes.map((menu) => (
-          <div key={menu.menuItems.edges[1].node.id} className={styles.ctaGrid}>
-            <h3>{menu.menuItems.edges[1].node.label}</h3>
-          </div>
-        ))} */}
         <div className={styles.arrowDownGrid}>
           {menus.nodes.map((menu) => (
             <h4 key={menu.menuItems.edges[0].node.id}>

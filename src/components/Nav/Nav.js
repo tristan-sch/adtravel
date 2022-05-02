@@ -29,7 +29,6 @@ export default function Nav({ menus, settings }) {
         </div>
 
         <div
-          className={styles.navMenuGrid}
           className={
             isNavExpanded ? styles.navMenuGridExpended : styles.navMenuGrid
           }
@@ -56,7 +55,7 @@ export default function Nav({ menus, settings }) {
             setIsNavExpanded(!isNavExpanded);
           }}
         >
-          <FaBars className={styles.navHamburger} />
+          <FaBars />
         </div>
       </div>
     </div>

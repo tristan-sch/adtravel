@@ -5,17 +5,9 @@
   height: 100vh;
 
   .navContainer {
-    // padding: 2.5rem 5rem 2.5rem 3rem;
     z-index: 9;
   }
 
-  // @media only screen and (min-width: 1200px) {
-  //   .navContainer {
-  //     position: relative;
-  //     background-color: black;
-  //     opacity: 0.3;
-  //   }
-  // }
 
   .headerContainer {
     width: 100%;
@@ -36,18 +28,7 @@
     .navContainer {
       padding: 3.5rem 7rem 3.5rem 7rem;
       z-index: 9;
-      // background-color: white;
-      // position: relative;
-      // opacity: 0.5;
     }
-
-    // @media only screen and (min-width: 1200px) {
-    //   .navContainer {
-    //     position: relative;
-    //     background-color: black;
-    //     opacity: 0.3;
-    //   }
-    // }
 
     .headerContainer {
       width: 100%;
