@@ -11,7 +11,7 @@ This is my assignment for **Module 7 - Exploration**
 
 ## About
 
-I redesigned the webiste from the Travel Agency [AD Travel](http://adtravel.is/) using **Wordpress** and **Next.js**
+I redesigned the website from the Travel Agency [AD Travel](http://adtravel.is/) using **Wordpress** and **Next.js**
 
 - Everything is connected to a **Wordpress** Dashboard
 - I created queries with the **GraphQL API for WordPress**
@@ -22,9 +22,11 @@ I redesigned the webiste from the Travel Agency [AD Travel](http://adtravel.is/)
 - I wanted to build a **Trip Builder** as well but I ran out of time.
 - I also still need to:
   - finish some queries
-  - improve the scss
-  - slider for the team members
+  - simplify and improve the scss
+  - create a slider for the team members instead of a Slide Show with arrows
   - finish the responsive design (only 2 breakpoints for now)
+  - check the accessibility
+  - create some animations
 
 ## Running the site
 
