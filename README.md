@@ -11,11 +11,11 @@ This is my assignment for **Module 7 - Exploration**
 
 ## About
 
-I redesigned the website from the Travel Agency [AD Travel](http://adtravel.is/) using **Wordpress** and **Next.js**
-
-- Everything is connected to a **Wordpress** Dashboard
-- I created queries with the **GraphQL API for WordPress**
-- I deployed the App on **Vercel**
+- I redesigned the website from the Travel Agency [AD Travel](http://adtravel.is/) using **Wordpress** and **Next.js**
+- 70% Code / 30% Design
+  - Everything is connected to a **Wordpress** Dashboard
+  - I created queries with the **GraphQL API for WordPress**
+  - I deployed the App on **Vercel**
 
 ## Work in progress
 
