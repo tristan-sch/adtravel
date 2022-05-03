@@ -52,7 +52,7 @@ export default function About({ menus, settings }) {
               </div>
               <div className={styles.offerText}>
                 <h5>Guided tours</h5>
-                <h5>Hiking toursz</h5>
+                <h5>Hiking tours</h5>
               </div>
               <div className={styles.offerIcons}>
                 <h5>
