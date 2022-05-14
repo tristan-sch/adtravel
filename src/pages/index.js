@@ -1,4 +1,5 @@
-// import Image from "next/image";
+// import Image from "next/image"
+import Head from "next/head";
 import styles from "../styles/Index.module.scss";
 
 import Nav from "../components/Nav/Nav";
@@ -18,15 +19,18 @@ import {
 export default function Home({ menus, settings, header, contact, team }) {
   return (
     <>
-      <div className={styles.navHeaderContainer}>
-        <div className={styles.headerContainer}>
-          <Header header={header} menus={menus} />
-        </div>
-        <nav className={styles.navContainer}>
+      <Head>
+        <title>{settings.title}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className={styles.header}>
+        <Header header={header} menus={menus} settings={settings} />
+
+        {/* <nav className={styles.navContainer}>
           <Nav menus={menus} settings={settings} />
-        </nav>
+        </nav> */}
       </div>
-      <div className={styles.aboutContainer}>
+      {/* <div className={styles.aboutContainer}>
         <About menus={menus} settings={settings} />
       </div>
       <div className={styles.teamContainer}>
@@ -34,7 +38,7 @@ export default function Home({ menus, settings, header, contact, team }) {
       </div>
       <div className={styles.contactContainer}>
         <Contact contact={contact} />
-      </div>
+      </div> */}
     </>
   );
 }

@@ -29,7 +29,7 @@
     }
 
     //Hidden part Mobile
-    .navMenuGrid {
+    .navMobile {
       position: absolute;
       flex-direction: column;
       grid-template-rows: auto;
@@ -43,7 +43,7 @@
       display: none;
     }
 
-    .navMenuGridExpended {
+    .navMobileExpended {
       position: absolute;
       flex-direction: column;
       grid-template-rows: auto;
@@ -56,7 +56,7 @@
       display: flex;
       padding-bottom: 15rem;
 
-      .navMenu {
+      .navMenuItems {
         text-align: center;
         list-style: none;
 
@@ -120,12 +120,12 @@
         }
       }
 
-      .navMenuGrid {
+      .navMenu {
         display: grid;
         align-items: center;
         justify-content: right;
 
-        .navMenu {
+        .navMenuItems {
           display: flex;
           align-items: center;
           flex-grow: 0;

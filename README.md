@@ -21,6 +21,7 @@ This is my assignment for **Module 7 - Exploration**
 
 - I wanted to build a **Trip Builder** as well but I ran out of time.
 - I also still need to:
+  - automatic build with WP updates getStaticProps
   - finish some queries
   - simplify and improve the scss
   - create a slider for the team members instead of a Slide Show with arrows
