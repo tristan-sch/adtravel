@@ -29,45 +29,32 @@ export default function Nav({ header, menus }) {
               </a>
             </Link>
           </div>
-
-          <div
-            className={
-              isNavExpanded ? styles.navMobileExpended : styles.navMobile
-            }
-          >
-            <div className={styles.navMenu}>
-              {menus.nodes.map((menu, index) => (
-                <ul key={index} className={styles.navMenuItems}>
-                  {menu.menuItems.edges.map(({ node }) => (
-                    <li key={node.id}>
-                      <Link href={node.path} passHref>
-                        <h5>
-                          <a>{node.label}</a>
-                        </h5>
-                      </Link>
-                    </li>
-                  ))}
-                  <li
-                    className={styles.hamburger}
-                    onClick={() => {
-                      setIsNavExpanded(!isNavExpanded);
-                    }}
-                  >
-                    {" "}
-                    <FaBars />
-                  </li>
-                </ul>
-              ))}
-            </div>
-          </div>
-          {/* <div
+          <button
             className={styles.hamburger}
             onClick={() => {
               setIsNavExpanded(!isNavExpanded);
             }}
           >
             <FaBars />
-          </div> */}
+          </button>
+
+          <div
+            className={isNavExpanded ? styles.navMenuExpended : styles.navMenu}
+          >
+            {menus.nodes.map((menu, index) => (
+              <ul key={index} className={styles.navMenuItems}>
+                {menu.menuItems.edges.map(({ node }) => (
+                  <li key={node.id}>
+                    <Link href={node.path} passHref>
+                      <h5>
+                        <a>{node.label}</a>
+                      </h5>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
         </nav>
 
         {/* Header */}
@@ -82,7 +69,7 @@ export default function Nav({ header, menus }) {
           <div className={styles.headline}>
             <h1>{header.header.headline}</h1>
           </div>
-          <div className={styles.arrowDown}>
+          <div className={styles.goDown}>
             {menus.nodes.map((menu) => (
               <h4 key={menu.menuItems.edges[0].node.id}>
                 {menu.menuItems.edges[0].node.label}
