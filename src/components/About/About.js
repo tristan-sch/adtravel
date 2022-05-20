@@ -2,31 +2,31 @@ import React from "react";
 import Link from "next/link";
 import styles from "./About.module.scss";
 
-import { FaChevronDown, FaBus, FaCar, FaHiking, FaStar } from "react-icons/fa";
+import {
+  FaChevronDown,
+  FaBus,
+  FaCar,
+  FaHiking,
+  FaStar,
+  FaCircle,
+  FaStack,
+} from "react-icons/fa";
 
 // import Image from "next/image";
 
 export default function About({ menus, settings }) {
   return (
-    <div id="about" className={styles.container}>
-      <div className={styles.grid}>
-        <div className={styles.headlinesGrid}>
+    <section id="about" className={styles.about}>
+      <div className={styles.bg} aria-hidden="true"></div>
+      <div className={styles.container}>
+        <div className={styles.headlines}>
           <h1>{settings.title}</h1>
-          <h3>{settings.description}</h3>
+          <h2>{settings.description}</h2>
         </div>
 
         <div className={styles.contentGrid}>
           <div className={styles.content}>
-            <h3>Who we are</h3>
-            <p>
-              We are an Icelandic family-owned incoming wholesale Tour Operator.
-              We work exclusively as incoming operator for Travel Agencies and
-              Tour Operators. Our international staff allows us to operate on
-              numerous tourism markets across the World. We have more than 30
-              years experience and deep ties within the Icelandic Travel
-              Industry.
-            </p>
-            <br />
+            {/* <h3>Who we are</h3> */}
             <p>
               We are an Icelandic family-owned incoming wholesale Tour Operator.
               We work exclusively as incoming operator for Travel Agencies and
@@ -37,37 +37,52 @@ export default function About({ menus, settings }) {
             </p>
           </div>
 
-          <div>
-            <div className={styles.subHeadline}>
-              <h3>What we offer</h3>
+          <div className={styles.blocksContainer}>
+            <div className={styles.block}>
+              <i className={styles.icon}>
+                <FaHiking />
+              </i>
+
+              <h5>Title</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
-            <div className={styles.offerGrid}>
-              <div className={styles.offerIcons}>
-                <h5>
-                  <FaBus />
-                </h5>
-                <h5>
-                  <FaHiking />
-                </h5>
-              </div>
-              <div className={styles.offerText}>
-                <h5>Guided tours</h5>
-                <h5>Hiking tours</h5>
-              </div>
-              <div className={styles.offerIcons}>
-                <h5>
-                  <FaCar />
-                </h5>
-                <h5>
-                  <FaStar />
-                </h5>
-              </div>
-              <div className={styles.offerText}>
-                <h5>Self-drive tours</h5>
-                <h5>Tailor-made services</h5>
-              </div>
+            <div className={styles.block}>
+              <i className={styles.icon}>
+                <FaHiking />
+              </i>
+              <h5>Title</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div className={styles.block}>
+              <i className={styles.icon}>
+                <FaHiking />
+              </i>
+              <h5>Title</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div className={styles.block}>
+              <i className={styles.icon}>
+                <FaHiking />
+              </i>
+              <h5>Title</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div className={styles.block}>
+              <i className={styles.icon}>
+                <FaHiking />
+              </i>
+              <h5>Title</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div className={styles.block}>
+              <i className={styles.icon}>
+                <FaHiking />
+              </i>
+              <h5>Title</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
           </div>
+
           <div className={styles.ctaGrid}>
             <button className={styles.primaryButton}>Contact us</button>
           </div>
@@ -90,6 +105,6 @@ export default function About({ menus, settings }) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

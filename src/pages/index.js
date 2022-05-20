@@ -25,15 +25,11 @@ export default function Home({ menus, settings, header, contact, team }) {
       </Head>
       <div className={styles.header}>
         <Header header={header} menus={menus} settings={settings} />
-
-        {/* <nav className={styles.navContainer}>
-          <Nav menus={menus} settings={settings} />
-        </nav> */}
       </div>
-      {/* <div className={styles.aboutContainer}>
+      <div className={styles.aboutContainer}>
         <About menus={menus} settings={settings} />
       </div>
-      <div className={styles.teamContainer}>
+      {/* <div className={styles.teamContainer}>
         <Team menus={menus} team={team} />
       </div>
       <div className={styles.contactContainer}>

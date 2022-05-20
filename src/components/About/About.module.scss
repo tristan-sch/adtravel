@@ -1,172 +1,43 @@
 @import "../../styles/variables/__variables";
 
-//Mobile
-@media (max-width: 768px) {
-  .container {
-    position: relative;
-    height: 100%;
-    min-height: 75rem;
-    width: 100vh;
-    display: grid;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-rows: auto;
-
-    .headlinesGrid {
-      position: relative;
-      display: grid;
-
-      h1 {
-        align-self: end;
-        text-align: center;
-        color: $primary-dark;
-      }
-
-      h3 {
-        align-self: start;
-        text-align: center;
-        font-weight: 500;
-        color: $secondary-main;
-      }
-    }
-
-    .contentGrid {
-      display: grid;
-
-      h3 {
-        text-align: center;
-      }
-
-      .content {
-        display: grid;
-        align-self: start;
-        padding-left: 5rem;
-        padding-right: 5rem;
-
-        h3 {
-          padding-bottom: 2rem;
-        }
-      }
-
-      .subHeadline {
-        display: grid;
-        align-self: end;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-      }
-
-      .offerGrid {
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr 2fr;
-        padding-left: 5rem;
-        padding-right: 5rem;
-
-        h5 {
-          font-weight: 500;
-        }
-
-        .offerIcons {
-          display: grid;
-          align-items: start;
-          justify-content: center;
-
-          h5 {
-            font-size: 24px;
-            padding-bottom: 1rem;
-            color: $primary-dark;
-          }
-        }
-
-        .offerText {
-          display: grid;
-          align-items: start;
-          justify-content: left;
-        }
-      }
-    }
-
-    .ctaGrid {
-      // position: relative;
-      // display: grid;
-      // align-items: center;
-      // justify-content: center;
-      display: none;
-    }
-
-    .arrowDownGrid {
-      position: relative;
-      display: grid;
-      align-self: center;
-      justify-content: center;
-
-      h4 {
-        text-align: center;
-
-        font-weight: 500;
-        padding-bottom: 1rem;
-      }
-
-      a {
-        text-align: center;
-        color: $secondary-main;
-        font-size: 24px;
-      }
-
-      .arrow {
-        -moz-animation: bounce 3s infinite;
-        -webkit-animation: bounce 2s infinite;
-        animation: bounce 2s infinite;
-
-        @keyframes bounce {
-          0%,
-          20%,
-          50%,
-          80%,
-          100% {
-            transform: translateY(0);
-          }
-          40% {
-            transform: translateY(-0.5rem);
-          }
-          60% {
-            transform: translateY(-0.5rem);
-          }
-        }
-      }
-    }
-  }
-}
-
 //Desktop
 @media (min-width: 768px) {
-  .container {
+  .about {
     position: relative;
+    display: grid;
     height: 100%;
     width: 100%;
-    display: grid;
   }
 
-  .grid {
+  .bg {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    top: 50%;
+    background-color: $secondary-light;
+  }
+
+  .container {
     display: grid;
     grid-template-rows: auto;
 
-    .headlinesGrid {
+    .headlines {
       position: relative;
       display: grid;
 
       h1 {
         align-self: end;
         text-align: center;
-        color: $primary-dark;
+        color: $neutral-dark;
       }
 
-      h3 {
+      h2 {
         align-self: start;
         text-align: center;
-        font-weight: 500;
-        color: $secondary-main;
+        font-weight: 400;
+        color: $primary-dark;
       }
     }
 
@@ -176,12 +47,9 @@
       .content {
         display: grid;
         align-self: start;
+        text-align: center;
         padding-left: 5rem;
         padding-right: 5rem;
-
-        h3 {
-          padding-bottom: 2rem;
-        }
       }
 
       .subHeadline {
@@ -192,33 +60,47 @@
         padding-bottom: 3rem;
       }
 
-      .offerGrid {
+      .blocksContainer {
         display: grid;
-        grid-template-columns: 1fr 6fr 1fr 6fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         padding-left: 5rem;
         padding-right: 5rem;
         padding-bottom: 3rem;
+        gap: 1.5rem; /* 24px */
+        align-items: flex-start;
+        justify-items: center;
+        align-self: end;
 
         h5 {
           font-weight: 500;
         }
 
-        .offerIcons {
-          display: grid;
-          align-items: start;
-          justify-content: left;
+        .block {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          background-color: white;
+          padding: 1.5rem;
+          border-radius: 0.25rem; /* 4px */
+          box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+            0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+          .icon {
+            display: inline-block;
+            font-size: 20px;
+            border-radius: 60px;
+            padding: 0.5em 0.7em;
+            color: white;
+            background-color: $primary-dark;
+          }
 
           h5 {
-            font-size: 24px;
+            font-weight: 600;
+            padding-top: 1rem;
             padding-bottom: 1rem;
-            color: $primary-dark;
           }
-        }
-
-        .offerText {
-          display: grid;
-          align-items: start;
-          justify-content: left;
         }
       }
     }
@@ -239,14 +121,14 @@
 
       h4 {
         text-align: center;
-
         font-weight: 500;
         padding-bottom: 1rem;
+        color: white;
       }
 
       a {
         text-align: center;
-        color: $secondary-main;
+        color: white;
         font-size: 24px;
       }
 
