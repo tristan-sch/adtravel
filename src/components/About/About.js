@@ -27,14 +27,14 @@ export default function About({ menus, settings }) {
         <div className={styles.contentGrid}>
           <div className={styles.content}>
             {/* <h3>Who we are</h3> */}
-            <p>
-              We are an Icelandic family-owned incoming wholesale Tour Operator.
+            <h5>
+              We are an Icelandic family-owned incoming wholesale Tour Operator.{" "}
               We work exclusively as incoming operator for Travel Agencies and
-              Tour Operators. Our international staff allows us to operate on
-              numerous tourism markets across the World. We have more than 30
-              years experience and deep ties within the Icelandic Travel
+              Tour Operators. <br /> Our international staff allows us to
+              operate on numerous tourism markets across the World. We have more
+              than 30 years experience and deep ties within the Icelandic Travel
               Industry.
-            </p>
+            </h5>
           </div>
 
           <div className={styles.blocksContainer}>

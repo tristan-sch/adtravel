@@ -30,7 +30,7 @@
       h1 {
         align-self: end;
         text-align: center;
-        color: $neutral-dark;
+        color: black;
       }
 
       h2 {
@@ -48,23 +48,28 @@
         display: grid;
         align-self: start;
         text-align: center;
-        padding-left: 5rem;
-        padding-right: 5rem;
+        padding-left: 9rem;
+        padding-right: 9rem;
+
+        h5 {
+          color: $neutral-dark;
+          font-weight: 600;
+        }
       }
 
-      .subHeadline {
-        display: grid;
-        align-self: end;
-        padding-left: 5rem;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-      }
+      // .subHeadline {
+      //   display: grid;
+      //   align-self: end;
+      //   padding-left: 5rem;
+      //   padding-top: 3rem;
+      //   padding-bottom: 3rem;
+      // }
 
       .blocksContainer {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        padding-left: 5rem;
-        padding-right: 5rem;
+        padding-left: 8rem;
+        padding-right: 8rem;
         padding-bottom: 3rem;
         gap: 1.5rem; /* 24px */
         align-items: flex-start;
@@ -94,6 +99,10 @@
             padding: 0.5em 0.7em;
             color: white;
             background-color: $primary-dark;
+
+            &:hover {
+              background-color: $secondary-light;
+            }
           }
 
           h5 {

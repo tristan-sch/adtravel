@@ -17,9 +17,9 @@ body {
   scroll-behavior: smooth;
 }
 
-body {
-  color: $neutral-dark;
-}
+// body {
+//   color: $neutral-dark;
+// }
 
 a {
   color: $primary-main;
@@ -40,7 +40,7 @@ h4,
 h5,
 h6 {
   font-family: $nunito;
-  color: $neutral-dark;
+  // color: $neutral-dark;
 }
 
 h1 {
@@ -70,6 +70,6 @@ h6 {
 
 p {
   font-family: $open-sans;
-  color: $neutral-dark;
+  // color: $neutral-dark;
   font-size: $font-size-p;
 }

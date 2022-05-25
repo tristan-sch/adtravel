@@ -29,10 +29,10 @@ export default function Home({ menus, settings, header, contact, team }) {
       <div className={styles.aboutContainer}>
         <About menus={menus} settings={settings} />
       </div>
-      {/* <div className={styles.teamContainer}>
+      <div className={styles.teamContainer}>
         <Team menus={menus} team={team} />
       </div>
-      <div className={styles.contactContainer}>
+      {/* <div className={styles.contactContainer}>
         <Contact contact={contact} />
       </div> */}
     </>
