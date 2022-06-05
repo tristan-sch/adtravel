@@ -1,15 +1,20 @@
 @import "../../styles/variables/__variables";
 
 //Desktop
-@media (min-width: 768px) {
-  .team {
-    position: relative;
-    display: grid;
-    height: 100%;
-    width: 100%;
-  }
+
+.team {
+  // position: relative;
+  // display: grid;
+  // height: 100%;
+  // width: 100%;
+  position: relative;
+  height: 100%;
+  min-height: 75rem;
+  width: 100vh;
+  display: grid;
 
   .container {
+    position: relative;
     display: grid;
     grid-template-rows: auto;
 
@@ -30,65 +35,107 @@
         color: $primary-dark;
       }
     }
+  }
 
-    .contentGrid {
-      display: grid;
+  .contentGrid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    // padding-left: 8rem;
+    // padding-right: 8rem;
 
-      .slider {
-        display: flex;
-        align-items: stretch;
-        justify-items: stretch;
-      }
+    .arrowContainer {
+      align-self: center;
+      text-align: center;
     }
 
-    .ctaGrid {
-      // position: relative;
-      // display: grid;
-      // align-items: center;
-      // justify-content: center;
-      display: none;
-    }
-
-    .arrowDownGrid {
+    .sliderContainer {
+      align-self: center;
       position: relative;
       display: grid;
-      align-self: center;
-      justify-content: center;
+      grid-template-columns: minmax(0, 1fr);
+      // padding-left: 8rem;
+      // padding-right: 8rem;
+      // padding-bottom: 3rem;
+      // gap: 1.5rem; /* 24px */
 
-      h4 {
+      .slide {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        // padding: 1.5rem;
         text-align: center;
-        font-weight: 500;
-        padding-bottom: 1rem;
-        color: white;
-      }
 
-      a {
-        text-align: center;
-        color: white;
-        font-size: 24px;
-      }
+        h5 {
+          padding-top: 1rem;
+        }
 
-      .arrow {
-        -moz-animation: bounce 3s infinite;
-        -webkit-animation: bounce 2s infinite;
-        animation: bounce 2s infinite;
+        h6 {
+          padding-top: 0.5rem;
+          font-weight: 500;
+        }
 
-        @keyframes bounce {
-          0%,
-          20%,
-          50%,
-          80%,
-          100% {
-            transform: translateY(0);
-          }
-          40% {
-            transform: translateY(-0.5rem);
-          }
-          60% {
-            transform: translateY(-0.5rem);
+        .imageContainer {
+          // width: 50%;
+
+          .staffImage {
+            border-radius: 50%;
           }
         }
       }
+      .buttonContainer {
+        padding-top: 1rem;
+        justify-items: center;
+      }
     }
+  }
+  .arrowDownGrid {
+    position: relative;
+    display: grid;
+    align-self: center;
+    justify-content: center;
+
+    h4 {
+      text-align: center;
+      font-weight: 500;
+      padding-bottom: 1rem;
+      color: black;
+    }
+
+    a {
+      text-align: center;
+      color: black;
+      font-size: 24px;
+    }
+
+    .arrow {
+      -moz-animation: bounce 3s infinite;
+      -webkit-animation: bounce 2s infinite;
+      animation: bounce 2s infinite;
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-0.5rem);
+        }
+        60% {
+          transform: translateY(-0.5rem);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .team {
+    min-height: 100%;
+    width: 100%;
   }
 }

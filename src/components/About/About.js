@@ -27,14 +27,14 @@ export default function About({ menus, settings }) {
         <div className={styles.contentGrid}>
           <div className={styles.content}>
             {/* <h3>Who we are</h3> */}
-            <h5>
+            <p>
               We are an Icelandic family-owned incoming wholesale Tour Operator.{" "}
               We work exclusively as incoming operator for Travel Agencies and
-              Tour Operators. <br /> Our international staff allows us to
-              operate on numerous tourism markets across the World. We have more
-              than 30 years experience and deep ties within the Icelandic Travel
+              Tour Operators. Our international staff allows us to operate on
+              numerous tourism markets across the World. We have more than 30
+              years experience and deep ties within the Icelandic Travel
               Industry.
-            </h5>
+            </p>
           </div>
 
           <div className={styles.blocksContainer}>
@@ -83,14 +83,12 @@ export default function About({ menus, settings }) {
             </div>
           </div>
 
-          <div className={styles.ctaGrid}>
-            <button className={styles.primaryButton}>Contact us</button>
-          </div>
+          {/* CTA */}
           <div className={styles.arrowDownGrid}>
             {menus.nodes.map((menu) => (
-              <h4 key={menu.menuItems.edges[1].node.id}>
+              <h5 key={menu.menuItems.edges[1].node.id}>
                 {menu.menuItems.edges[1].node.label}
-              </h4>
+              </h5>
             ))}
             {menus.nodes.map((menu) => (
               <Link
