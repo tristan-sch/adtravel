@@ -69,6 +69,7 @@
 
         h5 {
           padding-top: 1rem;
+          color: $primary-dark;
         }
 
         h6 {
@@ -96,17 +97,17 @@
     align-self: center;
     justify-content: center;
 
-    h4 {
+    h5 {
       text-align: center;
       font-weight: 500;
       padding-bottom: 1rem;
-      color: black;
     }
 
     a {
       text-align: center;
       color: black;
       font-size: 24px;
+      color: $secondary-dark;
     }
 
     .arrow {

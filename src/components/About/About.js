@@ -14,39 +14,36 @@ import {
 
 // import Image from "next/image";
 
-export default function About({ menus, settings }) {
+export default function About({ menus, settings, about, services }) {
   return (
     <section id="about" className={styles.about}>
       <div className={styles.bg} aria-hidden="true"></div>
       <div className={styles.container}>
         <div className={styles.headlines}>
-          <h1>{settings.title}</h1>
-          <h2>{settings.description}</h2>
+          {menus.nodes.map((menu, index) => (
+            <h1 key={index}>{menu.menuItems.edges[0].node.label}</h1>
+          ))}
+          <h2>{about.aboutSubheadline}</h2>
         </div>
 
         <div className={styles.contentGrid}>
           <div className={styles.content}>
             {/* <h3>Who we are</h3> */}
-            <p>
-              We are an Icelandic family-owned incoming wholesale Tour Operator.{" "}
-              We work exclusively as incoming operator for Travel Agencies and
-              Tour Operators. Our international staff allows us to operate on
-              numerous tourism markets across the World. We have more than 30
-              years experience and deep ties within the Icelandic Travel
-              Industry.
-            </p>
+            <p>{about.aboutDescription}</p>
           </div>
 
           <div className={styles.blocksContainer}>
-            <div className={styles.block}>
-              <i className={styles.icon}>
-                <FaHiking />
-              </i>
+            {services.map((service, index) => (
+              <div className={styles.block} key={index}>
+                <i className={styles.icon}>
+                  <FaHiking />
+                </i>
+                <h5>{service.node.title}</h5>
 
-              <h5>Title</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div className={styles.block}>
+                {/* <p dangerouslySetInnerHTML={{ __html: service.node.content }} /> */}
+              </div>
+            ))}
+            {/* <div className={styles.block}>
               <i className={styles.icon}>
                 <FaHiking />
               </i>
@@ -80,7 +77,7 @@ export default function About({ menus, settings }) {
               </i>
               <h5>Title</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
+            </div> */}
           </div>
 
           {/* CTA */}

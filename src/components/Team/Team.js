@@ -58,7 +58,9 @@ export default function Team({ team, menus }) {
       {/* Headlines */}
       <div className={styles.container}>
         <div className={styles.headlines}>
-          <h1>Title</h1>
+          {menus.nodes.map((menu, index) => (
+            <h1 key={index}>{menu.menuItems.edges[1].node.label}</h1>
+          ))}
           <h2>Description</h2>
         </div>
         {/* Slider */}
@@ -70,7 +72,7 @@ export default function Team({ team, menus }) {
             <link
               rel="stylesheet"
               type="text/css"
-              charset="UTF-8"
+              charSet="UTF-8"
               href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
             />
             <link
@@ -115,9 +117,9 @@ export default function Team({ team, menus }) {
         {/* CTA */}
         <div className={styles.arrowDownGrid}>
           {menus.nodes.map((menu) => (
-            <h4 key={menu.menuItems.edges[2].node.id}>
+            <h5 key={menu.menuItems.edges[2].node.id}>
               {menu.menuItems.edges[2].node.label}
-            </h4>
+            </h5>
           ))}
           {menus.nodes.map((menu) => (
             <Link

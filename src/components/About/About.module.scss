@@ -22,7 +22,8 @@
   bottom: 0px;
   left: 0px;
   top: 50%;
-  background-color: $secondary-light;
+  background-color: $primary-main;
+  // opacity: 0.8;
 }
 
 .container {
@@ -43,7 +44,7 @@
       align-self: start;
       text-align: center;
       font-weight: 400;
-      color: $primary-dark;
+      color: $secondary-dark;
     }
   }
 
@@ -108,7 +109,7 @@
           border-radius: 60px;
           padding: 0.5em 0.7em;
           color: white;
-          background-color: $primary-dark;
+          background-color: $secondary-main;
 
           &:hover {
             background-color: $secondary-light;

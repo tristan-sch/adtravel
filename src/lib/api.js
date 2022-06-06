@@ -73,7 +73,6 @@ export async function getHeader() {
               sourceUrl
               altText
             }
-            headline
           }
         }
       }
@@ -85,6 +84,77 @@ export async function getHeader() {
   return {
     header,
   };
+}
+
+export async function getAbout() {
+  const data = await fetchAPI(
+    `
+    query about {
+      page(id: "/homepage", idType: URI) {
+        about {
+          aboutSubheadline
+          aboutDescription
+        }
+      }
+    }
+    `
+  );
+
+  return data?.page.about;
+}
+
+export async function getServices() {
+  const data = await fetchAPI(
+    `
+    query services {
+      services {
+        edges {
+          node {
+            id
+            title
+            content
+            icon {
+              fieldGroupName
+              icon
+            }
+          }
+        }
+      }
+    }
+    `
+  );
+
+  return data?.services.edges;
+}
+
+export async function getTeam() {
+  const data = await fetchAPI(
+    `
+    query team {
+      team {
+        edges {
+          node {
+            modified
+            id
+            title
+            featuredImage {
+              node {
+                altText
+                sourceUrl
+              }
+            }
+            content
+            teamOrder {
+              order
+            }
+          }
+        }
+      }
+    }
+    `
+  );
+
+  return data?.team.edges;
 }
 
 export async function getContact() {
@@ -116,36 +186,6 @@ export async function getContact() {
   return {
     contact,
   };
-}
-
-export async function getTeam() {
-  const data = await fetchAPI(
-    `
-    query team {
-      team {
-        edges {
-          node {
-            modified
-            id
-            title
-            featuredImage {
-              node {
-                altText
-                sourceUrl
-              }
-            }
-            content
-            teamOrder {
-              order
-            }
-          }
-        }
-      }
-    }
-    `
-  );
-
-  return data?.team.edges;
 }
 
 // export async function getAllPostsForHome() {

@@ -12,11 +12,21 @@ import {
   getMenus,
   getSettings,
   getHeader,
-  getContact,
+  getAbout,
+  getServices,
   getTeam,
+  getContact,
 } from "../lib/api";
 
-export default function Home({ menus, settings, header, contact, team }) {
+export default function Home({
+  menus,
+  settings,
+  header,
+  about,
+  services,
+  team,
+  contact,
+}) {
   return (
     <>
       <Head>
@@ -27,7 +37,12 @@ export default function Home({ menus, settings, header, contact, team }) {
         <Header header={header} menus={menus} settings={settings} />
       </div>
       <div className={styles.aboutContainer}>
-        <About menus={menus} settings={settings} />
+        <About
+          menus={menus}
+          settings={settings}
+          about={about}
+          services={services}
+        />
       </div>
       <div className={styles.teamContainer}>
         <Team menus={menus} team={team} />
@@ -43,10 +58,12 @@ export async function getStaticProps() {
   const menus = await getMenus();
   const settings = await getSettings();
   const header = await getHeader();
-  const contact = await getContact();
+  const about = await getAbout();
+  const services = await getServices();
   const team = await getTeam();
+  const contact = await getContact();
 
   return {
-    props: { menus, settings, header, contact, team },
+    props: { menus, settings, header, about, services, team, contact },
   };
 }
