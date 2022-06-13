@@ -104,15 +104,19 @@
           0 8px 10px -6px rgb(0 0 0 / 0.1);
 
         .icon {
-          display: inline-block;
-          font-size: 20px;
-          border-radius: 60px;
-          padding: 0.5em 0.7em;
-          color: white;
-          background-color: $secondary-main;
-
+          // display: inline-block;
+          font-size: 30px;
+          // border-radius: 60px;
+          // padding: 0.5em 0.7em;
+          fill: red;
+          // cursor: pointer;
+          // background-color: $secondary-main;  
+          
+          
+      
+          
           &:hover {
-            background-color: $secondary-light;
+            color: $secondary-main;
           }
         }
 
@@ -120,6 +124,11 @@
           font-weight: 600;
           padding-top: 1rem;
           padding-bottom: 1rem;
+          
+        }
+
+        h6 {
+          font-weight: 400;
         }
       }
     }

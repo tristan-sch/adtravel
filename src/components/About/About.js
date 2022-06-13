@@ -2,17 +2,20 @@ import React from "react";
 import Link from "next/link";
 import styles from "./About.module.scss";
 
-import {
-  FaChevronDown,
-  FaBus,
-  FaCar,
-  FaHiking,
-  FaStar,
-  FaCircle,
-  FaStack,
-} from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-// import Image from "next/image";
+import { FaChevronDown } from "react-icons/fa";
+
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+// import {
+//   faHiking,
+//   faBus,
+//   faStar,
+//   faCar,
+// } from "@fortawesome/free-solid-svg-icons";
+
+import Image from "next/image";
 
 export default function About({ menus, settings, about, services }) {
   return (
@@ -35,12 +38,32 @@ export default function About({ menus, settings, about, services }) {
           <div className={styles.blocksContainer}>
             {services.map((service, index) => (
               <div className={styles.block} key={index}>
-                <i className={styles.icon}>
-                  <FaHiking />
-                </i>
+                {/* <FontAwesomeIcon icon={test} className={styles.icon} /> */}
+                {/* <FontAwesomeIcon icon="hiking" /> */}
+
+                <div className={styles.icon}>
+                  <Image
+                    src={service.node.icon.icon.mediaItemUrl}
+                    alt=""
+                    width={20}
+                    height={20}
+                    color={"red"}
+
+                    // layout="responsive"
+                  />
+                </div>
+
+                {/* 
+                <FontAwesomeIcon
+                  icon={service.node.icon.icon}
+                  className={styles.icon}
+                /> */}
+
                 <h5>{service.node.title}</h5>
 
-                {/* <p dangerouslySetInnerHTML={{ __html: service.node.content }} /> */}
+                <h6
+                  dangerouslySetInnerHTML={{ __html: service.node.content }}
+                />
               </div>
             ))}
             {/* <div className={styles.block}>

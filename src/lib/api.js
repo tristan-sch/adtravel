@@ -114,8 +114,10 @@ export async function getServices() {
             title
             content
             icon {
-              fieldGroupName
-              icon
+              icon {
+                id
+                mediaItemUrl
+              }
             }
           }
         }
