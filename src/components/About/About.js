@@ -47,7 +47,7 @@ export default function About({ menus, settings, about, services }) {
                     alt=""
                     width={20}
                     height={20}
-                    color={"red"}
+                    color="red"
 
                     // layout="responsive"
                   />

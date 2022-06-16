@@ -103,20 +103,18 @@
         box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
           0 8px 10px -6px rgb(0 0 0 / 0.1);
 
-        .icon {
+        img {
+          fill: red;
           // display: inline-block;
-          font-size: 30px;
+          // font-size: 30px;
           // border-radius: 60px;
           // padding: 0.5em 0.7em;
-          fill: red;
+          // color: red;
           // cursor: pointer;
-          // background-color: $secondary-main;  
-          
-          
-      
-          
+          // background-color: $secondary-main;
+
           &:hover {
-            color: $secondary-main;
+            fill: $secondary-main;
           }
         }
 
@@ -124,7 +122,6 @@
           font-weight: 600;
           padding-top: 1rem;
           padding-bottom: 1rem;
-          
         }
 
         h6 {

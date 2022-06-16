@@ -63,6 +63,7 @@ export default function Nav({ header, menus, settings }) {
           src={header.header.heroImg.sourceUrl}
           layout="fill"
           objectFit="cover"
+          className={styles.test}
         />
 
         <div className={styles.headline}>

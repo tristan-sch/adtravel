@@ -55,10 +55,28 @@
 //   }
 // }
 
-.header,
+.header {
+  height: 100%;
+}
+
+.aboutContainer::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 5%;
+  // top: -375px;
+  top: calc(-80px + 5vw);
+  background-repeat: no-repeat;
+  // background-size: 2300px;
+  background-position: center 100.5%;
+  background-image: url("/waves.svg");
+}
+
 .aboutContainer,
 .teamContainer,
 .contactContainer {
+  position: relative;
   height: 100%;
 }
 
