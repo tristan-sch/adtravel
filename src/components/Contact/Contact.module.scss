@@ -1,125 +1,126 @@
 @import "../../styles/variables/__variables";
 
-@media (max-width: 768px) {
-  .container {
-    position: relative;
-    height: 100%;
-    min-height: 75rem;
-    width: 100vh;
-    display: grid;
-  }
+// @media (max-width: 768px) {
+//   .container {
+//     position: relative;
+//     height: 100%;
+//     min-height: 75rem;
+//     width: 100vh;
+//     display: grid;
+//   }
 
-  .grid {
-    display: grid;
+//   .grid {
+//     display: grid;
 
-    .headlinesGrid {
-      position: relative;
-      display: grid;
-      grid-row-start: 1;
+//     .headlinesGrid {
+//       position: relative;
+//       display: grid;
+//       grid-row-start: 1;
 
-      h1 {
-        align-self: end;
-        text-align: center;
-        color: $primary-dark;
-      }
+//       h1 {
+//         align-self: end;
+//         text-align: center;
+//         color: $primary-dark;
+//       }
 
-      h3 {
-        align-self: start;
-        text-align: center;
-        font-weight: 500;
-        color: $secondary-main;
-      }
-    }
+//       h3 {
+//         align-self: start;
+//         text-align: center;
+//         font-weight: 500;
+//         color: $secondary-main;
+//       }
+//     }
 
-    .contentGrid {
-      position: relative;
-      display: grid;
+//     .contentGrid {
+//       position: relative;
+//       display: grid;
 
-      .content {
-        display: grid;
-        align-self: start;
-        justify-content: center;
-        padding-top: 1.5rem;
+//       .content {
+//         display: grid;
+//         align-self: start;
+//         justify-content: center;
+//         padding-top: 1.5rem;
 
-        .iframe {
-          border: 0;
-        }
-      }
+//         .iframe {
+//           border: 0;
+//         }
+//       }
 
-      .contactGrid {
-        display: grid;
-        grid-template-rows: auto;
-        grid-template-columns: 1fr 2fr;
-        align-self: center;
+//       .contactGrid {
+//         display: grid;
+//         grid-template-rows: auto;
+//         grid-template-columns: 1fr 2fr;
+//         align-self: center;
 
-        .headlinesGrid {
-          display: grid;
-          align-self: start;
-          justify-content: center;
-        }
-        .headlinesItem {
-          align-self: end;
-          padding-top: 1.5rem;
-        }
+//         .headlinesGrid {
+//           display: grid;
+//           align-self: start;
+//           justify-content: center;
+//         }
+//         .headlinesItem {
+//           align-self: end;
+//           padding-top: 1.5rem;
+//         }
 
-        .itemGrid {
-          display: grid;
-          align-self: start;
-          justify-content: left;
-        }
-        .contactItem {
-          align-self: end;
-          padding-top: 1.5rem;
+//         .itemGrid {
+//           display: grid;
+//           align-self: start;
+//           justify-content: left;
+//         }
+//         .contactItem {
+//           align-self: end;
+//           padding-top: 1.5rem;
 
-          h5 {
-            font-weight: 500;
-          }
-        }
+//           h5 {
+//             font-weight: 500;
+//           }
+//         }
 
-        .contactLogo {
-          padding-top: 1.5rem;
-          padding-right: 1.5rem;
-        }
-      }
-    }
-  }
+//         .contactLogo {
+//           padding-top: 1.5rem;
+//           padding-right: 1.5rem;
+//         }
+//       }
+//     }
+//   }
 
-  .nav {
-    display: grid;
-    align-self: end;
-    background-color: $primary-main;
-  }
-}
+//   .nav {
+//     display: grid;
+//     align-self: end;
+//     background-color: $primary-main;
+//   }
+// }
 
-@media (min-width: 768px) {
-  .container {
+
+  .contact {
     position: relative;
     height: 100%;
     width: 100%;
     display: grid;
   }
 
-  .grid {
+  .container {
+    display: grid;
+    grid-template-rows: auto;
+
+   
+  .headlines {
+    position: relative;
     display: grid;
 
-    .headlinesGrid {
-      position: relative;
-      display: grid;
-      grid-row-start: 1;
-
-      h1 {
-        align-self: end;
-        text-align: center;
-        color: $primary-dark;
-      }
-
-      h3 {
-        align-self: start;
-        text-align: center;
-        font-weight: 500;
-        color: $secondary-main;
-      }
+    h1 {
+      align-self: end;
+      text-align: center;
+      color: black;
     }
+
+    h2 {
+      align-self: start;
+      text-align: center;
+      font-weight: 400;
+      color: $secondary-dark;
+    }
+  }
 
     .contentGrid {
       position: relative;
@@ -178,8 +179,9 @@
   }
 
   .nav {
+    z-index: 1;
     display: grid;
     align-self: end;
     background-color: $primary-main;
   }
-}
+

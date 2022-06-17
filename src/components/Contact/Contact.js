@@ -10,11 +10,11 @@ import logo from "../../../public/logo.png";
 export default function Contact({ contact }) {
   // console.log(contact);
   return (
-    <div id="contact" className={styles.container}>
-      <div className={styles.grid}>
-        <div className={styles.headlinesGrid}>
-          <h1>Get in touch</h1>
-          <h3>Or come meet us</h3>
+    <div id="contact" className={styles.contact}>
+      <div className={styles.container}>
+        <div className={styles.headlines}>
+          <h1>Title</h1>
+          <h2>Subtitle</h2>
         </div>
         <div className={styles.contentGrid}>
           <div className={styles.content}>
@@ -75,6 +75,7 @@ export default function Contact({ contact }) {
             </div>
           </div>
         </div>
+
         <div className={styles.nav}>
           <Footer />
         </div>

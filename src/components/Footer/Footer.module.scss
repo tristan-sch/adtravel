@@ -2,7 +2,7 @@
 
 .footer {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -14,14 +14,14 @@
   z-index: 1;
 
   &:nth-child(2) {
-    justify-content: left;
+    justify-content: center;
   }
 
   &:nth-child(4) {
-    justify-content: right;
+    justify-content: center;
   }
   &:last-child {
-    justify-content: left;
+    justify-content: center;
     padding-left: 1.5rem;
   }
 
@@ -39,5 +39,6 @@
   a {
     color: white;
     font-size: 24px;
+    z-index: 1;
   }
 }

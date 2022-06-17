@@ -134,7 +134,19 @@
   background-image: url("/peaks3.svg");
 }
 
-
+.contactContainer::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 30%;
+  // top: -35px;
+  top: calc(475px + 5vw);
+  background-repeat: no-repeat;
+  background-size: 1800px;
+  background-position: center 100.5%;
+  background-image: url("/peaks-color.svg");
+}
 
 
 .aboutContainer,
@@ -143,6 +155,8 @@
   position: relative;
   height: 100%;
 }
+
+
 
 @media (min-width: 576px) {
   .header,
