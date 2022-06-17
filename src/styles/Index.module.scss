@@ -57,21 +57,85 @@
 
 .header {
   height: 100%;
+  position: relative;
 }
+
+// .header::after {
+//   content: "";
+//   transform: rotate(190deg);
+//   display: block;
+//   position: absolute;
+//   width: 100%;
+//   height: 5%;
+//   // top: -375px;
+//   top: calc(-3000px + 5vw);
+//   background-repeat: no-repeat;
+//   // background-size: 2300px;
+//   background-position: center 100.5%;
+//   background-image: url("/waves.svg");
+// }
+
+// .aboutContainer::before {
+//   content: "";
+//   transform: rotate(180deg);
+//   display: block;
+//   position: absolute;
+//   width: 100%;
+//   height: 5%;
+//   // top: -375px;
+//   top: calc(-115px + 5vw);
+//   background-repeat: no-repeat;
+//   // background-size: 2300px;
+//   background-position: center 100.5%;
+//   background-image: url("/waves2.svg");
+// }
 
 .aboutContainer::before {
   content: "";
   display: block;
   position: absolute;
   width: 100%;
-  height: 5%;
+  height: 30%;
   // top: -375px;
-  top: calc(-80px + 5vw);
+  top: calc(-280px + 5vw);
   background-repeat: no-repeat;
-  // background-size: 2300px;
+  background-size: 2300px;
   background-position: center 100.5%;
-  background-image: url("/waves.svg");
+  background-image: url("/peaks.svg");
 }
+
+
+// .teamContainer::before {
+//   content: "";
+//   // transform: rotate(180deg);
+//   display: block;
+//   position: absolute;
+//   width: 100%;
+//   height: 5%;
+//   // top: -375px;
+//   top: calc(-85px + 5vw);
+//   background-repeat: no-repeat;
+//   // background-size: 2300px;
+//   background-position: center 100.5%;
+//   background-image: url("/waves.svg");
+// }
+
+.teamContainer::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 30%;
+  // top: -375px;
+  top: calc(-250px + 5vw);
+  background-repeat: no-repeat;
+  background-size: 2300px;
+  background-position: center 100.5%;
+  background-image: url("/peaks3.svg");
+}
+
+
+
 
 .aboutContainer,
 .teamContainer,

@@ -26,6 +26,22 @@
   // opacity: 0.8;
 }
 
+// .bg::before {
+//   content: "";
+//   transform: rotate(180deg);
+//   display: block;
+//   position: absolute;
+//   width: 100%;
+//   height: 10%;
+//   // top: -375px;
+//   top: calc(-115px + 5vw);
+//   background-repeat: no-repeat;
+//   // background-size: 2300px;
+//   background-position: center 100.5%;
+//   background-image: url("/curve.svg");
+// }
+
+
 .container {
   display: grid;
   grid-template-rows: auto;
@@ -99,7 +115,7 @@
         text-align: center;
         background-color: white;
         padding: 1.5rem;
-        border-radius: 0.25rem; /* 4px */
+        border-radius: 0.5rem; /* 4px */
         box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
           0 8px 10px -6px rgb(0 0 0 / 0.1);
 
@@ -132,9 +148,10 @@
   }
 
   .arrowDownGrid {
+    z-index: 1;
     position: relative;
     display: grid;
-    align-self: center;
+    align-self: start;
     justify-content: center;
 
     h5 {
@@ -181,11 +198,12 @@
 
     .contentGrid {
       .content {
-        padding-left: 9rem;
-        padding-right: 9rem;
+        padding-left: 10rem;
+        padding-right: 10rem;
 
         p {
           font-size: $font-size-p;
+          line-height: 1.5rem;
         }
       }
 

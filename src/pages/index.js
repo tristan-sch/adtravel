@@ -15,6 +15,7 @@ import {
   getAbout,
   getServices,
   getTeam,
+  getStaff,
   getContact,
 } from "../lib/api";
 
@@ -25,6 +26,7 @@ export default function Home({
   about,
   services,
   team,
+  staff,
   contact,
 }) {
   return (
@@ -45,11 +47,11 @@ export default function Home({
         />
       </div>
       <div className={styles.teamContainer}>
-        <Team menus={menus} team={team} />
+        <Team menus={menus} team={team} staff={staff} />
       </div>
-      {/* <div className={styles.contactContainer}>
+      <div className={styles.contactContainer}>
         <Contact contact={contact} />
-      </div> */}
+      </div>
     </>
   );
 }
@@ -61,9 +63,20 @@ export async function getStaticProps() {
   const about = await getAbout();
   const services = await getServices();
   const team = await getTeam();
+  const staff = await getStaff();
   const contact = await getContact();
 
   return {
-    props: { menus, settings, header, about, services, team, contact },
+    props: {
+      menus,
+      settings,
+      header,
+      about,
+      services,
+      team,
+      staff,
+      contact,
+    },
+    revalidate: 10, // In seconds
   };
 }

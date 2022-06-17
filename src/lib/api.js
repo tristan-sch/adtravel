@@ -133,7 +133,24 @@ export async function getTeam() {
   const data = await fetchAPI(
     `
     query team {
-      team {
+      page(id: "/homepage", idType: URI) {
+        team {
+          teamSubheadline
+          teamDescription
+        }
+      }
+    }
+    `
+  );
+
+  return data?.page.team;
+}
+
+export async function getStaff() {
+  const data = await fetchAPI(
+    `
+    query staff {
+      staff {
         edges {
           node {
             modified
@@ -146,9 +163,6 @@ export async function getTeam() {
               }
             }
             content
-            teamOrder {
-              order
-            }
           }
         }
       }
@@ -156,7 +170,7 @@ export async function getTeam() {
     `
   );
 
-  return data?.team.edges;
+  return data?.staff.edges;
 }
 
 export async function getContact() {

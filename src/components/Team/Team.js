@@ -15,7 +15,7 @@ import {
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 
-export default function Team({ team, menus }) {
+export default function Team({ team, staff, menus }) {
   const settings = {
     dots: false,
     infinite: true,
@@ -61,57 +61,70 @@ export default function Team({ team, menus }) {
           {menus.nodes.map((menu, index) => (
             <h1 key={index}>{menu.menuItems.edges[1].node.label}</h1>
           ))}
-          <h2>Description</h2>
+          <h2>{team.teamSubheadline}</h2>
         </div>
         {/* Slider */}
         <div className={styles.contentGrid}>
-          <div className={styles.arrowContainer} onClick={sliderRef?.slickPrev}>
-            <FaChevronLeft />
+          <div className={styles.content}>
+            {/* <h3>Who we are</h3> */}
+            <p>{team.teamDescription}</p>
           </div>
-          <div className={styles.sliderContainer}>
-            <link
-              rel="stylesheet"
-              type="text/css"
-              charSet="UTF-8"
-              href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
-            />
-            <link
-              rel="stylesheet"
-              type="text/css"
-              href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
-            />
 
-            <Slider {...settings} ref={setSliderRef}>
-              {team.map((staff, index) => (
-                <div key={index}>
-                  <div className={styles.slide}>
-                    <div className={styles.imageContainer}>
-                      <Image
-                        className={styles.staffImage}
-                        src={staff.node.featuredImage.node.sourceUrl}
-                        alt={staff.node.featuredImage.node.altText}
-                        width={150}
-                        height={150}
-                        // layout="responsive"
+          <div className={styles.slider}>
+            <div
+              className={styles.arrowContainer}
+              onClick={sliderRef?.slickPrev}
+            >
+              <FaChevronLeft />
+            </div>
+            <div className={styles.sliderContainer}>
+              <link
+                rel="stylesheet"
+                type="text/css"
+                charSet="UTF-8"
+                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+              />
+              <link
+                rel="stylesheet"
+                type="text/css"
+                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+              />
+
+              <Slider {...settings} ref={setSliderRef}>
+                {staff.map((staff, index) => (
+                  <div key={index}>
+                    <div className={styles.slide}>
+                      <div className={styles.imageContainer}>
+                        <Image
+                          className={styles.staffImage}
+                          src={staff.node.featuredImage.node.sourceUrl}
+                          alt={staff.node.featuredImage.node.altText}
+                          width={150}
+                          height={150}
+                          // layout="responsive"
+                        />
+                      </div>
+                      <h5 className={styles.title}>{staff.node.title}</h5>
+                      <h6
+                        dangerouslySetInnerHTML={{ __html: staff.node.content }}
                       />
-                    </div>
-                    <h5 className={styles.title}>{staff.node.title}</h5>
-                    <h6
-                      dangerouslySetInnerHTML={{ __html: staff.node.content }}
-                    />
 
-                    {/* <div className={styles.buttonContainer}>
+                      {/* <div className={styles.buttonContainer}>
                       <button className={styles.teamButton}>Contact</button>
                       <FaEnvelope />
                     </div> */}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </Slider>
-          </div>
-          <div className={styles.arrowContainer} onClick={sliderRef?.slickNext}>
-            {" "}
-            <FaChevronRight />
+                ))}
+              </Slider>
+            </div>
+            <div
+              className={styles.arrowContainer}
+              onClick={sliderRef?.slickNext}
+            >
+              {" "}
+              <FaChevronRight />
+            </div>
           </div>
         </div>
         {/* CTA */}
