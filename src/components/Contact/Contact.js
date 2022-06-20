@@ -107,7 +107,6 @@ export default function Contact({ contact, menus }) {
             </div>
           </div>
         </div>
-
         <div className={styles.nav}>
           <Footer />
         </div>
