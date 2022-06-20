@@ -1,187 +1,196 @@
 @import "../../styles/variables/__variables";
 
-// @media (max-width: 768px) {
-//   .container {
-//     position: relative;
-//     height: 100%;
-//     min-height: 75rem;
-//     width: 100vh;
-//     display: grid;
-//   }
-
-//   .grid {
-//     display: grid;
-
-//     .headlinesGrid {
-//       position: relative;
-//       display: grid;
-//       grid-row-start: 1;
-
-//       h1 {
-//         align-self: end;
-//         text-align: center;
-//         color: $primary-dark;
-//       }
-
-//       h3 {
-//         align-self: start;
-//         text-align: center;
-//         font-weight: 500;
-//         color: $secondary-main;
-//       }
-//     }
-
-//     .contentGrid {
-//       position: relative;
-//       display: grid;
-
-//       .content {
-//         display: grid;
-//         align-self: start;
-//         justify-content: center;
-//         padding-top: 1.5rem;
-
-//         .iframe {
-//           border: 0;
-//         }
-//       }
-
-//       .contactGrid {
-//         display: grid;
-//         grid-template-rows: auto;
-//         grid-template-columns: 1fr 2fr;
-//         align-self: center;
-
-//         .headlinesGrid {
-//           display: grid;
-//           align-self: start;
-//           justify-content: center;
-//         }
-//         .headlinesItem {
-//           align-self: end;
-//           padding-top: 1.5rem;
-//         }
-
-//         .itemGrid {
-//           display: grid;
-//           align-self: start;
-//           justify-content: left;
-//         }
-//         .contactItem {
-//           align-self: end;
-//           padding-top: 1.5rem;
-
-//           h5 {
-//             font-weight: 500;
-//           }
-//         }
-
-//         .contactLogo {
-//           padding-top: 1.5rem;
-//           padding-right: 1.5rem;
-//         }
-//       }
-//     }
-//   }
-
-//   .nav {
-//     display: grid;
-//     align-self: end;
-//     background-color: $primary-main;
-//   }
-// }
-
-
-  .contact {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    display: grid;
-  }
+// ***Mobile***
+.contact {
+  position: relative;
+  height: 100%;
+  min-height: 75rem;
+  width: 100vh;
+  display: grid;
 
   .container {
+    position: relative;
     display: grid;
     grid-template-rows: auto;
 
-   
-  .headlines {
-    position: relative;
-    display: grid;
+    .headlines {
+      position: relative;
+      display: grid;
 
-    h1 {
-      align-self: end;
-      text-align: center;
-      color: black;
-    }
+      h1 {
+        align-self: end;
+        text-align: center;
+        color: black;
+      }
 
-    h2 {
-      align-self: start;
-      text-align: center;
-      font-weight: 400;
-      color: $secondary-dark;
+      h2 {
+        align-self: start;
+        text-align: center;
+        font-weight: 400;
+        color: $secondary-dark;
+      }
     }
   }
 
-    .contentGrid {
+  .contentGrid {
+    display: grid;
+
+    .content {
+      display: grid;
+      align-self: start;
+      text-align: center;
+      padding-left: 3rem;
+      padding-right: 3rem;
+
+      p {
+        font-size: $font-size-h5;
+      }
+    }
+
+    .contactContainer {
       position: relative;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-row-start: 2;
+      // grid-template-columns: 1fr 1fr;
 
-      .content {
-        display: grid;
-        align-self: start;
-        justify-content: center;
-        padding-left: 5rem;
-        padding-top: 1.5rem;
-
-        .iframe {
-          border: 0;
-        }
+      .map {
+        display: none;
       }
 
       .contactGrid {
         display: grid;
         grid-template-rows: auto;
         grid-template-columns: 1fr 2fr;
+        padding-top: 1.5rem;
 
         .headlinesGrid {
           display: grid;
           align-self: start;
-          justify-content: center;
+          justify-content: right;
+          padding-right: 2rem;
         }
         .headlinesItem {
           align-self: end;
-          padding-top: 1.5rem;
+          padding-top: 1.6rem;
         }
 
         .itemGrid {
           display: grid;
-
           align-self: start;
           justify-content: left;
         }
         .contactItem {
           align-self: end;
           padding-top: 1.5rem;
+          padding-bottom: 1.5rem;
 
-          h5 {
+          h5,
+          a {
             font-weight: 500;
+            color: black;
+
+            &:hover {
+              color: $primary-main;
+            }
           }
         }
 
         .contactLogo {
           padding-top: 2.5rem;
-          padding-right: 1.5rem;
+          // margin-top: 5rem;
+          // padding-right: 1.5rem;
         }
       }
     }
   }
 
   .nav {
-    z-index: 1;
+    z-index: 99;
     display: grid;
     align-self: end;
     background-color: $primary-main;
   }
+}
 
+// ***SMALL***
+@media (min-width: 576px) {
+  .contact {
+    min-height: 100%;
+
+    .headlines {
+      h1 {
+        font-size: $font-size-h3;
+      }
+
+      h2 {
+        font-size: $font-size-h4;
+      }
+    }
+
+    .contentGrid {
+      .content {
+        padding-left: 3rem;
+        padding-right: 3rem;
+
+        p {
+          font-size: $font-size-p-sm;
+        }
+      }
+
+      .contactContainer {
+        .map {
+          display: none;
+        }
+
+        .itemGrid {
+          .contactItem {
+            align-self: end;
+            padding-top: 1.5rem;
+            padding-bottom: 0rem;
+
+            h5,
+            a {
+              font-size: $font-size-h6;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// ***MEDIUM***
+@media (min-width: 768px) {
+  .contact {
+    min-height: 100%;
+    width: 100%;
+
+    .contentGrid {
+      .content {
+        padding-left: 10rem;
+        padding-right: 10rem;
+
+        p {
+          font-size: $font-size-p;
+          line-height: 1.5rem;
+        }
+      }
+    }
+
+    .contactContainer {
+      grid-template-columns: 1fr 1fr;
+
+      .map {
+        display: grid;
+        align-self: start;
+        justify-content: center;
+        // padding-left: 5rem;
+        padding-top: 3.5rem;
+
+        .iframe {
+          border: 0;
+          border-radius: 0.5rem; /* 4px */
+        }
+      }
+    }
+  }
+}

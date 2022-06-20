@@ -31,16 +31,14 @@ export default function About({ menus, settings, about, services }) {
 
         <div className={styles.contentGrid}>
           <div className={styles.content}>
-            {/* <h3>Who we are</h3> */}
-            <p>{about.aboutDescription}</p>
+            <div
+              dangerouslySetInnerHTML={{ __html: about.aboutDescription }}
+            ></div>
           </div>
 
           <div className={styles.blocksContainer}>
             {services.map((service, index) => (
               <div className={styles.block} key={index}>
-                {/* <FontAwesomeIcon icon={test} className={styles.icon} /> */}
-                {/* <FontAwesomeIcon icon="hiking" /> */}
-
                 <div className={styles.icon}>
                   <Image
                     src={service.node.icon.icon.mediaItemUrl}
@@ -48,59 +46,16 @@ export default function About({ menus, settings, about, services }) {
                     width={20}
                     height={20}
                     color="red"
-
-                    // layout="responsive"
                   />
                 </div>
 
-                {/* 
-                <FontAwesomeIcon
-                  icon={service.node.icon.icon}
-                  className={styles.icon}
-                /> */}
-
                 <h5>{service.node.title}</h5>
 
-                <h6
+                <div
                   dangerouslySetInnerHTML={{ __html: service.node.content }}
-                />
+                ></div>
               </div>
             ))}
-            {/* <div className={styles.block}>
-              <i className={styles.icon}>
-                <FaHiking />
-              </i>
-              <h5>Title</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div className={styles.block}>
-              <i className={styles.icon}>
-                <FaHiking />
-              </i>
-              <h5>Title</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div className={styles.block}>
-              <i className={styles.icon}>
-                <FaHiking />
-              </i>
-              <h5>Title</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div className={styles.block}>
-              <i className={styles.icon}>
-                <FaHiking />
-              </i>
-              <h5>Title</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div className={styles.block}>
-              <i className={styles.icon}>
-                <FaHiking />
-              </i>
-              <h5>Title</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div> */}
           </div>
 
           {/* CTA */}

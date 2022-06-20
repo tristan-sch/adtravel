@@ -50,7 +50,7 @@ export default function Home({
         <Team menus={menus} team={team} staff={staff} />
       </div>
       <div className={styles.contactContainer}>
-        <Contact contact={contact} />
+        <Contact contact={contact} menus={menus} />
       </div>
     </>
   );

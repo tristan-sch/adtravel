@@ -1,5 +1,7 @@
 @import "../../styles/variables/__variables";
 
+// ***Mobile***
+
 // Nav
 .container {
   position: relative;
@@ -102,7 +104,6 @@
         color: $primary-main;
         font-size: $font-size-h2;
         align-self: end;
-        // font-family: $open-sans;
       }
 
       h2 {
@@ -112,13 +113,8 @@
         text-align: center;
         align-self: start;
       }
-
-      // .buttonContainer {
-      //   padding-top: 3rem;
-      //   text-align: center;
-      // }
     }
-    .goDown {
+    .arrowDownGrid {
       z-index: 1;
       position: relative;
       display: grid;
@@ -141,7 +137,6 @@
 
       // arrow animation
       .arrow {
-       
         -moz-animation: bounce 3s infinite;
         -webkit-animation: bounce 2s infinite;
         animation: bounce 2s infinite;
@@ -166,14 +161,15 @@
   }
 }
 
-// Small
+// ***SMALL***
 @media (min-width: 576px) {
   .container {
     min-height: 100%;
-    width: 100%;
 
-    // Nav Small
+    // Nav small
     .nav {
+      padding: 3rem 6rem 0rem 4rem;
+
       .navMenu {
         display: grid;
         align-items: center;
@@ -184,13 +180,14 @@
           list-style: none;
           padding: 0;
           margin: 0;
-          padding-top: 1.5rem;
+          padding-top: 2rem;
 
           li {
             h5,
             a {
               color: white;
               font-weight: 300;
+              font-size: $font-size-p;
 
               &:hover {
                 text-decoration: underline;
@@ -202,6 +199,65 @@
             position: relative;
             z-index: 1;
             margin: 0 0.25em;
+
+            &:first-child {
+              margin-right: 3rem;
+            }
+
+            &:nth-child(2) {
+              margin-right: 3rem;
+            }
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+      .hamburger {
+        display: none;
+      }
+    }
+
+    // Header small
+    .header {
+      .headline {
+        align-self: start;
+        grid-row-start: 2;
+
+        h2 {
+          font-size: $font-size-h1;
+        }
+      }
+
+      .arrowDownGrid {
+        grid-row-start: 4;
+        align-self: center;
+
+        h5 {
+          padding-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+// ***MEDIUM***
+@media (min-width: 768px) {
+  .container {
+    width: 100%;
+    // Nav medium
+    .nav {
+      padding: 5rem 5rem 0rem 5rem;
+      .navMenu {
+        .navMenuItems {
+          padding-top: 2rem;
+
+          li {
+            h5,
+            a {
+              font-size: $font-size-h6;
+            }
 
             &:first-child {
               margin-right: 3.5rem;
@@ -217,24 +273,81 @@
           }
         }
       }
-      .hamburger {
-        display: none;
+    }
+  }
+}
+
+// ***LARGE***
+@media (min-width: 992px) {
+  .container {
+    width: 100%;
+    // Nav large
+    .nav {
+      padding: 5rem 9rem 0rem 7rem;
+      .navMenu {
+        .navMenuItems {
+          padding-top: 1.5rem;
+
+          li {
+            h5,
+            a {
+              font-size: $font-size-h5;
+            }
+          }
+        }
       }
     }
+  }
+}
+// XL
+@media (min-width: 1200px) {
+  .arrowDownGrid {
+    grid-row-start: 4;
+    align-self: start;
+  }
+}
 
-    // Header Small
+// XXL
+@media (min-width: 1400px) {
+  .container {
+    // Header small
     .header {
-      display: grid;
-      grid-template-rows: auto;
-
       .headline {
-        align-self: start;
-        grid-row-start: 2;
+        h2 {
+          font-size: $font-size-display-sm;
+        }
       }
 
-      .goDown {
+      .arrowDownGrid {
         grid-row-start: 4;
-        align-self: start;
+        align-self: center;
+
+        h5 {
+          padding-bottom: 0.5rem;
+        }
+      }
+    }
+    // Nav large
+    .nav {
+      padding: 5rem 12rem 0rem 8rem;
+      .navMenu {
+        .navMenuItems {
+          padding-top: 1.5rem;
+
+          li {
+            &:first-child {
+              margin-right: 4rem;
+            }
+
+            &:nth-child(2) {
+              margin-right: 4rem;
+            }
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
       }
     }
   }

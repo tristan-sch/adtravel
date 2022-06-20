@@ -10,159 +10,80 @@
 
 // xxl => @media (min-width: 1400px) { ... }
 
-// @media (max-width: 768px) {
-//   .navHeaderContainer {
-//     // width: 100vw;
-//     height: 100vh;
-//     min-height: 75rem;
-
-//     .navContainer {
-//       width: 100%;
-//       z-index: 9;
-//     }
-
-//     .headerContainer {
-//       width: 100%;
-//       height: 100vh;
-//       position: absolute;
-//       margin: 0;
-//       // display: grid;
-//       // align-items: center;
-//       // justify-content: center;
-//     }
-//   }
-
-//   .aboutContainer {
-//     // width: 100%;
-//     height: 100vh;
-//     min-height: 75rem;
-//     // padding-top: 3.5rem;
-//   }
-
-//   .teamContainer {
-//     height: 100vh;
-//     width: 100vh;
-//     min-height: 75rem;
-//     background-color: #f8f8f8;
-//     // padding-top: 3.5rem;
-//   }
-
-//   .contactContainer {
-//     height: 100vh;
-//     // width: 100vh;
-//     min-height: 75rem;
-//     // padding-top: 3.5rem;
-//   }
-// }
-
-.header {
-  height: 100%;
-  position: relative;
-}
-
-// .header::after {
-//   content: "";
-//   transform: rotate(190deg);
-//   display: block;
-//   position: absolute;
-//   width: 100%;
-//   height: 5%;
-//   // top: -375px;
-//   top: calc(-3000px + 5vw);
-//   background-repeat: no-repeat;
-//   // background-size: 2300px;
-//   background-position: center 100.5%;
-//   background-image: url("/waves.svg");
-// }
-
 // .aboutContainer::before {
 //   content: "";
-//   transform: rotate(180deg);
 //   display: block;
 //   position: absolute;
 //   width: 100%;
-//   height: 5%;
+//   height: 30%;
 //   // top: -375px;
-//   top: calc(-115px + 5vw);
+//   top: calc(-280px + 5vw);
 //   background-repeat: no-repeat;
-//   // background-size: 2300px;
+//   background-size: 2300px;
 //   background-position: center 100.5%;
-//   background-image: url("/waves2.svg");
+//   background-image: url("/peaks.svg");
 // }
-
-.aboutContainer::before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 30%;
-  // top: -375px;
-  top: calc(-280px + 5vw);
-  background-repeat: no-repeat;
-  background-size: 2300px;
-  background-position: center 100.5%;
-  background-image: url("/peaks.svg");
-}
-
 
 // .teamContainer::before {
 //   content: "";
-//   // transform: rotate(180deg);
 //   display: block;
 //   position: absolute;
 //   width: 100%;
-//   height: 5%;
+//   height: 30%;
 //   // top: -375px;
-//   top: calc(-85px + 5vw);
+//   top: calc(-280px + 5vw);
 //   background-repeat: no-repeat;
-//   // background-size: 2300px;
+//   background-size: 2300px;
 //   background-position: center 100.5%;
-//   background-image: url("/waves.svg");
+//   background-image: url("/peaks3.svg");
 // }
-
-.teamContainer::before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 30%;
-  // top: -375px;
-  top: calc(-250px + 5vw);
-  background-repeat: no-repeat;
-  background-size: 2300px;
-  background-position: center 100.5%;
-  background-image: url("/peaks3.svg");
-}
-
-.contactContainer::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 30%;
-  // top: -35px;
-  top: calc(475px + 5vw);
-  background-repeat: no-repeat;
-  background-size: 1800px;
-  background-position: center 100.5%;
-  background-image: url("/peaks-color.svg");
-}
-
-
+.header,
 .aboutContainer,
 .teamContainer,
 .contactContainer {
-  position: relative;
+  // position: relative;
   height: 100%;
 }
-
-
 
 @media (min-width: 576px) {
   .header,
   .aboutContainer,
   .teamContainer,
   .contactContainer {
+    position: relative;
     height: 100vh;
+  }
+
+  // .aboutContainer::before {
+  //   content: "";
+  //   // display: block;
+  //   position: absolute;
+  //   width: 100%;
+  //   height: 30%;
+  //   top: calc(-220px + 5vw);
+  //   background-repeat: no-repeat;
+  //   background-size: 2300px;
+  //   background-position: center 100.5%;
+  //   background-image: url("/peaks.svg");
+  // }
+
+  // .contactContainer::after {
+  //   content: "";
+  //   display: block;
+  //   position: absolute;
+  //   width: 100%;
+  //   height: 20%;
+  //   // top: -35px;
+  //   top: calc(630px + 5vw);
+  //   background-repeat: no-repeat;
+  //   background-size: 1800px;
+  //   background-position: center 100.5%;
+  //   background-image: url("/peaks-color.svg");
+  // }
+}
+
+@media (min-width: 1400px) {
+  .contactContainer::after {
+    background-size: 2000px;
   }
 }

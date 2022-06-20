@@ -5,7 +5,6 @@ import styles from "./Header.module.scss";
 import { FaBars, FaChevronDown } from "react-icons/fa";
 
 import Image from "next/image";
-import logo from "../../../public/logo-white.png";
 
 export default function Nav({ header, menus, settings }) {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -19,11 +18,10 @@ export default function Nav({ header, menus, settings }) {
             <a>
               <Image
                 className={styles.logoImage}
-                src={logo}
-                alt="AD Travel Logo"
+                src={header.header.adTravelLogo.sourceUrl}
+                alt={header.header.adTravelLogo.altText}
                 width={133}
                 height={94}
-                // layout="responsive"
               />
             </a>
           </Link>
@@ -69,13 +67,8 @@ export default function Nav({ header, menus, settings }) {
         <div className={styles.headline}>
           <h1>{settings.title}</h1>
           <h2>{settings.description}</h2>
-          {/* <div className={styles.buttonContainer}>
-              <button className={styles.primaryButton}>
-                <p>Contact</p>
-              </button>
-            </div> */}
         </div>
-        <div className={styles.goDown}>
+        <div className={styles.arrowDownGrid}>
           {menus.nodes.map((menu) => (
             <h5 key={menu.menuItems.edges[0].node.id}>
               {menu.menuItems.edges[0].node.label}

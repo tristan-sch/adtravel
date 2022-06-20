@@ -1,7 +1,6 @@
 @import "../../styles/variables/__variables";
 
-//Desktop
-
+// ***Mobile***
 .about {
   // position: relative;
   // display: grid;
@@ -23,24 +22,7 @@
   left: 0px;
   top: 50%;
   background-color: $primary-main;
-  // opacity: 0.8;
 }
-
-// .bg::before {
-//   content: "";
-//   transform: rotate(180deg);
-//   display: block;
-//   position: absolute;
-//   width: 100%;
-//   height: 10%;
-//   // top: -375px;
-//   top: calc(-115px + 5vw);
-//   background-repeat: no-repeat;
-//   // background-size: 2300px;
-//   background-position: center 100.5%;
-//   background-image: url("/curve.svg");
-// }
-
 
 .container {
   display: grid;
@@ -73,33 +55,14 @@
       text-align: center;
       padding-left: 3rem;
       padding-right: 3rem;
-
-      p {
-        font-size: $font-size-h5;
-      }
-
-      h5 {
-        color: $neutral-dark;
-        font-weight: 600;
-      }
     }
-
-    // .subHeadline {
-    //   display: grid;
-    //   align-self: end;
-    //   padding-left: 5rem;
-    //   padding-top: 3rem;
-    //   padding-bottom: 3rem;
-    // }
 
     .blocksContainer {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       padding-left: 3rem;
       padding-right: 3rem;
-      // padding-bottom: 3rem;
       gap: 1.5rem; /* 24px */
-      // align-items: flex-start;
       justify-items: center;
       align-self: start;
 
@@ -119,21 +82,6 @@
         border-radius: 0.5rem; /* 4px */
         box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
           0 8px 10px -6px rgb(0 0 0 / 0.1);
-
-        img {
-          fill: red;
-          // display: inline-block;
-          // font-size: 30px;
-          // border-radius: 60px;
-          // padding: 0.5em 0.7em;
-          // color: red;
-          // cursor: pointer;
-          // background-color: $secondary-main;
-
-          &:hover {
-            fill: $secondary-main;
-          }
-        }
 
         h5 {
           font-weight: 600;
@@ -192,29 +140,140 @@
   }
 }
 
+// ***SMALL***
 @media (min-width: 576px) {
   .about {
     min-height: 100%;
+
+    .headlines {
+      h1 {
+        font-size: $font-size-h3;
+      }
+
+      h2 {
+        font-size: $font-size-h4;
+      }
+    }
+    .contentGrid {
+      .content {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        margin-top: -2rem;
+
+        p {
+          font-size: $font-size-p-sm;
+        }
+      }
+
+      .blocksContainer {
+        gap: 1rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-bottom: 0rem;
+        align-items: flex-start;
+        align-self: start;
+
+        .block {
+          padding: 1rem;
+
+          h5 {
+            font-size: $font-size-h6;
+            padding-bottom: 0.5rem;
+          }
+
+          p {
+            line-height: 1rem;
+            font-size: $font-size-p-sm;
+          }
+        }
+      }
+    }
+    .arrowDownGrid {
+      align-self: center;
+
+      h5 {
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+// ***MEDIUM***
+@media (min-width: 768px) {
+  .about {
     width: 100%;
+
+    .contentGrid {
+      .content {
+        padding-left: 6rem;
+        padding-right: 6rem;
+      }
+
+      .blocksContainer {
+        gap: 1.5rem;
+        padding-left: 5rem;
+        padding-right: 5rem;
+      }
+    }
+  }
+}
+
+// ***LARGE***
+@media (min-width: 992px) {
+}
+
+// XL
+@media (min-width: 1200px) {
+  .about {
+    .headlines {
+      h1 {
+        font-size: $font-size-h2;
+      }
+
+      h2 {
+        font-size: $font-size-h3;
+      }
+    }
 
     .contentGrid {
       .content {
         padding-left: 10rem;
         padding-right: 10rem;
+        margin-top: 0rem;
 
         p {
-          font-size: $font-size-p;
-          line-height: 1.5rem;
+          font-size: $font-size-h5;
         }
       }
 
       .blocksContainer {
-        padding-left: 15rem;
-        padding-right: 15rem;
+        align-self: center;
+        gap: 1.5rem;
+        padding-left: 12rem;
+        padding-right: 12rem;
         padding-bottom: 3rem;
-        align-items: flex-start;
-        align-self: end;
+
+        .block {
+          padding: 1.5rem;
+
+          h5 {
+            font-size: $font-size-h5;
+            padding-bottom: 0.5rem;
+          }
+
+          p {
+            line-height: 1.5rem;
+            font-size: $font-size-p;
+          }
+        }
       }
     }
+    .arrowDownGrid {
+      align-self: start;
+    }
   }
+}
+
+// XXL
+@media (min-width: 1400px) {
 }

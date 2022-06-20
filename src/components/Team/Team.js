@@ -26,27 +26,21 @@ export default function Team({ team, staff, menus }) {
 
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 992,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true,
+          dots: false,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
+          dots: false,
           initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
         },
       },
     ],
@@ -65,10 +59,10 @@ export default function Team({ team, staff, menus }) {
         </div>
         {/* Slider */}
         <div className={styles.contentGrid}>
-          <div className={styles.content}>
-            {/* <h3>Who we are</h3> */}
-            <p>{team.teamDescription}</p>
-          </div>
+          <div
+            className={styles.content}
+            dangerouslySetInnerHTML={{ __html: team.teamDescription }}
+          ></div>
 
           <div className={styles.slider}>
             <div
@@ -101,18 +95,12 @@ export default function Team({ team, staff, menus }) {
                           alt={staff.node.featuredImage.node.altText}
                           width={150}
                           height={150}
-                          // layout="responsive"
                         />
                       </div>
                       <h5 className={styles.title}>{staff.node.title}</h5>
                       <h6
                         dangerouslySetInnerHTML={{ __html: staff.node.content }}
                       />
-
-                      {/* <div className={styles.buttonContainer}>
-                      <button className={styles.teamButton}>Contact</button>
-                      <FaEnvelope />
-                    </div> */}
                     </div>
                   </div>
                 ))}
@@ -122,7 +110,6 @@ export default function Team({ team, staff, menus }) {
               className={styles.arrowContainer}
               onClick={sliderRef?.slickNext}
             >
-              {" "}
               <FaChevronRight />
             </div>
           </div>

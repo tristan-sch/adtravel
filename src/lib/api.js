@@ -73,6 +73,10 @@ export async function getHeader() {
               sourceUrl
               altText
             }
+            adTravelLogo {
+              sourceUrl
+              altText
+            }
           }
         }
       }
@@ -179,9 +183,27 @@ export async function getContact() {
     query contact {
       page(id: "/homepage", idType: URI) {
         contact {
+          contactSubheadline
+          contactDescription
+          iframeGoogleMaps
+          emailPicto {
+            id
+            mediaItemUrl
+          }
+          phonePicto {
+            id
+            mediaItemUrl
+          }
+          adressPicto {
+            id
+            mediaItemUrl
+          }
           email
+          emailUrl
           phone
+          phoneUrl
           adress
+          adressUrl
           logo1 {
             sourceUrl
             altText

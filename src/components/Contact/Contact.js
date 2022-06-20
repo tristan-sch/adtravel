@@ -7,70 +7,102 @@ import Footer from "../Footer/Footer";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
 
-export default function Contact({ contact }) {
+export default function Contact({ contact, menus }) {
   // console.log(contact);
   return (
     <div id="contact" className={styles.contact}>
       <div className={styles.container}>
         <div className={styles.headlines}>
-          <h1>Title</h1>
-          <h2>Subtitle</h2>
+          {menus.nodes.map((menu, index) => (
+            <h1 key={index}>{menu.menuItems.edges[2].node.label}</h1>
+          ))}
+          <h2>{contact.contact.contactSubheadline}</h2>
         </div>
         <div className={styles.contentGrid}>
-          <div className={styles.content}>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6965.7873132882605!2d-21.788769!3d64.120958!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5d8773a71586fbab!2sAD%20TRAVEL!5e0!3m2!1sfr!2sis!4v1650798119859!5m2!1sfr!2sis"
-              width="600"
-              height="350"
-              className={styles.iframe}
-              // style="border:0;"
-              // allowfullscreen=""
-              loading="lazy"
-              // allowFullScreen=""
-              // aria-hidden="false"
-              // tabIndex="0"
-              // referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-          <div className={styles.contactGrid}>
-            <div className={styles.headlinesGrid}>
-              <div className={styles.headlinesItem}>
-                <h5>Email</h5>
-              </div>
-              <div className={styles.headlinesItem}>
-                <h5>Phone</h5>
-              </div>
-              <div className={styles.headlinesItem}>
-                <h5>Adress</h5>
-              </div>
+          <div
+            className={styles.content}
+            dangerouslySetInnerHTML={{
+              __html: contact.contact.contactDescription,
+            }}
+          ></div>
+
+          <div className={styles.contactContainer}>
+            <div className={styles.map}>
+              <iframe
+                src={contact.contact.iframeGoogleMaps}
+                width="500"
+                height="292"
+                className={styles.iframe}
+                loading="lazy"
+              ></iframe>
             </div>
-            <div className={styles.itemGrid}>
-              <div className={styles.contactItem}>
-                <h5>{contact.contact.email}</h5>
+            <div className={styles.contactGrid}>
+              <div className={styles.headlinesGrid}>
+                <div className={styles.headlinesItem}>
+                  <Image
+                    src={contact.contact.emailPicto.mediaItemUrl}
+                    alt=""
+                    width={20}
+                    height={20}
+                  />
+                </div>
+                <div className={styles.headlinesItem}>
+                  <Image
+                    src={contact.contact.phonePicto.mediaItemUrl}
+                    alt=""
+                    width={20}
+                    height={20}
+                  />
+                </div>
+                <div className={styles.headlinesItem}>
+                  <Image
+                    src={contact.contact.adressPicto.mediaItemUrl}
+                    alt=""
+                    width={25}
+                    height={25}
+                  />
+                </div>
               </div>
-              <div className={styles.contactItem}>
-                <h5>{contact.contact.phone}</h5>
-              </div>
-              <div className={styles.contactItem}>
-                <h5
-                  dangerouslySetInnerHTML={{
-                    __html: contact.contact.adress,
-                  }}
-                />
-              </div>
-              <div className={styles.contactLogo}>
-                <Image
-                  width={163}
-                  height={115}
-                  alt={contact.contact.logo1.altText}
-                  src={contact.contact.logo1.sourceUrl}
-                />
-                <Image
-                  width={115}
-                  height={115}
-                  alt={contact.contact.logo2.altText}
-                  src={contact.contact.logo2.sourceUrl}
-                />
+              <div className={styles.itemGrid}>
+                <div className={styles.contactItem}>
+                  <Link href={contact.contact.emailUrl}>
+                    <a>
+                      <h5>{contact.contact.email}</h5>
+                    </a>
+                  </Link>
+                </div>
+                <div className={styles.contactItem}>
+                  <Link href={contact.contact.phoneUrl}>
+                    <a>
+                      <h5>{contact.contact.phone}</h5>
+                    </a>
+                  </Link>
+                </div>
+                <div className={styles.contactItem}>
+                  <Link href={contact.contact.adressUrl}>
+                    <a target="_blank">
+                      <h5
+                        dangerouslySetInnerHTML={{
+                          __html: contact.contact.adress,
+                        }}
+                      />
+                    </a>
+                  </Link>
+                </div>
+                <div className={styles.contactLogo}>
+                  <Image
+                    width={150}
+                    height={150}
+                    alt={contact.contact.logo2.altText}
+                    src={contact.contact.logo2.sourceUrl}
+                  />
+                  <Image
+                    width={163}
+                    height={115}
+                    alt={contact.contact.logo1.altText}
+                    src={contact.contact.logo1.sourceUrl}
+                  />
+                </div>
               </div>
             </div>
           </div>
