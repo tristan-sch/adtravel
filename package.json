@@ -14,9 +14,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
     "add": "^2.0.6",
-    "@babel/eslint-parser": "^7.5.4",
     "babel-plugin-inline-react-svg": "^2.0.1",
-    "eslint": "^8.14.0",
     "next": "12.1.4",
     "react": "18.0.0",
     "react-detect-click-outside": "^1.1.2",
@@ -27,6 +25,7 @@
     "yarn": "^1.22.18"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^12.1.6",
     "@svgr/webpack": "^6.2.1"
   }
 }
