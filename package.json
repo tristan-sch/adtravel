@@ -27,7 +27,6 @@
     "yarn": "^1.22.18"
   },
   "devDependencies": {
-    "@svgr/webpack": "^6.2.1",
-    "eslint-config-next": "12.1.4"
+    "@svgr/webpack": "^6.2.1"
   }
 }
