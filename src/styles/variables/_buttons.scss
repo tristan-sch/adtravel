@@ -1,14 +1,14 @@
 .primaryButton {
   font-size: $font-size-h5;
   font-family: $nunito;
-  color: white;
-  background-color: $primary-dark;
+  color: $primary-dark;
+  background-color: white;
   border: none;
   border-radius: 5px;
   padding: 5px 30px;
   cursor: pointer;
   text-decoration: none;
-  width: 8rem;
+  // width: 20rem;
   height: 3rem;
   // text-transform: uppercase;
   transition: 0.08s ease-in;
@@ -17,8 +17,16 @@
   -moz-transition: 0.08s ease-in;
   -webkit-transition: 0.08s ease-in;
 
+  a {
+    font-weight: 500;
+    color: black;
+  }
+
   &:hover {
-    background-color: $secondary-dark;
+    background-color: $primary-dark;
+    a {
+      color: white;
+    }
   }
 }
 

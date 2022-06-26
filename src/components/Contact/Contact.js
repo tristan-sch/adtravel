@@ -2,15 +2,14 @@ import React from "react";
 import Link from "next/link";
 import styles from "./Contact.module.scss";
 
-import Footer from "../Footer/Footer";
+import { FaChevronUp, FaMobile, FaEnvelope } from "react-icons/fa";
 
 import Image from "next/image";
-import logo from "../../../public/logo.png";
 
 export default function Contact({ contact, menus }) {
-  // console.log(contact);
   return (
     <div id="contact" className={styles.contact}>
+      <div className={styles.bg} aria-hidden="true"></div>
       <div className={styles.container}>
         <div className={styles.headlines}>
           {menus.nodes.map((menu, index) => (
@@ -25,8 +24,34 @@ export default function Contact({ contact, menus }) {
               __html: contact.contact.contactDescription,
             }}
           ></div>
+          <div className={styles.buttonsContainer}>
+            <div className={styles.button}>
+              <button className={styles.primaryButton}>
+                <Link href={contact.contact.emailUrl}>
+                  <a>
+                    <h6>
+                      <FaEnvelope /> {"\u00a0\u00a0"}
+                      {contact.contact.email}
+                    </h6>
+                  </a>
+                </Link>
+              </button>
+            </div>
+            <div className={styles.button}>
+              <button className={styles.primaryButton}>
+                <Link href={contact.contact.emailUrl}>
+                  <a>
+                    <h6>
+                      <FaMobile /> {"\u00a0\u00a0"}
+                      {contact.contact.phone}
+                    </h6>
+                  </a>
+                </Link>
+              </button>
+            </div>
+          </div>
 
-          <div className={styles.contactContainer}>
+          <div className={styles.mapContainer}>
             <div className={styles.map}>
               <iframe
                 src={contact.contact.iframeGoogleMaps}
@@ -35,81 +60,47 @@ export default function Contact({ contact, menus }) {
                 className={styles.iframe}
                 loading="lazy"
               ></iframe>
-            </div>
-            <div className={styles.contactGrid}>
-              <div className={styles.headlinesGrid}>
-                <div className={styles.headlinesItem}>
-                  <Image
-                    src={contact.contact.emailPicto.mediaItemUrl}
-                    alt=""
-                    width={20}
-                    height={20}
+              <Link href={contact.contact.adressUrl}>
+                <a target="_blank">
+                  <h6
+                    dangerouslySetInnerHTML={{
+                      __html: contact.contact.adress,
+                    }}
                   />
-                </div>
-                <div className={styles.headlinesItem}>
-                  <Image
-                    src={contact.contact.phonePicto.mediaItemUrl}
-                    alt=""
-                    width={20}
-                    height={20}
-                  />
-                </div>
-                <div className={styles.headlinesItem}>
-                  <Image
-                    src={contact.contact.adressPicto.mediaItemUrl}
-                    alt=""
-                    width={25}
-                    height={25}
-                  />
-                </div>
-              </div>
-              <div className={styles.itemGrid}>
-                <div className={styles.contactItem}>
-                  <Link href={contact.contact.emailUrl}>
-                    <a>
-                      <h5>{contact.contact.email}</h5>
-                    </a>
-                  </Link>
-                </div>
-                <div className={styles.contactItem}>
-                  <Link href={contact.contact.phoneUrl}>
-                    <a>
-                      <h5>{contact.contact.phone}</h5>
-                    </a>
-                  </Link>
-                </div>
-                <div className={styles.contactItem}>
-                  <Link href={contact.contact.adressUrl}>
-                    <a target="_blank">
-                      <h5
-                        dangerouslySetInnerHTML={{
-                          __html: contact.contact.adress,
-                        }}
-                      />
-                    </a>
-                  </Link>
-                </div>
-                <div className={styles.contactLogo}>
-                  <Image
-                    width={150}
-                    height={150}
-                    alt={contact.contact.logo2.altText}
-                    src={contact.contact.logo2.sourceUrl}
-                  />
-                  <Image
-                    width={163}
-                    height={115}
-                    alt={contact.contact.logo1.altText}
-                    src={contact.contact.logo1.sourceUrl}
-                  />
-                </div>
-              </div>
+                </a>
+              </Link>
             </div>
           </div>
         </div>
-        <div className={styles.nav}>
-          <Footer />
-        </div>
+        <footer className={styles.footer}>
+          <div className={styles.footerItem}>
+            {"\u00a0\u00a0\u00a0"}
+            <Image
+              width={115}
+              height={81}
+              alt={contact.contact.logo1.altText}
+              src={contact.contact.logo1.sourceUrl}
+            />
+          </div>
+          <div className={styles.footerItem}>
+            <Link href="/">
+              <a>
+                <FaChevronUp />
+              </a>
+            </Link>
+          </div>
+
+          <div className={styles.footerItem}>
+            <Image
+              width={115}
+              height={115}
+              alt={contact.contact.logo2.altText}
+              src={contact.contact.logo2.sourceUrl}
+              className={styles.image}
+            />
+            {"\u00a0\u00a0\u00a0"}
+          </div>
+        </footer>
       </div>
     </div>
   );

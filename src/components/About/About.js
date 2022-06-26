@@ -2,22 +2,11 @@ import React from "react";
 import Link from "next/link";
 import styles from "./About.module.scss";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { FaChevronDown } from "react-icons/fa";
-
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-// import {
-//   faHiking,
-//   faBus,
-//   faStar,
-//   faCar,
-// } from "@fortawesome/free-solid-svg-icons";
 
 import Image from "next/image";
 
-export default function About({ menus, settings, about, services }) {
+export default function About({ menus, about, services }) {
   return (
     <section id="about" className={styles.about}>
       <div className={styles.bg} aria-hidden="true"></div>
@@ -58,7 +47,7 @@ export default function About({ menus, settings, about, services }) {
             ))}
           </div>
 
-          {/* CTA */}
+          {/* ARROW DOWN */}
           <div className={styles.arrowDownGrid}>
             {menus.nodes.map((menu) => (
               <h5 key={menu.menuItems.edges[1].node.id}>

@@ -2,11 +2,6 @@
 
 // ***Mobile***
 .about {
-  // position: relative;
-  // display: grid;
-  // height: 100%;
-  // width: 100%;
-
   position: relative;
   height: 100%;
   min-height: 75rem;
@@ -140,6 +135,57 @@
   }
 }
 
+// ***SMALL LANDSCAPE***
+@media (min-width: 576px) and (max-height: 600px) {
+  .about {
+    .container {
+      .headlines {
+        h1 {
+          font-size: $font-size-h5;
+        }
+
+        h2 {
+          font-size: $font-size-h6;
+        }
+      }
+      .contentGrid {
+        .content {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+          margin-top: 0rem;
+
+          p {
+            font-size: $font-caption-sm;
+          }
+        }
+
+        .blocksContainer {
+          .block {
+            padding: 0.7rem;
+
+            h5 {
+              font-size: $font-size-p-sm;
+            }
+
+            p {
+              font-size: $font-caption;
+            }
+          }
+        }
+      }
+      .arrowDownGrid {
+        h5 {
+          font-size: $font-caption;
+          padding-bottom: 0.5rem;
+        }
+        .arrow {
+          font-size: $font-caption;
+        }
+      }
+    }
+  }
+}
+
 // ***SMALL***
 @media (min-width: 576px) {
   .about {
@@ -220,8 +266,8 @@
 }
 
 // ***LARGE***
-@media (min-width: 992px) {
-}
+// @media (min-width: 992px) {
+// }
 
 // XL
 @media (min-width: 1200px) {
@@ -276,5 +322,5 @@
 }
 
 // XXL
-@media (min-width: 1400px) {
-}
+// @media (min-width: 1400px) {
+// }

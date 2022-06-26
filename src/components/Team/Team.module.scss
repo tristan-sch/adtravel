@@ -144,6 +144,62 @@
   }
 }
 
+// ***SMALL LANDSCAPE***
+@media (min-width: 576px) and (max-height: 600px) {
+  .team {
+    .container {
+      .headlines {
+        h1 {
+          font-size: $font-size-h5;
+        }
+        h2 {
+          font-size: $font-size-h6;
+        }
+      }
+      .contentGrid {
+        .content {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+
+          p {
+            font-size: $font-caption-sm;
+          }
+        }
+
+        .slider {
+          padding-right: 5rem;
+          padding-left: 5rem;
+          .sliderContainer {
+            .slide {
+              h5 {
+                font-size: $font-size-p-sm;
+                padding-top: 0rem;
+              }
+              p {
+                font-size: $font-caption;
+              }
+
+              .imageContainer {
+                width: 70px;
+                align-self: center;
+              }
+            }
+          }
+        }
+      }
+      .arrowDownGrid {
+        h5 {
+          font-size: $font-caption;
+          padding-bottom: 0.5rem;
+        }
+        .arrow {
+          font-size: $font-caption;
+        }
+      }
+    }
+  }
+}
+
 // ***SMALL***
 @media (min-width: 576px) {
   .team {

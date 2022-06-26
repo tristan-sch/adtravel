@@ -2,7 +2,6 @@
 import Head from "next/head";
 import styles from "../styles/Index.module.scss";
 
-import Nav from "../components/Nav/Nav";
 import Header from "../components/Header/Header";
 import About from "../components/About/About";
 import Team from "../components/Team/Team";
