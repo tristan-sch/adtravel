@@ -96,7 +96,7 @@ export async function getAbout() {
     query about {
       page(id: "/homepage", idType: URI) {
         about {
-          aboutSubheadline
+          aboutHeading
           aboutDescription
         }
       }

@@ -152,64 +152,10 @@
     .container {
       .headlines {
         h1 {
-          font-size: $font-size-p;
+          font-size: $font-size-h5;
         }
         h2 {
           font-size: $font-size-h6;
-        }
-      }
-
-      .contentGrid {
-        .content {
-          p {
-            font-size: $font-caption-sm;
-          }
-        }
-
-        .buttonsContainer {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          // padding-left: 3rem;
-          // padding-right: 3rem;
-          align-self: center;
-
-          .button {
-            display: grid;
-            padding-left: 2rem;
-            padding-right: 2rem;
-
-            &:first-child {
-              justify-items: right;
-            }
-
-            &:nth-child(2) {
-              justify-items: left;
-            }
-          }
-        }
-
-        .mapContainer {
-          // padding-left: 10rem;
-          // padding-right: 10rem;
-
-          .map {
-            display: none;
-            align-self: center;
-            justify-content: center;
-            padding-top: 3.5rem;
-
-            .iframe {
-              border: 0;
-              padding-bottom: 1.5rem;
-              border-radius: 0.5rem; /* 4px */
-            }
-
-            h6 {
-              color: black;
-              font-weight: 500;
-              text-align: center;
-            }
-          }
         }
       }
     }

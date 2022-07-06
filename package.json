@@ -9,22 +9,49 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/babel-plugin": "^11.9.2",
+    "@emotion/css": "^11.9.0",
+    "@emotion/react": "^11.9.3",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.9.3",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
     "add": "^2.0.6",
-    "next": "12.1.4",
+    "assert": "^2.0.0",
+    "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-styled-components": "^2.0.7",
+    "buffer": "^6.0.3",
+    "constants": "^0.0.2",
+    "feather-icons": "^4.29.0",
+    "framer-motion": "^6.3.16",
+    "module": "^1.2.5",
+    "next": "^12.2.0",
+    "os": "^0.1.2",
+    "path": "^0.12.7",
+    "process": "^0.11.10",
+    "querystring": "^0.2.1",
     "react": "18.0.0",
     "react-detect-click-outside": "^1.1.2",
     "react-dom": "18.0.0",
     "react-icons": "^4.3.1",
     "react-slick": "^0.29.0",
     "sass": "^1.50.0",
+    "stream": "^0.0.2",
+    "styled-components": "^5.3.5",
+    "tailwindcss": "^3.1.4",
+    "twin.macro": "^2.8.2",
+    "util": "^0.12.4",
     "yarn": "^1.22.18"
   },
   "devDependencies": {
     "eslint": "^8.18.0",
     "eslint-config-next": "^12.1.6"
+  },
+  "babelMacros": {
+    "twin": {
+      "preset": "emotion"
+    }
   }
 }

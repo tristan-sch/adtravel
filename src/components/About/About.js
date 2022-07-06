@@ -1,72 +1,79 @@
 import React from "react";
-import Link from "next/link";
-import styles from "./About.module.scss";
+import styled from "styled-components";
+import tw from "twin.macro";
+//eslint-disable-next-line
+import { css } from "styled-components/macro"; //eslint-disable-line
+import {
+  SectionHeading,
+  Subheading as SubheadingBase,
+} from "../../misc/Headings.js";
+import { SectionDescription } from "../../misc/Typography.js";
 
-import { FaChevronDown } from "react-icons/fa";
+const Container = tw.div`relative`;
 
-import Image from "next/image";
+const ThreeColumnContainer = styled.div`
+  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-24`}
+`;
+const Subheading = tw(SubheadingBase)`mb-4`;
+const Heading = tw(SectionHeading)`w-full`;
+const Description = tw(SectionDescription)`w-full text-center`;
 
-export default function About({ menus, about, services }) {
+const VerticalSpacer = tw.div`mt-10 w-full`;
+
+const Column = styled.div`
+  ${tw`md:w-1/2 lg:w-1/3 max-w-sm`}
+`;
+
+const Card = styled.div`
+  ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
+  .imageContainer {
+    ${tw`border text-center rounded-full p-5 flex-shrink-0`}
+    img {
+      ${tw`w-6 h-6`}
+    }
+  }
+
+  .textContainer {
+    ${tw`sm:ml-4 mt-4 sm:mt-2`}
+  }
+
+  .title {
+    ${tw`mt-4 tracking-wide font-bold text-xl leading-none`}
+  }
+
+  .description {
+    ${tw`mt-1 sm:mt-4 font-medium leading-loose`}
+  }
+`;
+
+export default ({ services, menus, about }) => {
   return (
-    <section id="about" className={styles.about}>
-      <div className={styles.bg} aria-hidden="true"></div>
-      <div className={styles.container}>
-        <div className={styles.headlines}>
-          {menus.nodes.map((menu, index) => (
-            <h1 key={index}>{menu.menuItems.edges[0].node.label}</h1>
-          ))}
-          <h2>{about.aboutSubheadline}</h2>
-        </div>
-
-        <div className={styles.contentGrid}>
-          <div className={styles.content}>
-            <div
-              dangerouslySetInnerHTML={{ __html: about.aboutDescription }}
-            ></div>
-          </div>
-
-          <div className={styles.blocksContainer}>
-            {services.map((service, index) => (
-              <div className={styles.block} key={index}>
-                <div className={styles.icon}>
-                  <Image
-                    src={service.node.icon.icon.mediaItemUrl}
-                    alt=""
-                    width={20}
-                    height={20}
-                    color="red"
-                  />
-                </div>
-
-                <h5>{service.node.title}</h5>
+    <Container id="about">
+      <ThreeColumnContainer>
+        {menus.nodes.map((menu, i) => (
+          <Subheading key={i}>{menu.menuItems.edges[0].node.label}</Subheading>
+        ))}
+        <Heading>{about.aboutHeading}</Heading>
+        <Description>{about.aboutDescription}</Description>
+        <VerticalSpacer />
+        {services.map((service, i) => (
+          <Column key={i}>
+            <Card>
+              <span className="imageContainer">
+                <img src={service.node.icon.icon.mediaItemUrl} alt="" />
+              </span>
+              <span className="textContainer">
+                <span className="title">{service.node.title}</span>
 
                 <div
+                  className="description"
                   dangerouslySetInnerHTML={{ __html: service.node.content }}
                 ></div>
-              </div>
-            ))}
-          </div>
-
-          {/* ARROW DOWN */}
-          <div className={styles.arrowDownGrid}>
-            {menus.nodes.map((menu) => (
-              <h5 key={menu.menuItems.edges[1].node.id}>
-                {menu.menuItems.edges[1].node.label}
-              </h5>
-            ))}
-            {menus.nodes.map((menu) => (
-              <Link
-                key={menu.menuItems.edges[1].node.id}
-                href={menu.menuItems.edges[1].node.path}
-              >
-                <a className={styles.arrow}>
-                  <FaChevronDown />
-                </a>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+              </span>
+            </Card>
+          </Column>
+        ))}
+      </ThreeColumnContainer>
+    </Container>
   );
-}
+};

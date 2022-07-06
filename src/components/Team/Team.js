@@ -1,138 +1,111 @@
-import { useState } from "react";
-import Link from "next/link";
-import styles from "./Team.module.scss";
-import Image from "next/image";
-
-import Slider from "react-slick";
-
+import React from "react";
+import tw from "twin.macro";
+import styled from "styled-components";
+import { css } from "styled-components/macro";
+import { Container, ContentWithPaddingXl } from "../../misc/Layouts.js";
 import {
-  FaChevronDown,
-  FaChevronLeft,
-  FaChevronRight,
-  FaEnvelope,
-} from "react-icons/fa";
+  SectionHeading,
+  Subheading as SubheadingBase,
+} from "../../misc/Headings.js";
+import { SectionDescription } from "../../misc/Typography.js";
 
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
+const HeadingContainer = tw.div``;
+const Heading = tw(SectionHeading)``;
+const Subheading = tw(SubheadingBase)`text-center mb-3`;
+const Description = tw(SectionDescription)`mx-auto text-center`;
 
-export default function Team({ team, staff, menus }) {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    initialSlide: 0,
+const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto`;
+const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/3 flex flex-col items-center`;
+const CardImage = styled.div`
+  ${(props) =>
+    css`
+      background-image: url("${props.imageSrc}");
+    `}
+  ${tw`w-64 h-64 bg-contain bg-center rounded`}
+`;
+const CardContent = styled.div`
+  ${tw`flex flex-col items-center mt-6`}
+  .position {
+    ${tw`uppercase font-bold tracking-widest text-xs text-primary-main`}
+  }
+  .name {
+    ${tw`mt-1 text-xl font-medium text-gray-900`}
+  9
+`;
 
-    responsive: [
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          dots: false,
-          initialSlide: 2,
-        },
-      },
-    ],
-  };
-  const [sliderRef, setSliderRef] = useState(null);
+const CardLinks = styled.div`
+  ${tw`mt-6 flex`}
+  .link {
+    ${tw`mr-8 last:mr-0 text-gray-400 hocus:text-primary-main transition duration-300`}
+    .icon {
+      ${tw`fill-current w-6 h-6`}
+    }
+  }
+`;
 
+export default ({
+  heading = "Meet These Fine Folks.",
+  subheading = "Our Team",
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  cards = [
+    {
+      imageSrc:
+        "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=2.95&w=512&h=512&q=80",
+      position: "Founder",
+      name: "Adam Cuppy",
+    },
+    {
+      imageSrc:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=2.95&w=512&h=512&q=80",
+      position: "Sr. Designer",
+      name: "Charlotte Hale",
+    },
+    {
+      imageSrc:
+        "https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=2.95&w=512&h=512&q=80",
+      position: "Jr. Designer",
+      name: "Silvester Wize",
+    },
+    {
+      imageSrc:
+        "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=2.95&w=512&h=512&q=80",
+      position: "Lead Developer",
+      name: "Himali Turn",
+    },
+    {
+      imageSrc:
+        "https://images.unsplash.com/photo-1546820389-44d77e1f3b31?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=3.45&w=512&h=512&q=80",
+      position: "Sr. Developer",
+      name: "Troye Sivan",
+    },
+    {
+      imageSrc:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=3.45&w=512&h=512&q=80",
+      position: "Quality Assurance",
+      name: "Holo Wo",
+    },
+  ],
+}) => {
   return (
-    <section id="team" className={styles.team}>
-      {/* Headlines */}
-      <div className={styles.container}>
-        <div className={styles.headlines}>
-          {menus.nodes.map((menu, index) => (
-            <h1 key={index}>{menu.menuItems.edges[1].node.label}</h1>
+    <Container>
+      <ContentWithPaddingXl>
+        <HeadingContainer>
+          {subheading && <Subheading>{subheading}</Subheading>}
+          {heading && <Heading>{heading}</Heading>}
+          {description && <Description>{description}</Description>}
+        </HeadingContainer>
+        <Cards>
+          {cards.map((card, index) => (
+            <Card key={index}>
+              <CardImage imageSrc={card.imageSrc} />
+              <CardContent>
+                <span className="position">{card.position}</span>
+                <span className="name">{card.name}</span>
+              </CardContent>
+            </Card>
           ))}
-          <h2>{team.teamSubheadline}</h2>
-        </div>
-        {/* Slider */}
-        <div className={styles.contentGrid}>
-          <div
-            className={styles.content}
-            dangerouslySetInnerHTML={{ __html: team.teamDescription }}
-          ></div>
-
-          <div className={styles.slider}>
-            <div
-              className={styles.arrowContainer}
-              onClick={sliderRef?.slickPrev}
-            >
-              <FaChevronLeft />
-            </div>
-            <div className={styles.sliderContainer}>
-              <link
-                rel="stylesheet"
-                type="text/css"
-                charSet="UTF-8"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
-              />
-              <link
-                rel="stylesheet"
-                type="text/css"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
-              />
-
-              <Slider {...settings} ref={setSliderRef}>
-                {staff.map((staff, index) => (
-                  <div key={index}>
-                    <div className={styles.slide}>
-                      <div className={styles.imageContainer}>
-                        <Image
-                          className={styles.staffImage}
-                          src={staff.node.featuredImage.node.sourceUrl}
-                          alt={staff.node.featuredImage.node.altText}
-                          width={150}
-                          height={150}
-                        />
-                      </div>
-                      <h5 className={styles.title}>{staff.node.title}</h5>
-                      <h6
-                        dangerouslySetInnerHTML={{ __html: staff.node.content }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </Slider>
-            </div>
-            <div
-              className={styles.arrowContainer}
-              onClick={sliderRef?.slickNext}
-            >
-              <FaChevronRight />
-            </div>
-          </div>
-        </div>
-        {/* CTA */}
-        <div className={styles.arrowDownGrid}>
-          {menus.nodes.map((menu) => (
-            <h5 key={menu.menuItems.edges[2].node.id}>
-              {menu.menuItems.edges[2].node.label}
-            </h5>
-          ))}
-          {menus.nodes.map((menu) => (
-            <Link
-              key={menu.menuItems.edges[2].node.id}
-              href={menu.menuItems.edges[2].node.path}
-            >
-              <a className={styles.arrow}>
-                <FaChevronDown />
-              </a>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
+        </Cards>
+      </ContentWithPaddingXl>
+    </Container>
   );
-}
+};

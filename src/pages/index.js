@@ -33,8 +33,26 @@ export default function Home({
       <Head>
         <title>{settings.title}</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+          rel="stylesheet"
+        />
       </Head>
-      <div className={styles.header}>
+      <Header header={header} menus={menus} settings={settings} />
+      <About
+        menus={menus}
+        settings={settings}
+        about={about}
+        services={services}
+      />
+      <Team menus={menus} team={team} staff={staff} />
+      {/* <div className={styles.header}>
         <Header header={header} menus={menus} settings={settings} />
       </div>
       <div className={styles.aboutContainer}>
@@ -50,7 +68,7 @@ export default function Home({
       </div>
       <div className={styles.contactContainer}>
         <Contact contact={contact} menus={menus} />
-      </div>
+      </div> */}
     </>
   );
 }
