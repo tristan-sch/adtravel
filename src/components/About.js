@@ -46,7 +46,7 @@ const Card = styled.div`
   }
 `;
 
-export default ({ services, menus, about }) => {
+const About = ({ services, menus, about }) => {
   return (
     <Container id="about">
       <ThreeColumnContainer>
@@ -82,3 +82,4 @@ export default ({ services, menus, about }) => {
     </Container>
   );
 };
+export default About;

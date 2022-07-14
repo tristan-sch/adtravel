@@ -25,9 +25,6 @@ const Card = styled.a`
   ${tw`flex flex-col items-center text-center h-full mx-4 px-4 py-8 rounded transition-transform duration-300 hover:cursor-pointer transform hover:scale-105 `}
   .imageContainer {
     ${tw`text-center rounded-full p-4 bg-gray-100`}
-    img {
-      ${tw`w-6 h-6`}
-    }
   }
 
   .title {
@@ -53,7 +50,7 @@ const ThreeColRow = tw.div`flex flex-col md:flex-row items-center justify-betwee
 const LogoContainer = tw.div`flex items-center justify-center `;
 const CopywrightNotice = tw.p`text-center text-sm sm:text-base my-8  md:my-0 font-medium text-gray-500`;
 
-export default ({ contact, menus }) => {
+const Contact = ({ contact, menus }) => {
   return (
     <Container id="contact">
       <ContactContainer>
@@ -66,7 +63,12 @@ export default ({ contact, menus }) => {
           <Column>
             <Card href={contact.contact.adressUrl} target="_blank">
               <span className="imageContainer">
-                <img src={contact.contact.adressPicto.mediaItemUrl} alt="" />
+                <Image
+                  width={24}
+                  height={24}
+                  alt=""
+                  src={contact.contact.adressPicto.mediaItemUrl}
+                />
               </span>
               <span className="title">Our office</span>
               <p className="description">{contact.contact.adress}</p>
@@ -79,7 +81,12 @@ export default ({ contact, menus }) => {
           <Column>
             <Card href={contact.contact.phoneUrl}>
               <span className="imageContainer">
-                <img src={contact.contact.phonePicto.mediaItemUrl} alt="" />
+                <Image
+                  width={24}
+                  height={24}
+                  alt=""
+                  src={contact.contact.phonePicto.mediaItemUrl}
+                />
               </span>
               <span className="title">Phone</span>
               <p className="description">{contact.contact.phone}</p>
@@ -92,7 +99,12 @@ export default ({ contact, menus }) => {
           <Column>
             <Card href={contact.contact.emailUrl}>
               <span className="imageContainer">
-                <img src={contact.contact.emailPicto.mediaItemUrl} alt="" />
+                <Image
+                  width={24}
+                  height={24}
+                  alt=""
+                  src={contact.contact.emailPicto.mediaItemUrl}
+                />
               </span>
               <span className="title">Email</span>
               <p className="description">{contact.contact.email}</p>
@@ -133,3 +145,4 @@ export default ({ contact, menus }) => {
     </Container>
   );
 };
+export default Contact;

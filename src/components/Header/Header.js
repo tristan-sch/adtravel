@@ -44,7 +44,7 @@ const Heading = styled.h1`
   }
 `;
 
-export default ({ header, menus, settings }) => {
+const Header = ({ header, menus, settings }) => {
   return (
     <Container>
       <OpacityOverlay />
@@ -109,3 +109,5 @@ export default ({ header, menus, settings }) => {
     </Container>
   );
 };
+
+export default Header;

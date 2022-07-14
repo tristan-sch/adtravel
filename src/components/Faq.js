@@ -32,7 +32,7 @@ const Answer = motion(
   tw.dd`pointer-events-none text-sm sm:text-base leading-relaxed font-openSans`
 );
 
-export default ({ menus, faq, questions }) => {
+const Faq = ({ menus, faq, questions }) => {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
 
   const toggleQuestion = (questionIndex) => {
@@ -107,3 +107,4 @@ export default ({ menus, faq, questions }) => {
     </Container>
   );
 };
+export default Faq;

@@ -33,7 +33,7 @@ const CardContent = styled.div`
   }
 `;
 
-export default ({ menus, team, staff }) => {
+const Team = ({ menus, team, staff }) => {
   return (
     <Container>
       <TeamContainer>
@@ -64,3 +64,4 @@ export default ({ menus, team, staff }) => {
     </Container>
   );
 };
+export default Team;
