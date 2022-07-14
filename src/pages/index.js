@@ -1,11 +1,10 @@
-// import Image from "next/image"
 import Head from "next/head";
-import styles from "../styles/Index.module.scss";
 
 import Header from "../components/Header/Header";
-import About from "../components/About/About";
-import Team from "../components/Team/Team";
-import Contact from "../components/Contact/Contact";
+import About from "../components/About";
+import Team from "../components/Team";
+import Faq from "../components/Faq";
+import Contact from "../components/Contact";
 
 import {
   getMenus,
@@ -16,6 +15,8 @@ import {
   getTeam,
   getStaff,
   getContact,
+  getFaq,
+  getQuestions,
 } from "../lib/api";
 
 export default function Home({
@@ -27,22 +28,14 @@ export default function Home({
   team,
   staff,
   contact,
+  faq,
+  questions,
 }) {
   return (
     <>
       <Head>
         <title>{settings.title}</title>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-          rel="stylesheet"
-        />
       </Head>
       <Header header={header} menus={menus} settings={settings} />
       <About
@@ -52,23 +45,8 @@ export default function Home({
         services={services}
       />
       <Team menus={menus} team={team} staff={staff} />
-      {/* <div className={styles.header}>
-        <Header header={header} menus={menus} settings={settings} />
-      </div>
-      <div className={styles.aboutContainer}>
-        <About
-          menus={menus}
-          settings={settings}
-          about={about}
-          services={services}
-        />
-      </div>
-      <div className={styles.teamContainer}>
-        <Team menus={menus} team={team} staff={staff} />
-      </div>
-      <div className={styles.contactContainer}>
-        <Contact contact={contact} menus={menus} />
-      </div> */}
+      <Faq menus={menus} faq={faq} questions={questions} />
+      <Contact menus={menus} contact={contact} />
     </>
   );
 }
@@ -82,6 +60,8 @@ export async function getStaticProps() {
   const team = await getTeam();
   const staff = await getStaff();
   const contact = await getContact();
+  const faq = await getFaq();
+  const questions = await getQuestions();
 
   return {
     props: {
@@ -93,6 +73,8 @@ export async function getStaticProps() {
       team,
       staff,
       contact,
+      faq,
+      questions,
     },
     revalidate: 10, // In seconds
   };

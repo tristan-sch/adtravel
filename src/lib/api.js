@@ -69,6 +69,8 @@ export async function getHeader() {
       query header {
         page(id: "/homepage", idType: URI) {
           header {
+            headerCta
+            headerCtaUrl
             heroImg {
               sourceUrl
               altText
@@ -76,6 +78,14 @@ export async function getHeader() {
             adTravelLogo {
               sourceUrl
               altText
+            }
+            hamburgerIcon {
+                altText
+                sourceUrl
+            }
+            closeIcon {
+                altText
+                sourceUrl
             }
           }
         }
@@ -139,7 +149,7 @@ export async function getTeam() {
     query team {
       page(id: "/homepage", idType: URI) {
         team {
-          teamSubheadline
+          teamHeading
           teamDescription
         }
       }
@@ -183,9 +193,8 @@ export async function getContact() {
     query contact {
       page(id: "/homepage", idType: URI) {
         contact {
-          contactSubheadline
+          contactHeading
           contactDescription
-          iframeGoogleMaps
           emailPicto {
             id
             mediaItemUrl
@@ -226,24 +235,48 @@ export async function getContact() {
   };
 }
 
-// export async function getAllPostsForHome() {
-//   const data = await fetchAPI(
-//     `
-//       query allPosts {
-//         posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
-//           edges {
-//             node {
-//               title
-//               excerpt
-//               slug
-//               date
+export async function getFaq() {
+  const data = await fetchAPI(
+    `
+    query faq {
+      page(id: "/homepage", idType: URI) {
+        faq {
+          faqHeading
+          faqDescription
+          faqIcon {
+            sourceUrl
+            altText
+          }
+        }
+      }
+    }
+    `
+  );
 
-//             }
-//           }
-//         }
-//       }
-//     `
-//   );
+  const faq = data?.page.faq;
 
-//   return data?.posts;
-// }
+  return {
+    faq,
+  };
+}
+
+export async function getQuestions() {
+  const data = await fetchAPI(
+    `
+    query questions {
+      questions {
+        edges {
+          node {
+            modified
+            id
+            title
+            content
+          }
+        }
+      }
+    }
+    `
+  );
+
+  return data?.questions.edges;
+}
