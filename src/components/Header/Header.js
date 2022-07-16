@@ -26,7 +26,7 @@ const DesktoplinksWrapper = styled.div`
 const DesktopLink = styled.div`
   ${tw`relative hidden sm:block `}
   .link {
-    ${tw`p-1 font-medium text-gray-100 lg:p-6 sm:p-4 font-nunito hover:underline cursor-pointer`}
+    ${tw`border-b-2 border-transparent hocus:text-gray-200 hocus:border-gray-100 pb-1 transition duration-300 p-1 font-medium text-gray-100 lg:p-6 sm:p-4 font-nunito cursor-pointer `}
   }
 `;
 

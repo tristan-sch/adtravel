@@ -64,7 +64,7 @@ export async function getStaticProps() {
   const questions = await getQuestions();
 
   return {
-    revalidate: 10, // In seconds
+    revalidate: 60, // In seconds
     props: {
       menus,
       settings,

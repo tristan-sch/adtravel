@@ -56,7 +56,6 @@ const Link = tw.a`border-b-2 border-transparent hocus:text-primary-dark `;
 const LogoContainer = tw.div`flex items-center justify-center `;
 
 const Contact = ({ contact, menus }) => {
-  console.log(contact);
   return (
     <Container id="contact">
       <ContactContainer>
