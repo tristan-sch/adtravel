@@ -216,13 +216,26 @@ export async function getContact() {
           logo1 {
             sourceUrl
             altText
+            description
           }
+          logo1Link
             logo2 {
             sourceUrl
             altText
+            description
+          }
+          logo2Link
+          usefulLinks {
+            usefulLink1
+            usefulLink1Link
+            usefulLink2
+            usefulLink2Link
+            usefulLink3
+            usefulLink3Link
+            usefulLink4
+            usefulLink4Link
           }
         }
-       
       }
     }
     `

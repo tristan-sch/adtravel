@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import Image from "next/image";
+// import Link from "next/link";
 // import { css } from "styled-components/macro"; //eslint-disable-line
 import {
   SectionHeading,
@@ -15,7 +16,7 @@ const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`text-center mx-auto`;
 
 const ThreeColumnContainer = styled.div`
-  ${tw`mt-10 flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap lg:justify-center max-w-screen-lg mx-auto`}
+  ${tw`mt-10 flex flex-col items-center justify-center sm:items-stretch sm:flex-row flex-wrap  max-w-screen-lg mx-auto`}
 `;
 const Column = styled.div`
   ${tw`lg:w-1/3 max-w-xs`}
@@ -43,14 +44,19 @@ const Card = styled.a`
   }
 `;
 
-const Footer = tw.div`relative bg-gray-200 text-gray-700 -mb-8 px-8 pb-20 lg:pb-10`;
-const Content = tw.div`max-w-screen-xl mx-auto relative z-10`;
-const Divider = tw.div`my-10 border-b-2 border-gray-300 w-full`;
-const ThreeColRow = tw.div`flex flex-col md:flex-row items-center justify-between`;
+// Footer
+const Footer = tw.div`relative bg-gray-100`;
+const FiveColumns = tw.div`max-w-screen-xl mx-auto py-12 lg:py-12 flex flex-wrap items-center`;
+const ColumnFooter = tw.div` sm:w-1/2 md:w-1/4 flex items-center justify-center `;
+const ColumnHeading = tw.h5`font-bold`;
+const LinkList = tw.ul`hidden mt-4 text-sm font-medium md:block`;
+const LinkListItem = tw.li`mt-3`;
+const Link = tw.a`border-b-2 border-transparent hocus:text-primary-dark `;
+
 const LogoContainer = tw.div`flex items-center justify-center `;
-const CopywrightNotice = tw.p`text-center text-sm sm:text-base my-8  md:my-0 font-medium text-gray-500`;
 
 const Contact = ({ contact, menus }) => {
+  console.log(contact);
   return (
     <Container id="contact">
       <ContactContainer>
@@ -117,30 +123,84 @@ const Contact = ({ contact, menus }) => {
         </ThreeColumnContainer>
       </ContactContainer>
       <Footer>
-        <Content>
-          <Divider />
-          <ThreeColRow>
+        <FiveColumns>
+          <ColumnFooter>
+            <LinkList>
+              <ColumnHeading>Menu</ColumnHeading>
+              {menus.nodes.map((menu, i) => (
+                <div key={i}>
+                  {menu.menuItems.edges.map(({ node }) => (
+                    <Link key={node.id} href={node.path} passHref>
+                      <LinkListItem>{node.label}</LinkListItem>
+                    </Link>
+                  ))}
+                </div>
+              ))}
+            </LinkList>
+          </ColumnFooter>
+          <ColumnFooter>
+            <LinkList>
+              <ColumnHeading>Useful links</ColumnHeading>
+              <LinkListItem>
+                <Link
+                  href={contact.contact.usefulLinks.usefulLink1Link}
+                  target="_blank"
+                >
+                  {contact.contact.usefulLinks.usefulLink1}
+                </Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link
+                  href={contact.contact.usefulLinks.usefulLink2Link}
+                  target="_blank"
+                >
+                  {contact.contact.usefulLinks.usefulLink2}
+                </Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link
+                  href={contact.contact.usefulLinks.usefulLink3Link}
+                  target="_blank"
+                >
+                  {contact.contact.usefulLinks.usefulLink3}
+                </Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link
+                  href={contact.contact.usefulLinks.usefulLink4Link}
+                  target="_blank"
+                >
+                  {contact.contact.usefulLinks.usefulLink4}
+                </Link>
+              </LinkListItem>
+            </LinkList>
+          </ColumnFooter>
+          <ColumnFooter>
             <LogoContainer>
-              <Image
-                width={130}
-                height={91}
-                alt={contact.contact.logo1.altText}
-                src={contact.contact.logo1.sourceUrl}
-              />
+              <Link href={contact.contact.logo2Link} target="_blank">
+                <Image
+                  width={150}
+                  height={150}
+                  alt={contact.contact.logo2.altText}
+                  src={contact.contact.logo2.sourceUrl}
+                />
+              </Link>
             </LogoContainer>
-            <CopywrightNotice>
-              &copy; 2022 AD Travel. All Rights Reserved.
-            </CopywrightNotice>
+          </ColumnFooter>
+          <ColumnFooter>
             <LogoContainer>
-              <Image
-                width={115}
-                height={115}
-                alt={contact.contact.logo2.altText}
-                src={contact.contact.logo2.sourceUrl}
-              />
+              <Link href="/#">
+                <Image
+                  width={150}
+                  height={105}
+                  alt={contact.contact.logo1.altText}
+                  src={contact.contact.logo1.sourceUrl}
+                  className="logoFooter"
+                />
+              </Link>
             </LogoContainer>
-          </ThreeColRow>
-        </Content>
+          </ColumnFooter>
+        </FiveColumns>
       </Footer>
     </Container>
   );
