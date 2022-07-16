@@ -47,7 +47,7 @@ const Card = styled.a`
 // Footer
 const Footer = tw.div`relative bg-gray-100`;
 const FiveColumns = tw.div`max-w-screen-xl mx-auto py-12 lg:py-12 flex flex-wrap items-center`;
-const ColumnFooter = tw.div` sm:w-1/2 md:w-1/4 flex items-center justify-center `;
+const ColumnFooter = tw.div` w-1/2 md:w-1/4 flex items-center justify-center `;
 const ColumnHeading = tw.h5`font-bold`;
 const LinkList = tw.ul`hidden mt-4 text-sm font-medium md:block`;
 const LinkListItem = tw.li`mt-3`;

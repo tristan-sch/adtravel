@@ -33,7 +33,7 @@ const DesktopLink = styled.div`
 const PrimaryAction = tw.button`rounded-lg px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gray-100 font-bold shadow transition duration-300 bg-primary-dark text-gray-100 hocus:bg-secondary-dark hocus:text-gray-200 focus:outline-none focus:shadow-outline`;
 
 // Header
-const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-black opacity-60`;
+const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-black opacity-50`;
 const HeroContainer = tw.div`z-20 relative px-6 sm:px-8 mx-auto h-full flex flex-col`;
 const Content = tw.div`px-4 md:-mt-20 flex flex-1 flex-col justify-center items-center`;
 
