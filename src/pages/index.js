@@ -35,7 +35,7 @@ export default function Home({
     <>
       <Head>
         <title>{settings.title}</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={header.header.favicon.sourceUrl} />
       </Head>
       <Header header={header} menus={menus} settings={settings} />
       <About

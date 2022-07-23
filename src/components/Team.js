@@ -2,7 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
-import { Container, TeamContainer } from "../misc/Layouts.js";
+import { TeamContainerWrapper, TeamContainer } from "../misc/Layouts.js";
 import {
   SectionHeading,
   Subheading as SubheadingBase,
@@ -35,7 +35,7 @@ const CardContent = styled.div`
 
 const Team = ({ menus, team, staff }) => {
   return (
-    <Container>
+    <TeamContainerWrapper>
       <TeamContainer>
         <HeadingContainer id="team">
           {menus.nodes.map((menu, i) => (
@@ -61,7 +61,7 @@ const Team = ({ menus, team, staff }) => {
           ))}
         </Cards>
       </TeamContainer>
-    </Container>
+    </TeamContainerWrapper>
   );
 };
 export default Team;

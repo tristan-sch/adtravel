@@ -1,6 +1,7 @@
 import tw from "twin.macro";
 
 export const Container = tw.div`relative`;
+export const TeamContainerWrapper = tw.div`relative bg-gray-100`;
 export const TeamContainer = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24 bg-gray-100`;
 export const FaqContainer = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 export const ContactContainer = tw.div`max-w-screen-xl mx-auto pt-20 pb-12 lg:pt-24 pb-16 `;

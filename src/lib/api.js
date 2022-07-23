@@ -66,30 +66,33 @@ export async function getMenus() {
 export async function getHeader() {
   const data = await fetchAPI(
     `
-      query header {
-        page(id: "/homepage", idType: URI) {
-          header {
-            headerCta
-            headerCtaUrl
-            heroImg {
-              sourceUrl
-              altText
-            }
-            adTravelLogo {
-              sourceUrl
-              altText
-            }
-            hamburgerIcon {
-                altText
-                sourceUrl
-            }
-            closeIcon {
-                altText
-                sourceUrl
-            }
+    query header {
+      page(id: "/homepage", idType: URI) {
+        header {
+          headerCta
+          headerCtaUrl
+          heroImg {
+            sourceUrl
+            altText
+          }
+          adTravelLogo {
+            sourceUrl
+            altText
+          }
+          hamburgerIcon {
+            altText
+            sourceUrl
+          }
+          closeIcon {
+            altText
+            sourceUrl
+          }
+          favicon {
+            sourceUrl
           }
         }
       }
+    }
     `
   );
 
