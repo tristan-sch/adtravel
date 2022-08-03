@@ -167,7 +167,7 @@ export async function getStaff() {
   const data = await fetchAPI(
     `
     query staff {
-      staff {
+      staff( first: 100 ) {
         edges {
           node {
             modified
