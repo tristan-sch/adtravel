@@ -43,7 +43,7 @@ const Home = ({
         about={about}
         services={services}
       />
-      <Team menus={menus} team={team} staff={staff} />
+      <Team menus={menus} team={team} staff={staff} faq={faq} />
       <Faq menus={menus} faq={faq} questions={questions} />
       <Contact menus={menus} contact={contact} />
     </>

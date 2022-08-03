@@ -1,41 +1,15 @@
 import { useState } from "react";
 import tw from "twin.macro";
-import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 
 const MobileNavWrapper = tw.div`sm:hidden`;
 const OpenButton = tw.button`ml-1 mr-1 h-8 w-8 rounded py-1`;
-
-// const MobileNavWrapper = styled.div`
-//   ${tw`sm:hidden`}
-//   .button {
-//     ${tw`ml-1 mr-1 h-8 w-8 rounded py-1`}
-//   }
-// `;
 const CloseButtonWrapper = tw.div`flex justify-end`;
 const CloseButton = tw.button`mr-16 mt-10 h-8 w-8 rounded py-6`;
-
-// const CloseButtonWrapper = styled.div`
-//   ${tw`flex justify-end`}
-//   .button {
-//     ${tw`mr-16 mt-10 h-8 w-8 rounded py-6`}
-//   }
-// `;
-
 const MobileLinksWrapper = tw.div`fixed mt-20 h-full`;
 const NavLinks = tw.div`px-20 py-4 font-nunito`;
 const NavlinkItem = tw.div`text-2xl font-bold tracking-widest text-gray-100`;
-
-// const MobileLinksWrapper = styled.div`
-//   ${tw`fixed mt-20 h-full`}
-//   .navLinks {
-//     ${tw`px-20 py-4 font-nunito`}
-//     .link {
-//       ${tw`text-2xl font-bold tracking-widest text-gray-100 `}
-//     }
-//   }
-// `;
 
 const MobileNav = ({ menus, header }) => {
   const [navShow, setNavShow] = useState(false);
