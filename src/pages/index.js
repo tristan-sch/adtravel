@@ -18,7 +18,7 @@ import {
   getQuestions,
 } from "../lib/api";
 
-export default function Home({
+const Home = ({
   menus,
   settings,
   header,
@@ -29,7 +29,7 @@ export default function Home({
   contact,
   faq,
   questions,
-}) {
+}) => {
   return (
     <>
       <Head>
@@ -48,7 +48,9 @@ export default function Home({
       <Contact menus={menus} contact={contact} />
     </>
   );
-}
+};
+
+export default Home;
 
 export async function getStaticProps() {
   const menus = await getMenus();
