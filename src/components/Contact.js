@@ -1,9 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import tw from "twin.macro";
 import Image from "next/image";
-// import Link from "next/link";
-// import { css } from "styled-components/macro"; //eslint-disable-line
 import {
   SectionHeading,
   Subheading as SubheadingBase,
@@ -15,34 +12,15 @@ const Heading = tw(SectionHeading)``;
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`text-center mx-auto`;
 
-const ThreeColumnContainer = styled.div`
-  ${tw`mt-10 flex flex-col items-center justify-center sm:items-stretch sm:flex-row flex-wrap  max-w-screen-lg mx-auto`}
-`;
-const Column = styled.div`
-  ${tw`lg:w-1/3 max-w-xs`}
-`;
+const ThreeColumnContainer = tw.div`mt-10 flex flex-col items-center justify-center sm:items-stretch sm:flex-row flex-wrap  max-w-screen-lg mx-auto`;
 
-const Card = styled.a`
-  ${tw`flex flex-col items-center text-center h-full mx-4 px-4 py-8 rounded transition-transform duration-300 hover:cursor-pointer transform hover:scale-105 `}
-  .imageContainer {
-    ${tw`text-center rounded-full p-4 bg-gray-100`}
-  }
+const Column = tw.div`lg:w-1/3 max-w-xs`;
 
-  .title {
-    ${tw`mt-4 font-bold text-xl leading-none font-nunito`}
-  }
-
-  .description {
-    ${tw`mt-4 text-sm font-medium font-openSans`}
-  }
-
-  .link {
-    ${tw`mt-auto inline-flex items-center pt-5 text-sm font-bold text-primary-dark leading-none hocus:text-primary-dark transition duration-300`}
-    .icon {
-      ${tw`ml-2 w-4`}
-    }
-  }
-`;
+const Card = tw.a`flex flex-col items-center text-center h-full mx-4 px-4 py-8 rounded transition-transform duration-300 hover:cursor-pointer transform hover:scale-105`;
+const ImageContainer = tw.span`text-center rounded-full p-4 bg-gray-100`;
+const Title = tw.span`mt-4 font-bold text-xl leading-none font-nunito`;
+const SubDescription = tw.p`mt-4 text-sm font-medium font-openSans`;
+const DescriptionLink = tw.span`mt-auto inline-flex items-center pt-5 text-sm font-bold text-primary-dark leading-none hocus:text-primary-dark transition duration-300`;
 
 // Footer
 const Footer = tw.div`relative bg-gray-100`;
@@ -67,56 +45,56 @@ const Contact = ({ contact, menus }) => {
         <ThreeColumnContainer>
           <Column>
             <Card href={contact.contact.adressUrl} target="_blank">
-              <span className="imageContainer">
+              <ImageContainer>
                 <Image
                   width={24}
                   height={24}
                   alt=""
                   src={contact.contact.adressPicto.mediaItemUrl}
                 />
-              </span>
-              <span className="title">Our office</span>
-              <p className="description">{contact.contact.adress}</p>
+              </ImageContainer>
+              <Title>Our office</Title>
+              <SubDescription>{contact.contact.adress}</SubDescription>
 
-              <span className="link">
+              <DescriptionLink>
                 <span>Visit us</span>
-              </span>
+              </DescriptionLink>
             </Card>
           </Column>
           <Column>
             <Card href={contact.contact.phoneUrl}>
-              <span className="imageContainer">
+              <ImageContainer>
                 <Image
                   width={24}
                   height={24}
                   alt=""
                   src={contact.contact.phonePicto.mediaItemUrl}
                 />
-              </span>
-              <span className="title">Phone</span>
-              <p className="description">{contact.contact.phone}</p>
+              </ImageContainer>
+              <Title>Phone</Title>
+              <SubDescription>{contact.contact.phone}</SubDescription>
 
-              <span className="link">
+              <DescriptionLink>
                 <span>Call us</span>
-              </span>
+              </DescriptionLink>
             </Card>
           </Column>
           <Column>
             <Card href={contact.contact.emailUrl}>
-              <span className="imageContainer">
+              <ImageContainer>
                 <Image
                   width={24}
                   height={24}
                   alt=""
                   src={contact.contact.emailPicto.mediaItemUrl}
                 />
-              </span>
-              <span className="title">Email</span>
-              <p className="description">{contact.contact.email}</p>
+              </ImageContainer>
+              <Title>Email</Title>
+              <SubDescription>{contact.contact.email}</SubDescription>
 
-              <span className="link">
+              <DescriptionLink>
                 <span>Write us</span>
-              </span>
+              </DescriptionLink>
             </Card>
           </Column>
         </ThreeColumnContainer>

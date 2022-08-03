@@ -1,4 +1,3 @@
-import { createGlobalStyle } from "styled-components";
 import { GlobalStyles } from "twin.macro";
 
 export default function App({ Component, pageProps }) {
