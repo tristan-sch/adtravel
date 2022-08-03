@@ -1,6 +1,5 @@
 import React from "react";
 import tw, { styled } from "twin.macro";
-import { css } from "styled-components/macro";
 import { TeamContainerWrapper, TeamContainer } from "../misc/Layouts.js";
 import {
   SectionHeading,
@@ -22,7 +21,7 @@ background-image: url("${imageSrc}");
   ${tw`w-40 h-40 bg-contain bg-center rounded-full`}
 `;
 const CardContent = tw.div`flex flex-col items-center mt-6`;
-const Position = tw.span`uppercase font-bold tracking-wide text-xs text-primary-dark font-nunito`;
+const Position = tw.span`uppercase text-center font-bold tracking-wide text-xs text-primary-dark font-nunito`;
 const Name = tw.span`mt-1 text-lg font-medium text-gray-900 font-openSans`;
 
 const Team = ({ menus, team, staff }) => {
