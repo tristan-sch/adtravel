@@ -30,7 +30,7 @@ const Header = ({ header, menus, settings }) => {
         src={header.header.heroImg.sourceUrl}
         layout="fill"
         objectFit="cover"
-        // priority="true"
+        priority="true"
       />
       <HeroContainer>
         <NavWrapper>

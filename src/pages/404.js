@@ -18,7 +18,7 @@ const FourOhFour = () => {
         src={backgroundImage}
         layout="fill"
         objectFit="cover"
-        // priority="true"
+        priority="true"
       />
       <HeroContainer>
         <Content>
