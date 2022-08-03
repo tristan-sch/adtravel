@@ -23,13 +23,13 @@ const FourOhFour = () => {
       <HeroContainer>
         <Content>
           <Heading>
-            Are you
+            404
             <br />
-            lost?
+            Are you lost?
           </Heading>
 
           <PrimaryAction>
-            <Link href="/" passHref>
+            <Link href="/#" passHref>
               <a>Go back home</a>
             </Link>
           </PrimaryAction>
