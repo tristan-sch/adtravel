@@ -11,17 +11,13 @@ import { Container, ContactContainer } from "../misc/Layouts.js";
 const Heading = tw(SectionHeading)``;
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`text-center mx-auto`;
-
 const ThreeColumnContainer = tw.div`mt-10 flex flex-col items-center justify-center sm:items-stretch sm:flex-row flex-wrap  max-w-screen-lg mx-auto`;
-
 const Column = tw.div`lg:w-1/3 max-w-xs`;
-
 const Card = tw.a`flex flex-col items-center text-center h-full mx-4 px-4 py-8 rounded transition-transform duration-300 hover:cursor-pointer transform hover:scale-105`;
 const ImageContainer = tw.span`text-center rounded-full p-4 bg-gray-100`;
 const Title = tw.span`mt-4 font-bold text-xl leading-none font-nunito`;
 const SubDescription = tw.p`mt-4 text-sm font-medium font-openSans`;
 const DescriptionLink = tw.span`mt-auto inline-flex items-center pt-5 text-sm font-bold text-primary-dark leading-none hocus:text-primary-dark transition duration-300`;
-
 // Footer
 const Footer = tw.div`relative bg-gray-100`;
 const FiveColumns = tw.div`max-w-screen-xl mx-auto py-12 lg:py-12 flex flex-wrap items-center`;
@@ -30,7 +26,6 @@ const ColumnHeading = tw.h5`font-bold`;
 const LinkList = tw.ul`hidden mt-4 text-sm font-medium md:block`;
 const LinkListItem = tw.li`mt-3`;
 const Link = tw.a`border-b-2 border-transparent hocus:text-primary-dark `;
-
 const LogoContainer = tw.div`flex items-center justify-center `;
 
 const Contact = ({ contact, menus }) => {

@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import tw from "twin.macro";
 import Image from "next/image";
 import {
@@ -7,8 +6,8 @@ import {
   Subheading as SubheadingBase,
 } from "../misc/Headings.js";
 import { SectionDescription } from "../misc/Typography.js";
+import { Container, AboutContainer } from "../misc/Layouts.js";
 
-const Container = tw.div`relative`;
 const ThreeColumnContainer = tw.div`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-2`;
 const Subheading = tw(SubheadingBase)`mb-4`;
 const Heading = tw(SectionHeading)`w-full`;
@@ -24,35 +23,39 @@ const SiteDescription = tw.div`mt-1 sm:mt-4 font-medium leading-loose font-openS
 const About = ({ services, menus, about }) => {
   return (
     <Container id="about">
-      <ThreeColumnContainer>
-        {menus.nodes.map((menu, i) => (
-          <Subheading key={i}>{menu.menuItems.edges[0].node.label}</Subheading>
-        ))}
-        <Heading>{about.aboutHeading}</Heading>
-        <Description>{about.aboutDescription}</Description>
-        <VerticalSpacer />
-        {services.map((service, i) => (
-          <Column key={i}>
-            <Card>
-              <ImageContainer>
-                <Image
-                  src={service.node.icon.icon.mediaItemUrl}
-                  alt={service.node.icon.icon.altText}
-                  width={24}
-                  height={24}
-                />
-              </ImageContainer>
-              <TextContainer>
-                <Title>{service.node.title}</Title>
+      <AboutContainer>
+        <ThreeColumnContainer>
+          {menus.nodes.map((menu, i) => (
+            <Subheading key={i}>
+              {menu.menuItems.edges[0].node.label}
+            </Subheading>
+          ))}
+          <Heading>{about.aboutHeading}</Heading>
+          <Description>{about.aboutDescription}</Description>
+          <VerticalSpacer />
+          {services.map((service, i) => (
+            <Column key={i}>
+              <Card>
+                <ImageContainer>
+                  <Image
+                    src={service.node.icon.icon.mediaItemUrl}
+                    alt={service.node.icon.icon.altText}
+                    width={24}
+                    height={24}
+                  />
+                </ImageContainer>
+                <TextContainer>
+                  <Title>{service.node.title}</Title>
 
-                <SiteDescription
-                  dangerouslySetInnerHTML={{ __html: service.node.content }}
-                ></SiteDescription>
-              </TextContainer>
-            </Card>
-          </Column>
-        ))}
-      </ThreeColumnContainer>
+                  <SiteDescription
+                    dangerouslySetInnerHTML={{ __html: service.node.content }}
+                  ></SiteDescription>
+                </TextContainer>
+              </Card>
+            </Column>
+          ))}
+        </ThreeColumnContainer>
+      </AboutContainer>
     </Container>
   );
 };
