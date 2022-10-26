@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ["new.adtravel.is"],
+    domains: ["wp.adtravel.is"],
   },
 };
