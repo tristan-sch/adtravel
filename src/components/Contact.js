@@ -164,7 +164,7 @@ const Contact = ({ contact, menus }) => {
               <Link href="/#">
                 <Image
                   width={150}
-                  height={105}
+                  height={162}
                   alt={contact.contact.logo1.altText}
                   src={contact.contact.logo1.sourceUrl}
                   className="logoFooter"
