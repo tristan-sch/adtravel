@@ -39,7 +39,11 @@ const Contact = ({ contact, menus }) => {
         <Description>{contact.contact.contactDescription}</Description>
         <ThreeColumnContainer>
           <Column>
-            <Card href={contact.contact.adressUrl} target="_blank">
+            <Card
+              href={contact.contact.adressUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <ImageContainer>
                 <Image
                   width={24}
@@ -117,6 +121,7 @@ const Contact = ({ contact, menus }) => {
                 <Link
                   href={contact.contact.usefulLinks.usefulLink1Link}
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {contact.contact.usefulLinks.usefulLink1}
                 </Link>
@@ -125,6 +130,7 @@ const Contact = ({ contact, menus }) => {
                 <Link
                   href={contact.contact.usefulLinks.usefulLink2Link}
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {contact.contact.usefulLinks.usefulLink2}
                 </Link>
@@ -133,6 +139,7 @@ const Contact = ({ contact, menus }) => {
                 <Link
                   href={contact.contact.usefulLinks.usefulLink3Link}
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {contact.contact.usefulLinks.usefulLink3}
                 </Link>
@@ -141,6 +148,7 @@ const Contact = ({ contact, menus }) => {
                 <Link
                   href={contact.contact.usefulLinks.usefulLink4Link}
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {contact.contact.usefulLinks.usefulLink4}
                 </Link>
@@ -149,7 +157,11 @@ const Contact = ({ contact, menus }) => {
           </ColumnFooter>
           <ColumnFooter>
             <LogoContainer>
-              <Link href={contact.contact.logo2Link} target="_blank">
+              <Link
+                href={contact.contact.logo2Link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Image
                   width={150}
                   height={150}
@@ -161,7 +173,11 @@ const Contact = ({ contact, menus }) => {
           </ColumnFooter>
           <ColumnFooter>
             <LogoContainer>
-              <Link href="/#">
+              <Link
+                href={contact.contact.logo1Link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Image
                   width={150}
                   height={162}
