@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Hero = tw.div`relative`;
-const Container = tw.div` bg-center bg-cover h-screen min-h-144 max-w-screen-xl mx-auto md:px-10`;
+const Container = tw.div`-mt-8 sm:-mt-1 bg-center bg-cover h-screen min-h-144 max-w-screen-xl mx-auto md:px-10`;
 // Nav
 const NavWrapper = tw.div`flex items-center justify-between pt-16 `;
 const BrandWrapper = tw.div`flex items-center justify-between text-gray-100 font-nunito`;
