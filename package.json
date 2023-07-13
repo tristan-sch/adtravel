@@ -1,5 +1,5 @@
 {
-  "name": "adtravel",
+  "name": "tailwindui-salient",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,39 +8,30 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "eslintConfig": {
-    "extends": "react-app",
-    "overrides": [
-      {
-        "files": [
-          "src/**/*.js"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
-    ]
-  },
+  "browserslist": "defaults, not ie <= 11",
   "dependencies": {
-    "@emotion/css": "^11.10.0",
-    "@emotion/react": "^11.10.0",
-    "@emotion/server": "^11.10.0",
-    "@emotion/styled": "^11.10.0",
-    "babel-plugin-macros": "^3.1.0",
-    "framer-motion": "^6.3.16",
-    "next": "^12.2.3",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
-    "react-slick": "^0.29.0",
-    "sass": "^1.50.0",
-    "styled-components": "^5.3.5",
-    "twin.macro": "^2.8.2",
-    "yarn": "^1.22.18"
+    "@headlessui/react": "^1.7.13",
+    "@heroicons/react": "^2.0.18",
+    "@tailwindcss/forms": "^0.5.3",
+    "autoprefixer": "^10.4.12",
+    "clsx": "^1.2.1",
+    "focus-visible": "^5.2.0",
+    "next": "13.4.2",
+    "postcss-focus-visible": "^6.0.4",
+    "prettier": "^3.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sanitize-html": "^2.11.0",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5.1.6"
   },
   "devDependencies": {
-    "@emotion/babel-plugin": "^11.10.0",
-    "eslint": "^8.18.0",
-    "eslint-config-next": "^12.1.6",
-    "tailwindcss": "^3.1.7"
+    "@types/node": "^20.4.1",
+    "@types/react": "^18.2.14",
+    "@types/sanitize-html": "^2.9.0",
+    "eslint": "8.26.0",
+    "eslint-config-next": "13.0.2",
+    "prettier-plugin-tailwindcss": "^0.4.0",
+    "sharp": "^0.32.0"
   }
 }
