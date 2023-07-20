@@ -1,40 +1,30 @@
-import { useState } from 'react'
-import { Dialog } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image'
-import Link from 'next/link'
+import { useState } from "react";
+import { Dialog } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
+import Link from "next/link";
+import { Container } from "./Containers";
 import {
+  ContactTypes,
+  LogosTypes,
   MenusTypes,
   SettingsTypes,
-  HeaderTypes,
-  ContactTypes,
-  FAQTypes,
-} from '@/types/queryTypes'
-import { Container } from './Containers'
+} from "types/queryTypes";
 
 type Props = {
-  menus: MenusTypes
-  settings: SettingsTypes
-  header: HeaderTypes
-  contact: ContactTypes
-  faq: FAQTypes
-}
+  menus: MenusTypes;
+  logos: LogosTypes;
+  settings: SettingsTypes;
+  contact: ContactTypes;
+};
 
-export default function Header({
-  menus,
-  settings,
-  header,
-  contact,
-  faq,
-}: Props) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+export default function Header({ menus, logos, settings, contact }: Props) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navigation = [
-    { name: 'Product', href: '#' },
-    { name: 'Features', href: '#' },
-    { name: 'Marketplace', href: '#' },
-    { name: 'Company', href: '#' },
-  ]
+  const ADTravelLogoWhite =
+    logos[0]?.node.logoItems.adTravelLogoWhite?.mediaItemUrl;
+  const ADTravelLogoWhiteAlt =
+    logos[0]?.node.logoItems.adTravelLogoWhite?.altText;
 
   return (
     <div className="bg-gray-900">
@@ -44,17 +34,19 @@ export default function Header({
             className="flex items-center justify-between p-6 lg:px-8"
             aria-label="Global"
           >
-            <div className="flex lg:flex-1">
-              <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">{settings.title}</span>
-                <Image
-                  src={header.adTravelLogo.sourceUrl}
-                  alt={header.adTravelLogo.altText}
-                  width={133}
-                  height={94}
-                />
-              </a>
-            </div>
+            {ADTravelLogoWhite && (
+              <div className="flex lg:flex-1">
+                <a href="#" className="-m-1.5 p-1.5">
+                  <span className="sr-only">{settings.title}</span>
+                  <Image
+                    src={ADTravelLogoWhite}
+                    alt={ADTravelLogoWhiteAlt}
+                    width={133}
+                    height={94}
+                  />
+                </a>
+              </div>
+            )}
             <div className="flex lg:hidden">
               <button
                 type="button"
@@ -103,8 +95,8 @@ export default function Header({
                 <Link href="#" className="-m-1.5 p-1.5">
                   <span className="sr-only">{settings.title}</span>
                   <Image
-                    src={header.adTravelLogo.sourceUrl}
-                    alt={header.adTravelLogo.altText}
+                    src={ADTravelLogoWhite}
+                    alt={ADTravelLogoWhiteAlt}
                     width={133}
                     height={94}
                   />
@@ -139,7 +131,6 @@ export default function Header({
                       </div>
                     ))}
                   </>
-
                   <div className="py-6">
                     <Link
                       href={contact.phoneUrl}
@@ -162,64 +153,6 @@ export default function Header({
           </Dialog>
         </Container>
       </header>
-
-      <div className="relative isolate overflow-hidden pt-14">
-        <Image
-          className="absolute inset-0 -z-10 w-full bg-black object-cover opacity-30"
-          alt={header.heroImg.altText}
-          src={header.heroImg.sourceUrl}
-          fill
-          priority
-        />
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm lg:text-base leading-6 text-gray-100 ring-1 ring-white/10 hover:ring-white/20">
-              {/* TODO: add query */}
-              We are committed to growing our business in a sustainable manner.{' '}
-              <Link href="#sustainability" className="font-semibold text-white">
-                <span className="absolute inset-0" aria-hidden="true" />
-                Read more <span aria-hidden="true">&rarr;</span>
-              </Link>
-            </div>
-          </div>
-          <div className="text-center">
-            <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-white sm:text-7xl">
-              {settings.title}
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-gray-100">
-              {header.headerDescription}
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link
-                href={header.headerCtaUrl}
-                passHref
-                className="rounded-md bg-cyan-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              >
-                {header.headerCta}
-              </Link>
-              <Link
-                // TODO: add queries for faq url and title
-                href="#faq"
-                className="text-sm font-semibold leading-6 text-white"
-              >
-                FAQ <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div
-          className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-          aria-hidden="true"
-        >
-          <div
-            className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
-        </div>
-      </div>
     </div>
-  )
+  );
 }

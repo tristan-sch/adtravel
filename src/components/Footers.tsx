@@ -1,13 +1,14 @@
-import Image from 'next/image'
-import { Container } from './Containers'
-import { ContactTypes } from '@/types/queryTypes'
-import Link from 'next/link'
+import Image from "next/image";
+import { Container } from "./Containers";
+import Link from "next/link";
+import { ContactTypes, LogosTypes } from "types/queryTypes";
 
 type Props = {
-  contact: ContactTypes
-}
+  logos: LogosTypes;
+  contact: ContactTypes;
+};
 
-export default function Footer({ contact }: Props) {
+export default function Footer({ logos, contact }: Props) {
   const navigation = {
     links: [
       {
@@ -27,7 +28,19 @@ export default function Footer({ contact }: Props) {
         href: contact.usefulLinks.usefulLink4Link,
       },
     ],
-  }
+  };
+
+  const ADTravelLogo = logos[0]?.node.logoItems.adTravelLogo?.mediaItemUrl;
+  const ADTravelLogoAlt = logos[0]?.node.logoItems.adTravelLogo?.altText;
+
+  const FMSLogo = logos[0]?.node.logoItems.fmsLogo?.mediaItemUrl;
+  const FMSLogoAlt = logos[0]?.node.logoItems.fmsLogo?.altText;
+
+  const FASLogo = logos[0]?.node.logoItems.fasLogo?.mediaItemUrl;
+  const FASLogoAlt = logos[0]?.node.logoItems.fasLogo?.altText;
+
+  console.log("ADS");
+
   return (
     <footer className="bg-white" aria-labelledby="footer-heading">
       <Container>
@@ -52,38 +65,44 @@ export default function Footer({ contact }: Props) {
               ))}
             </nav>
             <div className="mt-10 flex justify-center space-x-10">
-              <Image
-                src="/adtravel-logo.png"
-                alt="AD Travel logo"
-                width={150}
-                height={100}
-              />
-              <Link
-                href={contact.logo2Link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              {ADTravelLogo && (
                 <Image
-                  width={100}
+                  src={ADTravelLogo}
+                  alt={ADTravelLogoAlt}
+                  width={150}
                   height={100}
-                  alt={contact.logo2.altText}
-                  src={contact.logo2.sourceUrl}
-                  className="logoFooter"
                 />
-              </Link>
-              <Link
-                href={contact.logo1Link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  width={100}
-                  height={100}
-                  alt={contact.logo1.altText}
-                  src={contact.logo1.sourceUrl}
-                  className="logoFooter"
-                />
-              </Link>
+              )}
+              {FMSLogo && (
+                <Link
+                  href={contact.logo2Link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    width={100}
+                    height={100}
+                    src={FMSLogo}
+                    alt={FMSLogoAlt}
+                    className="logoFooter"
+                  />
+                </Link>
+              )}
+              {FASLogo && (
+                <Link
+                  href={contact.logo1Link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    width={100}
+                    height={100}
+                    src={FASLogo}
+                    alt={FASLogoAlt}
+                    className="logoFooter"
+                  />
+                </Link>
+              )}
             </div>
             <p className="mt-10 text-center text-xs leading-5 text-gray-500">
               &copy; 2023 AD Travel, All rights reserved. This website does not
@@ -93,5 +112,5 @@ export default function Footer({ contact }: Props) {
         </div>
       </Container>
     </footer>
-  )
+  );
 }

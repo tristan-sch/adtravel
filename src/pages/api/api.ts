@@ -64,33 +64,73 @@ export async function getMenus() {
   return data?.menus
 }
 
+export async function getLogos() {
+  const data = await fetchAPI(
+    `
+    query logos {
+      logos {
+        edges {
+          node {
+            logoItems {
+              adTravelLogo {
+                id
+                mediaItemUrl
+                altText
+              }
+              adTravelLogoWhite {
+                id
+                mediaItemUrl
+                altText
+              }
+              adTravelFavicon {
+                id
+                mediaItemUrl
+                altText
+              }
+              fmsLogo {
+                id
+                mediaItemUrl
+                altText
+              }
+              fasLogo {
+                id
+                mediaItemUrl
+                altText
+              }
+            }
+          }
+        }
+      }
+    }
+    `,
+  )
+  return data?.logos.edges
+}
+
 export async function getHeader() {
   const data = await fetchAPI(
     `
     query header {
-      page(id: "/homepage", idType: URI) {
+      page(id: "/header", idType: URI) {
         header {
-          headerDescription
-          headerCta
-          headerCtaUrl
-          heroImg {
+          backgroundImage {
             sourceUrl
             altText
           }
-          adTravelLogo {
-            sourceUrl
-            altText
+          teaser
+          teaserButton {
+            url
+            title
           }
-          hamburgerIcon {
-            altText
-            sourceUrl
+          heading
+          textblock
+          primaryButton {
+            url
+            title
           }
-          closeIcon {
-            altText
-            sourceUrl
-          }
-          favicon {
-            sourceUrl
+          secondaryButton {
+            url
+            title
           }
         }
       }
@@ -104,16 +144,16 @@ export async function getAbout() {
   const data = await fetchAPI(
     `
     query about {
-      page(id: "/homepage", idType: URI) {
+      page(id: "/about", idType: URI) {
         about {
-          aboutHeading
-          aboutDescription
+          heading
+          textblock
+          textblockSecondary
         }
       }
     }
     `,
   )
-
   return data?.page.about
 }
 
@@ -127,19 +167,12 @@ export async function getServices() {
             id
             title
             content
-            icon {
-              icon {
-                id
-                mediaItemUrl
-              }
-            }
           }
         }
       }
     }
     `,
   )
-
   return data?.services.edges
 }
 
@@ -147,16 +180,16 @@ export async function getTeam() {
   const data = await fetchAPI(
     `
     query team {
-      page(id: "/homepage", idType: URI) {
+      page(id: "/team", idType: URI) {
         team {
-          teamHeading
-          teamDescription
+          heading
+          textblock
+          textblockSecondary
         }
       }
     }
     `,
   )
-
   return data?.page.team
 }
 
@@ -183,8 +216,29 @@ export async function getStaff() {
     }
     `,
   )
-
   return data?.staff.edges
+}
+
+export async function getSustainability() {
+  const data = await fetchAPI(
+    `
+    query sustainability {
+      page(id: "/sustainability", idType: URI) {
+        sustainability {
+          heading
+          textblock
+          textblockSecondary
+          textblockTertiary
+          image {
+            sourceUrl
+            altText
+          }
+        }
+      }
+    }
+    `,
+  )
+  return data?.page.sustainability
 }
 
 export async function getContact() {

@@ -1,128 +1,143 @@
-import Head from 'next/head'
-import Header from '@/components/Header'
-import Team from '@/components/Team'
-import About from '@/components/About'
-import Footer from '@/components/Footers'
-import Sustainability from '@/components/Sustainability'
-import Faqs from '@/components/Faqs'
-import Contact from '@/components/Contact'
+import Head from "next/head";
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import Team from "../components/Team";
+import About from "../components/About";
+import Footer from "../components/Footers";
+import Sustainability from "../components/Sustainability";
+import Faqs from "../components/Faqs";
+import Contact from "../components/Contact";
 import {
-  MenusTypes,
   SettingsTypes,
+  MenusTypes,
+  LogosTypes,
   HeaderTypes,
-  ContactTypes,
-  FAQTypes,
-  TeamTypes,
-  StaffTypes,
   AboutTypes,
   ServicesTypes,
+  TeamTypes,
+  StaffTypes,
+  SustainabilityTypes,
+  ContactTypes,
+  FAQTypes,
   QuestionTypes,
-} from '@/types/queryTypes'
+} from "../types/queryTypes";
 import {
-  getMenus,
   getSettings,
+  getMenus,
+  getLogos,
   getHeader,
   getAbout,
   getServices,
   getTeam,
   getStaff,
+  getSustainability,
   getContact,
   getFaq,
   getQuestions,
-} from './api/api'
+} from "./api/api";
 
 type Props = {
-  menus: MenusTypes
-  settings: SettingsTypes
-  header: HeaderTypes
-  contact: ContactTypes
-  faq: FAQTypes
-  team: TeamTypes
-  staff: StaffTypes
-  about: AboutTypes
-  services: ServicesTypes
-  questions: QuestionTypes
-}
+  settings: SettingsTypes;
+  menus: MenusTypes;
+  logos: LogosTypes;
+  header: HeaderTypes;
+  about: AboutTypes;
+  aboutServices: ServicesTypes;
+  team: TeamTypes;
+  teamStaff: StaffTypes;
+  sustainability: SustainabilityTypes;
+  faq: FAQTypes;
+  faqQuestions: QuestionTypes;
+  contact: ContactTypes;
+};
 
 export default function Home({
-  menus,
   settings,
+  menus,
+  logos,
   header,
-  contact,
-  faq,
-  team,
-  staff,
   about,
-  services,
-  questions,
+  aboutServices,
+  team,
+  teamStaff,
+  sustainability,
+  faq,
+  faqQuestions,
+  contact,
 }: Props) {
+  const ADTravelFavicon =
+    logos[0]?.node.logoItems.adTravelFavicon?.mediaItemUrl;
+
   return (
     <>
       <Head>
         <title>{settings.title}</title>
+        <link rel="icon" href={ADTravelFavicon} />
         <meta name="description" content={settings.description} />
       </Head>
       <Header
-        menus={menus}
         settings={settings}
-        header={header}
+        menus={menus}
+        logos={logos}
         contact={contact}
-        faq={faq}
       />
       <main>
-        <About menus={menus} about={about} services={services} />
-        <Team team={team} staff={staff} menus={menus} />
-        <Sustainability />
-        <Faqs
-          menus={menus}
-          services={services}
-          faq={faq}
-          questions={questions}
-        />
+        <Hero settings={settings} header={header} />
+        <About menus={menus} about={about} aboutServices={aboutServices} />
+        <Team team={team} teamStaff={teamStaff} menus={menus} />
+        <Sustainability menus={menus} sustainability={sustainability} />
+        <Faqs menus={menus} faq={faq} faqQuestions={faqQuestions} />
         <Contact contact={contact} />
       </main>
-      <Footer contact={contact} />
+      <Footer logos={logos} contact={contact} />
     </>
-  )
+  );
 }
 
 export async function getStaticProps() {
   const [
     menus,
+    logos,
     settings,
     header,
     about,
-    services,
+    aboutServices,
     team,
-    staff,
+    teamStaff,
+    sustainability,
     contact,
     faq,
-    questions,
+    faqQuestions,
   ] = await Promise.all([
     getMenus(),
+    getLogos(),
     getSettings(),
     getHeader(),
     getAbout(),
     getServices(),
     getTeam(),
     getStaff(),
+    getSustainability(),
     getContact(),
     getFaq(),
     getQuestions(),
-  ])
+  ]);
 
   return {
     props: {
       menus,
+      logos,
       settings,
       header,
       about,
-      services,
+      aboutServices,
       team,
-      staff,
+      teamStaff,
+      sustainability,
       contact,
       faq,
-      questions,
+      faqQuestions,
     },
-  }
+    revalidate: 10,
+  };
 }
