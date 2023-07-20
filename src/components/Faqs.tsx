@@ -1,7 +1,8 @@
 import { Disclosure } from "@headlessui/react";
 import { MinusSmallIcon, PlusSmallIcon } from "@heroicons/react/24/outline";
 import { Container } from "./Containers";
-import { FAQTypes, MenusTypes, QuestionTypes } from "../types/queryTypes";
+import { FAQTypes, MenusTypes, Menu, QuestionTypes } from "types/queryTypes";
+import sanitizeHtml from "sanitize-html";
 
 type Props = {
   menus: MenusTypes;
@@ -10,33 +11,22 @@ type Props = {
 };
 
 export default function Faqs({ menus, faq, faqQuestions }: Props) {
-  const faqs = [
-    {
-      question: "What's the best thing about Switzerland?",
-      answer:
-        "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
-    },
-    // More questions...
-  ];
+  const currentMenuLabel = menus.nodes[0]?.menuItems.edges[3]?.node.label || "";
+  const currentMenuPath =
+    menus.nodes[0]?.menuItems.edges[3]?.node.path?.substring(1) || "";
 
   return (
     <section
-      // TODO: add query for id
-      id="faq"
-      // TODO: add Aria label
+      id={currentMenuPath}
+      aria-label={currentMenuLabel}
       className="bg-gray-100 py-24 sm:py-32"
     >
       <Container>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center">
-            {menus.nodes.map((menu, i) => (
-              <p
-                className="text-base font-semibold leading-7 text-cyan-700"
-                key={i}
-              >
-                {menu.menuItems.edges[3].node.label}
-              </p>
-            ))}
+            <p className="text-base font-semibold leading-7 text-cyan-700">
+              {currentMenuLabel}
+            </p>
 
             <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
               {faq.faqHeading}
@@ -76,7 +66,7 @@ export default function Faqs({ menus, faq, faqQuestions }: Props) {
                           <div
                             className="text-base leading-7 text-gray-600"
                             dangerouslySetInnerHTML={{
-                              __html: question.node.content,
+                              __html: sanitizeHtml(question.node.content),
                             }}
                           />
                         </Disclosure.Panel>

@@ -16,9 +16,16 @@ type Props = {
   logos: LogosTypes;
   settings: SettingsTypes;
   contact: ContactTypes;
+  isBanner?: boolean;
 };
 
-export default function Header({ menus, logos, settings, contact }: Props) {
+export default function Header({
+  menus,
+  logos,
+  settings,
+  contact,
+  isBanner,
+}: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const ADTravelLogoWhite =
@@ -28,8 +35,10 @@ export default function Header({ menus, logos, settings, contact }: Props) {
 
   return (
     <div className="bg-gray-900">
-      <header className="absolute inset-x-0 top-0 z-50">
-        <Container className="">
+      <header
+        className={`absolute inset-x-0 ${isBanner ? "top-15" : "top-0"} z-50`}
+      >
+        <Container>
           <nav
             className="flex items-center justify-between p-6 lg:px-8"
             aria-label="Global"
@@ -66,7 +75,7 @@ export default function Header({ menus, logos, settings, contact }: Props) {
                         <Link
                           href={node.path}
                           passHref
-                          className="font-semibold text-sm leading-6 text-white"
+                          className="text-sm font-semibold leading-6 text-white"
                         >
                           <div>{node.label}</div>
                         </Link>

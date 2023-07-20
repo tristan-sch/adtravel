@@ -4,106 +4,80 @@ import SustainabilityModal from "./SustainabilityModal";
 import { useState } from "react";
 import { MenusTypes, SustainabilityTypes } from "../types/queryTypes";
 
+//TODO: add queries for features, offices and ground
 const features = [
   {
     name: "Complying ",
     description:
       "with all relevant environmental, public, and occupational health and safety, hygiene and employment legislation and regulations.",
-    // icon: CloudArrowUpIcon,
   },
   {
     name: "Comply ",
     description:
       "with all relevant legislation and embed sustainable development principles into core business practices.",
-    // icon: LockClosedIcon,
   },
 
   {
     name: "Provide ",
     description:
       "sustainable information about our products to encourage our clients to opt for sustainable travel options.",
-    // icon: ServerIcon,
   },
   {
     name: "Preserve ",
     description:
       "our environment and continually improve our environmental performance.",
-    // icon: FingerPrintIcon,
   },
   {
     name: "Provide ",
     description: "information, training and support to colleagues.",
-    // icon: Cog6ToothIcon,
   },
   {
     name: "Use ",
     description: "our position to drive sustainability within our destination.",
-    // icon: ArrowPathIcon,
   },
 ];
 const offices = [
   {
-    // name: 'Complying ',
     description:
       "We ensure our employees understand our goals and are accountable for the implementation of our sustainable policies",
-    // icon: CloudArrowUpIcon,
   },
   {
-    // name: 'Comply ',
     description: "We monitor, reduce and manage waste in a responsible way. ",
-    // icon: LockClosedIcon,
   },
   {
-    // name: 'Provide ',
     description:
       "We measure our use of natural resources especially energy and look for ways to reduce them.",
-    // icon: ServerIcon,
   },
   {
-    // name: 'Complying ',
     description:
       "We respect our employees, their diversity and advance their wellbeing wherever we can.",
-    // icon: CloudArrowUpIcon,
   },
   {
-    // name: 'Comply ',
     description:
       "We share best practices and raise awareness on sustainability among our teams and partners.",
-    // icon: LockClosedIcon,
   },
 
   {
-    // name: 'Provide ',
     description:
       "We communicate on our achievements against our sustainable goals, internally and externally through thorough reporting at least once a year.",
-    // icon: ServerIcon,
   },
 ];
-
 const ground = [
   {
-    // name: 'Complying ',
     description:
       "We prefer to work with locally owned businesses reflecting local cultures (hotels, lodges, restaurants, handicraft outlets, arts and culture centers).",
-    // icon: CloudArrowUpIcon,
   },
   {
-    // name: 'Comply ',
     description:
       "We incite positive change within our supply chain by sharing best practices.",
-    // icon: LockClosedIcon,
   },
   {
-    // name: 'Provide ',
     description:
       "We ensure that travels we organize do not have adverse effects on the environment or society, especially sensitive activities that may bring travelers into contact with animals.",
-    // icon: ServerIcon,
   },
   {
-    // name: 'Provide ',
     description:
       "We put our clients and guests at the forefront of our business and help them to make informed decisions when travelling.",
-    // icon: ServerIcon,
   },
 ];
 
@@ -116,10 +90,9 @@ export default function Sustainability({ menus, sustainability }: Props) {
   const [isGroundModalOpen, setIsGroundModalOpen] = useState(false);
   const [isOfficesModalOpen, setIsOfficesModalOpen] = useState(false);
 
-  console.log("sedfesf");
-
   return (
     <section
+      //TODO: add queries for id and aria-label
       id="sustainability"
       aria-label="Sustainability"
       className="bg-white py-24 sm:py-32"
