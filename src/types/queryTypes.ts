@@ -1,4 +1,6 @@
-export interface SettingsTypes {
+import { Content, CustomImage, Link, mediaItemType } from './sharedTypes'
+
+export type SettingsTypes = {
   title: string
   description: string
   url: string
@@ -26,18 +28,32 @@ export type MenusTypes = {
   nodes: Menu[]
 }
 
-export interface HeaderTypes {
-  adTravelLogo: {
-    sourceUrl: string
-    altText: string
+export type LogosTypes = {
+  node: {
+    logoItems: {
+      adTravelLogo: mediaItemType
+      adTravelLogoWhite: mediaItemType
+      adTravelFavicon: mediaItemType
+      fmsLogo: mediaItemType
+      fasLogo: mediaItemType
+    }
   }
-  heroImg: {
-    sourceUrl: string
-    altText: string
-  }
-  headerDescription: string
-  headerCta: string
-  headerCtaUrl: string
+}[]
+
+export interface HeaderTypes extends Content {
+  backgroundImage: CustomImage
+  teaser: string
+  teaserButton: Link
+  heading: string
+  textblock: string
+  primaryButton: Link
+  secondaryButton: Link
+}
+
+export interface AboutTypes extends Content {}
+export interface TeamTypes extends Content {}
+export interface SustainabilityTypes extends Content {
+  image: CustomImage
 }
 
 export interface ContactTypes {
@@ -78,11 +94,6 @@ export interface FAQTypes {
   faqDescription: string
 }
 
-export interface TeamTypes {
-  teamHeading: string
-  teamDescription: string
-}
-
 type Staff = {
   node: {
     modified: string
@@ -100,12 +111,7 @@ type Staff = {
 
 export type StaffTypes = Staff[]
 
-export interface AboutTypes {
-  aboutHeading: string
-  aboutDescription: string
-}
-
-type Service = {
+export type Service = {
   node: {
     id: string
     title: string

@@ -1,21 +1,15 @@
-import { Disclosure } from '@headlessui/react'
-import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/24/outline'
-import { Container } from './Containers'
-import {
-  FAQTypes,
-  MenusTypes,
-  QuestionTypes,
-  ServicesTypes,
-} from '@/types/queryTypes'
+import { Disclosure } from "@headlessui/react";
+import { MinusSmallIcon, PlusSmallIcon } from "@heroicons/react/24/outline";
+import { Container } from "./Containers";
+import { FAQTypes, MenusTypes, QuestionTypes } from "../types/queryTypes";
 
 type Props = {
-  menus: MenusTypes
-  services: ServicesTypes
-  faq: FAQTypes
-  questions: QuestionTypes
-}
+  menus: MenusTypes;
+  faq: FAQTypes;
+  faqQuestions: QuestionTypes;
+};
 
-export default function Faqs({ menus, faq, questions }: Props) {
+export default function Faqs({ menus, faq, faqQuestions }: Props) {
   const faqs = [
     {
       question: "What's the best thing about Switzerland?",
@@ -23,7 +17,7 @@ export default function Faqs({ menus, faq, questions }: Props) {
         "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
     },
     // More questions...
-  ]
+  ];
 
   return (
     <section
@@ -44,7 +38,7 @@ export default function Faqs({ menus, faq, questions }: Props) {
               </p>
             ))}
 
-            <h2 className="font-display mt-2 text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
               {faq.faqHeading}
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -54,7 +48,7 @@ export default function Faqs({ menus, faq, questions }: Props) {
           <div>
             <div className="mx-auto max-w-4xl divide-y divide-gray-900/10">
               <dl className="mt-10 space-y-6 divide-y divide-gray-900/10">
-                {questions.map((question, i) => (
+                {faqQuestions.map((question, i) => (
                   <Disclosure as="div" key={question.node.id} className="pt-6">
                     {({ open }) => (
                       <>
@@ -96,5 +90,5 @@ export default function Faqs({ menus, faq, questions }: Props) {
         </div>
       </Container>
     </section>
-  )
+  );
 }

@@ -1,10 +1,10 @@
-import { Container } from './Containers'
-import { ContactTypes } from '@/types/queryTypes'
-import Link from 'next/link'
+import { ContactTypes } from "types/queryTypes";
+import { Container } from "./Containers";
+import Link from "next/link";
 
 type Props = {
-  contact: ContactTypes
-}
+  contact: ContactTypes;
+};
 
 export default function Contact({ contact }: Props) {
   return (
@@ -21,7 +21,7 @@ export default function Contact({ contact }: Props) {
               <p className="text-base font-semibold leading-7 text-cyan-700">
                 Contact
               </p>
-              <h2 className="font-display mt-2 text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
+              <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
                 {contact.contactHeading}
               </h2>
               <p className="mt-4 leading-7 text-gray-600">
@@ -30,7 +30,7 @@ export default function Contact({ contact }: Props) {
             </div>
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
               <div>
-                <h3 className="border-l border-indigo-600 pl-6 font-semibold text-gray-900">
+                <h3 className="border-l border-cyan-700 pl-6 font-semibold text-gray-900">
                   Write us
                 </h3>
                 <address className="border-l border-gray-200 pl-6 pt-2 not-italic text-gray-600">
@@ -44,7 +44,7 @@ export default function Contact({ contact }: Props) {
                 </address>
               </div>
               <div>
-                <h3 className="border-l border-indigo-600 pl-6 font-semibold text-gray-900">
+                <h3 className="border-l border-cyan-700 pl-6 font-semibold text-gray-900">
                   Call us
                 </h3>
                 <address className="border-l border-gray-200 pl-6 pt-2 not-italic text-gray-600">
@@ -59,7 +59,7 @@ export default function Contact({ contact }: Props) {
                 </address>
               </div>
               <div>
-                <h3 className="border-l border-indigo-600 pl-6 font-semibold text-gray-900">
+                <h3 className="border-l border-cyan-700 pl-6 font-semibold text-gray-900">
                   Visit us
                 </h3>
                 <address className="border-l border-gray-200 pl-6 pt-2 not-italic text-gray-600">
@@ -80,5 +80,5 @@ export default function Contact({ contact }: Props) {
         </div>
       </Container>
     </section>
-  )
+  );
 }
