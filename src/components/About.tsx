@@ -6,6 +6,7 @@ import {
   Service,
   ServicesTypes,
 } from "types/queryTypes";
+import sanitizeHtml from "sanitize-html";
 
 type Props = {
   menus: MenusTypes;
@@ -14,19 +15,22 @@ type Props = {
 };
 
 export default function About({ menus, about, aboutServices }: Props) {
+  const currentMenuLabel = menus.nodes[0]?.menuItems.edges[0]?.node.label || "";
+  const currentMenuPath =
+    menus.nodes[0]?.menuItems.edges[0]?.node.path?.substring(1) || "";
+
   return (
-    <section id="about" aria-label="About" className="bg-white py-24 sm:py-32">
+    <section
+      id={currentMenuPath}
+      aria-label={currentMenuLabel}
+      className="bg-white py-24 sm:py-32"
+    >
       <Container>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center">
-            {menus.nodes.map((menu, i) => (
-              <p
-                className="text-base font-semibold leading-7 text-cyan-700"
-                key={i}
-              >
-                {menu.menuItems.edges[0].node.label}
-              </p>
-            ))}
+            <p className="text-base font-semibold leading-7 text-cyan-700">
+              {currentMenuLabel}
+            </p>
             <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
               {about.heading}
             </h2>
@@ -56,7 +60,9 @@ export default function About({ menus, about, aboutServices }: Props) {
                   </dt>
                   <dd
                     className="mt-2 text-base leading-7 text-gray-700"
-                    dangerouslySetInnerHTML={{ __html: service.node.content }}
+                    dangerouslySetInnerHTML={{
+                      __html: sanitizeHtml(service.node.content),
+                    }}
                   />
                 </div>
               ))}

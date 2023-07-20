@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SettingsTypes, HeaderTypes } from "../types/queryTypes";
+import { SettingsTypes, HeaderTypes } from "types/queryTypes";
 
 type Props = {
   settings: SettingsTypes;
@@ -22,7 +22,6 @@ export default function Hero({ settings, header }: Props) {
           {header.teaser && (
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
               <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-100 ring-1 ring-white/10 hover:ring-white/20 lg:text-base">
-                {/* TODO: add query */}
                 {header.teaser}{" "}
                 <Link
                   href={header.teaserButton.url}

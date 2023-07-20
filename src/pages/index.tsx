@@ -1,12 +1,14 @@
+import { useState } from "react";
 import Head from "next/head";
-import Header from "../components/Header";
-import Hero from "../components/Hero";
-import Team from "../components/Team";
-import About from "../components/About";
-import Footer from "../components/Footers";
-import Sustainability from "../components/Sustainability";
-import Faqs from "../components/Faqs";
-import Contact from "../components/Contact";
+import Header from "components/Header";
+import Hero from "components/Hero";
+import Team from "components/Team";
+import About from "components/About";
+import Footer from "components/Footers";
+import Sustainability from "components/Sustainability";
+import Faqs from "components/Faqs";
+import Contact from "components/Contact";
+import Banner from "components/Banner";
 import {
   SettingsTypes,
   MenusTypes,
@@ -67,6 +69,7 @@ export default function Home({
 }: Props) {
   const ADTravelFavicon =
     logos[0]?.node.logoItems.adTravelFavicon?.mediaItemUrl;
+  const [isBanner, setIsBanner] = useState(true);
 
   return (
     <>
@@ -75,11 +78,13 @@ export default function Home({
         <link rel="icon" href={ADTravelFavicon} />
         <meta name="description" content={settings.description} />
       </Head>
+      {isBanner && <Banner closeBanner={() => setIsBanner(false)} />}
       <Header
         settings={settings}
         menus={menus}
         logos={logos}
         contact={contact}
+        isBanner={isBanner}
       />
       <main>
         <Hero settings={settings} header={header} />
@@ -87,7 +92,7 @@ export default function Home({
         <Team team={team} teamStaff={teamStaff} menus={menus} />
         <Sustainability menus={menus} sustainability={sustainability} />
         <Faqs menus={menus} faq={faq} faqQuestions={faqQuestions} />
-        <Contact contact={contact} />
+        <Contact menus={menus} contact={contact} />
       </main>
       <Footer logos={logos} contact={contact} />
     </>

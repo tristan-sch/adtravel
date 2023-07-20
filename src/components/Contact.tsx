@@ -1,17 +1,21 @@
-import { ContactTypes } from "types/queryTypes";
+import { ContactTypes, MenusTypes } from "types/queryTypes";
 import { Container } from "./Containers";
 import Link from "next/link";
 
 type Props = {
   contact: ContactTypes;
+  menus: MenusTypes;
 };
 
-export default function Contact({ contact }: Props) {
+export default function Contact({ contact, menus }: Props) {
+  const currentMenuLabel = menus.nodes[0]?.menuItems.edges[4]?.node.label || "";
+  const currentMenuPath =
+    menus.nodes[0]?.menuItems.edges[4]?.node.path?.substring(1) || "";
+
   return (
     <section
-      // TODO: add query for id
-      id="contact"
-      // TODO: add Aria label
+      id={currentMenuPath}
+      aria-label={currentMenuLabel}
       className="bg-white pb-16 pt-24 sm:pb-24 sm:pt-32"
     >
       <Container>
