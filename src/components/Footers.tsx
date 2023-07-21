@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function Footer({ logos, contact }: Props) {
-  const navigation = {
+  const userfulInfo = {
     links: [
       {
         name: contact.usefulLinks.usefulLink1,
@@ -48,17 +48,19 @@ export default function Footer({ logos, contact }: Props) {
         <div>
           <div className="mx-auto max-w-7xl overflow-hidden border-t border-gray-900/10 px-6 py-20 sm:py-24 lg:px-8">
             <nav
-              className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12"
+              className="-mb-6 columns-2 justify-center sm:flex sm:space-x-12"
               aria-label="Footer"
             >
-              {navigation.links.map((item) => (
-                <div key={item.name} className="pb-6">
-                  <a
+              {userfulInfo.links.map((item) => (
+                <div key={item.name} className="pb-6 text-center">
+                  <Link
                     href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-sm leading-6 text-gray-600 hover:text-cyan-700"
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 </div>
               ))}
             </nav>
@@ -76,6 +78,7 @@ export default function Footer({ logos, contact }: Props) {
                   href={contact.logo2Link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="hidden sm:flex"
                 >
                   <Image
                     width={100}
@@ -91,6 +94,7 @@ export default function Footer({ logos, contact }: Props) {
                   href={contact.logo1Link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="hidden sm:flex"
                 >
                   <Image
                     width={100}
@@ -102,6 +106,7 @@ export default function Footer({ logos, contact }: Props) {
                 </Link>
               )}
             </div>
+            {/* TODO: add query  */}
             <p className="mt-10 text-center text-xs leading-5 text-gray-500">
               &copy; 2023 AD Travel, All rights reserved. This website does not
               use cookies.

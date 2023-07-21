@@ -44,7 +44,6 @@ export default function Hero({ settings, header }: Props) {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href={header.primaryButton.url}
-                passHref
                 className="rounded-md bg-cyan-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 {header.primaryButton.title}

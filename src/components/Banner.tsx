@@ -14,7 +14,6 @@ export default function Banner({ closeBanner }: Props) {
       <p className="text-sm leading-6 text-white">
         <Link
           href="https://safetravel.is/eruption-in-reykjanes/"
-          passHref
           target="_blank"
           rel="noopener noreferrer"
         >

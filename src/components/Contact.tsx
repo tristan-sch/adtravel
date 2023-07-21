@@ -70,7 +70,6 @@ export default function Contact({ contact, menus }: Props) {
                   <p>Our location</p>
                   <Link
                     className="font-semibold text-cyan-700"
-                    passHref
                     target="_blank"
                     rel="noopener noreferrer"
                     href={contact.adressUrl}

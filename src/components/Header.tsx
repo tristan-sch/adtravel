@@ -74,7 +74,6 @@ export default function Header({
                       <div>
                         <Link
                           href={node.path}
-                          passHref
                           className="text-sm font-semibold leading-6 text-white"
                         >
                           <div>{node.label}</div>
@@ -129,7 +128,7 @@ export default function Header({
                             <div>
                               <Link
                                 href={node.path}
-                                passHref
+                                onClick={() => setMobileMenuOpen(false)}
                                 className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-cyan-700"
                               >
                                 <div>{node.label}</div>
@@ -143,14 +142,12 @@ export default function Header({
                   <div className="py-6">
                     <Link
                       href={contact.phoneUrl}
-                      passHref
                       className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-cyan-700"
                     >
                       {contact.phone}
                     </Link>
                     <Link
                       href={contact.emailUrl}
-                      passHref
                       className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-cyan-700"
                     >
                       {contact.email}
