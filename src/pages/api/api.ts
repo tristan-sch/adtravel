@@ -1,24 +1,24 @@
-const API_URL = process.env.WORDPRESS_API_URL
+const API_URL = process.env.WORDPRESS_API_URL;
 
 async function fetchAPI(query: string) {
-  const headers = { 'Content-Type': 'application/json' }
+  const headers = { "Content-Type": "application/json" };
 
   if (API_URL) {
     const res = await fetch(API_URL, {
-      method: 'POST',
+      method: "POST",
       headers,
       body: JSON.stringify({
         query,
       }),
-    })
-    const json = await res.json()
+    });
+    const json = await res.json();
     if (json.errors) {
-      console.error(json.errors)
-      throw new Error('Failed to fetch API')
+      console.error(json.errors);
+      throw new Error("Failed to fetch API");
     }
-    return json.data
+    return json.data;
   } else {
-    throw new Error('API_URL is missing')
+    throw new Error("API_URL is missing");
   }
 }
 
@@ -32,9 +32,9 @@ export async function getSettings() {
           url
         }
       }
-    `,
-  )
-  return data?.generalSettings
+    `
+  );
+  return data?.generalSettings;
 }
 
 export async function getMenus() {
@@ -59,9 +59,9 @@ export async function getMenus() {
           }
         }
       }
-    `,
-  )
-  return data?.menus
+    `
+  );
+  return data?.menus;
 }
 
 export async function getLogos() {
@@ -102,9 +102,26 @@ export async function getLogos() {
         }
       }
     }
-    `,
-  )
-  return data?.logos.edges
+    `
+  );
+  return data?.logos.edges;
+}
+
+export async function getBanner() {
+  const data = await fetchAPI(
+    `
+    query banner {
+      page(id: "/banner", idType: URI) {
+        banner {
+          activate
+          textblock
+          textblockSecondary
+        }
+      }
+    }
+    `
+  );
+  return data?.page.banner;
 }
 
 export async function getHeader() {
@@ -135,9 +152,9 @@ export async function getHeader() {
         }
       }
     }
-    `,
-  )
-  return data?.page.header
+    `
+  );
+  return data?.page.header;
 }
 
 export async function getAbout() {
@@ -152,9 +169,9 @@ export async function getAbout() {
         }
       }
     }
-    `,
-  )
-  return data?.page.about
+    `
+  );
+  return data?.page.about;
 }
 
 export async function getServices() {
@@ -171,9 +188,9 @@ export async function getServices() {
         }
       }
     }
-    `,
-  )
-  return data?.services.edges
+    `
+  );
+  return data?.services.edges;
 }
 
 export async function getTeam() {
@@ -188,9 +205,9 @@ export async function getTeam() {
         }
       }
     }
-    `,
-  )
-  return data?.page.team
+    `
+  );
+  return data?.page.team;
 }
 
 export async function getStaff() {
@@ -214,9 +231,9 @@ export async function getStaff() {
         }
       }
     }
-    `,
-  )
-  return data?.staff.edges
+    `
+  );
+  return data?.staff.edges;
 }
 
 export async function getSustainability() {
@@ -236,9 +253,9 @@ export async function getSustainability() {
         }
       }
     }
-    `,
-  )
-  return data?.page.sustainability
+    `
+  );
+  return data?.page.sustainability;
 }
 
 export async function getContact() {
@@ -292,10 +309,10 @@ export async function getContact() {
         }
       }
     }
-    `,
-  )
+    `
+  );
 
-  return data?.page.contact
+  return data?.page.contact;
 }
 
 export async function getFaq() {
@@ -313,10 +330,10 @@ export async function getFaq() {
         }
       }
     }
-    `,
-  )
+    `
+  );
 
-  return data?.page.faq
+  return data?.page.faq;
 }
 
 export async function getQuestions() {
@@ -334,8 +351,8 @@ export async function getQuestions() {
         }
       }
     }
-    `,
-  )
+    `
+  );
 
-  return data?.questions.edges
+  return data?.questions.edges;
 }

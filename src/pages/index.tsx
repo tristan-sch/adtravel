@@ -22,7 +22,8 @@ import {
   ContactTypes,
   FAQTypes,
   QuestionTypes,
-} from "../types/queryTypes";
+  BannerTypes,
+} from "types/queryTypes";
 import {
   getSettings,
   getMenus,
@@ -36,6 +37,7 @@ import {
   getContact,
   getFaq,
   getQuestions,
+  getBanner,
 } from "./api/api";
 
 type Props = {
@@ -51,6 +53,7 @@ type Props = {
   faq: FAQTypes;
   faqQuestions: QuestionTypes;
   contact: ContactTypes;
+  banner: BannerTypes;
 };
 
 export default function Home({
@@ -66,10 +69,13 @@ export default function Home({
   faq,
   faqQuestions,
   contact,
+  banner,
 }: Props) {
   const ADTravelFavicon =
     logos[0]?.node.logoItems.adTravelFavicon?.mediaItemUrl;
   const [isBanner, setIsBanner] = useState(true);
+
+  const isBannerActivated = banner.activate;
 
   return (
     <>
@@ -78,7 +84,9 @@ export default function Home({
         <link rel="icon" href={ADTravelFavicon} />
         <meta name="description" content={settings.description} />
       </Head>
-      {isBanner && <Banner closeBanner={() => setIsBanner(false)} />}
+      {isBannerActivated && isBanner && (
+        <Banner closeBanner={() => setIsBanner(false)} banner={banner} />
+      )}
       <Header
         settings={settings}
         menus={menus}
@@ -113,6 +121,7 @@ export async function getStaticProps() {
     contact,
     faq,
     faqQuestions,
+    banner,
   ] = await Promise.all([
     getMenus(),
     getLogos(),
@@ -126,6 +135,7 @@ export async function getStaticProps() {
     getContact(),
     getFaq(),
     getQuestions(),
+    getBanner(),
   ]);
 
   return {
@@ -142,6 +152,7 @@ export async function getStaticProps() {
       contact,
       faq,
       faqQuestions,
+      banner,
     },
     revalidate: 10,
   };

@@ -40,6 +40,10 @@ export type LogosTypes = {
   };
 }[];
 
+export interface BannerTypes extends Content {
+  activate: boolean;
+}
+
 export interface HeaderTypes extends Content {
   backgroundImage: CustomImage;
   teaser: string;

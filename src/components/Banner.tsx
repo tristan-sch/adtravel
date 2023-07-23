@@ -1,15 +1,14 @@
-import { useState } from "react";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
+import { BannerTypes } from "types/queryTypes";
 
 type Props = {
+  banner: BannerTypes;
   closeBanner: () => void;
 };
 
-export default function Banner({ closeBanner }: Props) {
-  const [isBanner, setIsBanner] = useState(true);
+export default function Banner({ closeBanner, banner }: Props) {
   return (
-    // TODO: add queries
     <div className="bottom-5 flex items-center gap-x-6 bg-gray-700 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
       <p className="text-sm leading-6 text-white">
         <Link
@@ -17,7 +16,7 @@ export default function Banner({ closeBanner }: Props) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <strong className="font-semibold">Volcanic eruption</strong>
+          <strong className="font-semibold">{banner.textblock}</strong>
           <svg
             viewBox="0 0 2 2"
             className="mx-2 inline h-0.5 w-0.5 fill-current"
@@ -25,7 +24,7 @@ export default function Banner({ closeBanner }: Props) {
           >
             <circle cx={1} cy={1} r={1} />
           </svg>
-          Live information about the eruption in Litli Hrútur &nbsp;
+          {banner.textblockSecondary} &nbsp;
           <span aria-hidden="true">&rarr;</span>
         </Link>
       </p>
