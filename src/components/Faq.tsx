@@ -1,16 +1,14 @@
 import { Disclosure } from "@headlessui/react";
 import { MinusSmallIcon, PlusSmallIcon } from "@heroicons/react/24/outline";
 import { Container } from "./Containers";
-import { FAQTypes, MenusTypes, Menu, QuestionTypes } from "types/queryTypes";
-import sanitizeHtml from "sanitize-html";
+import { FaqTypes, MenusTypes } from "types/queryTypes";
 
 type Props = {
   menus: MenusTypes;
-  faq: FAQTypes;
-  faqQuestions: QuestionTypes;
+  faq: FaqTypes;
 };
 
-export default function Faqs({ menus, faq, faqQuestions }: Props) {
+export default function Faq({ menus, faq }: Props) {
   const currentMenuLabel = menus.nodes[0]?.menuItems.edges[3]?.node.label || "";
   const currentMenuPath =
     menus.nodes[0]?.menuItems.edges[3]?.node.path?.substring(1) || "";
@@ -27,25 +25,31 @@ export default function Faqs({ menus, faq, faqQuestions }: Props) {
             <p className="text-base font-semibold leading-7 text-cyan-700">
               {currentMenuLabel}
             </p>
-
             <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
-              {faq.faqHeading}
+              {faq.heading}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              {faq.faqDescription}
-            </p>
+            {faq.textblock && (
+              <p className="mt-6 text-lg leading-8 text-gray-600">
+                {faq.textblock}
+              </p>
+            )}
+            {faq.textblockSecondary && (
+              <p className="mt-6 text-lg leading-8 text-gray-600">
+                {faq.textblockSecondary}
+              </p>
+            )}
           </div>
           <div>
             <div className="mx-auto max-w-4xl divide-y divide-gray-900/10">
               <dl className="mt-10 space-y-6 divide-y divide-gray-900/10">
-                {faqQuestions.map((question, i) => (
-                  <Disclosure as="div" key={question.node.id} className="pt-6">
+                {faq.questions.map((question, i) => (
+                  <Disclosure as="div" key={i} className="pt-6">
                     {({ open }) => (
                       <>
                         <dt>
                           <Disclosure.Button className="flex w-full items-start justify-between text-left text-gray-900">
                             <span className="text-base font-semibold leading-7">
-                              {question.node.title}
+                              {question.heading}
                             </span>
                             <span className="ml-6 flex h-7 items-center">
                               {open ? (
@@ -63,12 +67,9 @@ export default function Faqs({ menus, faq, faqQuestions }: Props) {
                           </Disclosure.Button>
                         </dt>
                         <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                          <div
-                            className="text-base leading-7 text-gray-600"
-                            dangerouslySetInnerHTML={{
-                              __html: sanitizeHtml(question.node.content),
-                            }}
-                          />
+                          <p className="text-base leading-7 text-gray-600">
+                            {question.textblock}
+                          </p>
                         </Disclosure.Panel>
                       </>
                     )}

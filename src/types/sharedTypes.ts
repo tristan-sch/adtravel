@@ -12,6 +12,9 @@ export type Link = {
 export type CustomImage = {
   sourceUrl: string;
   altText: string;
+  imageLink?: {
+    imageLink: string;
+  };
 };
 
 export type Content = {

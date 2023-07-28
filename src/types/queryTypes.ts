@@ -28,114 +28,81 @@ export type MenusTypes = {
   nodes: Menu[];
 };
 
-export type LogosTypes = {
-  node: {
-    logoItems: {
-      adTravelLogo: mediaItemType;
-      adTravelLogoWhite: mediaItemType;
-      adTravelFavicon: mediaItemType;
-      fmsLogo: mediaItemType;
-      fasLogo: mediaItemType;
-    };
-  };
-}[];
-
 export interface BannerTypes extends Content {
   activate: boolean;
+  link: string;
 }
 
 export interface HeaderTypes extends Content {
-  backgroundImage: CustomImage;
-  teaser: string;
-  teaserButton: Link;
-  heading: string;
-  textblock: string;
-  primaryButton: Link;
-  secondaryButton: Link;
-}
-
-export interface AboutTypes extends Content {}
-export interface TeamTypes extends Content {}
-export interface SustainabilityTypes extends Content {
-  image: CustomImage;
-}
-
-export interface ContactTypes {
-  contactHeading: string;
-  contactDescription: string;
-  email: string;
-  emailUrl: string;
-  phone: string;
-  phoneUrl: string;
-  adress: string;
-  adressUrl: string;
-  logo1: {
-    sourceUrl: string;
-    altText: string;
-    description: string;
+  images: {
+    logo: CustomImage;
+    backgroundImage: CustomImage;
+    favicon: CustomImage;
   };
-  logo1Link: string;
-  logo2: {
-    sourceUrl: string;
-    altText: string;
-    description: string;
+  teaser: {
+    activate: boolean;
+    teaser: string;
+    teaserButton: Link;
   };
-  logo2Link: string;
-  usefulLinks: {
-    usefulLink1: string;
-    usefulLink1Link: string;
-    usefulLink2: string;
-    usefulLink2Link: string;
-    usefulLink3: string;
-    usefulLink3Link: string;
-    usefulLink4: string;
-    usefulLink4Link: string;
+  buttons: {
+    primaryButton: Link;
+    secondaryButton: Link;
   };
 }
 
-export interface FAQTypes {
-  faqHeading: string;
-  faqDescription: string;
+type Service = Content;
+
+export interface AboutTypes extends Content {
+  services: Service[];
 }
 
 type Staff = {
-  node: {
-    modified: string;
-    id: string;
-    title: string;
-    featuredImage: {
-      node: {
-        altText: string;
-        sourceUrl: string;
-      };
-    };
-    content: string;
-  };
+  name: string;
+  position: string;
+  department: string;
+  picture: mediaItemType;
 };
 
-export type StaffTypes = Staff[];
+export interface TeamTypes extends Content {
+  staff: Staff[];
+}
 
-export type Service = {
-  node: {
-    id: string;
-    title: string;
-    content: string;
-    icon: {
-      icon: {
-        id: string;
-        mediaItemUrl: string;
-      };
+export type Action = { actions: string };
+export interface SustainabilityTypes extends Content {
+  image: CustomImage;
+  actions: {
+    actionPoints: Content[];
+    onTheGround: {
+      heading: string;
+      onTheGroundActions: Action[];
+    };
+    atTheOffice: {
+      heading: string;
+      atTheOfficeActions: Action[];
     };
   };
-};
-export type ServicesTypes = Service[];
+}
 
-type Question = {
-  node: {
-    modified: string;
-    id: string;
-    title: string;
-    content: string;
-  };
-};
-export type QuestionTypes = Question[];
+type Question = Content;
+
+export interface FaqTypes extends Content {
+  questions: Question[];
+}
+
+export interface ContactTypes extends Content {
+  contactUs: {
+    heading: string;
+    textblock: string;
+    link: Link;
+  }[];
+}
+
+export interface FooterTypes extends Content {
+  footerLinks: {
+    link: Link;
+  }[];
+  logo: CustomImage;
+  partnerLogos: {
+    partnerLogo: CustomImage;
+  }[];
+}
