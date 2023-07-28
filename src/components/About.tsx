@@ -1,20 +1,13 @@
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { Container } from "./Containers";
-import {
-  AboutTypes,
-  MenusTypes,
-  Service,
-  ServicesTypes,
-} from "types/queryTypes";
-import sanitizeHtml from "sanitize-html";
+import { AboutTypes, MenusTypes } from "types/queryTypes";
 
 type Props = {
   menus: MenusTypes;
   about: AboutTypes;
-  aboutServices: ServicesTypes;
 };
 
-export default function About({ menus, about, aboutServices }: Props) {
+export default function About({ menus, about }: Props) {
   const currentMenuLabel = menus.nodes[0]?.menuItems.edges[0]?.node.label || "";
   const currentMenuPath =
     menus.nodes[0]?.menuItems.edges[0]?.node.path?.substring(1) || "";
@@ -47,8 +40,8 @@ export default function About({ menus, about, aboutServices }: Props) {
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-              {aboutServices.map((service: Service) => (
-                <div key={service.node.id} className="relative pl-8">
+              {about.services.map((service, i) => (
+                <div key={i} className="relative pl-8">
                   <dt className="text-base font-semibold leading-7 text-gray-900">
                     <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg">
                       <CheckIcon
@@ -56,14 +49,11 @@ export default function About({ menus, about, aboutServices }: Props) {
                         aria-hidden="true"
                       />
                     </div>
-                    {service.node.title}
+                    {service.heading}
                   </dt>
-                  <dd
-                    className="mt-2 text-base leading-7 text-gray-700"
-                    dangerouslySetInnerHTML={{
-                      __html: sanitizeHtml(service.node.content),
-                    }}
-                  />
+                  <dd className="mt-2 text-base leading-7 text-gray-700">
+                    {service.textblock}
+                  </dd>
                 </div>
               ))}
             </dl>

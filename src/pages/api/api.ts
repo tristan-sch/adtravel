@@ -64,49 +64,6 @@ export async function getMenus() {
   return data?.menus;
 }
 
-export async function getLogos() {
-  const data = await fetchAPI(
-    `
-    query logos {
-      logos {
-        edges {
-          node {
-            logoItems {
-              adTravelLogo {
-                id
-                mediaItemUrl
-                altText
-              }
-              adTravelLogoWhite {
-                id
-                mediaItemUrl
-                altText
-              }
-              adTravelFavicon {
-                id
-                mediaItemUrl
-                altText
-              }
-              fmsLogo {
-                id
-                mediaItemUrl
-                altText
-              }
-              fasLogo {
-                id
-                mediaItemUrl
-                altText
-              }
-            }
-          }
-        }
-      }
-    }
-    `
-  );
-  return data?.logos.edges;
-}
-
 export async function getBanner() {
   const data = await fetchAPI(
     `
@@ -116,6 +73,7 @@ export async function getBanner() {
           activate
           textblock
           textblockSecondary
+          link
         }
       }
     }
@@ -130,24 +88,39 @@ export async function getHeader() {
     query header {
       page(id: "/header", idType: URI) {
         header {
-          backgroundImage {
-            sourceUrl
-            altText
+          images {
+            logo {
+              sourceUrl
+              altText
+            }
+            backgroundImage {
+              sourceUrl
+              altText
+            }
+            favicon {
+              sourceUrl
+              altText
+            }
           }
-          teaser
-          teaserButton {
-            url
-            title
+          teaser {
+            activate
+            teaser
+            teaserButton {
+              url
+              title
+            }
           }
           heading
           textblock
-          primaryButton {
-            url
-            title
-          }
-          secondaryButton {
-            url
-            title
+          buttons {
+            primaryButton {
+              url
+              title
+            }
+            secondaryButton {
+              url
+              title
+            }
           }
         }
       }
@@ -166,31 +139,16 @@ export async function getAbout() {
           heading
           textblock
           textblockSecondary
-        }
-      }
-    }
-    `
-  );
-  return data?.page.about;
-}
-
-export async function getServices() {
-  const data = await fetchAPI(
-    `
-    query services {
-      services {
-        edges {
-          node {
-            id
-            title
-            content
+          services {
+            heading
+            textblock
           }
         }
       }
     }
     `
   );
-  return data?.services.edges;
+  return data?.page.about;
 }
 
 export async function getTeam() {
@@ -202,38 +160,22 @@ export async function getTeam() {
           heading
           textblock
           textblockSecondary
-        }
-      }
-    }
-    `
-  );
-  return data?.page.team;
-}
-
-export async function getStaff() {
-  const data = await fetchAPI(
-    `
-    query staff {
-      staff( first: 100 ) {
-        edges {
-          node {
-            modified
-            id
-            title
-            featuredImage {
-              node {
-                altText
-                sourceUrl
-              }
+          staff {
+            name
+            position
+            department
+            picture {
+              id
+              mediaItemUrl
+              altText
             }
-            content
           }
         }
       }
     }
     `
   );
-  return data?.staff.edges;
+  return data?.page.team;
 }
 
 export async function getSustainability() {
@@ -250,6 +192,24 @@ export async function getSustainability() {
             sourceUrl
             altText
           }
+          actions {
+            actionPoints {
+              heading
+              textblock
+            }
+            onTheGround {
+              heading
+              onTheGroundActions {
+                actions
+              }
+            }
+            atTheOffice {
+              heading
+              atTheOfficeActions {
+                actions
+              }
+            }
+          }
         }
       }
     }
@@ -258,53 +218,43 @@ export async function getSustainability() {
   return data?.page.sustainability;
 }
 
+export async function getFaq() {
+  const data = await fetchAPI(
+    `
+    query faq {
+      page(id: "/faq", idType: URI) {
+        faq {
+          heading
+          textblock
+          textblockSecondary
+          questions {
+            heading
+            textblock
+          }
+        }
+      }
+    }
+    `
+  );
+  return data?.page.faq;
+}
+
 export async function getContact() {
   const data = await fetchAPI(
     `
     query contact {
-      page(id: "/homepage", idType: URI) {
+      page(id: "/contact", idType: URI) {
         contact {
-          contactHeading
-          contactDescription
-          emailPicto {
-            id
-            mediaItemUrl
-          }
-          phonePicto {
-            id
-            mediaItemUrl
-          }
-          adressPicto {
-            id
-            mediaItemUrl
-          }
-          email
-          emailUrl
-          phone
-          phoneUrl
-          adress
-          adressUrl
-          logo1 {
-            sourceUrl
-            altText
-            description
-          }
-          logo1Link
-            logo2 {
-            sourceUrl
-            altText
-            description
-          }
-          logo2Link
-          usefulLinks {
-            usefulLink1
-            usefulLink1Link
-            usefulLink2
-            usefulLink2Link
-            usefulLink3
-            usefulLink3Link
-            usefulLink4
-            usefulLink4Link
+          heading
+          textblock
+          textblockSecondary
+          contactUs {
+            heading
+            textblock
+            link {
+              title
+              url
+            }
           }
         }
       }
@@ -315,44 +265,36 @@ export async function getContact() {
   return data?.page.contact;
 }
 
-export async function getFaq() {
+export async function getFooter() {
   const data = await fetchAPI(
     `
-    query faq {
-      page(id: "/homepage", idType: URI) {
-        faq {
-          faqHeading
-          faqDescription
-          faqIcon {
+    query footer {
+      page(id: "/footer", idType: URI) {
+        footer {
+          textblock
+          footerLinks {
+            link {
+              title
+              url
+            }
+          }
+          logo {
             sourceUrl
             altText
           }
-        }
-      }
-    }
-    `
-  );
-
-  return data?.page.faq;
-}
-
-export async function getQuestions() {
-  const data = await fetchAPI(
-    `
-    query questions {
-      questions {
-        edges {
-          node {
-            modified
-            id
-            title
-            content
+          partnerLogos {
+            partnerLogo {
+              sourceUrl
+              altText
+              imageLink {
+                imageLink
+              }
+            }
           }
         }
       }
     }
     `
   );
-
-  return data?.questions.edges;
+  return data?.page.footer;
 }

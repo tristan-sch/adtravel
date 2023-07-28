@@ -4,83 +4,6 @@ import SustainabilityModal from "./SustainabilityModal";
 import { useState } from "react";
 import { MenusTypes, SustainabilityTypes } from "../types/queryTypes";
 
-//TODO: add queries for features, offices and ground
-const features = [
-  {
-    name: "Complying ",
-    description:
-      "with all relevant environmental, public, and occupational health and safety, hygiene and employment legislation and regulations.",
-  },
-  {
-    name: "Comply ",
-    description:
-      "with all relevant legislation and embed sustainable development principles into core business practices.",
-  },
-
-  {
-    name: "Provide ",
-    description:
-      "sustainable information about our products to encourage our clients to opt for sustainable travel options.",
-  },
-  {
-    name: "Preserve ",
-    description:
-      "our environment and continually improve our environmental performance.",
-  },
-  {
-    name: "Provide ",
-    description: "information, training and support to colleagues.",
-  },
-  {
-    name: "Use ",
-    description: "our position to drive sustainability within our destination.",
-  },
-];
-const offices = [
-  {
-    description:
-      "We ensure our employees understand our goals and are accountable for the implementation of our sustainable policies",
-  },
-  {
-    description: "We monitor, reduce and manage waste in a responsible way. ",
-  },
-  {
-    description:
-      "We measure our use of natural resources especially energy and look for ways to reduce them.",
-  },
-  {
-    description:
-      "We respect our employees, their diversity and advance their wellbeing wherever we can.",
-  },
-  {
-    description:
-      "We share best practices and raise awareness on sustainability among our teams and partners.",
-  },
-
-  {
-    description:
-      "We communicate on our achievements against our sustainable goals, internally and externally through thorough reporting at least once a year.",
-  },
-];
-const ground = [
-  {
-    description:
-      "We prefer to work with locally owned businesses reflecting local cultures (hotels, lodges, restaurants, handicraft outlets, arts and culture centers).",
-  },
-  {
-    description:
-      "We incite positive change within our supply chain by sharing best practices.",
-  },
-  {
-    description:
-      "We ensure that travels we organize do not have adverse effects on the environment or society, especially sensitive activities that may bring travelers into contact with animals.",
-  },
-  {
-    description:
-      "We put our clients and guests at the forefront of our business and help them to make informed decisions when travelling.",
-  },
-];
-
 type Props = {
   menus: MenusTypes;
   sustainability: SustainabilityTypes;
@@ -90,25 +13,24 @@ export default function Sustainability({ menus, sustainability }: Props) {
   const [isGroundModalOpen, setIsGroundModalOpen] = useState(false);
   const [isOfficesModalOpen, setIsOfficesModalOpen] = useState(false);
 
+  const currentMenuLabel = menus.nodes[0]?.menuItems.edges[2]?.node.label || "";
+  const currentMenuPath =
+    menus.nodes[0]?.menuItems.edges[2]?.node.path?.substring(1) || "";
+
   return (
     <section
-      //TODO: add queries for id and aria-label
-      id="sustainability"
-      aria-label="Sustainability"
+      id={currentMenuPath}
+      aria-label={currentMenuLabel}
       className="bg-white py-24 sm:py-32"
     >
       <Container>
         <div>
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-5xl text-center sm:text-left lg:mx-8">
-              {menus.nodes.map((menu, i) => (
-                <p
-                  className="text-base font-semibold leading-7 text-cyan-600"
-                  key={i}
-                >
-                  {menu.menuItems.edges[2].node.label}
-                </p>
-              ))}
+              <p className="text-base font-semibold leading-7 text-cyan-600">
+                {currentMenuLabel}
+              </p>
+
               <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
                 {sustainability.heading}
               </h2>
@@ -127,7 +49,7 @@ export default function Sustainability({ menus, sustainability }: Props) {
             </div>
           </div>
           {sustainability.image && (
-            <div className="relative overflow-hidden pt-16">
+            <div className="relative hidden overflow-hidden pt-16 sm:block">
               <div className="mx-auto max-w-6xl px-6 lg:px-8">
                 <Image
                   src={sustainability.image.sourceUrl}
@@ -154,12 +76,12 @@ export default function Sustainability({ menus, sustainability }: Props) {
             </div>
             <div className="mx-auto mt-8 max-w-7xl px-6 sm:mt-10 md:mt-16 lg:px-8">
               <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base leading-7 text-gray-600 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-                {features.map((feature, i) => (
+                {sustainability.actions.actionPoints.map((actionPoint, i) => (
                   <div key={i} className="relative pl-9">
                     <dt className="inline font-semibold text-gray-900">
-                      {feature.name}
-                    </dt>
-                    <dd className="inline">{feature.description}</dd>
+                      {actionPoint.heading}
+                    </dt>{" "}
+                    <dd className="inline">{actionPoint.textblock}</dd>
                   </div>
                 ))}
               </dl>
@@ -173,14 +95,14 @@ export default function Sustainability({ menus, sustainability }: Props) {
                     onClick={() => setIsGroundModalOpen(true)}
                     className="rounded-md bg-cyan-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   >
-                    Our actions on the ground
+                    {sustainability.actions.onTheGround.heading}
                   </button>
                 </div>
                 {isGroundModalOpen && (
                   <SustainabilityModal
-                    data={ground}
+                    data={sustainability.actions.onTheGround.onTheGroundActions}
                     closeModal={() => setIsGroundModalOpen(false)}
-                    title="On the Ground"
+                    title={sustainability.actions.onTheGround.heading}
                   />
                 )}
 
@@ -189,14 +111,14 @@ export default function Sustainability({ menus, sustainability }: Props) {
                     onClick={() => setIsOfficesModalOpen(true)}
                     className="rounded-md bg-cyan-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   >
-                    Our actions in our office
+                    {sustainability.actions.atTheOffice.heading}
                   </button>
                 </div>
                 {isOfficesModalOpen && (
                   <SustainabilityModal
-                    data={offices}
+                    data={sustainability.actions.atTheOffice.atTheOfficeActions}
                     closeModal={() => setIsOfficesModalOpen(false)}
-                    title="In our office"
+                    title={sustainability.actions.atTheOffice.heading}
                   />
                 )}
               </div>

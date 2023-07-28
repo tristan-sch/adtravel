@@ -1,24 +1,25 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { Fragment, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Action } from "types/queryTypes";
 
 type Props = {
-  closeModal: () => void
-  data: { description: string }[]
-  title: string
-}
+  closeModal: () => void;
+  data: Action[];
+  title: string;
+};
 
 export default function SustainabilityModal({
   closeModal,
   data,
   title,
 }: Props) {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(true);
 
   const handleOnClose = () => {
-    closeModal()
-    setOpen(false)
-  }
+    closeModal();
+    setOpen(false);
+  };
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -58,7 +59,7 @@ export default function SustainabilityModal({
                   </button>
                 </div>
                 <div className="sm:flex sm:items-start">
-                  <div className="mt-3 text-center sm:ml-4 sm:my-8 sm:text-left">
+                  <div className="mt-3 text-center sm:my-8 sm:ml-4 sm:text-left">
                     <Dialog.Title
                       as="h3"
                       className="mx-auto max-w-7xl px-6 text-base font-semibold leading-6 text-gray-900"
@@ -66,11 +67,20 @@ export default function SustainabilityModal({
                       {title}
                     </Dialog.Title>
                     <div className="mt-2">
-                      {data.map((feature, i) => (
-                        <div key={i} className="sm:mt-10 md:mt-8 lg:px-8">
-                          <dd className="text-sm leading-6 text-gray-900">
-                            {feature.description}
-                          </dd>
+                      {data.map((action, i) => (
+                        <div
+                          key={i}
+                          className="relative sm:mt-10 md:mt-8 lg:px-8"
+                        >
+                          <dt className="text-sm leading-6 text-gray-900">
+                            <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg">
+                              <CheckIcon
+                                className="absolute left-0 top-1 h-5 w-5 text-cyan-700"
+                                aria-hidden="true"
+                              />
+                            </div>
+                            {action.actions}
+                          </dt>
                         </div>
                       ))}
                     </div>
@@ -82,5 +92,5 @@ export default function SustainabilityModal({
         </div>
       </Dialog>
     </Transition.Root>
-  )
+  );
 }

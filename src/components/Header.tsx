@@ -6,14 +6,14 @@ import Link from "next/link";
 import { Container } from "./Containers";
 import {
   ContactTypes,
-  LogosTypes,
+  HeaderTypes,
   MenusTypes,
   SettingsTypes,
 } from "types/queryTypes";
 
 type Props = {
   menus: MenusTypes;
-  logos: LogosTypes;
+  header: HeaderTypes;
   settings: SettingsTypes;
   contact: ContactTypes;
   isBanner?: boolean;
@@ -21,17 +21,12 @@ type Props = {
 
 export default function Header({
   menus,
-  logos,
   settings,
   contact,
   isBanner,
+  header,
 }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const ADTravelLogoWhite =
-    logos[0]?.node.logoItems.adTravelLogoWhite?.mediaItemUrl;
-  const ADTravelLogoWhiteAlt =
-    logos[0]?.node.logoItems.adTravelLogoWhite?.altText;
 
   return (
     <div className="bg-gray-900">
@@ -43,13 +38,13 @@ export default function Header({
             className="flex items-center justify-between p-6 lg:px-8"
             aria-label="Global"
           >
-            {ADTravelLogoWhite && (
+            {header.images.logo.sourceUrl && (
               <div className="flex lg:flex-1">
                 <a href="#" className="-m-1.5 p-1.5">
                   <span className="sr-only">{settings.title}</span>
                   <Image
-                    src={ADTravelLogoWhite}
-                    alt={ADTravelLogoWhiteAlt}
+                    src={header.images.logo.sourceUrl}
+                    alt={header.images.logo.altText}
                     width={133}
                     height={94}
                   />
@@ -102,12 +97,14 @@ export default function Header({
               <div className="flex items-center justify-between">
                 <Link href="#" className="-m-1.5 p-1.5">
                   <span className="sr-only">{settings.title}</span>
-                  <Image
-                    src={ADTravelLogoWhite}
-                    alt={ADTravelLogoWhiteAlt}
-                    width={133}
-                    height={94}
-                  />
+                  {header.images.logo.sourceUrl && (
+                    <Image
+                      src={header.images.logo.sourceUrl}
+                      alt={header.images.logo.altText}
+                      width={133}
+                      height={94}
+                    />
+                  )}
                 </Link>
                 <button
                   type="button"
@@ -140,18 +137,16 @@ export default function Header({
                     ))}
                   </>
                   <div className="py-6">
-                    <Link
-                      href={contact.phoneUrl}
-                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-cyan-700"
-                    >
-                      {contact.phone}
-                    </Link>
-                    <Link
-                      href={contact.emailUrl}
-                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-cyan-700"
-                    >
-                      {contact.email}
-                    </Link>
+                    {contact.contactUs.map((contactItem, i) => (
+                      <div key={i}>
+                        <Link
+                          href={contactItem?.link?.url ?? "/"}
+                          className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-cyan-700"
+                        >
+                          {contactItem?.link?.title}
+                        </Link>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>

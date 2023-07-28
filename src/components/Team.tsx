@@ -1,28 +1,30 @@
-import { MenusTypes, StaffTypes, TeamTypes } from "types/queryTypes";
+import { MenusTypes, TeamTypes } from "types/queryTypes";
 import Image from "next/image";
 import { Container } from "./Containers";
-import sanitizeHtml from "sanitize-html";
 
 type Props = {
   team: TeamTypes;
-  teamStaff: StaffTypes;
   menus: MenusTypes;
 };
 
-export default function Team({ team, teamStaff, menus }: Props) {
+export default function Team({ team, menus }: Props) {
+  const currentMenuLabel = menus.nodes[0]?.menuItems.edges[1]?.node.label || "";
+  const currentMenuPath =
+    menus.nodes[0]?.menuItems.edges[1]?.node.path?.substring(1) || "";
+
   return (
-    <section id="team" aria-label="Team" className="bg-gray-100 py-24 sm:py-32">
+    <section
+      id={currentMenuPath}
+      aria-label={currentMenuLabel}
+      className="bg-gray-100 py-24 sm:py-32"
+    >
       <Container>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-5xl text-center sm:text-left lg:mx-8">
-            {menus.nodes.map((menu, i) => (
-              <p
-                className="text-base font-semibold leading-7 text-cyan-600"
-                key={i}
-              >
-                {menu.menuItems.edges[1].node.label}
-              </p>
-            ))}
+            <p className="text-base font-semibold leading-7 text-cyan-600">
+              {currentMenuLabel}
+            </p>
+
             <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
               {team.heading}
             </h2>
@@ -43,26 +45,24 @@ export default function Team({ team, teamStaff, menus }: Props) {
             role="list"
             className="mx-auto mt-20 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-16 text-center sm:grid-cols-3 md:grid-cols-4 lg:mx-0 lg:max-w-none lg:grid-cols-5 xl:grid-cols-6"
           >
-            {teamStaff.map((person) => (
-              <li key={person.node.id}>
+            {team.staff.map((person, i) => (
+              <li key={i}>
                 <Image
                   className="mx-auto rounded-full"
                   width={96}
                   height={96}
-                  src={person.node.featuredImage.node.sourceUrl}
-                  alt={person.node.featuredImage.node.altText}
+                  src={person.picture.mediaItemUrl}
+                  alt={person.picture.altText}
                 />
                 <h3 className="mt-6 text-base font-semibold leading-7 tracking-tight text-gray-900">
-                  {person.node.title}
+                  {person.name}
                 </h3>
-
-                <div
-                  className="text-sm leading-6 text-gray-600"
-                  data-is-seen
-                  dangerouslySetInnerHTML={{
-                    __html: sanitizeHtml(person.node.content),
-                  }}
-                />
+                <p className="text-sm leading-6 text-gray-600">
+                  {person.position}
+                </p>
+                <p className="text-sm leading-6 text-gray-600">
+                  {person.department}
+                </p>
               </li>
             ))}
           </ul>

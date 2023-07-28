@@ -13,22 +13,22 @@ export default function Hero({ settings, header }: Props) {
       <div className="relative isolate overflow-hidden pt-14">
         <Image
           className="absolute inset-0 -z-10 w-full bg-black object-cover opacity-30"
-          alt={header.backgroundImage.altText}
-          src={header.backgroundImage.sourceUrl}
+          alt={header.images.backgroundImage.altText}
+          src={header.images.backgroundImage.sourceUrl}
           fill
           priority
         />
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-          {header.teaser && (
+          {header.teaser.activate && (
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
               <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-100 ring-1 ring-white/10 hover:ring-white/20 lg:text-base">
-                {header.teaser}{" "}
+                {header.teaser.teaser}{" "}
                 <Link
-                  href={header.teaserButton.url}
+                  href={header.teaser.teaserButton.url}
                   className="font-semibold text-white"
                 >
                   <span className="absolute inset-0" aria-hidden="true" />
-                  {header.teaserButton.title}
+                  {header.teaser.teaserButton.title}
                   <span aria-hidden="true">&rarr;</span>
                 </Link>
               </div>
@@ -43,17 +43,17 @@ export default function Hero({ settings, header }: Props) {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
-                href={header.primaryButton.url}
+                href={header.buttons.primaryButton.url}
                 className="rounded-md bg-cyan-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                {header.primaryButton.title}
+                {header.buttons.primaryButton.title}
               </Link>
               <Link
-                // TODO: add queries for faq url and title
-                href={header.secondaryButton.url}
+                href={header.buttons.secondaryButton.url}
                 className="text-sm font-semibold leading-6 text-white"
               >
-                {header.secondaryButton.title} <span aria-hidden="true">→</span>
+                {header.buttons.secondaryButton.title}{" "}
+                <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>
