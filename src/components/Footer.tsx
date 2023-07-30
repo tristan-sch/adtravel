@@ -45,12 +45,11 @@ export default function Footer({ footer }: Props) {
                 </Link>
               )}
               {footer.partnerLogos.map((partnerLogo, i) => (
-                <div key={i}>
+                <div className="hidden sm:flex" key={i}>
                   <Link
                     href={partnerLogo.partnerLogo?.imageLink?.imageLink ?? "/"}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hidden sm:flex"
                   >
                     <Image
                       width={100}

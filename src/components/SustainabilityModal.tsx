@@ -73,7 +73,7 @@ export default function SustainabilityModal({
                           className="relative sm:mt-10 md:mt-8 lg:px-8"
                         >
                           <dt className="text-sm leading-6 text-gray-900">
-                            <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg">
+                            <div className="absolute left-0 top-0 flex hidden h-10 w-10 items-center justify-center rounded-lg lg:block">
                               <CheckIcon
                                 className="absolute left-0 top-1 h-5 w-5 text-cyan-700"
                                 aria-hidden="true"

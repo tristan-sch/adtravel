@@ -4,7 +4,7 @@ import Header from "components/Header";
 import Hero from "components/Hero";
 import Team from "components/Team";
 import About from "components/About";
-import Footer from "components/Footers";
+import Footer from "components/Footer";
 import Sustainability from "components/Sustainability";
 import Faq from "components/Faq";
 import Contact from "components/Contact";
