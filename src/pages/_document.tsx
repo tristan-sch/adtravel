@@ -4,7 +4,7 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
-} from 'next/document'
+} from "next/document";
 
 /**
  * @class MyDocument
@@ -17,9 +17,9 @@ class MyDocument extends Document {
     /** Uncomment to force usintg prod CSS styles locally and have the same experiance as on dev/test/staging  */
     // setStyleServerUrl(HANNA_STYLES_URL_PROD);
 
-    const { html, head } = await renderPage()
+    const { html, head } = await renderPage();
 
-    return { html, head }
+    return { html, head };
   }
 
   /**
@@ -30,7 +30,7 @@ class MyDocument extends Document {
   render(): JSX.Element {
     return (
       <Html
-        className="h-full scroll-smooth bg-white antialiased [font-feature-settings:'ss01']"
+        className="h-full bg-white antialiased [font-feature-settings:'ss01']"
         lang="en"
       >
         <Head>
@@ -58,8 +58,8 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
 
-export default MyDocument
+export default MyDocument;
