@@ -9,7 +9,7 @@ type Props = {
 
 export default function Banner({ closeBanner, banner }: Props) {
   return (
-    <div className="bottom-5 flex items-center gap-x-6 bg-gray-700 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
+    <div className="bottom-5 flex items-center gap-x-6 bg-cyan-700 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
       <p className="text-sm leading-6 text-white">
         <Link href={banner.link} target="_blank" rel="noopener noreferrer">
           <strong className="font-semibold">{banner.textblock}</strong>

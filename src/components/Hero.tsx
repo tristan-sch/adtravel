@@ -18,10 +18,10 @@ export default function Hero({ settings, header }: Props) {
           fill
           priority
         />
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div className="mx-auto -mt-10 max-w-2xl py-32 sm:py-48 lg:py-56">
           {header.teaser.activate && (
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-              <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-100 ring-1 ring-white/10 hover:ring-white/20 lg:text-base">
+              <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-100 ring-1 ring-white/10 hover:ring-white/20">
                 {header.teaser.teaser}{" "}
                 <Link
                   href={header.teaser.teaserButton.url}
@@ -35,10 +35,10 @@ export default function Hero({ settings, header }: Props) {
             </div>
           )}
           <div className="text-center">
-            <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-white sm:text-7xl">
-              {settings.title}
+            <h1 className="mx-auto max-w-4xl font-openSans text-4xl font-medium tracking-tight text-white sm:text-6xl">
+              {header.heading}
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-gray-100">
+            <p className="mx-auto mt-6 max-w-2xl text-base tracking-tight text-gray-100">
               {header.textblock}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">

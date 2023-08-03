@@ -79,7 +79,6 @@ export default function Header({
                 </div>
               ))}
             </>
-
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
               <h3 className="text-base font-semibold leading-6 text-white">
                 {settings.description}
