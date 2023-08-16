@@ -1,5 +1,5 @@
-import { MenusTypes, TeamTypes } from "types/queryTypes";
 import Image from "next/image";
+import { MenusTypes, TeamTypes } from "types/queryTypes";
 import { Container } from "./Containers";
 
 type Props = {
@@ -28,7 +28,13 @@ export default function Team({ team, menus }: Props) {
             <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
               {team.heading}
             </h2>
-            <div className="mt-6 grid max-w-xl grid-cols-1  gap-x-16 gap-y-10 text-justify lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+            <div
+              className={`mt-6 grid max-w-xl grid-cols-1 gap-x-20 gap-y-10 text-justify  ${
+                team.textblockSecondary
+                  ? "lg:max-w-none lg:grid-cols-2 lg:gap-y-16"
+                  : "lg:max-w-xl"
+              } `}
+            >
               {team.textblock && (
                 <p className="mt-6 text-lg leading-8 text-gray-600">
                   {team.textblock}

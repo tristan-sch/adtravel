@@ -192,21 +192,17 @@ export async function getSustainability() {
             sourceUrl
             altText
           }
-          actions {
-            actionPoints {
-              heading
-              textblock
-            }
-            onTheGround {
-              heading
-              onTheGroundActions {
-                actions
-              }
-            }
-            atTheOffice {
-              heading
-              atTheOfficeActions {
-                actions
+          actionsGroup {
+            heading
+            textblock
+            actions {
+              actionsPoints {
+                current
+                actionsHeading
+                actions {
+                  heading
+                  textblock
+                }
               }
             }
           }

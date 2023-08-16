@@ -66,20 +66,18 @@ type Staff = {
 export interface TeamTypes extends Content {
   staff: Staff[];
 }
-
-export type Action = { actions: string };
 export interface SustainabilityTypes extends Content {
   image: CustomImage;
-  actions: {
-    actionPoints: Content[];
-    onTheGround: {
-      heading: string;
-      onTheGroundActions: Action[];
-    };
-    atTheOffice: {
-      heading: string;
-      atTheOfficeActions: Action[];
-    };
+  actionsGroup: {
+    heading: string;
+    textblock: string;
+    actions: {
+      actionsPoints: {
+        actionsHeading: string;
+        actions: Content[];
+        current: boolean;
+      };
+    }[];
   };
 }
 
