@@ -68,6 +68,7 @@ export interface TeamTypes extends Content {
 }
 export interface SustainabilityTypes extends Content {
   image: CustomImage;
+  logo: CustomImage;
   actionsGroup: {
     heading: string;
     textblock: string;

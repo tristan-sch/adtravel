@@ -192,6 +192,13 @@ export async function getSustainability() {
             sourceUrl
             altText
           }
+          logo {
+            sourceUrl
+            altText
+            imageLink {
+              imageLink
+            }
+          }
           actionsGroup {
             heading
             textblock

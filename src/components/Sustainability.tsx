@@ -4,6 +4,7 @@ import { useState } from "react";
 import { MenusTypes, SustainabilityTypes } from "../types/queryTypes";
 import { Content } from "types/sharedTypes";
 import sanitizeHtml from "sanitize-html";
+import Link from "next/link";
 
 type Props = {
   menus: MenusTypes;
@@ -19,12 +20,14 @@ export default function Sustainability({ menus, sustainability }: Props) {
   const currentMenuPath =
     menus.nodes[0]?.menuItems.edges[2]?.node.path?.substring(1) || "";
 
+  console.log("sustainability:", sustainability);
+
   const initialActions = sustainability.actionsGroup.actions.map(
     (initialAction) => [
       {
         name: initialAction.actionsPoints.actionsHeading,
         current: !!initialAction.actionsPoints.current ?? false,
-        actions: initialAction.actionsPoints.actions.map((action) => [
+        actions: initialAction.actionsPoints.actions?.map((action) => [
           { heading: action.heading, textblock: action.textblock },
         ]),
       },
@@ -84,15 +87,46 @@ export default function Sustainability({ menus, sustainability }: Props) {
             <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
               {sustainability.heading}
             </h2>
+
             <div className="mt-6 grid max-w-xl grid-cols-1 gap-x-16 gap-y-10 text-justify lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
               {sustainability.textblock && (
                 <p className="mt-6 text-lg leading-8 text-gray-600">
                   {sustainability.textblock}
                 </p>
               )}
+              {sustainability.logo && (
+                <div
+                  className={`flex items-center  ${
+                    sustainability.textblock
+                      ? "justify-center"
+                      : "justify-start"
+                  } `}
+                >
+                  <Link
+                    href={sustainability.logo?.imageLink?.imageLink ?? "/"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src={sustainability.logo.sourceUrl}
+                      alt={sustainability.logo.altText}
+                      width={300}
+                      height={116}
+                    />
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <div className="mt-6 grid max-w-xl grid-cols-1 gap-x-16 gap-y-10 text-justify lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
               {sustainability.textblockSecondary && (
                 <p className="mt-6 text-lg leading-8 text-gray-600">
                   {sustainability.textblockSecondary}
+                </p>
+              )}
+              {sustainability.textblockTertiary && (
+                <p className="mt-6 text-lg leading-8 text-gray-600">
+                  {sustainability.textblockTertiary}
                 </p>
               )}
             </div>
