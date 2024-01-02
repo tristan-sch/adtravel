@@ -62,7 +62,6 @@ export default function Home({
   const [isBanner, setIsBanner] = useState(true);
   const isBannerActivated = banner.activate;
 
-  console.log("sustainability:", sustainability);
   return (
     <>
       <Head>
