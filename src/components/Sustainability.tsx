@@ -20,8 +20,6 @@ export default function Sustainability({ menus, sustainability }: Props) {
   const currentMenuPath =
     menus.nodes[0]?.menuItems.edges[2]?.node.path?.substring(1) || "";
 
-  console.log("sustainability:", sustainability);
-
   const initialActions = sustainability.actionsGroup.actions.map(
     (initialAction) => [
       {
