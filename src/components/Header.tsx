@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Dialog } from "@headlessui/react";
+import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,132 +27,114 @@ export default function Header({
   header,
 }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentMenuItem, setCurrentMenuItem] = useState("");
+
+  const handleMenuItemClick = (path: string) => {
+    setCurrentMenuItem(path);
+    setMobileMenuOpen(false);
+  };
 
   return (
-    <div className="bg-gray-900">
-      <header
-        className={`absolute inset-x-0 ${isBanner ? "top-15" : "top-0"} z-50`}
-      >
-        <Container>
+    <header className="absolute inset-x-0 top-0 z-50">
+      <div className="mx-auto max-w-7xl">
+        <div className="px-6 pt-6 lg:max-w-2xl lg:pl-8 lg:pr-0">
           <nav
-            className="flex items-center justify-between p-6 lg:px-8"
             aria-label="Global"
+            className="flex items-center justify-between lg:justify-start"
           >
-            {header.images.logo.sourceUrl && (
-              <div className="flex lg:flex-1">
-                <a href="#" className="-m-1.5 p-1.5">
-                  <span className="sr-only">{settings.title}</span>
-                  <Image
-                    src={header.images.logo.sourceUrl}
-                    alt={header.images.logo.altText}
-                    width={133}
-                    height={94}
-                  />
-                </a>
-              </div>
-            )}
-            <div className="flex lg:hidden">
-              <button
-                type="button"
-                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
-                onClick={() => setMobileMenuOpen(true)}
-              >
-                <span className="sr-only">Open main menu</span>
-                <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-              </button>
-            </div>
-            <>
+            <Link href="#" className="-m-1.5 p-1.5">
+              <span className="sr-only">{settings.title}</span>
+              {header.images.logo.sourceUrl && (
+                <Image
+                  src="/logo.png"
+                  alt={header.images.logo.altText}
+                  width={133}
+                  height={94}
+                />
+              )}
+            </Link>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(true)}
+              className="-m-2.5 rounded-md p-2.5 text-cyan-700 lg:hidden"
+            >
+              <span className="sr-only">Open main menu</span>
+              <Bars3Icon aria-hidden="true" className="h-6 w-6" />
+            </button>
+            <div className="hidden lg:ml-12 lg:flex lg:gap-x-14">
               {menus.nodes.map((menu, i) => (
                 <div key={i} className="hidden lg:flex lg:gap-x-12">
                   {menu.menuItems.edges.map(({ node }) => (
                     <div key={node.id}>
-                      <div>
-                        <Link
-                          href={node.path}
-                          className="text-sm font-semibold leading-6 text-white"
-                        >
-                          <div>{node.label}</div>
-                        </Link>
-                      </div>
+                      <Link
+                        href={node.path}
+                        className="whitespace-nowrap text-sm font-semibold leading-6 text-gray-900"
+                      >
+                        {node.label}
+                      </Link>
                     </div>
                   ))}
                 </div>
               ))}
-            </>
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              <h3 className="text-base font-semibold leading-6 text-white">
-                {settings.description}
-              </h3>
             </div>
           </nav>
-          <Dialog
-            as="div"
-            className="lg:hidden"
-            open={mobileMenuOpen}
-            onClose={setMobileMenuOpen}
-          >
-            <div className="fixed inset-0 z-50" />
-            <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-700 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
-              <div className="flex items-center justify-between">
-                <Link href="#" className="-m-1.5 p-1.5">
-                  <span className="sr-only">{settings.title}</span>
-                  {header.images.logo.sourceUrl && (
-                    <Image
-                      src={header.images.logo.sourceUrl}
-                      alt={header.images.logo.altText}
-                      width={133}
-                      height={94}
-                    />
-                  )}
-                </Link>
-                <button
-                  type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-white"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <span className="sr-only">Close menu</span>
-                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
-              </div>
-              <div className="mt-6 flow-root">
-                <div className="-my-6 divide-y divide-gray-500/25">
-                  <>
-                    {menus.nodes.map((menu, i) => (
-                      <div key={i} className="space-y-2 py-6">
-                        {menu.menuItems.edges.map(({ node }) => (
-                          <div key={node.id}>
-                            <div>
-                              <Link
-                                href={node.path}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-cyan-700"
-                              >
-                                <div>{node.label}</div>
-                              </Link>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    ))}
-                  </>
-                  <div className="py-6">
-                    {contact.contactUs.map((contactItem, i) => (
-                      <div key={i}>
-                        <Link
-                          href={contactItem?.link?.url ?? "/"}
-                          className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-cyan-700"
-                        >
-                          {contactItem?.link?.title}
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
+        </div>
+      </div>
+      <Dialog
+        open={mobileMenuOpen}
+        onClose={setMobileMenuOpen}
+        className="lg:hidden"
+      >
+        <div className="fixed inset-0 z-50" />
+        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div className="flex items-center justify-between">
+            <Link href="#" className="-m-1.5 p-1.5">
+              <span className="sr-only">{settings.title}</span>
+              {header.images.logo.sourceUrl && (
+                <Image
+                  // TODO: update the src attribute to the correct path
+                  src="/logo.png"
+                  alt={header.images.logo.altText}
+                  width={133}
+                  height={94}
+                />
+              )}
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(false)}
+              className="-m-2.5 rounded-md p-2.5 text-cyan-700"
+            >
+              <span className="sr-only">Close menu</span>
+              <XMarkIcon aria-hidden="true" className="h-6 w-6" />
+            </button>
+          </div>
+          <div className="mt-6 flow-root">
+            <div className="-my-6 divide-y divide-gray-500/10">
+              {menus.nodes.map((menu, i) => (
+                <div key={i} className="space-y-2 py-6">
+                  {menu.menuItems.edges.map(({ node }) => (
+                    <div key={node.id}>
+                      <Link
+                        href={node.path}
+                        onClick={() => handleMenuItemClick(node.path)}
+                        className={`block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6 ${
+                          currentMenuItem === node.path
+                            ? "border-l-4 border-cyan-700 bg-cyan-50 text-cyan-700"
+                            : "border-l-4 border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+                        }`}
+                      >
+                        {node.label}
+                      </Link>
+                    </div>
+                  ))}
                 </div>
-              </div>
-            </Dialog.Panel>
-          </Dialog>
-        </Container>
-      </header>
-    </div>
+              ))}
+            </div>
+          </div>
+        </DialogPanel>
+      </Dialog>
+    </header>
   );
 }

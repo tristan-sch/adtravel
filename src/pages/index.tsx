@@ -72,15 +72,22 @@ export default function Home({
       {isBannerActivated && isBanner && (
         <Banner closeBanner={() => setIsBanner(false)} banner={banner} />
       )}
-      <Header
+      {/* <Header
         settings={settings}
         menus={menus}
         contact={contact}
         isBanner={isBanner}
         header={header}
-      />
+      /> */}
       <main>
-        <Hero settings={settings} header={header} />
+        {/* <Hero settings={settings} header={header} /> */}
+        <Hero
+          settings={settings}
+          menus={menus}
+          contact={contact}
+          isBanner={isBanner}
+          header={header}
+        />
         <About menus={menus} about={about} />
         <Team team={team} menus={menus} />
         <Sustainability menus={menus} sustainability={sustainability} />
