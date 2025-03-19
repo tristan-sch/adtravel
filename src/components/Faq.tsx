@@ -17,11 +17,11 @@ export default function Faq({ menus, faq }: Props) {
     <section
       id={currentMenuPath}
       aria-label={currentMenuLabel}
-      className="bg-gray-100 py-24 sm:py-32"
+      className="py-24 sm:py-32"
     >
       <Container>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:text-center">
+          <div className="mx-auto max-w-4xl">
             <p className="text-base font-semibold leading-7 text-cyan-700">
               {currentMenuLabel}
             </p>

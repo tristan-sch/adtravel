@@ -1,6 +1,8 @@
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { Container } from "./Containers";
 import { AboutTypes, MenusTypes } from "types/queryTypes";
+import { SectionHeader } from "./Text/SectionHeader";
+import { ContainerWithBackground } from "./ContainerWithBackground";
 
 type Props = {
   menus: MenusTypes;
@@ -15,37 +17,30 @@ export default function About({ menus, about }: Props) {
   return (
     <section
       id={currentMenuPath}
-      aria-label={currentMenuLabel}
-      className="bg-white py-24 sm:py-32"
+      aria-label={`${currentMenuPath}-heading`}
+      className="py-24 sm:py-32"
     >
-      <Container>
+      <ContainerWithBackground>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:text-center">
-            <p className="text-base font-semibold leading-7 text-cyan-700">
-              {currentMenuLabel}
-            </p>
-            <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
-              {about.heading}
-            </h2>
-            {about.textblock && (
-              <p className="mt-6 text-lg leading-8 text-gray-600">
-                {about.textblock}
-              </p>
-            )}
-            {about.textblockSecondary && (
-              <p className="mt-6 text-lg leading-8 text-gray-600">
-                {about.textblockSecondary}
-              </p>
-            )}
+          <div className="">
+            <div className="max-w-3xl">
+              <SectionHeader
+                headingId="features-heading"
+                currentMenuLabel={currentMenuLabel}
+                headingText={about.heading}
+                description={about.textblock}
+                descriptionSecondary={about.textblockSecondary}
+              />
+            </div>
           </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
               {about.services.map((service, i) => (
-                <div key={i} className="relative pl-8">
+                <div key={i} className="relative pl-16">
                   <dt className="text-base font-semibold leading-7 text-gray-900">
-                    <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg">
+                    <div className="absolute left-0 top-0 flex h-7 w-7 items-center justify-center rounded-lg bg-cyan-700">
                       <CheckIcon
-                        className="absolute left-0 top-1 h-5 w-5 text-cyan-700"
+                        className="h-5 w-5 text-white"
                         aria-hidden="true"
                       />
                     </div>
@@ -59,7 +54,7 @@ export default function About({ menus, about }: Props) {
             </dl>
           </div>
         </div>
-      </Container>
+      </ContainerWithBackground>
     </section>
   );
 }

@@ -1,5 +1,4 @@
 import { ContactTypes, MenusTypes } from "types/queryTypes";
-import { Container } from "./Containers";
 import Link from "next/link";
 
 type Props = {
@@ -16,43 +15,44 @@ export default function Contact({ contact, menus }: Props) {
     <section
       id={currentMenuPath}
       aria-label={currentMenuLabel}
-      className="bg-white pb-16 pt-24 sm:pb-24 sm:pt-32"
+      className="py-8 sm:py-16"
     >
-      <Container>
-        <div className="text-center">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl">
-              <p className="text-base font-semibold leading-7 text-cyan-700">
-                {currentMenuLabel}
-              </p>
-              <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl divide-y divide-gray-100 lg:mx-0 lg:max-w-none">
+          <div className="grid grid-cols-1 gap-10 py-16 lg:grid-cols-3">
+            <div>
+              <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900">
                 {contact.heading}
               </h2>
-              <p className="mt-4 leading-7 text-gray-600">
+              <p className="mt-4 text-base/7 text-gray-600">
                 {contact.textblock}
               </p>
             </div>
-            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">
               {contact.contactUs.map((contactItem, i) => (
-                <div key={i}>
-                  <h3 className="sm:border-cyan- font-semibold text-gray-900 sm:border-l sm:pl-6">
+                <div className="rounded-2xl bg-gray-50 p-10" key={i}>
+                  <h3 className="text-base/7 font-semibold text-gray-900">
                     {contactItem.heading}
                   </h3>
-                  <div className="pt-2 not-italic text-gray-600 sm:border-l sm:border-gray-200 sm:pl-6">
-                    <p>{contactItem.textblock}</p>
-                    <Link
-                      className="font-semibold text-cyan-700"
-                      href={contactItem?.link?.url ?? "/"}
-                    >
-                      {contactItem?.link?.title}
-                    </Link>
-                  </div>
+                  <dl className="mt-3 space-y-1 text-sm/6 text-gray-600">
+                    <div>
+                      <p className="font-semibold text-cyan-700">
+                        {contactItem.textblock}
+                      </p>
+                    </div>
+
+                    <div className="mt-1">
+                      <Link href={contactItem?.link?.url ?? "/"}>
+                        <p>{contactItem?.link?.title}</p>
+                      </Link>
+                    </div>
+                  </dl>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

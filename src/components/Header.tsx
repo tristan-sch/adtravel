@@ -15,17 +15,10 @@ type Props = {
   menus: MenusTypes;
   header: HeaderTypes;
   settings: SettingsTypes;
-  contact: ContactTypes;
   isBanner?: boolean;
 };
 
-export default function Header({
-  menus,
-  settings,
-  contact,
-  isBanner,
-  header,
-}: Props) {
+export default function Header({ menus, settings, isBanner, header }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentMenuItem, setCurrentMenuItem] = useState("");
 

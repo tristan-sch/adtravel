@@ -33,7 +33,7 @@ export default function Footer({ footer }: Props) {
                 </div>
               ))}
             </nav>
-            <div className="mt-10 flex justify-center space-x-10">
+            <div className="mt-10 flex items-center justify-center space-x-10">
               {footer.logo.sourceUrl && (
                 <Link href="/">
                   <Image
@@ -44,6 +44,16 @@ export default function Footer({ footer }: Props) {
                   />
                 </Link>
               )}
+              <div className="justify-center space-x-10">
+                <Link href={"/"} target="_blank" rel="noopener noreferrer">
+                  <Image
+                    width={150}
+                    height={100}
+                    src="/travellife-partner.png"
+                    alt=""
+                  />
+                </Link>
+              </div>
               {footer.partnerLogos.map((partnerLogo, i) => (
                 <div className="hidden sm:flex" key={i}>
                   <Link

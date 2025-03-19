@@ -44,9 +44,10 @@ module.exports = {
         nunito: ["Nunito", ...defaultTheme.fontFamily.sans],
         openSans: ["Open Sans", ...defaultTheme.fontFamily.sans],
       },
-      // maxWidth: {
-      //   "2xl": "40rem",
-      // },
+      maxWidth: {
+        "7.5xl": "84rem", // 1344px
+        "8xl": "88rem", // 1408px
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],

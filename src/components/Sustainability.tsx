@@ -5,6 +5,12 @@ import { MenusTypes, SustainabilityTypes } from "../types/queryTypes";
 import { Content } from "types/sharedTypes";
 import sanitizeHtml from "sanitize-html";
 import Link from "next/link";
+import { SectionHeader } from "./Text/SectionHeader";
+import {
+  CloudArrowUpIcon,
+  LockClosedIcon,
+  ServerIcon,
+} from "@heroicons/react/20/solid";
 
 type Props = {
   menus: MenusTypes;
@@ -76,142 +82,60 @@ export default function Sustainability({ menus, sustainability }: Props) {
       aria-label={currentMenuLabel}
       className="bg-white py-24 sm:py-32"
     >
-      <Container>
-        <div className="mx-auto -mt-12 max-w-7xl px-6 sm:mt-0 lg:px-8 xl:-mt-8">
-          <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-            <p className="text-base font-semibold leading-7 text-cyan-600">
-              {currentMenuLabel}
-            </p>
-            <h2 className="mt-2 font-display text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
-              {sustainability.heading}
-            </h2>
-
-            <div className="mt-6 grid max-w-xl grid-cols-1 gap-x-16 gap-y-10 text-justify lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-              {sustainability.textblock && (
-                <p className="mt-6 text-lg leading-8 text-gray-600">
-                  {sustainability.textblock}
-                </p>
-              )}
-              {sustainability.logo && (
-                <div
-                  className={`flex items-center  ${
-                    sustainability.textblock
-                      ? "justify-center"
-                      : "justify-start"
-                  } `}
-                >
-                  <Link
-                    href={sustainability.logo?.imageLink?.imageLink ?? "/"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      src={sustainability.logo.sourceUrl}
-                      alt={sustainability.logo.altText}
-                      width={300}
-                      height={116}
-                    />
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <div className="mt-6 grid max-w-xl grid-cols-1 gap-x-16 gap-y-10 text-justify lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-              {sustainability.textblockSecondary && (
-                <p className="mt-6 text-lg leading-8 text-gray-600">
-                  {sustainability.textblockSecondary}
-                </p>
-              )}
-              {sustainability.textblockTertiary && (
-                <p className="mt-6 text-lg leading-8 text-gray-600">
-                  {sustainability.textblockTertiary}
-                </p>
-              )}
+      <div className="relative bg-white">
+        <div className="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
+          <div className="lg:flex lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
+            <div className="relative h-80 lg:-ml-8 lg:h-auto lg:w-full lg:grow xl:ml-0">
+              <img
+                alt=""
+                src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=2560&h=3413&&q=80"
+                className="size-full absolute inset-0 bg-gray-50 object-cover"
+              />
             </div>
           </div>
-        </div>
+          <div className="px-6 lg:contents">
+            <div className="mx-auto max-w-2xl pb-24 pt-16 sm:pb-32 sm:pt-20 lg:ml-8 lg:mr-0 lg:w-full lg:max-w-lg lg:flex-none lg:pt-32 xl:w-1/2">
+              <p className="text-base/7 font-semibold text-indigo-600">
+                Deploy faster
+              </p>
+              <h1 className="text-pretty mt-2 text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                A better workflow
+              </h1>
+              <p className="mt-6 text-xl/6 text-gray-700">
+                The acknowledgment of the "Travelife Partner" award reflects our
+                dedication to social and environmental sustainability. We adhere
+                to over 145 criteria encompassing sustainability management,
+                office operations, collaboration with suppliers, and
+                communication with customers. Our ongoing efforts are geared
+                towards continual enhancements with the ultimate goal of
+                attaining the "Travelife Certified" status, complying to 230
+                criteria.
+              </p>
+              <div className="mt-10 max-w-xl text-base/7 text-gray-700 lg:max-w-none">
+                <p>
+                  At AD Travel, we are steadfast in our commitment to fostering
+                  sustainable growth in our business operations. Recognising the
+                  profound importance of the environment, communities, and
+                  cultures that surround us, we acknowledge that their
+                  well-being is integral to the success of our enterprise.
+                </p>
 
-        {/* Image section */}
-        {sustainability.image && (
-          <div className="mt-20 xl:mx-auto xl:max-w-7xl xl:px-8">
-            <Image
-              src={sustainability.image.sourceUrl}
-              alt={sustainability.image.altText}
-              className="aspect-[5/2] w-full object-cover xl:rounded-3xl"
-              width={2432}
-              height={1442}
-            />
-          </div>
-        )}
-
-        {/* Values section */}
-        <div className="mx-auto mt-20 max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="font-display text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl">
-              {sustainability.actionsGroup.heading}
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              {sustainability.actionsGroup.textblock}
-            </p>
-          </div>
-          <div className="mt-10 ">
-            <div className="sm:hidden">
-              <label htmlFor="tabs" className="sr-only">
-                Select a tab
-              </label>
-              <select
-                id="tabs"
-                name="tabs"
-                className="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
-                onChange={handleSelectChange}
-              >
-                {actions.map((action, i) => (
-                  <option key={i}>{action[0].name}</option>
-                ))}
-              </select>
-            </div>
-            <div className="hidden sm:block">
-              <div className="border-b border-gray-200">
-                <nav className="-mb-px flex justify-between" aria-label="Tabs">
-                  {actions.map((tab, i) => (
-                    <button
-                      key={i}
-                      onClick={() => handleTabClick(tab[0].name)}
-                      className={classNames(
-                        tab[0].current
-                          ? "border-cyan-600 text-cyan-600"
-                          : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                        "w-1/4 border-b-2 px-1 py-4 text-center text-sm font-medium"
-                      )}
-                      aria-current={tab[0].current ? "page" : undefined}
-                    >
-                      {tab[0].name}
-                    </button>
-                  ))}
-                </nav>
+                <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">
+                  Responsible travel
+                </h2>
+                <p className="mt-6">
+                  Responsible travel is a cornerstone of our company's identity.
+                  We aspire to magnify the positive impacts of tourism on
+                  individuals and local communities while mitigating negative
+                  social, environmental, and economic effects. Our dedication to
+                  sustainability is an ongoing endeavour involving every member
+                  of our company.
+                </p>
               </div>
             </div>
           </div>
-          <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-20 gap-y-16 text-base leading-7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {currentActionsPoints.map((currentActionsPoint, i) => (
-              <div key={i}>
-                <dt className="font-semibold text-gray-900">
-                  {currentActionsPoint.heading}
-                </dt>
-                {currentActionsPoint.textblock && (
-                  <div className="mt-1 text-justify text-gray-600">
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: sanitizeHtml(currentActionsPoint.textblock),
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-            ))}
-          </dl>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

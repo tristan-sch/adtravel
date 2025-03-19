@@ -33,6 +33,7 @@ import {
   getBanner,
   getFooter,
 } from "./api/api";
+import { Layout } from "components/Layout";
 
 type Props = {
   settings: SettingsTypes;
@@ -72,29 +73,20 @@ export default function Home({
       {isBannerActivated && isBanner && (
         <Banner closeBanner={() => setIsBanner(false)} banner={banner} />
       )}
-      {/* <Header
+      <Layout
         settings={settings}
         menus={menus}
-        contact={contact}
-        isBanner={isBanner}
+        banner={banner}
         header={header}
-      /> */}
-      <main>
-        {/* <Hero settings={settings} header={header} /> */}
-        <Hero
-          settings={settings}
-          menus={menus}
-          contact={contact}
-          isBanner={isBanner}
-          header={header}
-        />
+        footer={footer}
+      >
+        <Hero header={header} />
         <About menus={menus} about={about} />
         <Team team={team} menus={menus} />
         <Sustainability menus={menus} sustainability={sustainability} />
         <Faq menus={menus} faq={faq} />
         <Contact menus={menus} contact={contact} />
-      </main>
-      <Footer footer={footer} />
+      </Layout>
     </>
   );
 }
