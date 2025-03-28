@@ -4,9 +4,10 @@ import Link from "next/link";
 type Props = {
   contact: ContactTypes;
   menus: MenusTypes;
+  containerClasses?: string;
 };
 
-export default function Contact({ contact, menus }: Props) {
+export default function Contact({ contact, menus, containerClasses }: Props) {
   const currentMenuLabel = menus.nodes[0]?.menuItems.edges[4]?.node.label || "";
   const currentMenuPath =
     menus.nodes[0]?.menuItems.edges[4]?.node.path?.substring(1) || "";
@@ -15,7 +16,7 @@ export default function Contact({ contact, menus }: Props) {
     <section
       id={currentMenuPath}
       aria-label={currentMenuLabel}
-      className="py-8 sm:py-16"
+      className={`py-8 sm:py-16 ${containerClasses}`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl divide-y divide-gray-100 lg:mx-0 lg:max-w-none">

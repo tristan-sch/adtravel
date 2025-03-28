@@ -1,4 +1,3 @@
-import { Container } from "../components/Containers";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,7 +5,7 @@ export default function ErrorPage() {
   return (
     <>
       <main className="pb-16 pt-24 sm:pb-24 sm:pt-32">
-        <Container>
+        <div>
           <Image
             src="/404.png"
             alt="Photo of landscape in Iceland"
@@ -31,7 +30,7 @@ export default function ErrorPage() {
               </Link>
             </div>
           </div>
-        </Container>
+        </div>
       </main>
     </>
   );

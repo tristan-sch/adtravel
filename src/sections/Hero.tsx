@@ -13,12 +13,13 @@ import Header from "./Header";
 
 type Props = {
   header: HeaderTypes;
+  containerClasses?: string;
 };
 
-export default function Hero({ header }: Props) {
+export default function Hero({ header, containerClasses }: Props) {
   return (
     <section aria-labelledby="hero-heading" className="relative">
-      <div className="mx-auto max-w-7xl">
+      <div className={`${containerClasses}`}>
         <div className="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
           <svg
             viewBox="0 0 100 100"

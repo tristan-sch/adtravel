@@ -1,27 +1,33 @@
 import Image from "next/image";
-import { Container } from "./Containers";
+
 import { useState } from "react";
 import { MenusTypes, SustainabilityTypes } from "../types/queryTypes";
 import { Content } from "types/sharedTypes";
 import sanitizeHtml from "sanitize-html";
 import Link from "next/link";
-import { SectionHeader } from "./Text/SectionHeader";
+import { SectionHeader } from "../components/Text/SectionHeader";
 import {
   CloudArrowUpIcon,
   LockClosedIcon,
   ServerIcon,
 } from "@heroicons/react/20/solid";
+import { SectionContainer } from "../components/SectionContainer";
 
 type Props = {
   menus: MenusTypes;
   sustainability: SustainabilityTypes;
+  containerClasses?: string;
 };
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Sustainability({ menus, sustainability }: Props) {
+export default function Sustainability({
+  menus,
+  sustainability,
+  containerClasses,
+}: Props) {
   const currentMenuLabel = menus.nodes[0]?.menuItems.edges[2]?.node.label || "";
   const currentMenuPath =
     menus.nodes[0]?.menuItems.edges[2]?.node.path?.substring(1) || "";
@@ -77,11 +83,7 @@ export default function Sustainability({ menus, sustainability }: Props) {
   };
 
   return (
-    <section
-      id={currentMenuPath}
-      aria-label={currentMenuLabel}
-      className="bg-white py-24 sm:py-32"
-    >
+    <SectionContainer id={currentMenuPath}>
       <div className="relative bg-white">
         <div className="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
           <div className="lg:flex lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
@@ -136,6 +138,6 @@ export default function Sustainability({ menus, sustainability }: Props) {
           </div>
         </div>
       </div>
-    </section>
+    </SectionContainer>
   );
 }

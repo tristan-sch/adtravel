@@ -1,13 +1,13 @@
 import { useState } from "react";
 import Head from "next/head";
-import Header from "components/Header";
-import Hero from "components/Hero";
-import Team from "components/Team";
-import About from "components/About";
-import Footer from "components/Footer";
-import Sustainability from "components/Sustainability";
-import Faq from "components/Faq";
-import Contact from "components/Contact";
+import Header from "sections/Header";
+import Hero from "sections/Hero";
+import Team from "sections/Team";
+import About from "sections/About";
+import Footer from "sections/Footer";
+import Sustainability from "sections/Sustainability";
+import Faq from "sections/Faq";
+import Contact from "sections/Contact";
 import Banner from "components/Banner";
 import {
   SettingsTypes,
@@ -62,6 +62,7 @@ export default function Home({
 }: Props) {
   const [isBanner, setIsBanner] = useState(true);
   const isBannerActivated = banner.activate;
+  const containerClasses = "mx-auto max-w-7.5xl";
 
   return (
     <>
@@ -80,12 +81,24 @@ export default function Home({
         header={header}
         footer={footer}
       >
-        <Hero header={header} />
-        <About menus={menus} about={about} />
-        <Team team={team} menus={menus} />
-        <Sustainability menus={menus} sustainability={sustainability} />
-        <Faq menus={menus} faq={faq} />
-        <Contact menus={menus} contact={contact} />
+        <Hero header={header} containerClasses="mx-auto max-w-7xl" />
+        <About
+          menus={menus}
+          about={about}
+          containerClasses={containerClasses}
+        />
+        <Team team={team} menus={menus} containerClasses={containerClasses} />
+        <Sustainability
+          menus={menus}
+          sustainability={sustainability}
+          containerClasses={containerClasses}
+        />
+        <Faq menus={menus} faq={faq} containerClasses={containerClasses} />
+        <Contact
+          menus={menus}
+          contact={contact}
+          containerClasses={containerClasses}
+        />
       </Layout>
     </>
   );

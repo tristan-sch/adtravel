@@ -1,7 +1,9 @@
 import Image from "next/image";
-import { Container } from "./Containers";
+
 import Link from "next/link";
 import { FooterTypes } from "types/queryTypes";
+import clsx from "clsx";
+import { sectionContainerClasses } from "styles/constants";
 
 type Props = {
   footer: FooterTypes;
@@ -10,7 +12,7 @@ type Props = {
 export default function Footer({ footer }: Props) {
   return (
     <footer className="bg-white" aria-labelledby="footer-heading">
-      <Container>
+      <div className={clsx("px-4 sm:px-6 lg:px-8", sectionContainerClasses)}>
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
@@ -77,7 +79,7 @@ export default function Footer({ footer }: Props) {
             </p>
           </div>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 }

@@ -1,7 +1,7 @@
 import { FC, ReactNode, useState } from "react";
 import Head from "next/head";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../sections/Header";
+import Footer from "../sections/Footer";
 import Banner from "./Banner";
 import {
   BannerTypes,
@@ -46,7 +46,7 @@ export const Layout: FC<PageProps> = ({
       {isBannerActivated && isBanner && (
         <Banner closeBanner={() => setIsBanner(false)} banner={banner} />
       )}
-      <div className="font-oswald mx-auto max-w-7.5xl">
+      <div className="font-oswald">
         <Header
           settings={settings}
           menus={menus}
