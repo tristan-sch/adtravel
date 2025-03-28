@@ -1,7 +1,9 @@
 import Image from "next/image";
-import { Container } from "./Containers";
+
 import Link from "next/link";
 import { FooterTypes } from "types/queryTypes";
+import clsx from "clsx";
+import { sectionContainerClasses } from "styles/constants";
 
 type Props = {
   footer: FooterTypes;
@@ -10,7 +12,7 @@ type Props = {
 export default function Footer({ footer }: Props) {
   return (
     <footer className="bg-white" aria-labelledby="footer-heading">
-      <Container>
+      <div className={clsx("px-4 sm:px-6 lg:px-8", sectionContainerClasses)}>
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
@@ -33,7 +35,7 @@ export default function Footer({ footer }: Props) {
                 </div>
               ))}
             </nav>
-            <div className="mt-10 flex justify-center space-x-10">
+            <div className="mt-10 flex items-center justify-center space-x-10">
               {footer.logo.sourceUrl && (
                 <Link href="/">
                   <Image
@@ -44,6 +46,16 @@ export default function Footer({ footer }: Props) {
                   />
                 </Link>
               )}
+              <div className="justify-center space-x-10">
+                <Link href={"/"} target="_blank" rel="noopener noreferrer">
+                  <Image
+                    width={150}
+                    height={100}
+                    src="/travellife-partner.png"
+                    alt=""
+                  />
+                </Link>
+              </div>
               {footer.partnerLogos.map((partnerLogo, i) => (
                 <div className="hidden sm:flex" key={i}>
                   <Link
@@ -67,7 +79,7 @@ export default function Footer({ footer }: Props) {
             </p>
           </div>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 }
