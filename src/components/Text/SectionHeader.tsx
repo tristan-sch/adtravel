@@ -22,7 +22,7 @@ export const SectionHeader = ({
       </p>
       <h2
         id={headingId}
-        className="mt-2 font-display text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl"
+        className="text-pretty mt-2 text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl"
       >
         {headingText}
       </h2>

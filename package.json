@@ -35,7 +35,6 @@
     "eslint-config-next": "13.0.2",
     "postcss": "^8.4.26",
     "prettier": "^2.8.7",
-    "prettier-plugin-tailwindcss": "^0.4.1",
-    "sharp": "^0.32.0"
+    "prettier-plugin-tailwindcss": "^0.4.1"
   }
 }

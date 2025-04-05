@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FooterTypes } from "types/queryTypes";
 import clsx from "clsx";
 import { sectionContainerClasses } from "styles/constants";
+import { NextImage } from "components/NextImage";
 
 type Props = {
   footer: FooterTypes;
@@ -38,7 +39,7 @@ export default function Footer({ footer }: Props) {
             <div className="mt-10 flex items-center justify-center space-x-10">
               {footer.logo.sourceUrl && (
                 <Link href="/">
-                  <Image
+                  <NextImage
                     src={footer.logo.sourceUrl}
                     alt={footer.logo.altText}
                     width={150}
@@ -48,11 +49,11 @@ export default function Footer({ footer }: Props) {
               )}
               <div className="justify-center space-x-10">
                 <Link href={"/"} target="_blank" rel="noopener noreferrer">
-                  <Image
+                  <NextImage
+                    src="/travelife-partner.png"
+                    alt=""
                     width={150}
                     height={100}
-                    src="/travellife-partner.png"
-                    alt=""
                   />
                 </Link>
               </div>
@@ -63,12 +64,11 @@ export default function Footer({ footer }: Props) {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Image
-                      width={100}
-                      height={100}
+                    <NextImage
                       src={partnerLogo.partnerLogo?.sourceUrl}
                       alt={partnerLogo.partnerLogo?.altText}
-                      className="logoFooter"
+                      width={100}
+                      height={100}
                     />
                   </Link>
                 </div>

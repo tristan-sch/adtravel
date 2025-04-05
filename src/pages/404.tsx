@@ -1,13 +1,15 @@
+import { NextImage } from "components/NextImage";
 import Image from "next/image";
 import Link from "next/link";
+import errorImage from "../../public/404.png";
 
 export default function ErrorPage() {
   return (
     <>
       <main className="pb-16 pt-24 sm:pb-24 sm:pt-32">
         <div>
-          <Image
-            src="/404.png"
+          <NextImage
+            src={errorImage}
             alt="Photo of landscape in Iceland"
             fill
             priority
