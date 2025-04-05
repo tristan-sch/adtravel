@@ -10,13 +10,15 @@ import {
 } from "types/queryTypes";
 import Link from "next/link";
 import Header from "./Header";
+import { NextImage } from "components/NextImage";
 
 type Props = {
   header: HeaderTypes;
+  settings: SettingsTypes;
   containerClasses?: string;
 };
 
-export default function Hero({ header, containerClasses }: Props) {
+export default function Hero({ header, settings, containerClasses }: Props) {
   return (
     <section aria-labelledby="hero-heading" className="relative">
       <div className={`${containerClasses}`}>
@@ -45,8 +47,8 @@ export default function Hero({ header, containerClasses }: Props) {
                   </Link>
                 </div>
               </div>
-              <h1 className="text-pretty font-openSans text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
-                {header.heading}
+              <h1 className="text-pretty font-openSans text-5xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                {settings.description}
               </h1>
               <p className="text-pretty mt-8 text-lg font-medium text-gray-500 sm:text-xl/8">
                 {header.textblock}
@@ -71,25 +73,21 @@ export default function Hero({ header, containerClasses }: Props) {
         </div>
       </div>
       <div className="hidden lg:absolute lg:inset-y-0 lg:right-0 lg:block lg:w-1/2 lg:bg-gray-50">
-        <Image
-          className="size-full aspect-[3/2] aspect-auto object-cover"
-          alt={header.images.backgroundImage.altText}
+        <NextImage
           src={header.images.backgroundImage.sourceUrl}
+          alt={header.images.backgroundImage.altText}
+          className="size-full aspect-[3/2] aspect-auto object-cover"
           fill
-          style={{ objectFit: "cover" }}
-          sizes="(max-width: 1024px) 100vw, 50vw"
         />
       </div>
 
       <div className="lg:hidden">
-        <Image
-          className="aspect-[3/2] object-cover"
-          alt={header.images.backgroundImage.altText}
+        <NextImage
           src={header.images.backgroundImage.sourceUrl}
+          alt={header.images.backgroundImage.altText}
           width={1920}
           height={1440}
-          style={{ objectFit: "cover" }}
-          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="aspect-[3/2] object-cover"
         />
       </div>
     </section>

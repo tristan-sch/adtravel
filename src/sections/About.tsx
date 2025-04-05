@@ -17,16 +17,14 @@ export default function About({ menus, about, containerClasses }: Props) {
   return (
     <SectionContainer id={currentMenuPath}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="">
-          <div className="max-w-3xl">
-            <SectionHeader
-              headingId="features-heading"
-              currentMenuLabel={currentMenuLabel}
-              headingText={about.heading}
-              description={about.textblock}
-              descriptionSecondary={about.textblockSecondary}
-            />
-          </div>
+        <div className="max-w-3xl">
+          <SectionHeader
+            headingId="features-heading"
+            currentMenuLabel={currentMenuLabel}
+            headingText={about.heading}
+            description={about.textblock}
+            descriptionSecondary={about.textblockSecondary}
+          />
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">

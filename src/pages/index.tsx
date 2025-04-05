@@ -5,7 +5,7 @@ import Hero from "sections/Hero";
 import Team from "sections/Team";
 import About from "sections/About";
 import Footer from "sections/Footer";
-import Sustainability from "sections/Sustainability";
+import Sustainability from "sections/Sustainability/Sustainability";
 import Faq from "sections/Faq";
 import Contact from "sections/Contact";
 import Banner from "components/Banner";
@@ -34,6 +34,7 @@ import {
   getFooter,
 } from "./api/api";
 import { Layout } from "components/Layout";
+import SustainabilityActions from "sections/Sustainability/SustainabilityActions";
 
 type Props = {
   settings: SettingsTypes;
@@ -81,18 +82,18 @@ export default function Home({
         header={header}
         footer={footer}
       >
-        <Hero header={header} containerClasses="mx-auto max-w-7xl" />
+        <Hero
+          header={header}
+          settings={settings}
+          containerClasses="mx-auto max-w-7xl"
+        />
         <About
           menus={menus}
           about={about}
           containerClasses={containerClasses}
         />
         <Team team={team} menus={menus} containerClasses={containerClasses} />
-        <Sustainability
-          menus={menus}
-          sustainability={sustainability}
-          containerClasses={containerClasses}
-        />
+        <Sustainability menus={menus} sustainability={sustainability} />
         <Faq menus={menus} faq={faq} containerClasses={containerClasses} />
         <Contact
           menus={menus}
