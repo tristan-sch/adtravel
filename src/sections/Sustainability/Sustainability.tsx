@@ -16,13 +16,13 @@ export const Sustainability = ({ menus, sustainability }: Props) => {
     menus.nodes[0]?.menuItems.edges[2]?.node.path?.substring(1) || ''
 
   return (
-    <SectionContainer id={currentMenuPath}>
+    <SectionContainer id={currentMenuPath} className="pt-0 sm:py-24">
       <SustainabilityDescription menus={menus} sustainability={sustainability} />
       <SustainabilityActions menus={menus} sustainability={sustainability} />
       {/* TODO: add query for CTA */}
       <CallToAction
         text="If you have any questions or feedback regarding sustainability, please send us an email."
-        buttonText="contact[at]adtravel.is"
+        buttonText="contact@adtravel.is"
         onClick={() => {}}
         label="We care about your feedback."
       />
