@@ -1,10 +1,4 @@
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-} from "next/document";
+import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
 
 /**
  * @class MyDocument
@@ -17,9 +11,9 @@ class MyDocument extends Document {
     /** Uncomment to force usintg prod CSS styles locally and have the same experiance as on dev/test/staging  */
     // setStyleServerUrl(HANNA_STYLES_URL_PROD);
 
-    const { html, head } = await renderPage();
+    const { html, head } = await renderPage()
 
-    return { html, head };
+    return { html, head }
   }
 
   /**
@@ -58,8 +52,8 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
-export default MyDocument;
+export default MyDocument

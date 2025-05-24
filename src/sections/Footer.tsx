@@ -1,19 +1,19 @@
-import Image from "next/image";
+import clsx from 'clsx'
+import { sectionContainerClasses } from 'styles/constants'
 
-import Link from "next/link";
-import { FooterTypes } from "types/queryTypes";
-import clsx from "clsx";
-import { sectionContainerClasses } from "styles/constants";
-import { NextImage } from "components/NextImage";
+import { NextImage } from 'components/NextImage'
+import { Link } from 'components/NextLink'
+
+import { FooterTypes } from 'types/queryTypes'
 
 type Props = {
-  footer: FooterTypes;
-};
+  footer: FooterTypes
+}
 
 export default function Footer({ footer }: Props) {
   return (
     <footer className="bg-white" aria-labelledby="footer-heading">
-      <div className={clsx("px-4 sm:px-6 lg:px-8", sectionContainerClasses)}>
+      <div className={clsx('px-4 sm:px-6 lg:px-8', sectionContainerClasses)}>
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
@@ -48,7 +48,8 @@ export default function Footer({ footer }: Props) {
                 </Link>
               )}
               <div className="justify-center space-x-10">
-                <Link href={"/"} target="_blank" rel="noopener noreferrer">
+                <Link href="/" target="_blank" rel="noopener noreferrer">
+                  {/* TODO: add query for travelife image */}
                   <NextImage
                     src="/travelife-partner.png"
                     alt=""
@@ -60,13 +61,13 @@ export default function Footer({ footer }: Props) {
               {footer.partnerLogos.map((partnerLogo, i) => (
                 <div className="hidden sm:flex" key={i}>
                   <Link
-                    href={partnerLogo.partnerLogo?.imageLink?.imageLink ?? "/"}
+                    href={partnerLogo.partnerLogo.imageLink?.imageLink ?? '/'}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <NextImage
-                      src={partnerLogo.partnerLogo?.sourceUrl}
-                      alt={partnerLogo.partnerLogo?.altText}
+                      src={partnerLogo.partnerLogo.sourceUrl}
+                      alt={partnerLogo.partnerLogo.altText}
                       width={100}
                       height={100}
                     />
@@ -75,11 +76,11 @@ export default function Footer({ footer }: Props) {
               ))}
             </div>
             <p className="mt-10 text-center text-xs leading-5 text-gray-500">
-              {footer.textblock ?? ""}
+              {footer.textblock ?? ''}
             </p>
           </div>
         </div>
       </div>
     </footer>
-  );
+  )
 }

@@ -1,51 +1,47 @@
-import { useState, useEffect } from "react";
-import { MenusTypes, SustainabilityTypes } from "../../types/queryTypes";
-import { Content } from "types/sharedTypes";
-import sanitizeHtml from "sanitize-html";
-import { SectionHeader } from "../../components/Text/SectionHeader";
-import { Radio, RadioGroup } from "@headlessui/react";
-import { useIsMounted } from "hooks/useIsMounted";
-import { SelectMenu } from "components/SelectMenu";
-import { useViewportChange } from "hooks/useResponsiveActions";
-import { CallToAction } from "components/CallToAction";
-import { sanitizeAllHtmlContent } from "utils/utils";
+import { useState } from 'react'
+import { Radio, RadioGroup } from '@headlessui/react'
+
+import { SelectMenu } from 'components/SelectMenu'
+
+import { useIsMounted } from 'hooks/useIsMounted'
+import { useViewportChange } from 'hooks/useResponsiveActions'
+import { Content } from 'types/sharedTypes'
+import { sanitizeAllHtmlContent } from 'utils/utils'
+
+import { SectionHeader } from '../../components/Text/SectionHeader'
+import { MenusTypes, SustainabilityTypes } from '../../types/queryTypes'
 
 type Props = {
-  menus: MenusTypes;
-  sustainability: SustainabilityTypes;
-};
+  menus: MenusTypes
+  sustainability: SustainabilityTypes
+}
 
-export default function SustainabilityActions({
-  menus,
-  sustainability,
-}: Props) {
-  const isMounted = useIsMounted();
+export const SustainabilityActions = ({ menus, sustainability }: Props) => {
+  const isMounted = useIsMounted()
 
-  const currentMenuLabel = menus.nodes[0]?.menuItems.edges[2]?.node.label || "";
+  const currentMenuLabel = menus.nodes[0]?.menuItems.edges[2]?.node.label || ''
 
   // Initialize actions
-  const initialActions = sustainability.actionsGroup.actions.map(
-    (initialAction) => [
-      {
-        name: initialAction.actionsPoints.actionsHeading,
-        current: !!initialAction.actionsPoints.current ?? false,
-        actions: initialAction.actionsPoints.actions?.map((action) => [
-          { heading: action.heading, textblock: action.textblock },
-        ]),
-      },
-    ]
-  );
+  const initialActions = sustainability.actionsGroup.actions.map((initialAction) => [
+    {
+      name: initialAction.actionsPoints.actionsHeading,
+      current: !!initialAction.actionsPoints.current,
+      actions: initialAction.actionsPoints.actions.map((action) => [
+        { heading: action.heading, textblock: action.textblock },
+      ]),
+    },
+  ])
 
-  const [actions, setActions] = useState(initialActions);
-  const initialFirstTabActions = actions[0][0]?.actions || [];
-  const flattenedInitialFirstTabActions = initialFirstTabActions.flat();
-  const [currentActionsPoints, setCurrentActionsPoints] = useState<Content[]>(
-    flattenedInitialFirstTabActions
-  );
+  const [actions, setActions] = useState(initialActions)
+  const initialFirstTabActions = actions[0][0]?.actions
+  const flattenedInitialFirstTabActions = initialFirstTabActions.flat()
+  const [currentActionsPoints, setCurrentActionsPoints] = useState<Array<Content>>(
+    flattenedInitialFirstTabActions,
+  )
 
   const [currentActionsCategory, setCurrentActionsCategory] = useState(
-    initialActions[0][0].name
-  );
+    initialActions[0][0].name,
+  )
 
   // Handle tab click (desktop and mobile)
   const handleTabClick = (clickedTabName: string) => {
@@ -53,38 +49,38 @@ export default function SustainabilityActions({
       actionsArray.map((action) => ({
         ...action,
         current: action.name === clickedTabName,
-      }))
-    );
-    setActions(updatedActions);
+      })),
+    )
+    setActions(updatedActions)
 
     const selectedActionsArray = actions.find(
-      (actionsArray) => actionsArray[0].name === clickedTabName
-    );
+      (actionsArray) => actionsArray[0].name === clickedTabName,
+    )
 
-    setCurrentActionsCategory(selectedActionsArray?.[0].name || "");
+    setCurrentActionsCategory(selectedActionsArray?.[0].name || '')
 
     if (selectedActionsArray) {
-      const flattenedActions = selectedActionsArray[0].actions.flat();
-      setCurrentActionsPoints(flattenedActions);
+      const flattenedActions = selectedActionsArray[0].actions.flat()
+      setCurrentActionsPoints(flattenedActions)
     }
-  };
+  }
 
   // Handle resetting actions on view change
   useViewportChange(640, () => {
     // Reset actions to the initial state
-    setActions(initialActions);
+    setActions(initialActions)
 
     // Reset current actions points to the first tab
-    const flattenedActions = initialActions[0][0]?.actions.flat() || [];
-    setCurrentActionsPoints(flattenedActions);
-  });
+    const flattenedActions = initialActions[0][0]?.actions.flat()
+    setCurrentActionsPoints(flattenedActions)
+  })
 
   return (
     <div className="relative pt-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl">
           <SectionHeader
-            headingId="sustainabilityActions-heading"
+            headingId="sustainabilityActions"
             currentMenuLabel={currentMenuLabel}
             headingText={sustainability.actionsGroup.heading}
             description={sustainability.actionsGroup.textblock}
@@ -118,22 +114,15 @@ export default function SustainabilityActions({
             items={actions.map((action) => ({
               label: action[0].name,
             }))}
-            handleSelectChange={(selectedAction) =>
-              handleTabClick(selectedAction)
-            }
+            handleSelectChange={(selectedAction) => handleTabClick(selectedAction)}
           />
         </div>
 
         {/* Current Actions Points */}
         <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {currentActionsPoints.map((currentActionsPoint, i) => (
-            <div
-              key={i}
-              className="rounded-3xl p-8 ring-1 ring-gray-200 xl:p-10"
-            >
-              <p className="text-sm/6 text-gray-500">
-                {currentActionsCategory}
-              </p>
+            <div key={i} className="rounded-3xl p-8 ring-1 ring-gray-200 xl:p-10">
+              <p className="text-sm/6 text-gray-500">{currentActionsCategory}</p>
               <div className="flex items-center justify-between gap-x-4">
                 <h3 className="text-lg/8 font-semibold text-gray-900">
                   {currentActionsPoint.heading}
@@ -143,9 +132,7 @@ export default function SustainabilityActions({
                 <div
                   className="specific-section prose prose-gray mt-4 text-sm/6 text-gray-600"
                   dangerouslySetInnerHTML={{
-                    __html: sanitizeAllHtmlContent(
-                      currentActionsPoint.textblock
-                    ),
+                    __html: sanitizeAllHtmlContent(currentActionsPoint.textblock),
                   }}
                 />
               )}
@@ -154,5 +141,5 @@ export default function SustainabilityActions({
         </div>
       </div>
     </div>
-  );
+  )
 }

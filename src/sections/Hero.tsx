@@ -1,24 +1,15 @@
-import Image from "next/image";
-import { useState } from "react";
-import { Dialog, DialogPanel } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import {
-  ContactTypes,
-  HeaderTypes,
-  MenusTypes,
-  SettingsTypes,
-} from "types/queryTypes";
-import Link from "next/link";
-import Header from "./Header";
-import { NextImage } from "components/NextImage";
+import { NextImage } from 'components/NextImage'
+import { Link } from 'components/NextLink'
+
+import { HeaderTypes, SettingsTypes } from 'types/queryTypes'
 
 type Props = {
-  header: HeaderTypes;
-  settings: SettingsTypes;
-  containerClasses?: string;
-};
+  header: HeaderTypes
+  settings: SettingsTypes
+  containerClasses?: string
+}
 
-export default function Hero({ header, settings, containerClasses }: Props) {
+export const Hero = ({ header, settings, containerClasses }: Props) => {
   return (
     <section aria-labelledby="hero-heading" className="relative">
       <div className={`${containerClasses}`}>
@@ -36,13 +27,13 @@ export default function Hero({ header, settings, containerClasses }: Props) {
             <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
               <div className="hidden sm:mb-10 sm:flex">
                 <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                  {header.teaser.teaser}{" "}
+                  {header.teaser.teaser}{' '}
                   <Link
                     href={header.teaser.teaserButton.url}
                     className="whitespace-nowrap font-semibold text-cyan-700"
                   >
                     <span aria-hidden="true" className="absolute inset-0" />
-                    {header.teaser.teaserButton.title}{" "}
+                    {header.teaser.teaserButton.title}{' '}
                     <span aria-hidden="true">&rarr;</span>
                   </Link>
                 </div>
@@ -64,8 +55,7 @@ export default function Hero({ header, settings, containerClasses }: Props) {
                   href={header.buttons.secondaryButton.url}
                   className="text-sm/6 font-semibold text-gray-900"
                 >
-                  {header.buttons.secondaryButton.title}{" "}
-                  <span aria-hidden="true">→</span>
+                  {header.buttons.secondaryButton.title} <span aria-hidden="true">→</span>
                 </Link>
               </div>
             </div>
@@ -91,5 +81,5 @@ export default function Hero({ header, settings, containerClasses }: Props) {
         />
       </div>
     </section>
-  );
+  )
 }
