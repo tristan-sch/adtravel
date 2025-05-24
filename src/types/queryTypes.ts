@@ -1,107 +1,107 @@
-import { Content, CustomImage, Link, mediaItemType } from "./sharedTypes";
+import { Content, CustomImage, Link, mediaItemType } from './sharedTypes'
 
 export type SettingsTypes = {
-  title: string;
-  description: string;
-  url: string;
-};
+  title: string
+  description: string
+  url: string
+}
 
 type MenuItem = {
-  id: string;
-  label: string;
-  parentId: string;
-  path: string;
-};
+  id: string
+  label: string
+  parentId: string
+  path: string
+}
 
 export type Menu = {
-  id: string;
-  databaseId: number;
-  name: string;
+  id: string
+  databaseId: number
+  name: string
   menuItems: {
-    edges: {
-      node: MenuItem;
-    }[];
-  };
-};
+    edges: Array<{
+      node: MenuItem
+    }>
+  }
+}
 
 export type MenusTypes = {
-  nodes: Menu[];
-};
-
-export interface BannerTypes extends Content {
-  activate: boolean;
-  link: string;
+  nodes: Array<Menu>
 }
 
-export interface HeaderTypes extends Content {
+export type BannerTypes = {
+  activate: boolean
+  link: string
+} & Content
+
+export type HeaderTypes = {
   images: {
-    logo: CustomImage;
-    backgroundImage: CustomImage;
-    favicon: CustomImage;
-  };
+    logo: CustomImage
+    backgroundImage: CustomImage
+    favicon: CustomImage
+  }
   teaser: {
-    activate: boolean;
-    teaser: string;
-    teaserButton: Link;
-  };
+    activate: boolean
+    teaser: string
+    teaserButton: Link
+  }
   buttons: {
-    primaryButton: Link;
-    secondaryButton: Link;
-  };
-}
+    primaryButton: Link
+    secondaryButton: Link
+  }
+} & Content
 
-type Service = Content;
+type Service = Content
 
-export interface AboutTypes extends Content {
-  services: Service[];
-}
+export type AboutTypes = {
+  services: Array<Service>
+} & Content
 
 type Staff = {
-  name: string;
-  position: string;
-  department: string;
-  picture: mediaItemType;
-};
-
-export interface TeamTypes extends Content {
-  staff: Staff[];
+  name: string
+  position: string
+  department: string
+  picture: mediaItemType
 }
-export interface SustainabilityTypes extends Content {
-  image: CustomImage;
-  logo: CustomImage;
+
+export type TeamTypes = {
+  staff: Array<Staff>
+} & Content
+export type SustainabilityTypes = {
+  image: CustomImage
+  logo: CustomImage
   actionsGroup: {
-    heading: string;
-    textblock: string;
-    actions: {
+    heading: string
+    textblock: string
+    actions: Array<{
       actionsPoints: {
-        actionsHeading: string;
-        actions: Content[];
-        current: boolean;
-      };
-    }[];
-  };
-}
+        actionsHeading: string
+        actions: Array<Content>
+        current: boolean
+      }
+    }>
+  }
+} & Content
 
-type Question = Content;
+type Question = Content
 
-export interface FaqTypes extends Content {
-  questions: Question[];
-}
+export type FaqTypes = {
+  questions: Array<Question>
+} & Content
 
-export interface ContactTypes extends Content {
-  contactUs: {
-    heading: string;
-    textblock: string;
-    link: Link;
-  }[];
-}
+export type ContactTypes = {
+  contactUs: Array<{
+    heading: string
+    textblock: string
+    link: Link
+  }>
+} & Content
 
-export interface FooterTypes extends Content {
-  footerLinks: {
-    link: Link;
-  }[];
-  logo: CustomImage;
-  partnerLogos: {
-    partnerLogo: CustomImage;
-  }[];
-}
+export type FooterTypes = {
+  footerLinks: Array<{
+    link: Link
+  }>
+  logo: CustomImage
+  partnerLogos: Array<{
+    partnerLogo: CustomImage
+  }>
+} & Content

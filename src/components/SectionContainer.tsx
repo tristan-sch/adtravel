@@ -1,18 +1,18 @@
-import React, { ReactNode } from "react";
-import clsx from "clsx";
-import { sectionContainerClasses } from "styles/constants";
+import React, { ReactNode } from 'react'
+import clsx from 'clsx'
+import { sectionContainerClasses } from 'styles/constants'
 
 type ContainerProps = {
-  id?: string;
-  className?: string;
-  containerClasses?: string;
-  children?: ReactNode;
-  bgGray?: boolean;
-};
+  id?: string
+  className?: string
+  containerClasses?: string
+  children?: ReactNode
+  bgGray?: boolean
+}
 
 export const SectionContainer = ({
   id,
-  className = "",
+  className = '',
   containerClasses = sectionContainerClasses,
   bgGray = false,
   children,
@@ -22,18 +22,12 @@ export const SectionContainer = ({
     <section
       id={id}
       aria-label={id ? `${id}-heading` : undefined}
-      className={clsx("py-24 sm:py-32", containerClasses)}
+      className={clsx('py-20 sm:py-24', containerClasses)}
       {...props}
     >
-      <div
-        className={clsx(
-          "px-12 py-20",
-          className,
-          bgGray && "rounded-lg bg-gray-100"
-        )}
-      >
+      <div className={clsx('px-12 py-20', className, bgGray && 'rounded-lg bg-gray-100')}>
         {children}
       </div>
     </section>
-  );
-};
+  )
+}

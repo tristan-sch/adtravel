@@ -1,38 +1,25 @@
-import Image from "next/image";
+import { CallToAction } from 'components/CallToAction'
 
-import { useState } from "react";
-import { MenusTypes, SustainabilityTypes } from "../../types/queryTypes";
-import { Content } from "types/sharedTypes";
-import sanitizeHtml from "sanitize-html";
-import Link from "next/link";
-import { SectionHeader } from "../../components/Text/SectionHeader";
-import {
-  CloudArrowUpIcon,
-  LockClosedIcon,
-  ServerIcon,
-} from "@heroicons/react/20/solid";
-import { SectionContainer } from "../../components/SectionContainer";
-import { NextImage } from "components/NextImage";
-import SustainabilityDescription from "./SustainabilityDescription";
-import SustainabilityActions from "./SustainabilityActions";
-import { CallToAction } from "components/CallToAction";
+import { SectionContainer } from '../../components/SectionContainer'
+import { MenusTypes, SustainabilityTypes } from '../../types/queryTypes'
+
+import { SustainabilityActions } from './SustainabilityActions'
+import { SustainabilityDescription } from './SustainabilityDescription'
 
 type Props = {
-  menus: MenusTypes;
-  sustainability: SustainabilityTypes;
-};
+  menus: MenusTypes
+  sustainability: SustainabilityTypes
+}
 
-export default function Sustainability({ menus, sustainability }: Props) {
+export const Sustainability = ({ menus, sustainability }: Props) => {
   const currentMenuPath =
-    menus.nodes[0]?.menuItems.edges[2]?.node.path?.substring(1) || "";
+    menus.nodes[0]?.menuItems.edges[2]?.node.path?.substring(1) || ''
 
   return (
     <SectionContainer id={currentMenuPath}>
-      <SustainabilityDescription
-        menus={menus}
-        sustainability={sustainability}
-      />
+      <SustainabilityDescription menus={menus} sustainability={sustainability} />
       <SustainabilityActions menus={menus} sustainability={sustainability} />
+      {/* TODO: add query for CTA */}
       <CallToAction
         text="If you have any questions or feedback regarding sustainability, please send us an email."
         buttonText="contact[at]adtravel.is"
@@ -40,5 +27,5 @@ export default function Sustainability({ menus, sustainability }: Props) {
         label="We care about your feedback."
       />
     </SectionContainer>
-  );
+  )
 }

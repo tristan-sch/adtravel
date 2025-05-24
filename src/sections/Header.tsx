@@ -1,31 +1,27 @@
-import { useState } from "react";
-import { Dialog, DialogPanel } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import Image from "next/image";
-import Link from "next/link";
+import { useState } from 'react'
+import { Dialog, DialogPanel } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
 
-import {
-  ContactTypes,
-  HeaderTypes,
-  MenusTypes,
-  SettingsTypes,
-} from "types/queryTypes";
+import { Link } from 'components/NextLink'
+
+import { HeaderTypes, MenusTypes, SettingsTypes } from 'types/queryTypes'
 
 type Props = {
-  menus: MenusTypes;
-  header: HeaderTypes;
-  settings: SettingsTypes;
-  isBanner?: boolean;
-};
+  menus: MenusTypes
+  header: HeaderTypes
+  settings: SettingsTypes
+  isBanner?: boolean
+}
 
 export default function Header({ menus, settings, isBanner, header }: Props) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentMenuItem, setCurrentMenuItem] = useState("");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [currentMenuItem, setCurrentMenuItem] = useState('')
 
   const handleMenuItemClick = (path: string) => {
-    setCurrentMenuItem(path);
-    setMobileMenuOpen(false);
-  };
+    setCurrentMenuItem(path)
+    setMobileMenuOpen(false)
+  }
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
@@ -73,11 +69,7 @@ export default function Header({ menus, settings, isBanner, header }: Props) {
           </nav>
         </div>
       </div>
-      <Dialog
-        open={mobileMenuOpen}
-        onClose={setMobileMenuOpen}
-        className="lg:hidden"
-      >
+      <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-50" />
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
@@ -114,8 +106,8 @@ export default function Header({ menus, settings, isBanner, header }: Props) {
                         onClick={() => handleMenuItemClick(node.path)}
                         className={`block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6 ${
                           currentMenuItem === node.path
-                            ? "border-l-4 border-cyan-700 bg-cyan-50 text-cyan-700"
-                            : "border-l-4 border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+                            ? 'border-l-4 border-cyan-700 bg-cyan-50 text-cyan-700'
+                            : 'border-l-4 border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700'
                         }`}
                       >
                         {node.label}
@@ -129,5 +121,5 @@ export default function Header({ menus, settings, isBanner, header }: Props) {
         </DialogPanel>
       </Dialog>
     </header>
-  );
+  )
 }

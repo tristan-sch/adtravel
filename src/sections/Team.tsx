@@ -1,26 +1,26 @@
-import Image from "next/image";
-import { MenusTypes, TeamTypes } from "types/queryTypes";
+import Image from 'next/image'
 
-import { SectionHeader } from "../components/Text/SectionHeader";
-import { SectionContainer } from "../components/SectionContainer";
+import { MenusTypes, TeamTypes } from 'types/queryTypes'
+
+import { SectionContainer } from '../components/SectionContainer'
+import { SectionHeader } from '../components/Text/SectionHeader'
 
 type Props = {
-  team: TeamTypes;
-  menus: MenusTypes;
-  containerClasses?: string;
-};
+  team: TeamTypes
+  menus: MenusTypes
+}
 
-export default function Team({ team, menus, containerClasses }: Props) {
-  const currentMenuLabel = menus.nodes[0]?.menuItems.edges[1]?.node.label || "";
+export const Team = ({ team, menus }: Props) => {
+  const currentMenuLabel = menus.nodes[0]?.menuItems.edges[1]?.node.label || ''
   const currentMenuPath =
-    menus.nodes[0]?.menuItems.edges[1]?.node.path?.substring(1) || "";
+    menus.nodes[0]?.menuItems.edges[1]?.node.path?.substring(1) || ''
 
   return (
     <SectionContainer id={currentMenuPath} bgGray>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl">
           <SectionHeader
-            headingId="team-heading"
+            headingId={currentMenuPath}
             currentMenuLabel={currentMenuLabel}
             headingText={team.heading}
             description={team.textblock}
@@ -46,6 +46,7 @@ export default function Team({ team, menus, containerClasses }: Props) {
                     {person.name}
                   </h3>
                   <p className="text-sm/6 font-semibold text-cyan-700">
+                    {/* TODO: review query for this */}
                     FIT / {person.department}
                   </p>
                 </div>
@@ -55,5 +56,5 @@ export default function Team({ team, menus, containerClasses }: Props) {
         </ul>
       </div>
     </SectionContainer>
-  );
+  )
 }

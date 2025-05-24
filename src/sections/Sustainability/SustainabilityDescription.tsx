@@ -1,79 +1,15 @@
-import Image from "next/image";
+import { NextImage } from 'components/NextImage'
 
-import { useState } from "react";
-import { MenusTypes, SustainabilityTypes } from "../../types/queryTypes";
-import { Content } from "types/sharedTypes";
-import sanitizeHtml from "sanitize-html";
-import Link from "next/link";
-import { SectionHeader } from "../../components/Text/SectionHeader";
-import {
-  CloudArrowUpIcon,
-  LockClosedIcon,
-  ServerIcon,
-} from "@heroicons/react/20/solid";
-import { SectionContainer } from "../../components/SectionContainer";
-import { NextImage } from "components/NextImage";
+import { SectionHeader } from '../../components/Text/SectionHeader'
+import { MenusTypes, SustainabilityTypes } from '../../types/queryTypes'
 
 type Props = {
-  menus: MenusTypes;
-  sustainability: SustainabilityTypes;
-};
+  menus: MenusTypes
+  sustainability: SustainabilityTypes
+}
 
-export default function SustainabilityDescription({
-  menus,
-  sustainability,
-}: Props) {
-  const currentMenuLabel = menus.nodes[0]?.menuItems.edges[2]?.node.label || "";
-
-  const initialActions = sustainability.actionsGroup.actions.map(
-    (initialAction) => [
-      {
-        name: initialAction.actionsPoints.actionsHeading,
-        current: !!initialAction.actionsPoints.current ?? false,
-        actions: initialAction.actionsPoints.actions?.map((action) => [
-          { heading: action.heading, textblock: action.textblock },
-        ]),
-      },
-    ]
-  );
-
-  const [actions, setActions] = useState(initialActions);
-  const initialFirstTabActions = actions[0][0]?.actions || [];
-  const flattenedInitialFirstTabActions = initialFirstTabActions.flat();
-  const [currentActionsPoints, setCurrentActionsPoints] = useState<Content[]>(
-    flattenedInitialFirstTabActions
-  );
-
-  const handleTabClick = (clickedTabName: string) => {
-    const updatedActions = actions.map((actionsArray) =>
-      actionsArray.map((action) => ({
-        ...action,
-        current: action.name === clickedTabName,
-      }))
-    );
-    setActions(updatedActions);
-
-    const selectedActionsArray = actions.find(
-      (actionsArray) => actionsArray[0].name === clickedTabName
-    );
-
-    if (selectedActionsArray) {
-      const flattenedActions = selectedActionsArray[0].actions.flat();
-      setCurrentActionsPoints(flattenedActions);
-    }
-  };
-
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedActionName = event.target.value;
-    const selectedActionsArray = actions.find(
-      (actionsArray) => actionsArray[0].name === selectedActionName
-    );
-
-    if (selectedActionsArray) {
-      const flattenedActions = selectedActionsArray[0].actions.flat();
-      setCurrentActionsPoints(flattenedActions);
-    }
-  };
+export const SustainabilityDescription = ({ menus, sustainability }: Props) => {
+  const currentMenuLabel = menus.nodes[0]?.menuItems.edges[2]?.node.label || ''
 
   return (
     <div className="relative">
@@ -104,13 +40,11 @@ export default function SustainabilityDescription({
         <div className="px-6 lg:contents">
           <div className="mx-auto max-w-2xl pt-16 sm:pt-20 lg:ml-8 lg:mr-0 lg:w-full lg:max-w-lg lg:flex-none lg:pt-0 xl:w-1/2">
             <SectionHeader
-              headingId="SustainabilityDescription-heading"
+              headingId="sustainabilityDescription"
               currentMenuLabel={currentMenuLabel}
               headingText={sustainability.heading}
             />
-            <p className="mt-6 text-xl/6 text-gray-700">
-              {sustainability.textblock}
-            </p>
+            <p className="mt-6 text-xl/6 text-gray-700">{sustainability.textblock}</p>
             <div className="mt-10 max-w-xl text-base/7 text-gray-700 lg:max-w-none">
               <p>{sustainability.textblockSecondary}</p>
 
@@ -119,17 +53,16 @@ export default function SustainabilityDescription({
                 Responsible travel
               </h2>
               <p className="mt-6">
-                Responsible travel is a cornerstone of our company's identity.
-                We aspire to magnify the positive impacts of tourism on
-                individuals and local communities while mitigating negative
-                social, environmental, and economic effects. Our dedication to
-                sustainability is an ongoing endeavour involving every member of
-                our company.
+                Responsible travel is a cornerstone of our company's identity. We aspire
+                to magnify the positive impacts of tourism on individuals and local
+                communities while mitigating negative social, environmental, and economic
+                effects. Our dedication to sustainability is an ongoing endeavour
+                involving every member of our company.
               </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
