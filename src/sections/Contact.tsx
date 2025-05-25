@@ -14,8 +14,6 @@ export const Contact = ({ contact, menus }: Props) => {
   const currentMenuPath =
     menus.nodes[0]?.menuItems.edges[4]?.node.path?.substring(1) || ''
 
-  console.log('Contact:', contact)
-
   return (
     <SectionContainer id={currentMenuPath}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
