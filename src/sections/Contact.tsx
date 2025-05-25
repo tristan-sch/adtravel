@@ -1,4 +1,3 @@
-import { Link } from 'components/NextLink'
 import { SectionContainer } from 'components/SectionContainer'
 import { SectionHeader } from 'components/Text/SectionHeader'
 
@@ -14,6 +13,8 @@ export const Contact = ({ contact, menus }: Props) => {
   const currentMenuLabel = menus.nodes[0]?.menuItems.edges[4]?.node.label || ''
   const currentMenuPath =
     menus.nodes[0]?.menuItems.edges[4]?.node.path?.substring(1) || ''
+
+  console.log('Contact:', contact)
 
   return (
     <SectionContainer id={currentMenuPath}>
@@ -42,11 +43,21 @@ export const Contact = ({ contact, menus }: Props) => {
                       </p>
                     </div>
 
-                    {/* TODO: review links in WP */}
                     <div className="mt-1">
-                      <Link href={contactItem.link.url}>
-                        <p>{contactItem.link.title}</p>
-                      </Link>
+                      {contactItem.link.url !== '#' ? (
+                        <a
+                          href={contactItem.link.url}
+                          className="text-cyan-700 underline"
+                          {...(contactItem.link.url.startsWith('http') && {
+                            target: '_blank',
+                            rel: 'noopener noreferrer',
+                          })}
+                        >
+                          {contactItem.link.title}
+                        </a>
+                      ) : (
+                        <span>{contactItem.link.title}</span>
+                      )}
                     </div>
                   </dl>
                 </div>
