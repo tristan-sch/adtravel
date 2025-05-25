@@ -25,14 +25,14 @@ export default function Footer({ footer }: Props) {
             >
               {footer.footerLinks.map((footerLink, i) => (
                 <div key={i} className="pb-6 text-center">
-                  <Link
+                  <a
                     href={footerLink.link.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm leading-6 text-gray-600 hover:text-cyan-700"
                   >
                     {footerLink.link.title}
-                  </Link>
+                  </a>
                 </div>
               ))}
             </nav>
@@ -48,19 +48,23 @@ export default function Footer({ footer }: Props) {
                 </Link>
               )}
               <div className="justify-center space-x-10">
-                <Link href="/" target="_blank" rel="noopener noreferrer">
-                  {/* TODO: add query for travelife image */}
+                <a
+                  // TODO: add query for travelife image + link
+                  href="https://www.travelife.info/index_new.php?menu=home&lang=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <NextImage
                     src="/travelife-partner.png"
                     alt=""
                     width={150}
                     height={100}
                   />
-                </Link>
+                </a>
               </div>
               {footer.partnerLogos.map((partnerLogo, i) => (
                 <div className="hidden sm:flex" key={i}>
-                  <Link
+                  <a
                     href={partnerLogo.partnerLogo.imageLink?.imageLink ?? '/'}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -71,7 +75,7 @@ export default function Footer({ footer }: Props) {
                       width={100}
                       height={100}
                     />
-                  </Link>
+                  </a>
                 </div>
               ))}
             </div>
