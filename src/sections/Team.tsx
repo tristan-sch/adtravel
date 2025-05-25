@@ -47,7 +47,7 @@ export const Team = ({ team, menus }: Props) => {
                   </h3>
                   <p className="text-sm/6 font-semibold text-cyan-700">
                     {/* TODO: review query for this */}
-                    FIT / {person.department}
+                    {person.department}
                   </p>
                 </div>
               </div>
