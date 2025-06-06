@@ -14,7 +14,7 @@ type Props = {
   isBanner?: boolean
 }
 
-export default function Header({ menus, settings, isBanner, header }: Props) {
+export const Header = ({ menus, settings, isBanner, header }: Props) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [currentMenuItem, setCurrentMenuItem] = useState('')
 

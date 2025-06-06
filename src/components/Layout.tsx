@@ -1,5 +1,7 @@
 import { FC, ReactNode, useState } from 'react'
 import Head from 'next/head'
+import { Footer } from 'sections/Footer'
+import { Header } from 'sections/Header'
 
 import {
   BannerTypes,
@@ -9,10 +11,7 @@ import {
   SettingsTypes,
 } from 'types/queryTypes'
 
-import Footer from '../sections/Footer'
-import Header from '../sections/Header'
-
-import Banner from './Banner'
+import { Banner } from './Banner'
 
 type PageProps = {
   children?: ReactNode

@@ -1,9 +1,11 @@
+import { NextPage } from 'next'
+
 import { NextImage } from 'components/NextImage'
 import { Link } from 'components/NextLink'
 
 import errorImage from '../../public/404.png'
 
-export default function ErrorPage() {
+const ErrorPage: NextPage = () => {
   return (
     <main className="pb-16 pt-24 sm:pb-24 sm:pt-32">
       <div>
@@ -32,3 +34,4 @@ export default function ErrorPage() {
     </main>
   )
 }
+export default ErrorPage

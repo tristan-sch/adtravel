@@ -1,3 +1,4 @@
+import { NextPage } from 'next'
 import Head from 'next/head'
 import { About } from 'sections/About'
 import { Contact } from 'sections/Contact'
@@ -47,7 +48,7 @@ type Props = {
   footer: FooterTypes
 }
 
-export default function Home({
+const Home: NextPage<Props> = ({
   settings,
   menus,
   header,
@@ -58,7 +59,7 @@ export default function Home({
   faq,
   banner,
   footer,
-}: Props) {
+}) => {
   return (
     <>
       <Head>
@@ -126,3 +127,4 @@ export async function getStaticProps() {
     revalidate: 10,
   }
 }
+export default Home

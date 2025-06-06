@@ -10,7 +10,7 @@ type Props = {
   footer: FooterTypes
 }
 
-export default function Footer({ footer }: Props) {
+export const Footer = ({ footer }: Props) => {
   return (
     <footer className="bg-white" aria-labelledby="footer-heading">
       <div className={clsx('px-4 sm:px-6 lg:px-8', sectionContainerClasses)}>
