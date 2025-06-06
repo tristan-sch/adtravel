@@ -23,7 +23,9 @@ export const Sustainability = ({ menus, sustainability }: Props) => {
       <CallToAction
         text="If you have any questions or feedback regarding sustainability, please send us an email."
         buttonText="contact@adtravel.is"
-        onClick={() => {}}
+        onClick={() => {
+          window.location.href = 'mailto:contact@adtravel.is'
+        }}
         label="We care about your feedback."
       />
     </SectionContainer>
