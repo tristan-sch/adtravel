@@ -35,7 +35,7 @@ export const Header = ({ menus, settings, isBanner, header }: Props) => {
               <span className="sr-only">{settings.title}</span>
               {header.images.logo.sourceUrl && (
                 <Image
-                  src="/logo.png"
+                  src={header.images.logo.sourceUrl}
                   alt={header.images.logo.altText}
                   width={133}
                   height={94}
@@ -77,8 +77,7 @@ export const Header = ({ menus, settings, isBanner, header }: Props) => {
               <span className="sr-only">{settings.title}</span>
               {header.images.logo.sourceUrl && (
                 <Image
-                  // TODO: update the src attribute to the correct path
-                  src="/logo.png"
+                  src={header.images.logo.sourceUrl}
                   alt={header.images.logo.altText}
                   width={133}
                   height={94}

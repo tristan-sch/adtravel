@@ -78,7 +78,7 @@ export const SustainabilityActions = ({ menus, sustainability }: Props) => {
   return (
     <div className="relative pt-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="max-w-3xl">
+        <div className="mx-auto max-w-3xl text-center">
           <SectionHeader
             headingId="sustainabilityActions"
             currentMenuLabel={currentMenuLabel}
