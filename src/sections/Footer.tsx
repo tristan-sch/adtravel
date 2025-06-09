@@ -2,9 +2,9 @@ import clsx from 'clsx'
 import { sectionContainerClasses } from 'styles/constants'
 
 import { NextImage } from 'components/NextImage'
-import { Link } from 'components/NextLink'
 
 import { FooterTypes } from 'types/queryTypes'
+import { getImageDisplaySize } from 'utils/utils'
 
 type Props = {
   footer: FooterTypes
@@ -37,47 +37,28 @@ export const Footer = ({ footer }: Props) => {
               ))}
             </nav>
             <div className="mt-10 flex items-center justify-center space-x-10">
-              {footer.logo.sourceUrl && (
-                <Link href="/">
-                  <NextImage
-                    src={footer.logo.sourceUrl}
-                    alt={footer.logo.altText}
-                    width={150}
-                    height={100}
-                  />
-                </Link>
-              )}
-              <div className="justify-center space-x-10">
-                <a
-                  // TODO: add query for travelife image + link
-                  href="https://www.travelife.info/index_new.php?menu=home&lang=en"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <NextImage
-                    src="/travelife-partner.png"
-                    alt=""
-                    width={150}
-                    height={100}
-                  />
-                </a>
-              </div>
-              {footer.partnerLogos.map((partnerLogo, i) => (
-                <div className="hidden sm:flex" key={i}>
-                  <a
-                    href={partnerLogo.partnerLogo.imageLink?.imageLink ?? '/'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <NextImage
-                      src={partnerLogo.partnerLogo.sourceUrl}
-                      alt={partnerLogo.partnerLogo.altText}
-                      width={100}
-                      height={100}
-                    />
-                  </a>
-                </div>
-              ))}
+              {footer.partnerLogos.map((partnerLogo, i) => {
+                const { width, height } = getImageDisplaySize(
+                  partnerLogo.partnerLogo.mediaDetails?.width,
+                  partnerLogo.partnerLogo.mediaDetails?.height,
+                )
+                return (
+                  <div className="hidden sm:flex" key={i}>
+                    <a
+                      href={partnerLogo.partnerLogo.imageLink?.imageLink ?? '/'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <NextImage
+                        src={partnerLogo.partnerLogo.sourceUrl}
+                        alt={partnerLogo.partnerLogo.altText}
+                        width={width}
+                        height={height}
+                      />
+                    </a>
+                  </div>
+                )
+              })}
             </div>
             <p className="mt-10 text-center text-xs leading-5 text-gray-500">
               {footer.textblock ?? ''}

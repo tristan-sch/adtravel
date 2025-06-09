@@ -12,6 +12,10 @@ export type Link = {
 export type CustomImage = {
   sourceUrl: string
   altText: string
+  mediaDetails?: {
+    width?: number
+    height?: number
+  }
   imageLink?: {
     imageLink: string
   }

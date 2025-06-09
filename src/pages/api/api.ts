@@ -289,6 +289,10 @@ export async function getFooter() {
             partnerLogo {
               sourceUrl
               altText
+              mediaDetails {
+                width
+                height
+              }
               imageLink {
                 imageLink
               }
