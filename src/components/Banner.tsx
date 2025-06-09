@@ -1,13 +1,15 @@
-import { XMarkIcon } from "@heroicons/react/20/solid";
-import Link from "next/link";
-import { BannerTypes } from "types/queryTypes";
+import { XMarkIcon } from '@heroicons/react/20/solid'
+
+import { BannerTypes } from 'types/queryTypes'
+
+import { Link } from './NextLink'
 
 type Props = {
-  banner: BannerTypes;
-  closeBanner: () => void;
-};
+  banner: BannerTypes
+  closeBanner: () => void
+}
 
-export default function Banner({ closeBanner, banner }: Props) {
+export const Banner = ({ closeBanner, banner }: Props) => {
   return (
     <div className="bottom-5 flex items-center gap-x-6 bg-cyan-700 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
       <p className="text-sm leading-6 text-white">
@@ -35,5 +37,5 @@ export default function Banner({ closeBanner, banner }: Props) {
         </button>
       </div>
     </div>
-  );
+  )
 }

@@ -1,53 +1,54 @@
-import { useState } from "react";
-import Head from "next/head";
-import Header from "components/Header";
-import Hero from "components/Hero";
-import Team from "components/Team";
-import About from "components/About";
-import Footer from "components/Footer";
-import Sustainability from "components/Sustainability";
-import Faq from "components/Faq";
-import Contact from "components/Contact";
-import Banner from "components/Banner";
+import { NextPage } from 'next'
+import Head from 'next/head'
+import { About } from 'sections/About'
+import { Contact } from 'sections/Contact'
+import { Faq } from 'sections/Faq'
+import { Hero } from 'sections/Hero'
+import { Sustainability } from 'sections/Sustainability/Sustainability'
+import { Team } from 'sections/Team'
+
+import { Layout } from 'components/Layout'
+
 import {
-  SettingsTypes,
-  MenusTypes,
-  HeaderTypes,
   AboutTypes,
-  TeamTypes,
-  SustainabilityTypes,
+  BannerTypes,
   ContactTypes,
   FaqTypes,
-  BannerTypes,
   FooterTypes,
-} from "types/queryTypes";
+  HeaderTypes,
+  MenusTypes,
+  SettingsTypes,
+  SustainabilityTypes,
+  TeamTypes,
+} from 'types/queryTypes'
+
 import {
-  getSettings,
-  getMenus,
-  getHeader,
   getAbout,
-  getTeam,
-  getSustainability,
+  getBanner,
   getContact,
   getFaq,
-  getBanner,
   getFooter,
-} from "./api/api";
+  getHeader,
+  getMenus,
+  getSettings,
+  getSustainability,
+  getTeam,
+} from './api/api'
 
 type Props = {
-  settings: SettingsTypes;
-  menus: MenusTypes;
-  header: HeaderTypes;
-  about: AboutTypes;
-  team: TeamTypes;
-  sustainability: SustainabilityTypes;
-  faq: FaqTypes;
-  contact: ContactTypes;
-  banner: BannerTypes;
-  footer: FooterTypes;
-};
+  settings: SettingsTypes
+  menus: MenusTypes
+  header: HeaderTypes
+  about: AboutTypes
+  team: TeamTypes
+  sustainability: SustainabilityTypes
+  faq: FaqTypes
+  contact: ContactTypes
+  banner: BannerTypes
+  footer: FooterTypes
+}
 
-export default function Home({
+const Home: NextPage<Props> = ({
   settings,
   menus,
   header,
@@ -58,10 +59,7 @@ export default function Home({
   faq,
   banner,
   footer,
-}: Props) {
-  const [isBanner, setIsBanner] = useState(true);
-  const isBannerActivated = banner.activate;
-
+}) => {
   return (
     <>
       <Head>
@@ -69,27 +67,23 @@ export default function Home({
         <link rel="icon" href={header.images.favicon.sourceUrl} />
         <meta name="description" content={settings.description} />
       </Head>
-      {isBannerActivated && isBanner && (
-        <Banner closeBanner={() => setIsBanner(false)} banner={banner} />
-      )}
-      <Header
+
+      <Layout
         settings={settings}
         menus={menus}
-        contact={contact}
-        isBanner={isBanner}
+        banner={banner}
         header={header}
-      />
-      <main>
-        <Hero settings={settings} header={header} />
+        footer={footer}
+      >
+        <Hero header={header} settings={settings} containerClasses="mx-auto max-w-7xl" />
         <About menus={menus} about={about} />
         <Team team={team} menus={menus} />
         <Sustainability menus={menus} sustainability={sustainability} />
         <Faq menus={menus} faq={faq} />
         <Contact menus={menus} contact={contact} />
-      </main>
-      <Footer footer={footer} />
+      </Layout>
     </>
-  );
+  )
 }
 
 export async function getStaticProps() {
@@ -115,7 +109,7 @@ export async function getStaticProps() {
     getFaq(),
     getBanner(),
     getFooter(),
-  ]);
+  ])
 
   return {
     props: {
@@ -131,5 +125,6 @@ export async function getStaticProps() {
       footer,
     },
     revalidate: 10,
-  };
+  }
 }
+export default Home
