@@ -62,7 +62,7 @@ export const Hero = ({ header, settings, containerClasses }: Props) => {
           </div>
         </div>
       </div>
-      <div className="relative hidden lg:absolute lg:inset-y-0 lg:right-0 lg:block lg:w-1/2 lg:bg-gray-50">
+      <div className="relative z-0 hidden lg:absolute lg:inset-y-0 lg:right-0 lg:block lg:w-1/2 lg:bg-gray-50">
         <NextImage
           src={header.images.backgroundImage.sourceUrl}
           alt={header.images.backgroundImage.altText}

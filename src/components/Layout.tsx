@@ -35,7 +35,6 @@ export const Layout: FC<PageProps> = ({
 }) => {
   const [isBanner, setIsBanner] = useState(true)
   const isBannerActivated = banner.activate
-
   const titleString = title ? `${title} | ${settings.title}` : `${settings.title}`
 
   return (
@@ -47,7 +46,7 @@ export const Layout: FC<PageProps> = ({
         <Banner closeBanner={() => setIsBanner(false)} banner={banner} />
       )}
       <div className="font-oswald">
-        <Header settings={settings} menus={menus} isBanner={isBanner} header={header} />
+        <Header settings={settings} menus={menus} header={header} />
         <main>{children}</main>
         <Footer footer={footer} />
       </div>

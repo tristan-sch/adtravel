@@ -101,7 +101,6 @@ export type FooterTypes = {
     link: Link
   }>
   logo: CustomImage
-
   partnerLogos: Array<{
     partnerLogo: CustomImage
   }>

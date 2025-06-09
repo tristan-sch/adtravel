@@ -24,7 +24,7 @@ export const Header = ({ menus, settings, isBanner, header }: Props) => {
   }
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
+    <header className={`absolute inset-x-0 ${isBanner ? 'top-15' : 'top-0'} z-50`}>
       <div className="mx-auto max-w-7xl">
         <div className="px-6 pt-6 lg:max-w-2xl lg:pl-8 lg:pr-0">
           <nav

@@ -46,7 +46,6 @@ export const Team = ({ team, menus }: Props) => {
                     {person.name}
                   </h3>
                   <p className="text-sm/6 font-semibold text-cyan-700">
-                    {/* TODO: review query for this */}
                     {person.department}
                   </p>
                 </div>
