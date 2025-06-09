@@ -162,7 +162,6 @@ export async function getTeam() {
           textblockSecondary
           staff {
             name
-            position
             department
             picture {
               id

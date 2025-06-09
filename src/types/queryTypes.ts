@@ -58,7 +58,6 @@ export type AboutTypes = {
 
 type Staff = {
   name: string
-  position: string
   department: string
   picture: mediaItemType
 }
