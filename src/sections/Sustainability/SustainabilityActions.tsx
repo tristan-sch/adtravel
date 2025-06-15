@@ -22,15 +22,17 @@ export const SustainabilityActions = ({ menus, sustainability }: Props) => {
   const currentMenuLabel = menus.nodes[0]?.menuItems.edges[2]?.node.label || ''
 
   // Initialize actions
-  const initialActions = sustainability.actionsGroup.actions.map((initialAction) => [
-    {
-      name: initialAction.actionsPoints.actionsHeading,
-      current: !!initialAction.actionsPoints.current,
-      actions: initialAction.actionsPoints.actions.map((action) => [
-        { heading: action.heading, textblock: action.textblock },
-      ]),
-    },
-  ])
+  const initialActions = sustainability.sustainability.actionsGroup.actions.map(
+    (initialAction) => [
+      {
+        name: initialAction.actionsPoints.actionsHeading,
+        current: !!initialAction.actionsPoints.current,
+        actions: initialAction.actionsPoints.actions.map((action) => [
+          { heading: action.heading, textblock: action.textblock },
+        ]),
+      },
+    ],
+  )
 
   const [actions, setActions] = useState(initialActions)
   const initialFirstTabActions = actions[0][0]?.actions
@@ -82,8 +84,8 @@ export const SustainabilityActions = ({ menus, sustainability }: Props) => {
           <SectionHeader
             headingId="sustainabilityActions"
             currentMenuLabel={currentMenuLabel}
-            headingText={sustainability.actionsGroup.heading}
-            description={sustainability.actionsGroup.textblock}
+            headingText={sustainability.sustainability.actionsGroup.heading}
+            description={sustainability.sustainability.actionsGroup.textblock}
           />
         </div>
 
@@ -123,11 +125,7 @@ export const SustainabilityActions = ({ menus, sustainability }: Props) => {
           {currentActionsPoints.map((currentActionsPoint, i) => (
             <div key={i} className="rounded-3xl p-8 ring-1 ring-gray-200 xl:p-10">
               <p className="text-sm/6 text-gray-500">{currentActionsCategory}</p>
-              <div className="flex items-center justify-between gap-x-4">
-                <h3 className="text-lg/8 font-semibold text-gray-900">
-                  {currentActionsPoint.heading}
-                </h3>
-              </div>
+              <div className="flex items-center justify-between gap-x-4" />
               {isMounted && (
                 <div
                   className="specific-section prose prose-gray mt-4 text-sm/6 text-gray-600"

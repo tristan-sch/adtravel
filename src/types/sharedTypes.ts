@@ -1,4 +1,4 @@
-export type mediaItemType = {
+export type MediaItemType = {
   id: string
   mediaItemUrl: string
   altText: string

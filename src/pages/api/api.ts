@@ -181,43 +181,57 @@ export async function getSustainability() {
   const data = await fetchAPI(
     `
     query sustainability {
-      page(id: "/sustainability", idType: URI) {
-        sustainability {
+    page(id: "/sustainability", idType: URI) {
+      slug
+      content
+      featuredImage {
+        node {
+          sourceUrl
+          altText
+        }
+      }
+      sustainability {
+        heading
+        textblock
+        textblockSecondary
+        textblockTertiary
+        image {
+          sourceUrl
+          altText
+        }
+        logo {
+          sourceUrl
+          altText
+          imageLink {
+            imageLink
+          }
+        }
+        actionsGroup {
           heading
           textblock
-          textblockSecondary
-          textblockTertiary
-          image {
-            sourceUrl
-            altText
-          }
-          logo {
-            sourceUrl
-            altText
-            imageLink {
-              imageLink
-            }
-          }
-          actionsGroup {
-            heading
-            textblock
-            actions {
-              actionsPoints {
-                current
-                actionsHeading
-                actions {
-                  heading
-                  textblock
-                }
+          actions {
+            actionsPoints {
+              current
+              actionsHeading
+              actions {
+                heading
+                textblock
               }
             }
           }
         }
+        banner {
+          text
+          label
+          email
+        }
       }
     }
+  }
     `,
   )
-  return data?.page.sustainability
+  // return data?.page.sustainability
+  return data?.page
 }
 
 export async function getFaq() {

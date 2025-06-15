@@ -1,6 +1,5 @@
 import { CallToAction } from 'components/CallToAction'
 
-import { SectionContainer } from '../../components/SectionContainer'
 import { MenusTypes, SustainabilityTypes } from '../../types/queryTypes'
 
 import { SustainabilityActions } from './SustainabilityActions'
@@ -12,22 +11,23 @@ type Props = {
 }
 
 export const Sustainability = ({ menus, sustainability }: Props) => {
-  const currentMenuPath =
-    menus.nodes[0]?.menuItems.edges[2]?.node.path?.substring(1) || ''
-
   return (
-    <SectionContainer id={currentMenuPath} className="pt-0 sm:py-24">
+    <section
+      aria-labelledby={`${sustainability.slug}-heading`}
+      className="relative"
+      id={sustainability.slug}
+    >
       <SustainabilityDescription menus={menus} sustainability={sustainability} />
       <SustainabilityActions menus={menus} sustainability={sustainability} />
-      {/* TODO: add query for CTA */}
+
       <CallToAction
-        text="If you have any questions or feedback regarding sustainability, please send us an email."
-        buttonText="contact@adtravel.is"
+        text={sustainability.sustainability.banner.text}
+        buttonText={sustainability.sustainability.banner.email}
         onClick={() => {
-          window.location.href = 'mailto:contact@adtravel.is'
+          window.location.href = `mailto:${sustainability.sustainability.banner.email}`
         }}
-        label="We care about your feedback."
+        label={sustainability.sustainability.banner.label}
       />
-    </SectionContainer>
+    </section>
   )
 }

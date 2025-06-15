@@ -1,4 +1,4 @@
-import { Content, CustomImage, Link, mediaItemType } from './sharedTypes'
+import { Content, CustomImage, Link, MediaItemType } from './sharedTypes'
 
 export type SettingsTypes = {
   title: string
@@ -59,27 +59,40 @@ export type AboutTypes = {
 type Staff = {
   name: string
   department: string
-  picture: mediaItemType
+  picture: MediaItemType
 }
 
 export type TeamTypes = {
   staff: Array<Staff>
 } & Content
+
 export type SustainabilityTypes = {
-  image: CustomImage
-  logo: CustomImage
-  actionsGroup: {
-    heading: string
-    textblock: string
-    actions: Array<{
-      actionsPoints: {
-        actionsHeading: string
-        actions: Array<Content>
-        current: boolean
-      }
-    }>
+  slug: string
+  content: string
+  featuredImage?: {
+    node: CustomImage
   }
-} & Content
+  sustainability: {
+    image: CustomImage
+    logo: CustomImage
+    actionsGroup: {
+      heading: string
+      textblock: string
+      actions: Array<{
+        actionsPoints: {
+          actionsHeading: string
+          actions: Array<Content>
+          current: boolean
+        }
+      }>
+    }
+    banner: {
+      text: string
+      label: string
+      email: string
+    }
+  } & Content
+}
 
 type Question = Content
 
