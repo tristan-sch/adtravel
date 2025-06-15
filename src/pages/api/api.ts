@@ -191,21 +191,6 @@ export async function getSustainability() {
         }
       }
       sustainability {
-        heading
-        textblock
-        textblockSecondary
-        textblockTertiary
-        image {
-          sourceUrl
-          altText
-        }
-        logo {
-          sourceUrl
-          altText
-          imageLink {
-            imageLink
-          }
-        }
         actionsGroup {
           heading
           textblock
