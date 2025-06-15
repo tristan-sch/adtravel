@@ -19,7 +19,6 @@ export const Sustainability = ({ menus, sustainability }: Props) => {
     >
       <SustainabilityDescription menus={menus} sustainability={sustainability} />
       <SustainabilityActions menus={menus} sustainability={sustainability} />
-
       <CallToAction
         text={sustainability.sustainability.banner.text}
         buttonText={sustainability.sustainability.banner.email}
