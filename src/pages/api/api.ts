@@ -214,7 +214,6 @@ export async function getSustainability() {
               current
               actionsHeading
               actions {
-                heading
                 textblock
               }
             }
