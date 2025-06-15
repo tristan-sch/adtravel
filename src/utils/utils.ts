@@ -10,24 +10,53 @@ export const sanitizeAllHtmlContent = (content = '') =>
       'ol',
       'strong',
       'em',
+      'h2',
+      'p',
     ]),
     allowedAttributes: {
       ...sanitizeHtml.defaults.allowedAttributes,
-      img: ['src', 'alt', 'title', 'width', 'height'], // Allow common image attributes
-      a: ['href', 'title', 'style', 'class', 'target', 'rel'], // Allow common anchor attributes
+      img: ['src', 'alt', 'title', 'width', 'height'],
+      a: ['href', 'title', 'style', 'class', 'target', 'rel'],
+      h2: ['class'],
+      p: ['class'],
     },
     transformTags: {
-      a: (tagName, attribs) => {
-        return {
-          tagName: 'a',
-          attribs: {
-            ...attribs,
-            class: `${attribs.class ? `${attribs.class} ` : ''}underline text-cyan-700`, // Add Tailwind classes for styling
-            target: attribs.target || '_blank', // Open links in a new tab by default
-            rel: attribs.rel || 'noopener noreferrer', // Add security attributes
-          },
-        }
-      },
+      a: (tagName, attribs) => ({
+        tagName: 'a',
+        attribs: {
+          ...attribs,
+          class: `${attribs.class ? `${attribs.class} ` : ''}underline text-cyan-700`,
+          target: attribs.target || '_blank',
+          rel: attribs.rel || 'noopener noreferrer',
+        },
+      }),
+      p: (tagName, attribs) => ({
+        tagName: 'p',
+        attribs: {
+          ...attribs,
+          class: `${
+            attribs.class ? `${attribs.class} ` : ''
+          }text-base/7 text-gray-700 mb-6`,
+        },
+      }),
+      h2: (tagName, attribs) => ({
+        tagName: 'h2',
+        attribs: {
+          ...attribs,
+          class: `${
+            attribs.class ? `${attribs.class} ` : ''
+          }mt-16 text-xl font-bold tracking-tight text-gray-900 mb-6`,
+        },
+      }),
+      h3: (tagName, attribs) => ({
+        tagName: 'h2',
+        attribs: {
+          ...attribs,
+          class: `${
+            attribs.class ? `${attribs.class} ` : ''
+          }text-lg/8 font-semibold text-gray-900 mb-4`,
+        },
+      }),
     },
   })
 

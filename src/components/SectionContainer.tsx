@@ -21,7 +21,7 @@ export const SectionContainer = ({
   return (
     <section
       id={id}
-      aria-label={id ? `${id}-heading` : undefined}
+      aria-labelledby={id ? `${id}-heading` : undefined}
       className={clsx('py-20 sm:py-24', containerClasses)}
       {...props}
     >

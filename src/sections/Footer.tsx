@@ -37,6 +37,22 @@ export const Footer = ({ footer }: Props) => {
               ))}
             </nav>
             <div className="mt-10 flex items-center justify-center space-x-10">
+              <div className="flex sm:hidden">
+                <a
+                  href={footer.partnerLogos[0].partnerLogo.imageLink?.imageLink ?? '/'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <NextImage
+                    src={footer.partnerLogos[0].partnerLogo.sourceUrl}
+                    alt={footer.partnerLogos[0].partnerLogo.altText}
+                    width={150}
+                    height={100}
+                  />
+                </a>
+              </div>
+            </div>
+            <div className="mt-10 flex items-center justify-center space-x-10">
               {footer.partnerLogos.map((partnerLogo, i) => {
                 const { width, height } = getImageDisplaySize(
                   partnerLogo.partnerLogo.mediaDetails?.width,
