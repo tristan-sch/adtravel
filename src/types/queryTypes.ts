@@ -1,10 +1,14 @@
 import { Content, CustomImage, Link, MediaItemType } from './sharedTypes'
 
+// ---------------------------------------------------------------------------
+
 export type SettingsTypes = {
   title: string
   description: string
   url: string
 }
+
+// ---------------------------------------------------------------------------
 
 type MenuItem = {
   id: string
@@ -24,14 +28,27 @@ export type Menu = {
   }
 }
 
+// ---------------------------------------------------------------------------
+
 export type MenusTypes = {
   nodes: Array<Menu>
 }
+
+// ---------------------------------------------------------------------------
+
+export type PrivacyPolicyTypes = {
+  title: string
+  content: string
+}
+
+// ---------------------------------------------------------------------------
 
 export type BannerTypes = {
   activate: boolean
   link: string
 } & Content
+
+// ---------------------------------------------------------------------------
 
 export type HeaderTypes = {
   images: {
@@ -50,7 +67,11 @@ export type HeaderTypes = {
   }
 } & Content
 
+// ---------------------------------------------------------------------------
+
 type Service = Content
+
+// ---------------------------------------------------------------------------
 
 export type AboutTypes = {
   services: Array<Service>
@@ -62,12 +83,17 @@ type Staff = {
   picture: MediaItemType
 }
 
+// ---------------------------------------------------------------------------
+
 export type TeamTypes = {
   staff: Array<Staff>
 } & Content
 
+// ---------------------------------------------------------------------------
+
 export type SustainabilityTypes = {
   slug: string
+  title: string
   content: string
   featuredImage?: {
     node: CustomImage
@@ -94,6 +120,8 @@ export type SustainabilityTypes = {
   } & Content
 }
 
+// ---------------------------------------------------------------------------
+
 type Question = Content
 
 export type FaqTypes = {
@@ -107,6 +135,8 @@ export type ContactTypes = {
     link: Link
   }>
 } & Content
+
+// ---------------------------------------------------------------------------
 
 export type FooterTypes = {
   footerLinks: Array<{

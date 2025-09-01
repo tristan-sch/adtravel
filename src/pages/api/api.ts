@@ -1,28 +1,70 @@
+// ---------------------------------------------------------------------------
+
+import { MenusTypes, PrivacyPolicyTypes, SettingsTypes } from 'types/queryTypes'
+
 const API_URL = process.env.WORDPRESS_API_URL
 
-async function fetchAPI(query: string) {
+// ---------------------------------------------------------------------------
+
+type ApiData = {
+  generalSettings?: SettingsTypes
+  menus?: MenusTypes
+  page?: PrivacyPolicyTypes
+  // home?: HomePageContent
+  // news?: LinkedinContent
+}
+
+type GraphQLError = {
+  message: string
+  locations?: Array<{ line: number; column: number }>
+  path?: Array<string | number>
+  extensions?: Record<string, unknown>
+}
+
+type ApiResponse = {
+  data: ApiData
+  errors?: Array<GraphQLError>
+}
+
+// ---------------------------------------------------------------------------
+
+const fetchAPI = async (query: string): Promise<ApiData> => {
   const headers = { 'Content-Type': 'application/json' }
 
-  if (API_URL) {
+  if (!API_URL) {
+    throw new Error('API_URL is missing')
+  }
+
+  try {
     const res = await fetch(API_URL, {
       method: 'POST',
       headers,
-      body: JSON.stringify({
-        query,
-      }),
+      body: JSON.stringify({ query }),
+      next: { revalidate: 10 },
     })
-    const json = await res.json()
-    if (json.errors) {
-      console.error(json.errors)
+
+    if (!res.ok) {
+      const errorBody = await res.text()
+      console.error('Response body:', errorBody)
       throw new Error('Failed to fetch API')
     }
+
+    const json: ApiResponse = await res.json()
+    if (json.errors && json.errors.length > 0) {
+      console.error('API errors:', json.errors)
+      throw new Error('Failed to fetch API')
+    }
+
     return json.data
-  } else {
-    throw new Error('API_URL is missing')
+  } catch (error) {
+    console.error('Fetch API error:', error)
+    throw new Error('Failed to fetch API')
   }
 }
 
-export async function getSettings() {
+// ---------------------------------------------------------------------------
+
+export const getSettings = async (): Promise<SettingsTypes> => {
   const data = await fetchAPI(
     `
       query settings {
@@ -34,10 +76,15 @@ export async function getSettings() {
       }
     `,
   )
-  return data?.generalSettings
+  if (!data.generalSettings) {
+    throw new Error('Settings not found')
+  }
+  return data.generalSettings
 }
 
-export async function getMenus() {
+// ---------------------------------------------------------------------------
+
+export const getMenus = async (): Promise<MenusTypes> => {
   const data = await fetchAPI(
     `
       query menus {
@@ -61,8 +108,32 @@ export async function getMenus() {
       }
     `,
   )
-  return data?.menus
+  if (!data.menus) {
+    throw new Error('Menus not found')
+  }
+  return data.menus
 }
+
+// ---------------------------------------------------------------------------
+
+export const getPrivacyPolicy = async (): Promise<PrivacyPolicyTypes> => {
+  const data = await fetchAPI(
+    `
+      query privacyPolicy {
+        page(id: "/privacy-policy", idType: URI) {
+            title
+            content
+        }
+      }
+    `,
+  )
+  if (!data.page) {
+    throw new Error('Privacy Policy not found')
+  }
+  return data.page
+}
+
+// ---------------------------------------------------------------------------
 
 export async function getBanner() {
   const data = await fetchAPI(
@@ -79,8 +150,10 @@ export async function getBanner() {
     }
     `,
   )
-  return data?.page.banner
+  return data.page.banner
 }
+
+// ---------------------------------------------------------------------------
 
 export async function getHeader() {
   const data = await fetchAPI(
@@ -127,8 +200,10 @@ export async function getHeader() {
     }
     `,
   )
-  return data?.page.header
+  return data.page.header
 }
+
+// ---------------------------------------------------------------------------
 
 export async function getAbout() {
   const data = await fetchAPI(
@@ -148,8 +223,10 @@ export async function getAbout() {
     }
     `,
   )
-  return data?.page.about
+  return data.page.about
 }
+
+// ---------------------------------------------------------------------------
 
 export async function getTeam() {
   const data = await fetchAPI(
@@ -174,8 +251,10 @@ export async function getTeam() {
     }
     `,
   )
-  return data?.page.team
+  return data.page.team
 }
+
+// ---------------------------------------------------------------------------
 
 export async function getSustainability() {
   const data = await fetchAPI(
@@ -183,6 +262,7 @@ export async function getSustainability() {
     query sustainability {
     page(id: "/sustainability", idType: URI) {
       slug
+      title
       content
       featuredImage {
         node {
@@ -215,8 +295,10 @@ export async function getSustainability() {
     `,
   )
   // return data?.page.sustainability
-  return data?.page
+  return data.page
 }
+
+// ---------------------------------------------------------------------------
 
 export async function getFaq() {
   const data = await fetchAPI(
@@ -236,8 +318,10 @@ export async function getFaq() {
     }
     `,
   )
-  return data?.page.faq
+  return data.page.faq
 }
+
+// ---------------------------------------------------------------------------
 
 export async function getContact() {
   const data = await fetchAPI(
@@ -262,8 +346,10 @@ export async function getContact() {
     `,
   )
 
-  return data?.page.contact
+  return data.page.contact
 }
+
+// ---------------------------------------------------------------------------
 
 export async function getFooter() {
   const data = await fetchAPI(
@@ -300,5 +386,5 @@ export async function getFooter() {
     }
     `,
   )
-  return data?.page.footer
+  return data.page.footer
 }

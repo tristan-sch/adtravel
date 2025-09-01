@@ -14,9 +14,10 @@ type Props = {
 export const SustainabilityDescription = ({ menus, sustainability }: Props) => {
   const isMounted = useIsMounted()
   const currentMenuLabel = menus.nodes[0]?.menuItems.edges[2]?.node.label || ''
-
   const h2Content = extractFirstH2(sustainability.content || '')
   const contentWithoutFirstH2 = removeFirstH2(sustainability.content || '')
+
+  console.log(contentWithoutFirstH2)
 
   return (
     <div className="relative">
@@ -54,7 +55,7 @@ export const SustainabilityDescription = ({ menus, sustainability }: Props) => {
                 <SectionHeader
                   headingId="sustainabilityDescription"
                   currentMenuLabel={currentMenuLabel}
-                  headingText={sustainability.sustainability.heading}
+                  headingText={h2Content}
                 />
                 {isMounted && (
                   <div

@@ -19,6 +19,8 @@ export const sanitizeAllHtmlContent = (content = '') =>
       a: ['href', 'title', 'style', 'class', 'target', 'rel'],
       h2: ['class'],
       p: ['class'],
+      li: ['class'],
+      ol: ['start'],
     },
     transformTags: {
       a: (tagName, attribs) => ({
@@ -49,7 +51,7 @@ export const sanitizeAllHtmlContent = (content = '') =>
         },
       }),
       h3: (tagName, attribs) => ({
-        tagName: 'h2',
+        tagName: 'h3',
         attribs: {
           ...attribs,
           class: `${
@@ -59,6 +61,21 @@ export const sanitizeAllHtmlContent = (content = '') =>
       }),
     },
   })
+
+export const extractFirstH2 = (html: string) => {
+  if (!html) {
+    return ''
+  }
+  const match = html.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i)
+  return match ? match[1] : ''
+}
+
+export const removeFirstH2 = (html: string) => {
+  if (!html) {
+    return ''
+  }
+  return html.replace(/<h2[^>]*>[\s\S]*?<\/h2>/i, '')
+}
 
 export const getImageDisplaySize = (width?: number, height?: number) => {
   if (!width || !height) {

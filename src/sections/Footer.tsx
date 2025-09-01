@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import { sectionContainerClasses } from 'styles/constants'
 
 import { NextImage } from 'components/NextImage'
+import { Link } from 'components/NextLink'
 
 import { FooterTypes } from 'types/queryTypes'
 import { getImageDisplaySize } from 'utils/utils'
@@ -79,6 +80,14 @@ export const Footer = ({ footer }: Props) => {
             <p className="mt-10 text-center text-xs leading-5 text-gray-500">
               {footer.textblock ?? ''}
             </p>
+            <div className="mt-2 text-center">
+              <Link
+                href="/privacy-policy"
+                className="text-xs text-gray-600 underline hover:text-cyan-700"
+              >
+                Privacy Policy
+              </Link>
+            </div>
           </div>
         </div>
       </div>
