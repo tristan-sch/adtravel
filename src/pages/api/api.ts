@@ -1,6 +1,11 @@
 // ---------------------------------------------------------------------------
 
-import { MenusTypes, PrivacyPolicyTypes, SettingsTypes } from 'types/queryTypes'
+import {
+  BannerTypes,
+  MenusTypes,
+  PrivacyPolicyTypes,
+  SettingsTypes,
+} from 'types/queryTypes'
 
 const API_URL = process.env.WORDPRESS_API_URL
 
@@ -9,7 +14,7 @@ const API_URL = process.env.WORDPRESS_API_URL
 type ApiData = {
   generalSettings?: SettingsTypes
   menus?: MenusTypes
-  page?: PrivacyPolicyTypes
+  page?: PrivacyPolicyTypes | { banner: BannerTypes } // Allow page to have a banner property
   // home?: HomePageContent
   // news?: LinkedinContent
 }
@@ -130,7 +135,8 @@ export const getPrivacyPolicy = async (): Promise<PrivacyPolicyTypes> => {
   if (!data.page) {
     throw new Error('Privacy Policy not found')
   }
-  return data.page
+  // TODO: remove type assertion
+  return data.page as PrivacyPolicyTypes
 }
 
 // ---------------------------------------------------------------------------
@@ -150,7 +156,13 @@ export async function getBanner() {
     }
     `,
   )
-  return data.page.banner
+  if (!data.page) {
+    throw new Error('Banner not found')
+  }
+  if ('banner' in data.page) {
+    return data.page.banner
+  }
+  throw new Error('Banner property not found on page')
 }
 
 // ---------------------------------------------------------------------------
@@ -200,7 +212,14 @@ export async function getHeader() {
     }
     `,
   )
-  return data.page.header
+
+  if (!data.page) {
+    throw new Error('Header not found')
+  }
+  if ('header' in data.page) {
+    return data.page.header
+  }
+  throw new Error('Header property not found on page')
 }
 
 // ---------------------------------------------------------------------------
@@ -223,7 +242,13 @@ export async function getAbout() {
     }
     `,
   )
-  return data.page.about
+  if (!data.page) {
+    throw new Error('About not found')
+  }
+  if ('about' in data.page) {
+    return data.page.about
+  }
+  throw new Error('About property not found on page')
 }
 
 // ---------------------------------------------------------------------------
@@ -251,7 +276,13 @@ export async function getTeam() {
     }
     `,
   )
-  return data.page.team
+  if (!data.page) {
+    throw new Error('Team not found')
+  }
+  if ('team' in data.page) {
+    return data.page.team
+  }
+  throw new Error('Team property not found on page')
 }
 
 // ---------------------------------------------------------------------------
@@ -294,7 +325,6 @@ export async function getSustainability() {
   }
     `,
   )
-  // return data?.page.sustainability
   return data.page
 }
 
@@ -318,7 +348,13 @@ export async function getFaq() {
     }
     `,
   )
-  return data.page.faq
+  if (!data.page) {
+    throw new Error('FAQ not found')
+  }
+  if ('faq' in data.page) {
+    return data.page.faq
+  }
+  throw new Error('FAQ property not found on page')
 }
 
 // ---------------------------------------------------------------------------
@@ -345,8 +381,13 @@ export async function getContact() {
     }
     `,
   )
-
-  return data.page.contact
+  if (!data.page) {
+    throw new Error('Contact not found')
+  }
+  if ('contact' in data.page) {
+    return data.page.contact
+  }
+  throw new Error('Contact property not found on page')
 }
 
 // ---------------------------------------------------------------------------
@@ -386,5 +427,11 @@ export async function getFooter() {
     }
     `,
   )
-  return data.page.footer
+  if (!data.page) {
+    throw new Error('Footer not found')
+  }
+  if ('footer' in data.page) {
+    return data.page.footer
+  }
+  throw new Error('Footer property not found on page')
 }
