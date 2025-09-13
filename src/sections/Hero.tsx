@@ -27,9 +27,9 @@ export const Hero = ({ header, settings, containerClasses }: Props) => {
             <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
               <div className="hidden sm:mb-10 sm:flex">
                 <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                  {header?.teaser.teaser}{' '}
+                  {header.teaser.teaser}{' '}
                   <Link
-                    href={header?.teaser.teaserButton.url}
+                    href={header.teaser.teaserButton.url}
                     className="whitespace-nowrap font-semibold text-cyan-700"
                   >
                     <span aria-hidden="true" className="absolute inset-0" />
@@ -49,7 +49,7 @@ export const Hero = ({ header, settings, containerClasses }: Props) => {
                   href={header.buttons.primaryButton.url}
                   className="rounded-md bg-cyan-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-700"
                 >
-                  {header?.buttons.primaryButton.title}
+                  {header.buttons.primaryButton.title}
                 </Link>
                 <Link
                   href={header.buttons.secondaryButton.url}
@@ -64,8 +64,8 @@ export const Hero = ({ header, settings, containerClasses }: Props) => {
       </div>
       <div className="relative z-0 hidden lg:absolute lg:inset-y-0 lg:right-0 lg:block lg:w-1/2 lg:bg-gray-50">
         <NextImage
-          src={header.images.backgroundImage.sourceUrl}
-          alt={header.images.backgroundImage.altText}
+          src={header.images.backgroundImage.node.sourceUrl}
+          alt={header.images.backgroundImage.node.altText}
           className="size-full aspect-[3/2] aspect-auto object-cover"
           fill
         />
@@ -73,8 +73,8 @@ export const Hero = ({ header, settings, containerClasses }: Props) => {
 
       <div className="lg:hidden">
         <NextImage
-          src={header.images.backgroundImage.sourceUrl}
-          alt={header.images.backgroundImage.altText}
+          src={header.images.backgroundImage.node.sourceUrl}
+          alt={header.images.backgroundImage.node.altText}
           width={1920}
           height={1440}
           className="aspect-[3/2] object-cover"

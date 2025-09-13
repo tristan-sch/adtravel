@@ -4,7 +4,6 @@ import { About } from 'sections/About'
 import { Contact } from 'sections/Contact'
 import { Faq } from 'sections/Faq'
 import { Hero } from 'sections/Hero'
-import { Sustainability } from 'sections/Sustainability/Sustainability'
 import { Team } from 'sections/Team'
 
 import { Layout } from 'components/Layout'
@@ -64,7 +63,7 @@ const Home: NextPage<Props> = ({
     <>
       <Head>
         <title>{settings.title}</title>
-        <link rel="icon" href={header.images.favicon.sourceUrl} />
+        <link rel="icon" href={header.images.favicon.node.sourceUrl} />
         <meta name="description" content={settings.description} />
       </Head>
 
@@ -78,7 +77,7 @@ const Home: NextPage<Props> = ({
         <Hero header={header} settings={settings} containerClasses="mx-auto max-w-7xl" />
         <About menus={menus} about={about} />
         <Team team={team} menus={menus} />
-        <Sustainability menus={menus} sustainability={sustainability} />
+        {/* <Sustainability menus={menus} sustainability={sustainability} /> */}
         <Faq menus={menus} faq={faq} />
         <Contact menus={menus} contact={contact} />
       </Layout>

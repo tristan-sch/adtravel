@@ -33,10 +33,10 @@ export const Header = ({ menus, settings, isBanner, header }: Props) => {
           >
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">{settings.title}</span>
-              {header.images.logo.sourceUrl && (
+              {header.images.logo.node.sourceUrl && (
                 <Image
-                  src={header.images.logo.sourceUrl}
-                  alt={header.images.logo.altText}
+                  src={header.images.logo.node.sourceUrl}
+                  alt={header.images.logo.node.altText}
                   width={133}
                   height={94}
                 />
@@ -75,10 +75,10 @@ export const Header = ({ menus, settings, isBanner, header }: Props) => {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">{settings.title}</span>
-              {header.images.logo.sourceUrl && (
+              {header.images.logo.node.sourceUrl && (
                 <Image
-                  src={header.images.logo.sourceUrl}
-                  alt={header.images.logo.altText}
+                  src={header.images.logo.node.sourceUrl}
+                  alt={header.images.logo.node.altText}
                   width={133}
                   height={94}
                 />

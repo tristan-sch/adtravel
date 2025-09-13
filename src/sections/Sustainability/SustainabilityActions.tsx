@@ -2,14 +2,11 @@ import { useState } from 'react'
 import { Radio, RadioGroup } from '@headlessui/react'
 
 import { SelectMenu } from 'components/SelectMenu'
+import { SectionHeader } from 'components/Text/SectionHeader'
 
 import { useIsMounted } from 'hooks/useIsMounted'
 import { useViewportChange } from 'hooks/useResponsiveActions'
-import { Content } from 'types/sharedTypes'
-import { sanitizeAllHtmlContent } from 'utils/utils'
-
-import { SectionHeader } from '../../components/Text/SectionHeader'
-import { MenusTypes, SustainabilityTypes } from '../../types/queryTypes'
+import { MenusTypes, SustainabilityTypes } from 'types/queryTypes'
 
 type Props = {
   menus: MenusTypes
@@ -18,63 +15,35 @@ type Props = {
 
 export const SustainabilityActions = ({ menus, sustainability }: Props) => {
   const isMounted = useIsMounted()
+  const currentMenuLabel =
+    menus.nodes[0]?.menuItems?.edges?.[2]?.node?.label ?? 'Sustainability'
 
-  const currentMenuLabel = menus.nodes[0]?.menuItems.edges[2]?.node.label || ''
+  // Prepare actions
+  const categories = sustainability.sustainabilityActions.sustainabilityActionsCategories
+  const actions = categories.map((category) => ({
+    label: category.actionsTypes.label,
+    topics: category.actionsTypes.actions.map((topic) => ({
+      title: topic.title,
+      details: topic.details.map((d) => d.bulletpoint),
+    })),
+  }))
 
-  // Initialize actions
-  const initialActions = sustainability.sustainability.actionsGroup.actions.map(
-    (initialAction) => [
-      {
-        name: initialAction.actionsPoints.actionsHeading,
-        current: !!initialAction.actionsPoints.current,
-        actions: initialAction.actionsPoints.actions.map((action) => [
-          { heading: action.heading, textblock: action.textblock },
-        ]),
-      },
-    ],
-  )
+  // Use first category as initial
+  const initialCategory = actions[0] ?? { label: '', topics: [] }
+  const [currentCategoryLabel, setCurrentCategoryLabel] = useState(initialCategory.label)
+  const [currentTopics, setCurrentTopics] = useState(initialCategory.topics)
 
-  const [actions, setActions] = useState(initialActions)
-  const initialFirstTabActions = actions[0][0]?.actions
-  const flattenedInitialFirstTabActions = initialFirstTabActions.flat()
-  const [currentActionsPoints, setCurrentActionsPoints] = useState<Array<Content>>(
-    flattenedInitialFirstTabActions,
-  )
-
-  const [currentActionsCategory, setCurrentActionsCategory] = useState(
-    initialActions[0][0].name,
-  )
-
-  // Handle tab click (desktop and mobile)
-  const handleTabClick = (clickedTabName: string) => {
-    const updatedActions = actions.map((actionsArray) =>
-      actionsArray.map((action) => ({
-        ...action,
-        current: action.name === clickedTabName,
-      })),
-    )
-    setActions(updatedActions)
-
-    const selectedActionsArray = actions.find(
-      (actionsArray) => actionsArray[0].name === clickedTabName,
-    )
-
-    setCurrentActionsCategory(selectedActionsArray?.[0].name || '')
-
-    if (selectedActionsArray) {
-      const flattenedActions = selectedActionsArray[0].actions.flat()
-      setCurrentActionsPoints(flattenedActions)
-    }
+  // Handle tab click
+  const handleTabClick = (clickedLabel: string) => {
+    const selectedCategory = actions.find((cat) => cat.label === clickedLabel)
+    setCurrentCategoryLabel(selectedCategory?.label ?? '')
+    setCurrentTopics(selectedCategory?.topics ?? [])
   }
 
-  // Handle resetting actions on view change
+  // Reset on viewport change
   useViewportChange(640, () => {
-    // Reset actions to the initial state
-    setActions(initialActions)
-
-    // Reset current actions points to the first tab
-    const flattenedActions = initialActions[0][0]?.actions.flat()
-    setCurrentActionsPoints(flattenedActions)
+    setCurrentCategoryLabel(initialCategory.label)
+    setCurrentTopics(initialCategory.topics)
   })
 
   return (
@@ -84,8 +53,12 @@ export const SustainabilityActions = ({ menus, sustainability }: Props) => {
           <SectionHeader
             headingId="sustainabilityActions"
             currentMenuLabel={currentMenuLabel}
-            headingText={sustainability.sustainability.actionsGroup.heading}
-            description={sustainability.sustainability.actionsGroup.textblock}
+            headingText={
+              sustainability.sustainabilityActions.sustainabilityActionsHeading
+            }
+            description={
+              sustainability.sustainabilityActions.sustainabilityActionsTextblock
+            }
           />
         </div>
 
@@ -93,17 +66,27 @@ export const SustainabilityActions = ({ menus, sustainability }: Props) => {
         <div className="mt-16 hidden justify-center sm:flex">
           <fieldset aria-label="Sustainability actions">
             <RadioGroup
-              value={actions.find((action) => action[0].current)?.[0].name}
-              onChange={(selectedName) => handleTabClick(selectedName)}
-              className="grid grid-cols-3 gap-x-1 rounded-full p-1 text-center text-xs/5 font-semibold ring-1 ring-inset ring-gray-200"
+              value={currentCategoryLabel}
+              onChange={handleTabClick}
+              className={`grid gap-x-1 rounded-full p-1 text-center text-xs/5 font-semibold ring-1 ring-inset ring-gray-200 ${
+                actions.length === 1
+                  ? 'grid-cols-1'
+                  : actions.length === 2
+                  ? 'grid-cols-2'
+                  : actions.length === 3
+                  ? 'grid-cols-3'
+                  : actions.length === 4
+                  ? 'grid-cols-4'
+                  : 'grid-cols-5'
+              }`}
             >
-              {actions.map((action, i) => (
+              {actions.map((cat, i) => (
                 <Radio
                   key={i}
-                  value={action[0].name}
+                  value={cat.label}
                   className="cursor-pointer rounded-full px-2.5 py-1 text-gray-500 data-[checked]:bg-cyan-700 data-[checked]:text-white"
                 >
-                  {action[0].name}
+                  {cat.label}
                 </Radio>
               ))}
             </RadioGroup>
@@ -113,26 +96,39 @@ export const SustainabilityActions = ({ menus, sustainability }: Props) => {
         {/* Mobile View */}
         <div className="mt-16 flex justify-center sm:hidden">
           <SelectMenu
-            items={actions.map((action) => ({
-              label: action[0].name,
+            items={actions.map((cat) => ({
+              label: cat.label,
             }))}
-            handleSelectChange={(selectedAction) => handleTabClick(selectedAction)}
+            handleSelectChange={handleTabClick}
           />
         </div>
 
-        {/* Current Actions Points */}
+        {/* Current Topics */}
         <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {currentActionsPoints.map((currentActionsPoint, i) => (
+          {currentTopics.map((topic, i) => (
             <div key={i} className="rounded-3xl p-8 ring-1 ring-gray-200 xl:p-10">
-              <p className="text-sm/6 text-gray-500">{currentActionsCategory}</p>
-              <div className="flex items-center justify-between gap-x-4" />
-              {isMounted && (
-                <div
-                  className="specific-section prose prose-gray mt-4 text-sm/6 text-gray-600"
-                  dangerouslySetInnerHTML={{
-                    __html: sanitizeAllHtmlContent(currentActionsPoint.textblock),
-                  }}
-                />
+              <p className="text-sm/6 text-gray-500">{currentCategoryLabel}</p>
+              <h3 className="mt-2 text-base font-semibold text-gray-900">
+                {topic.title}
+              </h3>
+              {/* {isMounted &&
+                topic.details.map((bullet, j) => (
+                  <div
+                    key={j}
+                    className="specific-section prose prose-gray mt-4 text-sm/6 text-gray-600"
+                    dangerouslySetInnerHTML={{
+                      __html: sanitizeAllHtmlContent(bullet),
+                    }}
+                  />
+                ))} */}
+              {topic.details.length > 0 && (
+                <ul className="prose prose-gray mt-4 list-disc pl-5">
+                  {topic.details.map((bullet, j) => (
+                    <li key={j} className="mb-2 text-sm/6 text-gray-600">
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
               )}
             </div>
           ))}

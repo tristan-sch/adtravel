@@ -53,7 +53,7 @@ export type BannerTypes = {
 export type HeaderTypes = {
   images: {
     logo: CustomImage
-    backgroundImage: CustomImage
+    backgroundImage: { node: CustomImage }
     favicon: CustomImage
   }
   teaser: {
@@ -80,7 +80,9 @@ export type AboutTypes = {
 type Staff = {
   name: string
   department: string
-  picture: MediaItemType
+  picture: {
+    node: MediaItemType
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -142,8 +144,12 @@ export type FooterTypes = {
   footerLinks: Array<{
     link: Link
   }>
-  logo: CustomImage
+  // logo: {
+  //   node: CustomImage
+  // }
   partnerLogos: Array<{
-    partnerLogo: CustomImage
+    partnerLogo: {
+      node: CustomImage
+    }
   }>
 } & Content

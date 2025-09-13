@@ -40,13 +40,15 @@ export const Footer = ({ footer }: Props) => {
             <div className="mt-10 flex items-center justify-center space-x-10">
               <div className="flex sm:hidden">
                 <a
-                  href={footer.partnerLogos[0].partnerLogo.imageLink?.imageLink ?? '/'}
+                  href={
+                    footer.partnerLogos[0].partnerLogo.node.imageLink?.imageLink ?? '/'
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <NextImage
-                    src={footer.partnerLogos[0].partnerLogo.sourceUrl}
-                    alt={footer.partnerLogos[0].partnerLogo.altText}
+                    src={footer.partnerLogos[0].partnerLogo.node.sourceUrl}
+                    alt={footer.partnerLogos[0].partnerLogo.node.altText}
                     width={150}
                     height={100}
                   />
@@ -56,19 +58,19 @@ export const Footer = ({ footer }: Props) => {
             <div className="mt-10 flex items-center justify-center space-x-10">
               {footer.partnerLogos.map((partnerLogo, i) => {
                 const { width, height } = getImageDisplaySize(
-                  partnerLogo.partnerLogo.mediaDetails?.width,
-                  partnerLogo.partnerLogo.mediaDetails?.height,
+                  partnerLogo.partnerLogo.node.mediaDetails?.width,
+                  partnerLogo.partnerLogo.node.mediaDetails?.height,
                 )
                 return (
                   <div className="hidden sm:flex" key={i}>
                     <a
-                      href={partnerLogo.partnerLogo.imageLink?.imageLink ?? '/'}
+                      href={partnerLogo.partnerLogo.node.imageLink?.imageLink ?? '/'}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <NextImage
-                        src={partnerLogo.partnerLogo.sourceUrl}
-                        alt={partnerLogo.partnerLogo.altText}
+                        src={partnerLogo.partnerLogo.node.sourceUrl}
+                        alt={partnerLogo.partnerLogo.node.altText}
                         width={width}
                         height={height}
                       />
