@@ -1,5 +1,7 @@
 // ---------------------------------------------------------------------------
 
+import { SUSTAINABILITY_CONTENT_FIELDS } from 'fragments/sustainabilityFields'
+
 import {
   AboutTypes,
   BannerTypes,
@@ -11,6 +13,7 @@ import {
   PrivacyPolicyTypes,
   SettingsTypes,
   SustainabilityTypes,
+  SustainabilityTypesNew,
   TeamTypes,
 } from 'types/queryTypes'
 
@@ -333,6 +336,26 @@ export const getSustainability = async (): Promise<SustainabilityTypes> => {
     throw new Error('Sustainability not found')
   }
   return data.page.sustainability
+}
+
+export const getSustainabilityNew = async (): Promise<SustainabilityTypesNew> => {
+  const data = await fetchAPI<{ page?: SustainabilityTypesNew }>(
+    `
+    query sustainability {
+    page(id: "/sustainability", idType: URI) {
+      slug
+      sustainabilityContent {
+        ...sustainabilityContentFields
+      }
+    }
+  }
+    ${SUSTAINABILITY_CONTENT_FIELDS}
+    `,
+  )
+  if (!data.page) {
+    throw new Error('Sustainability not found')
+  }
+  return data.page
 }
 
 // ---------------------------------------------------------------------------

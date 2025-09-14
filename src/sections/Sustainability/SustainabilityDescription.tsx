@@ -1,34 +1,31 @@
+import { SustainabilityContentTypes } from 'fragments/sustainabilityFields'
+
 import { NextImage } from 'components/NextImage'
 import { SectionHeader } from 'components/Text/SectionHeader'
 
-import { useIsMounted } from 'hooks/useIsMounted'
-import { extractFirstH2, removeFirstH2, sanitizeAllHtmlContent } from 'utils/utils'
-
-import { MenusTypes, SustainabilityTypes } from '../../types/queryTypes'
+import { MenusTypes } from 'types/queryTypes'
 
 type Props = {
   menus: MenusTypes
-  sustainability: SustainabilityTypes
+  sustainabilityContent: SustainabilityContentTypes
 }
 
-export const SustainabilityDescription = ({ menus, sustainability }: Props) => {
-  const isMounted = useIsMounted()
-  const currentMenuLabel = menus.nodes[0]?.menuItems.edges[2]?.node.label || ''
-
-  const h2Content = extractFirstH2(sustainability.content || '')
-  const contentWithoutFirstH2 = removeFirstH2(sustainability.content || '')
+export const SustainabilityDescription = ({ menus, sustainabilityContent }: Props) => {
+  const currentMenuLabel = menus.nodes[0]?.menuItems?.edges?.[2]?.node?.label ?? ''
 
   return (
     <div className="relative">
       <div className="mx-auto flex max-w-7xl flex-col lg:flex-row">
         {/* Image on the left */}
         <div className="w-full flex-shrink-0 lg:w-1/2">
-          {sustainability.featuredImage?.node.sourceUrl && (
+          {sustainabilityContent.sustainabilityContentImage?.node.sourceUrl && (
             <>
               <div className="hidden aspect-[3/4] h-full w-full lg:block">
                 <NextImage
-                  src={sustainability.featuredImage.node.sourceUrl}
-                  alt={sustainability.featuredImage.node.altText}
+                  src={sustainabilityContent.sustainabilityContentImage.node.sourceUrl}
+                  alt={
+                    sustainabilityContent.sustainabilityContentImage.node.altText || ''
+                  }
                   className="h-full w-full bg-gray-50 object-cover"
                   width={1920}
                   height={2560}
@@ -36,8 +33,10 @@ export const SustainabilityDescription = ({ menus, sustainability }: Props) => {
               </div>
               <div className="lg:hidden">
                 <NextImage
-                  src={sustainability.featuredImage.node.sourceUrl}
-                  alt={sustainability.featuredImage.node.altText}
+                  src={sustainabilityContent.sustainabilityContentImage.node.sourceUrl}
+                  alt={
+                    sustainabilityContent.sustainabilityContentImage.node.altText || ''
+                  }
                   width={1920}
                   height={2560}
                   className="aspect-[3/2] object-cover"
@@ -54,15 +53,27 @@ export const SustainabilityDescription = ({ menus, sustainability }: Props) => {
                 <SectionHeader
                   headingId="sustainabilityDescription"
                   currentMenuLabel={currentMenuLabel}
-                  headingText={sustainability.sustainability.heading}
+                  headingText={sustainabilityContent.sustainabilityContentHeading}
                 />
-                {isMounted && (
-                  <div
-                    className="roup-hover:text-primaryNeutral mt-5 text-justify text-sm leading-6"
-                    dangerouslySetInnerHTML={{
-                      __html: sanitizeAllHtmlContent(contentWithoutFirstH2 || ''),
-                    }}
-                  />
+                {sustainabilityContent.sustainabilityContentTextblock && (
+                  <p className="mt-5 text-justify text-base/7 leading-6">
+                    {sustainabilityContent.sustainabilityContentTextblock}
+                  </p>
+                )}
+                {sustainabilityContent.sustainabilityContentTextblock && (
+                  <p className="mt-5 text-justify text-base/7 leading-6">
+                    {sustainabilityContent.sustainabilityContentTextblock}
+                  </p>
+                )}
+                {sustainabilityContent.sustainabilityContentHeadingSecondary && (
+                  <h2 className="mt-8 text-lg font-semibold text-gray-900">
+                    {sustainabilityContent.sustainabilityContentHeadingSecondary}
+                  </h2>
+                )}
+                {sustainabilityContent.sustainabilityContentTextblockTertiary && (
+                  <p className="mt-4 text-justify text-base/7 leading-6">
+                    {sustainabilityContent.sustainabilityContentTextblockTertiary}
+                  </p>
                 )}
               </div>
             </div>

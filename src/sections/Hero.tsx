@@ -62,11 +62,18 @@ export const Hero = ({ header, settings, containerClasses }: Props) => {
           </div>
         </div>
       </div>
+
+      {/**
+       * The background image is conditionally rendered for desktop and mobile layouts.
+       * 'priority' is set only for the desktop image, as it's above the fold on large screens.
+       * Next.js may show preload or LCP warnings depending on device; this is expected for responsive images.
+       *  */}
       <div className="relative z-0 hidden lg:absolute lg:inset-y-0 lg:right-0 lg:block lg:w-1/2 lg:bg-gray-50">
         <NextImage
           src={header.images.backgroundImage.node.sourceUrl}
           alt={header.images.backgroundImage.node.altText}
           className="size-full aspect-[3/2] aspect-auto object-cover"
+          priority
           fill
         />
       </div>

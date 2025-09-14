@@ -4,6 +4,7 @@ import { About } from 'sections/About'
 import { Contact } from 'sections/Contact'
 import { Faq } from 'sections/Faq'
 import { Hero } from 'sections/Hero'
+import { Sustainability } from 'sections/Sustainability/Sustainability'
 import { Team } from 'sections/Team'
 
 import { Layout } from 'components/Layout'
@@ -17,7 +18,7 @@ import {
   HeaderTypes,
   MenusTypes,
   SettingsTypes,
-  SustainabilityTypes,
+  SustainabilityTypesNew,
   TeamTypes,
 } from 'types/queryTypes'
 
@@ -30,7 +31,7 @@ import {
   getHeader,
   getMenus,
   getSettings,
-  getSustainability,
+  getSustainabilityNew,
   getTeam,
 } from './api/api'
 
@@ -40,7 +41,7 @@ type Props = {
   header: HeaderTypes
   about: AboutTypes
   team: TeamTypes
-  sustainability: SustainabilityTypes
+  sustainabilityNew: SustainabilityTypesNew
   faq: FaqTypes
   contact: ContactTypes
   banner: BannerTypes
@@ -53,14 +54,12 @@ const Home: NextPage<Props> = ({
   header,
   about,
   team,
-  sustainability,
+  sustainabilityNew,
   contact,
   faq,
   banner,
   footer,
 }) => {
-  console.log('Header:', header)
-
   return (
     <>
       <Head>
@@ -79,7 +78,7 @@ const Home: NextPage<Props> = ({
         <Hero header={header} settings={settings} containerClasses="mx-auto max-w-7xl" />
         <About menus={menus} about={about} />
         <Team team={team} menus={menus} />
-        {/* <Sustainability menus={menus} sustainability={sustainability} /> */}
+        <Sustainability menus={menus} sustainability={sustainabilityNew} />
         <Faq menus={menus} faq={faq} />
         <Contact menus={menus} contact={contact} />
       </Layout>
@@ -94,7 +93,7 @@ export async function getStaticProps() {
     header,
     about,
     team,
-    sustainability,
+    sustainabilityNew,
     contact,
     faq,
     banner,
@@ -105,7 +104,7 @@ export async function getStaticProps() {
     getHeader(),
     getAbout(),
     getTeam(),
-    getSustainability(),
+    getSustainabilityNew(),
     getContact(),
     getFaq(),
     getBanner(),
@@ -119,7 +118,7 @@ export async function getStaticProps() {
       header,
       about,
       team,
-      sustainability,
+      sustainabilityNew,
       contact,
       faq,
       banner,

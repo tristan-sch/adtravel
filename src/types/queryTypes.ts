@@ -1,3 +1,5 @@
+import { SustainabilityContentTypes } from 'fragments/sustainabilityFields'
+
 import { Content, Image, Link, MediaItemType } from './sharedTypes'
 
 // ---------------------------------------------------------------------------
@@ -118,6 +120,11 @@ export type SustainabilityTypes = {
       email: string
     }
   } & Content
+}
+
+export type SustainabilityTypesNew = {
+  slug: string
+  sustainabilityContent: SustainabilityContentTypes
 }
 
 // ---------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-import { CustomImage } from 'types/sharedTypes'
+import { Image } from 'types/sharedTypes'
 
 // ---------------------------------------------------------------------------
 
@@ -8,9 +8,7 @@ export type SustainabilityContentTypes = {
   sustainabilityContentTextblockSecondary?: string
   sustainabilityContentHeadingSecondary?: string
   sustainabilityContentTextblockTertiary?: string
-  sustainabilityContentImage?: {
-    node: CustomImage
-  }
+  sustainabilityContentImage?: Image
 }
 
 export const SUSTAINABILITY_CONTENT_FIELDS = `
