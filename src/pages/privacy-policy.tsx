@@ -32,7 +32,7 @@ const PrivacyPolicy: NextPage<Props> = ({ settings, header, privacyPolicy, foote
     <>
       <Head>
         <title>{`Privacy Policy - ${settings.title}`}</title>
-        <link rel="icon" href={header.images.favicon.sourceUrl} />
+        <link rel="icon" href={header.images.favicon.node.sourceUrl} />
         <meta name="description" content="Privacy Policy" />
       </Head>
 
@@ -42,10 +42,10 @@ const PrivacyPolicy: NextPage<Props> = ({ settings, header, privacyPolicy, foote
           <div className="flex items-center justify-center md:justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">{settings.title}</span>
-              {header.images.logo.sourceUrl && (
+              {header.images.logo.node.sourceUrl && (
                 <Image
-                  src={header.images.logo.sourceUrl}
-                  alt={header.images.logo.altText}
+                  src={header.images.logo.node.sourceUrl}
+                  alt={header.images.logo.node.altText}
                   width={133}
                   height={94}
                 />
