@@ -59,6 +59,8 @@ const Home: NextPage<Props> = ({
   banner,
   footer,
 }) => {
+  console.log('Header:', header)
+
   return (
     <>
       <Head>

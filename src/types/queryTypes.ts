@@ -1,4 +1,4 @@
-import { Content, CustomImage, Link, MediaItemType } from './sharedTypes'
+import { Content, Image, Link, MediaItemType } from './sharedTypes'
 
 // ---------------------------------------------------------------------------
 
@@ -52,9 +52,9 @@ export type BannerTypes = {
 
 export type HeaderTypes = {
   images: {
-    logo: CustomImage
-    backgroundImage: { node: CustomImage }
-    favicon: CustomImage
+    logo: Image
+    backgroundImage: Image
+    favicon: Image
   }
   teaser: {
     activate: boolean
@@ -97,12 +97,10 @@ export type SustainabilityTypes = {
   slug: string
   title: string
   content: string
-  featuredImage?: {
-    node: CustomImage
-  }
+  featuredImage?: Image
   sustainability: {
-    image: CustomImage
-    logo: CustomImage
+    image: Image
+    logo: Image
     actionsGroup: {
       heading: string
       textblock: string
@@ -144,12 +142,7 @@ export type FooterTypes = {
   footerLinks: Array<{
     link: Link
   }>
-  // logo: {
-  //   node: CustomImage
-  // }
   partnerLogos: Array<{
-    partnerLogo: {
-      node: CustomImage
-    }
+    partnerLogo: Image
   }>
 } & Content
