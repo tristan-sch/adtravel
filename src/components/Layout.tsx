@@ -22,6 +22,7 @@ type PageProps = {
   settings: SettingsTypes
   menus: MenusTypes
   header: HeaderTypes
+  hideHeader?: boolean
 }
 
 export const Layout: FC<PageProps> = ({
@@ -42,11 +43,16 @@ export const Layout: FC<PageProps> = ({
       <Head>
         <title>{titleString}</title>
       </Head>
-      {isBannerActivated && isBanner && (
-        <Banner closeBanner={() => setIsBanner(false)} banner={banner} />
-      )}
       <div className="font-oswald">
-        <Header settings={settings} menus={menus} header={header} />
+        {isBannerActivated && isBanner && (
+          <Banner closeBanner={() => setIsBanner(false)} banner={banner} />
+        )}
+        <Header
+          settings={settings}
+          menus={menus}
+          header={header}
+          isBanner={isBannerActivated}
+        />
         <main>{children}</main>
         <Footer footer={footer} />
       </div>

@@ -1,10 +1,20 @@
-import { Content, CustomImage, Link, MediaItemType } from './sharedTypes'
+import {
+  SustainabilityActionsTypes,
+  SustainabilityBannerTypes,
+  SustainabilityContentTypes,
+} from 'fragments/sustainabilityFields'
+
+import { Content, Image, Link, MediaItemType } from './sharedTypes'
+
+// ---------------------------------------------------------------------------
 
 export type SettingsTypes = {
   title: string
   description: string
   url: string
 }
+
+// ---------------------------------------------------------------------------
 
 type MenuItem = {
   id: string
@@ -24,20 +34,33 @@ export type Menu = {
   }
 }
 
+// ---------------------------------------------------------------------------
+
 export type MenusTypes = {
   nodes: Array<Menu>
 }
+
+// ---------------------------------------------------------------------------
+
+export type PrivacyPolicyTypes = {
+  title: string
+  content: string
+}
+
+// ---------------------------------------------------------------------------
 
 export type BannerTypes = {
   activate: boolean
   link: string
 } & Content
 
+// ---------------------------------------------------------------------------
+
 export type HeaderTypes = {
   images: {
-    logo: CustomImage
-    backgroundImage: CustomImage
-    favicon: CustomImage
+    logo: Image
+    backgroundImage: Image
+    favicon: Image
   }
   teaser: {
     activate: boolean
@@ -50,7 +73,11 @@ export type HeaderTypes = {
   }
 } & Content
 
+// ---------------------------------------------------------------------------
+
 type Service = Content
+
+// ---------------------------------------------------------------------------
 
 export type AboutTypes = {
   services: Array<Service>
@@ -59,40 +86,27 @@ export type AboutTypes = {
 type Staff = {
   name: string
   department: string
-  picture: MediaItemType
+  picture: {
+    node: MediaItemType
+  }
 }
+
+// ---------------------------------------------------------------------------
 
 export type TeamTypes = {
   staff: Array<Staff>
 } & Content
 
+// ---------------------------------------------------------------------------
+
 export type SustainabilityTypes = {
   slug: string
-  content: string
-  featuredImage?: {
-    node: CustomImage
-  }
-  sustainability: {
-    image: CustomImage
-    logo: CustomImage
-    actionsGroup: {
-      heading: string
-      textblock: string
-      actions: Array<{
-        actionsPoints: {
-          actionsHeading: string
-          actions: Array<Content>
-          current: boolean
-        }
-      }>
-    }
-    banner: {
-      text: string
-      label: string
-      email: string
-    }
-  } & Content
+  sustainabilityContent: SustainabilityContentTypes
+  sustainabilityActions: SustainabilityActionsTypes
+  sustainabilityBannerNew: SustainabilityBannerTypes
 }
+
+// ---------------------------------------------------------------------------
 
 type Question = Content
 
@@ -108,12 +122,13 @@ export type ContactTypes = {
   }>
 } & Content
 
+// ---------------------------------------------------------------------------
+
 export type FooterTypes = {
   footerLinks: Array<{
     link: Link
   }>
-  logo: CustomImage
   partnerLogos: Array<{
-    partnerLogo: CustomImage
+    partnerLogo: Image
   }>
 } & Content

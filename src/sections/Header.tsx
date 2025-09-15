@@ -31,12 +31,12 @@ export const Header = ({ menus, settings, isBanner, header }: Props) => {
             aria-label="Global"
             className="flex items-center justify-between lg:justify-start"
           >
-            <Link href="#" className="-m-1.5 p-1.5">
+            <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">{settings.title}</span>
-              {header.images.logo.sourceUrl && (
+              {header.images.logo.node.sourceUrl && (
                 <Image
-                  src={header.images.logo.sourceUrl}
-                  alt={header.images.logo.altText}
+                  src={header.images.logo.node.sourceUrl}
+                  alt={header.images.logo.node.altText}
                   width={133}
                   height={94}
                 />
@@ -73,12 +73,12 @@ export const Header = ({ menus, settings, isBanner, header }: Props) => {
         <div className="fixed inset-0 z-50" />
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <Link href="#" className="-m-1.5 p-1.5">
+            <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">{settings.title}</span>
-              {header.images.logo.sourceUrl && (
+              {header.images.logo.node.sourceUrl && (
                 <Image
-                  src={header.images.logo.sourceUrl}
-                  alt={header.images.logo.altText}
+                  src={header.images.logo.node.sourceUrl}
+                  alt={header.images.logo.node.altText}
                   width={133}
                   height={94}
                 />

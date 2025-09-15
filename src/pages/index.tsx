@@ -64,7 +64,7 @@ const Home: NextPage<Props> = ({
     <>
       <Head>
         <title>{settings.title}</title>
-        <link rel="icon" href={header.images.favicon.sourceUrl} />
+        <link rel="icon" href={header.images.favicon.node.sourceUrl} />
         <meta name="description" content={settings.description} />
       </Head>
 

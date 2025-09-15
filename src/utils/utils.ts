@@ -19,6 +19,8 @@ export const sanitizeAllHtmlContent = (content = '') =>
       a: ['href', 'title', 'style', 'class', 'target', 'rel'],
       h2: ['class'],
       p: ['class'],
+      li: ['class'],
+      ol: ['start'],
     },
     transformTags: {
       a: (tagName, attribs) => ({
@@ -49,7 +51,7 @@ export const sanitizeAllHtmlContent = (content = '') =>
         },
       }),
       h3: (tagName, attribs) => ({
-        tagName: 'h2',
+        tagName: 'h3',
         attribs: {
           ...attribs,
           class: `${

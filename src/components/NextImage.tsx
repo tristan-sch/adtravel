@@ -8,6 +8,7 @@ type Props = {
   height?: number
   fill?: boolean
   priority?: boolean
+  blurDataURL?: string
 }
 
 export const NextImage = ({
@@ -18,22 +19,24 @@ export const NextImage = ({
   height,
   fill = false,
   priority = false,
+  blurDataURL,
 }: Props) => {
+  const hasBlur = !!blurDataURL
+
   return (
     <Image
       className={className}
       alt={alt || ''}
-      src={src} // Ensure src is a string or StaticImageData
+      src={src}
       fill={fill}
-      width={!fill ? width : undefined} // Only apply width if `fill` is false
-      height={!fill ? height : undefined} // Only apply height if `fill` is false
+      width={!fill ? width : undefined}
+      height={!fill ? height : undefined}
       sizes="(max-width: 1024px) 100vw, 50vw"
       style={{ objectFit: 'cover' }}
-      placeholder="blur"
-      blurDataURL={typeof src === 'string' ? src : undefined} // Only use blurDataURL for string URLs
+      {...(hasBlur ? { placeholder: 'blur', blurDataURL } : { placeholder: 'empty' })}
       priority={priority}
-      unoptimized={true} // Unoptimized for external URLs - opimization happens on the CMS
-      loading={!priority ? 'lazy' : undefined} // Only apply lazy loading if `priority` is false
+      unoptimized={true}
+      loading={!priority ? 'lazy' : undefined}
     />
   )
 }

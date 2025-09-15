@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react'
 import clsx from 'clsx'
-import { sectionContainerClasses } from 'styles/constants'
 
 type ContainerProps = {
   id?: string
@@ -13,7 +12,7 @@ type ContainerProps = {
 export const SectionContainer = ({
   id,
   className = '',
-  containerClasses = sectionContainerClasses,
+  containerClasses = 'mx-auto max-w-7.5xl',
   bgGray = false,
   children,
   ...props

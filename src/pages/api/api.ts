@@ -1,29 +1,90 @@
+// ---------------------------------------------------------------------------
+
+import {
+  SUSTAINABILITY_ACTIONS_FIELDS,
+  SUSTAINABILITY_BANNER_FIELDS,
+  SUSTAINABILITY_CONTENT_FIELDS,
+} from 'fragments/sustainabilityFields'
+
+import {
+  AboutTypes,
+  BannerTypes,
+  ContactTypes,
+  FaqTypes,
+  FooterTypes,
+  HeaderTypes,
+  MenusTypes,
+  PrivacyPolicyTypes,
+  SettingsTypes,
+  SustainabilityTypes,
+  TeamTypes,
+} from 'types/queryTypes'
+
 const API_URL = process.env.WORDPRESS_API_URL
 
-async function fetchAPI(query: string) {
+// ---------------------------------------------------------------------------
+
+// type ApiData = {
+//   generalSettings?: SettingsTypes
+//   menus?: MenusTypes
+//   page?: PrivacyPolicyTypes | { banner: BannerTypes } // Allow page to have a banner property
+//   // home?: HomePageContent
+//   // news?: LinkedinContent
+// }
+
+type GraphQLError = {
+  message: string
+  locations?: Array<{ line: number; column: number }>
+  path?: Array<string | number>
+  extensions?: Record<string, unknown>
+}
+
+type ApiResponse<T> = {
+  data: T
+  errors?: Array<GraphQLError>
+}
+
+// ---------------------------------------------------------------------------
+
+const fetchAPI = async <T>(query: string): Promise<T> => {
   const headers = { 'Content-Type': 'application/json' }
 
-  if (API_URL) {
+  if (!API_URL) {
+    throw new Error('API_URL is missing')
+  }
+
+  try {
     const res = await fetch(API_URL, {
       method: 'POST',
       headers,
-      body: JSON.stringify({
-        query,
-      }),
+      body: JSON.stringify({ query }),
+      next: { revalidate: 10 },
     })
-    const json = await res.json()
-    if (json.errors) {
-      console.error(json.errors)
+
+    if (!res.ok) {
+      const errorBody = await res.text()
+      console.error('Response body:', errorBody)
       throw new Error('Failed to fetch API')
     }
+
+    const json: ApiResponse<T> = await res.json()
+
+    if (json.errors && json.errors.length > 0) {
+      console.error('API errors:', json.errors)
+      throw new Error('Failed to fetch API')
+    }
+
     return json.data
-  } else {
-    throw new Error('API_URL is missing')
+  } catch (error) {
+    console.error('Fetch API error:', error)
+    throw new Error('Failed to fetch API')
   }
 }
 
-export async function getSettings() {
-  const data = await fetchAPI(
+// ---------------------------------------------------------------------------
+
+export const getSettings = async (): Promise<SettingsTypes> => {
+  const data = await fetchAPI<{ generalSettings?: SettingsTypes }>(
     `
       query settings {
         generalSettings {
@@ -34,11 +95,16 @@ export async function getSettings() {
       }
     `,
   )
-  return data?.generalSettings
+  if (!data.generalSettings) {
+    throw new Error('Settings not found')
+  }
+  return data.generalSettings
 }
 
-export async function getMenus() {
-  const data = await fetchAPI(
+// ---------------------------------------------------------------------------
+
+export const getMenus = async (): Promise<MenusTypes> => {
+  const data = await fetchAPI<{ menus?: MenusTypes }>(
     `
       query menus {
         menus {
@@ -61,11 +127,35 @@ export async function getMenus() {
       }
     `,
   )
-  return data?.menus
+  if (!data.menus) {
+    throw new Error('Menus not found')
+  }
+  return data.menus
 }
 
-export async function getBanner() {
-  const data = await fetchAPI(
+// ---------------------------------------------------------------------------
+
+export const getPrivacyPolicy = async (): Promise<PrivacyPolicyTypes> => {
+  const data = await fetchAPI<{ page?: PrivacyPolicyTypes }>(
+    `
+      query privacyPolicy {
+        page(id: "/privacy-policy", idType: URI) {
+            title
+            content
+        }
+      }
+    `,
+  )
+  if (!data.page) {
+    throw new Error('Privacy Policy not found')
+  }
+  return data.page
+}
+
+// ---------------------------------------------------------------------------
+
+export const getBanner = async (): Promise<BannerTypes> => {
+  const data = await fetchAPI<{ page?: { banner: BannerTypes } }>(
     `
     query banner {
       page(id: "/banner", idType: URI) {
@@ -79,27 +169,38 @@ export async function getBanner() {
     }
     `,
   )
-  return data?.page.banner
+  if (!data.page) {
+    throw new Error('Banner not found')
+  }
+  return data.page.banner
 }
 
-export async function getHeader() {
-  const data = await fetchAPI(
+// ---------------------------------------------------------------------------
+
+export const getHeader = async (): Promise<HeaderTypes> => {
+  const data = await fetchAPI<{ page?: { header: HeaderTypes } }>(
     `
     query header {
       page(id: "/header", idType: URI) {
         header {
           images {
             logo {
-              sourceUrl
-              altText
+              node {
+                sourceUrl
+                altText
+              }
             }
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                sourceUrl
+                altText
+              }
             }
             favicon {
-              sourceUrl
-              altText
+              node {
+                sourceUrl
+                altText
+              }
             }
           }
           teaser {
@@ -127,11 +228,18 @@ export async function getHeader() {
     }
     `,
   )
-  return data?.page.header
+
+  if (!data.page) {
+    throw new Error('Header not found')
+  }
+
+  return data.page.header
 }
 
-export async function getAbout() {
-  const data = await fetchAPI(
+// ---------------------------------------------------------------------------
+
+export const getAbout = async (): Promise<AboutTypes> => {
+  const data = await fetchAPI<{ page?: { about: AboutTypes } }>(
     `
     query about {
       page(id: "/about", idType: URI) {
@@ -148,11 +256,16 @@ export async function getAbout() {
     }
     `,
   )
-  return data?.page.about
+  if (!data.page) {
+    throw new Error('About not found')
+  }
+  return data.page.about
 }
 
-export async function getTeam() {
-  const data = await fetchAPI(
+// ---------------------------------------------------------------------------
+
+export const getTeam = async (): Promise<TeamTypes> => {
+  const data = await fetchAPI<{ page?: { team: TeamTypes } }>(
     `
     query team {
       page(id: "/team", idType: URI) {
@@ -164,62 +277,58 @@ export async function getTeam() {
             name
             department
             picture {
-              id
-              mediaItemUrl
-              altText
-            }
-          }
-        }
-      }
-    }
-    `,
-  )
-  return data?.page.team
-}
-
-export async function getSustainability() {
-  const data = await fetchAPI(
-    `
-    query sustainability {
-    page(id: "/sustainability", idType: URI) {
-      slug
-      content
-      featuredImage {
-        node {
-          sourceUrl
-          altText
-        }
-      }
-      sustainability {
-        actionsGroup {
-          heading
-          textblock
-          actions {
-            actionsPoints {
-              current
-              actionsHeading
-              actions {
-                textblock
+              node {
+                id
+                mediaItemUrl
+                altText
               }
             }
           }
         }
-        banner {
-          text
-          label
-          email
-        }
+      }
+    }
+    `,
+  )
+  if (!data.page) {
+    throw new Error('Team not found')
+  }
+  return data.page.team
+}
+
+// ---------------------------------------------------------------------------
+
+export const getSustainability = async (): Promise<SustainabilityTypes> => {
+  const data = await fetchAPI<{ page?: SustainabilityTypes }>(
+    `
+    query sustainability {
+    page(id: "/sustainability", idType: URI) {
+      slug
+      sustainabilityContent {
+        ...sustainabilityContentFields
+      }
+      sustainabilityActions {
+        ...sustainabilityActionsFields
+      }
+      sustainabilityBannerNew {
+        ...sustainabilityBannerFields
       }
     }
   }
+    ${SUSTAINABILITY_CONTENT_FIELDS}
+    ${SUSTAINABILITY_ACTIONS_FIELDS}
+    ${SUSTAINABILITY_BANNER_FIELDS}
     `,
   )
-  // return data?.page.sustainability
-  return data?.page
+  if (!data.page) {
+    throw new Error('Sustainability not found')
+  }
+  return data.page
 }
 
-export async function getFaq() {
-  const data = await fetchAPI(
+// ---------------------------------------------------------------------------
+
+export const getFaq = async (): Promise<FaqTypes> => {
+  const data = await fetchAPI<{ page?: { faq: FaqTypes } }>(
     `
     query faq {
       page(id: "/faq", idType: URI) {
@@ -236,11 +345,16 @@ export async function getFaq() {
     }
     `,
   )
-  return data?.page.faq
+  if (!data.page) {
+    throw new Error('FAQ not found')
+  }
+  return data.page.faq
 }
 
-export async function getContact() {
-  const data = await fetchAPI(
+// ---------------------------------------------------------------------------
+
+export const getContact = async (): Promise<ContactTypes> => {
+  const data = await fetchAPI<{ page?: { contact: ContactTypes } }>(
     `
     query contact {
       page(id: "/contact", idType: URI) {
@@ -261,12 +375,17 @@ export async function getContact() {
     }
     `,
   )
+  if (!data.page) {
+    throw new Error('Contact not found')
+  }
 
-  return data?.page.contact
+  return data.page.contact
 }
 
-export async function getFooter() {
-  const data = await fetchAPI(
+// ---------------------------------------------------------------------------
+
+export const getFooter = async (): Promise<FooterTypes> => {
+  const data = await fetchAPI<{ page?: { footer: FooterTypes } }>(
     `
     query footer {
       page(id: "/footer", idType: URI) {
@@ -279,19 +398,23 @@ export async function getFooter() {
             }
           }
           logo {
-            sourceUrl
-            altText
+            node {
+              sourceUrl
+              altText
+            }
           }
           partnerLogos {
             partnerLogo {
-              sourceUrl
-              altText
-              mediaDetails {
-                width
-                height
-              }
-              imageLink {
-                imageLink
+              node {
+                sourceUrl
+                altText
+                mediaDetails {
+                  width
+                  height
+                }
+                imageLink {
+                  imageLink
+                }
               }
             }
           }
@@ -300,5 +423,9 @@ export async function getFooter() {
     }
     `,
   )
-  return data?.page.footer
+  if (!data.page) {
+    throw new Error('Footer not found')
+  }
+
+  return data.page.footer
 }

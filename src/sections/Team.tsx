@@ -38,8 +38,8 @@ export const Team = ({ team, menus }: Props) => {
                   className="h-16 w-16 rounded-full"
                   width={96}
                   height={96}
-                  src={person.picture.mediaItemUrl}
-                  alt={person.picture.altText}
+                  src={person.picture.node.mediaItemUrl}
+                  alt={person.picture.node.altText}
                 />
                 <div>
                   <h3 className="text-left text-base/7 font-semibold tracking-tight text-gray-900">

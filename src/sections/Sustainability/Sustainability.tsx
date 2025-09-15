@@ -1,9 +1,9 @@
 import { CallToAction } from 'components/CallToAction'
 
-import { MenusTypes, SustainabilityTypes } from '../../types/queryTypes'
+import { MenusTypes, SustainabilityTypes } from 'types/queryTypes'
 
 import { SustainabilityActions } from './SustainabilityActions'
-import { SustainabilityDescription } from './SustainabilityDescription'
+import { SustainabilityContent } from './SustainabilityContent'
 
 type Props = {
   menus: MenusTypes
@@ -14,18 +14,26 @@ export const Sustainability = ({ menus, sustainability }: Props) => {
   return (
     <section
       aria-labelledby={`${sustainability.slug}-heading`}
-      className="relative"
+      className="relative py-20 sm:py-24"
       id={sustainability.slug}
     >
-      <SustainabilityDescription menus={menus} sustainability={sustainability} />
-      <SustainabilityActions menus={menus} sustainability={sustainability} />
+      <SustainabilityContent
+        menus={menus}
+        sustainabilityContent={sustainability.sustainabilityContent}
+      />
+      <SustainabilityActions
+        menus={menus}
+        sustainabilityActions={sustainability.sustainabilityActions}
+      />
       <CallToAction
-        text={sustainability.sustainability.banner.text}
-        buttonText={sustainability.sustainability.banner.email}
+        text={sustainability.sustainabilityBannerNew.sustainabilityBannerTextblock}
+        buttonText={sustainability.sustainabilityBannerNew.sustainabilityBannerEmail}
         onClick={() => {
-          window.location.href = `mailto:${sustainability.sustainability.banner.email}`
+          window.location.href = `mailto:${sustainability.sustainabilityBannerNew.sustainabilityBannerEmail}`
         }}
-        label={sustainability.sustainability.banner.label}
+        label={
+          sustainability.sustainabilityBannerNew.sustainabilityBannerTextblockSecondary
+        }
       />
     </section>
   )

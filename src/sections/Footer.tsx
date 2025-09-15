@@ -1,7 +1,5 @@
-import clsx from 'clsx'
-import { sectionContainerClasses } from 'styles/constants'
-
 import { NextImage } from 'components/NextImage'
+import { Link } from 'components/NextLink'
 
 import { FooterTypes } from 'types/queryTypes'
 import { getImageDisplaySize } from 'utils/utils'
@@ -13,7 +11,7 @@ type Props = {
 export const Footer = ({ footer }: Props) => {
   return (
     <footer className="bg-white" aria-labelledby="footer-heading">
-      <div className={clsx('px-4 sm:px-6 lg:px-8', sectionContainerClasses)}>
+      <div className="mx-auto max-w-7.5xl px-4 sm:px-6 lg:px-8">
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
@@ -39,13 +37,15 @@ export const Footer = ({ footer }: Props) => {
             <div className="mt-10 flex items-center justify-center space-x-10">
               <div className="flex sm:hidden">
                 <a
-                  href={footer.partnerLogos[0].partnerLogo.imageLink?.imageLink ?? '/'}
+                  href={
+                    footer.partnerLogos[0].partnerLogo.node.imageLink?.imageLink ?? '/'
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <NextImage
-                    src={footer.partnerLogos[0].partnerLogo.sourceUrl}
-                    alt={footer.partnerLogos[0].partnerLogo.altText}
+                    src={footer.partnerLogos[0].partnerLogo.node.sourceUrl}
+                    alt={footer.partnerLogos[0].partnerLogo.node.altText}
                     width={150}
                     height={100}
                   />
@@ -55,19 +55,19 @@ export const Footer = ({ footer }: Props) => {
             <div className="mt-10 flex items-center justify-center space-x-10">
               {footer.partnerLogos.map((partnerLogo, i) => {
                 const { width, height } = getImageDisplaySize(
-                  partnerLogo.partnerLogo.mediaDetails?.width,
-                  partnerLogo.partnerLogo.mediaDetails?.height,
+                  partnerLogo.partnerLogo.node.mediaDetails?.width,
+                  partnerLogo.partnerLogo.node.mediaDetails?.height,
                 )
                 return (
                   <div className="hidden sm:flex" key={i}>
                     <a
-                      href={partnerLogo.partnerLogo.imageLink?.imageLink ?? '/'}
+                      href={partnerLogo.partnerLogo.node.imageLink?.imageLink ?? '/'}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <NextImage
-                        src={partnerLogo.partnerLogo.sourceUrl}
-                        alt={partnerLogo.partnerLogo.altText}
+                        src={partnerLogo.partnerLogo.node.sourceUrl}
+                        alt={partnerLogo.partnerLogo.node.altText}
                         width={width}
                         height={height}
                       />
@@ -79,6 +79,14 @@ export const Footer = ({ footer }: Props) => {
             <p className="mt-10 text-center text-xs leading-5 text-gray-500">
               {footer.textblock ?? ''}
             </p>
+            <div className="mt-2 text-center">
+              <Link
+                href="/privacy-policy"
+                className="text-xs text-gray-600 underline hover:text-cyan-700"
+              >
+                Privacy Policy
+              </Link>
+            </div>
           </div>
         </div>
       </div>
