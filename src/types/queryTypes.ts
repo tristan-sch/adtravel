@@ -1,4 +1,8 @@
-import { SustainabilityContentTypes } from 'fragments/sustainabilityFields'
+import {
+  SustainabilityActionsTypes,
+  SustainabilityBannerTypes,
+  SustainabilityContentTypes,
+} from 'fragments/sustainabilityFields'
 
 import { Content, Image, Link, MediaItemType } from './sharedTypes'
 
@@ -97,34 +101,9 @@ export type TeamTypes = {
 
 export type SustainabilityTypes = {
   slug: string
-  title: string
-  content: string
-  featuredImage?: Image
-  sustainability: {
-    image: Image
-    logo: Image
-    actionsGroup: {
-      heading: string
-      textblock: string
-      actions: Array<{
-        actionsPoints: {
-          actionsHeading: string
-          actions: Array<Content>
-          current: boolean
-        }
-      }>
-    }
-    banner: {
-      text: string
-      label: string
-      email: string
-    }
-  } & Content
-}
-
-export type SustainabilityTypesNew = {
-  slug: string
   sustainabilityContent: SustainabilityContentTypes
+  sustainabilityActions: SustainabilityActionsTypes
+  sustainabilityBannerNew: SustainabilityBannerTypes
 }
 
 // ---------------------------------------------------------------------------

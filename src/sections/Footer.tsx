@@ -1,6 +1,3 @@
-import clsx from 'clsx'
-import { sectionContainerClasses } from 'styles/constants'
-
 import { NextImage } from 'components/NextImage'
 import { Link } from 'components/NextLink'
 
@@ -14,7 +11,7 @@ type Props = {
 export const Footer = ({ footer }: Props) => {
   return (
     <footer className="bg-white" aria-labelledby="footer-heading">
-      <div className={clsx('px-4 sm:px-6 lg:px-8', sectionContainerClasses)}>
+      <div className="mx-auto max-w-7.5xl px-4 sm:px-6 lg:px-8">
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>

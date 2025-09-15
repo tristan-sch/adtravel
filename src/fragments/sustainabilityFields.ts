@@ -29,7 +29,7 @@ export const SUSTAINABILITY_CONTENT_FIELDS = `
 
 // ---------------------------------------------------------------------------
 
-export type SustainabilityActionsGroup = {
+export type SustainabilityActionsTypes = {
   sustainabilityActionsHeading: string
   sustainabilityActionsTextblock: string
   sustainabilityActionsCategories: Array<{
@@ -66,15 +66,15 @@ export const SUSTAINABILITY_ACTIONS_FIELDS = `
 // ---------------------------------------------------------------------------
 
 export type SustainabilityBannerTypes = {
-  text: string
-  label: string
-  email: string
+  sustainabilityBannerTextblock: string
+  sustainabilityBannerTextblockSecondary: string
+  sustainabilityBannerEmail: string
 }
 
 export const SUSTAINABILITY_BANNER_FIELDS = `
-  fragment sustainabilityBannerFields on SustainabilityBanner {
-    text
-    label
-    email
+  fragment sustainabilityBannerFields on SustainabilityBannerNew {
+    sustainabilityBannerTextblock
+    sustainabilityBannerTextblockSecondary
+    sustainabilityBannerEmail
   }
 `

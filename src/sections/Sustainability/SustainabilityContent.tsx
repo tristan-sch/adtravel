@@ -1,23 +1,28 @@
 import clsx from 'clsx'
+import { SustainabilityContentTypes } from 'fragments/sustainabilityFields'
 
 import { NextImage } from 'components/NextImage'
 import { SectionHeader } from 'components/Text/SectionHeader'
 
-import { MenusTypes, SustainabilityTypes } from '../../types/queryTypes'
+import { MenusTypes } from '../../types/queryTypes'
+
+// ---------------------------------------------------------------------------
 
 type Props = {
   menus: MenusTypes
-  sustainability: SustainabilityTypes
+  sustainabilityContent: SustainabilityContentTypes
 }
 
-export const SustainabilityContent = ({ menus, sustainability }: Props) => {
+// ---------------------------------------------------------------------------
+
+export const SustainabilityContent = ({ menus, sustainabilityContent }: Props) => {
   const currentMenuLabel =
     menus.nodes[0]?.menuItems?.edges?.[2]?.node?.label ?? 'Sustainability'
 
-  const imageSrc =
-    sustainability.sustainabilityContent.sustainabilityContentImage?.node.sourceUrl
-  const imageAlt =
-    sustainability.sustainabilityContent.sustainabilityContentImage?.node.altText
+  const imageSrc = sustainabilityContent.sustainabilityContentImage?.node.sourceUrl
+  const imageAlt = sustainabilityContent.sustainabilityContentImage?.node.altText
+
+  // ---------------------------------------------------------------------------
 
   return (
     <div className="relative">
@@ -58,44 +63,30 @@ export const SustainabilityContent = ({ menus, sustainability }: Props) => {
                 <SectionHeader
                   headingId="sustainability-content"
                   currentMenuLabel={currentMenuLabel}
-                  headingText={
-                    sustainability.sustainabilityContent.sustainabilityContentHeading
-                  }
+                  headingText={sustainabilityContent.sustainabilityContentHeading}
                 />
 
-                {sustainability.sustainabilityContent.sustainabilityContentTextblock && (
+                {sustainabilityContent.sustainabilityContentTextblock && (
                   <p className="mb-6 mt-5 text-justify text-base/7 leading-6 text-gray-700">
-                    {sustainability.sustainabilityContent.sustainabilityContentTextblock}
+                    {sustainabilityContent.sustainabilityContentTextblock}
                   </p>
                 )}
 
-                {sustainability.sustainabilityContent
-                  .sustainabilityContentTextblockSecondary && (
+                {sustainabilityContent.sustainabilityContentTextblockSecondary && (
                   <p className="mb-6 mt-5 text-justify text-base/7 leading-6 text-gray-700">
-                    {
-                      sustainability.sustainabilityContent
-                        .sustainabilityContentTextblockSecondary
-                    }
+                    {sustainabilityContent.sustainabilityContentTextblockSecondary}
                   </p>
                 )}
 
-                {sustainability.sustainabilityContent
-                  .sustainabilityContentHeadingSecondary && (
+                {sustainabilityContent.sustainabilityContentHeadingSecondary && (
                   <h2 className="mt-16 text-xl font-bold tracking-tight text-gray-900">
-                    {
-                      sustainability.sustainabilityContent
-                        .sustainabilityContentHeadingSecondary
-                    }
+                    {sustainabilityContent.sustainabilityContentHeadingSecondary}
                   </h2>
                 )}
 
-                {sustainability.sustainabilityContent
-                  .sustainabilityContentTextblockTertiary && (
+                {sustainabilityContent.sustainabilityContentTextblockTertiary && (
                   <p className="mb-6 mt-5 text-justify text-base/7 leading-6 text-gray-700">
-                    {
-                      sustainability.sustainabilityContent
-                        .sustainabilityContentTextblockTertiary
-                    }
+                    {sustainabilityContent.sustainabilityContentTextblockTertiary}
                   </p>
                 )}
               </div>

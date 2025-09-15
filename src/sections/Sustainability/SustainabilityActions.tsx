@@ -1,25 +1,32 @@
 import { useState } from 'react'
 import { Radio, RadioGroup } from '@headlessui/react'
+import { SustainabilityActionsTypes } from 'fragments/sustainabilityFields'
 
 import { SelectMenu } from 'components/SelectMenu'
 import { SectionHeader } from 'components/Text/SectionHeader'
 
-import { useIsMounted } from 'hooks/useIsMounted'
 import { useViewportChange } from 'hooks/useResponsiveActions'
-import { MenusTypes, SustainabilityTypes } from 'types/queryTypes'
+import { MenusTypes } from 'types/queryTypes'
 
-type Props = {
+// ---------------------------------------------------------------------------
+
+type SustainabilityActionsProps = {
   menus: MenusTypes
-  sustainability: SustainabilityTypes
+  sustainabilityActions: SustainabilityActionsTypes
 }
 
-export const SustainabilityActions = ({ menus, sustainability }: Props) => {
-  const isMounted = useIsMounted()
+// ---------------------------------------------------------------------------
+
+export const SustainabilityActions = ({
+  menus,
+  sustainabilityActions,
+}: SustainabilityActionsProps) => {
   const currentMenuLabel =
     menus.nodes[0]?.menuItems?.edges?.[2]?.node?.label ?? 'Sustainability'
 
+  // ---------------------------------------------------------------------------
   // Prepare actions
-  const categories = sustainability.sustainabilityActions.sustainabilityActionsCategories
+  const categories = sustainabilityActions.sustainabilityActionsCategories
   const actions = categories.map((category) => ({
     label: category.actionsTypes.label,
     topics: category.actionsTypes.actions.map((topic) => ({
@@ -28,11 +35,13 @@ export const SustainabilityActions = ({ menus, sustainability }: Props) => {
     })),
   }))
 
+  // ---------------------------------------------------------------------------
   // Use first category as initial
   const initialCategory = actions[0] ?? { label: '', topics: [] }
   const [currentCategoryLabel, setCurrentCategoryLabel] = useState(initialCategory.label)
   const [currentTopics, setCurrentTopics] = useState(initialCategory.topics)
 
+  // ---------------------------------------------------------------------------
   // Handle tab click
   const handleTabClick = (clickedLabel: string) => {
     const selectedCategory = actions.find((cat) => cat.label === clickedLabel)
@@ -40,11 +49,14 @@ export const SustainabilityActions = ({ menus, sustainability }: Props) => {
     setCurrentTopics(selectedCategory?.topics ?? [])
   }
 
+  // ---------------------------------------------------------------------------
   // Reset on viewport change
   useViewportChange(640, () => {
     setCurrentCategoryLabel(initialCategory.label)
     setCurrentTopics(initialCategory.topics)
   })
+
+  // ---------------------------------------------------------------------------
 
   return (
     <div className="relative pt-24">
@@ -53,12 +65,8 @@ export const SustainabilityActions = ({ menus, sustainability }: Props) => {
           <SectionHeader
             headingId="sustainabilityActions"
             currentMenuLabel={currentMenuLabel}
-            headingText={
-              sustainability.sustainabilityActions.sustainabilityActionsHeading
-            }
-            description={
-              sustainability.sustainabilityActions.sustainabilityActionsTextblock
-            }
+            headingText={sustainabilityActions.sustainabilityActionsHeading}
+            description={sustainabilityActions.sustainabilityActionsTextblock}
           />
         </div>
 
@@ -111,16 +119,6 @@ export const SustainabilityActions = ({ menus, sustainability }: Props) => {
               <h3 className="mt-2 text-base font-semibold text-gray-900">
                 {topic.title}
               </h3>
-              {/* {isMounted &&
-                topic.details.map((bullet, j) => (
-                  <div
-                    key={j}
-                    className="specific-section prose prose-gray mt-4 text-sm/6 text-gray-600"
-                    dangerouslySetInnerHTML={{
-                      __html: sanitizeAllHtmlContent(bullet),
-                    }}
-                  />
-                ))} */}
               {topic.details.length > 0 && (
                 <ul className="prose prose-gray mt-4 list-disc pl-5">
                   {topic.details.map((bullet, j) => (

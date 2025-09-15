@@ -1,6 +1,10 @@
 // ---------------------------------------------------------------------------
 
-import { SUSTAINABILITY_CONTENT_FIELDS } from 'fragments/sustainabilityFields'
+import {
+  SUSTAINABILITY_ACTIONS_FIELDS,
+  SUSTAINABILITY_BANNER_FIELDS,
+  SUSTAINABILITY_CONTENT_FIELDS,
+} from 'fragments/sustainabilityFields'
 
 import {
   AboutTypes,
@@ -13,7 +17,6 @@ import {
   PrivacyPolicyTypes,
   SettingsTypes,
   SustainabilityTypes,
-  SustainabilityTypesNew,
   TeamTypes,
 } from 'types/queryTypes'
 
@@ -295,51 +298,7 @@ export const getTeam = async (): Promise<TeamTypes> => {
 // ---------------------------------------------------------------------------
 
 export const getSustainability = async (): Promise<SustainabilityTypes> => {
-  const data = await fetchAPI<{ page?: { sustainability: SustainabilityTypes } }>(
-    `
-    query sustainability {
-    page(id: "/sustainability", idType: URI) {
-      slug
-      title
-      content
-      featuredImage {
-        node {
-          sourceUrl
-          altText
-        }
-      }
-      sustainability {
-        actionsGroup {
-          heading
-          textblock
-          actions {
-            actionsPoints {
-              current
-              actionsHeading
-              actions {
-                textblock
-              }
-            }
-          }
-        }
-        banner {
-          text
-          label
-          email
-        }
-      }
-    }
-  }
-    `,
-  )
-  if (!data.page) {
-    throw new Error('Sustainability not found')
-  }
-  return data.page.sustainability
-}
-
-export const getSustainabilityNew = async (): Promise<SustainabilityTypesNew> => {
-  const data = await fetchAPI<{ page?: SustainabilityTypesNew }>(
+  const data = await fetchAPI<{ page?: SustainabilityTypes }>(
     `
     query sustainability {
     page(id: "/sustainability", idType: URI) {
@@ -347,9 +306,17 @@ export const getSustainabilityNew = async (): Promise<SustainabilityTypesNew> =>
       sustainabilityContent {
         ...sustainabilityContentFields
       }
+      sustainabilityActions {
+        ...sustainabilityActionsFields
+      }
+      sustainabilityBannerNew {
+        ...sustainabilityBannerFields
+      }
     }
   }
     ${SUSTAINABILITY_CONTENT_FIELDS}
+    ${SUSTAINABILITY_ACTIONS_FIELDS}
+    ${SUSTAINABILITY_BANNER_FIELDS}
     `,
   )
   if (!data.page) {

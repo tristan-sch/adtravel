@@ -18,7 +18,7 @@ import {
   HeaderTypes,
   MenusTypes,
   SettingsTypes,
-  SustainabilityTypesNew,
+  SustainabilityTypes,
   TeamTypes,
 } from 'types/queryTypes'
 
@@ -31,7 +31,7 @@ import {
   getHeader,
   getMenus,
   getSettings,
-  getSustainabilityNew,
+  getSustainability,
   getTeam,
 } from './api/api'
 
@@ -41,7 +41,7 @@ type Props = {
   header: HeaderTypes
   about: AboutTypes
   team: TeamTypes
-  sustainabilityNew: SustainabilityTypesNew
+  sustainabilityNew: SustainabilityTypes
   faq: FaqTypes
   contact: ContactTypes
   banner: BannerTypes
@@ -104,7 +104,7 @@ export async function getStaticProps() {
     getHeader(),
     getAbout(),
     getTeam(),
-    getSustainabilityNew(),
+    getSustainability(),
     getContact(),
     getFaq(),
     getBanner(),
