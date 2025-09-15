@@ -41,7 +41,7 @@ type Props = {
   header: HeaderTypes
   about: AboutTypes
   team: TeamTypes
-  sustainabilityNew: SustainabilityTypes
+  sustainability: SustainabilityTypes
   faq: FaqTypes
   contact: ContactTypes
   banner: BannerTypes
@@ -54,7 +54,7 @@ const Home: NextPage<Props> = ({
   header,
   about,
   team,
-  sustainabilityNew,
+  sustainability,
   contact,
   faq,
   banner,
@@ -78,7 +78,7 @@ const Home: NextPage<Props> = ({
         <Hero header={header} settings={settings} containerClasses="mx-auto max-w-7xl" />
         <About menus={menus} about={about} />
         <Team team={team} menus={menus} />
-        <Sustainability menus={menus} sustainability={sustainabilityNew} />
+        <Sustainability menus={menus} sustainability={sustainability} />
         <Faq menus={menus} faq={faq} />
         <Contact menus={menus} contact={contact} />
       </Layout>
@@ -93,7 +93,7 @@ export async function getStaticProps() {
     header,
     about,
     team,
-    sustainabilityNew,
+    sustainability,
     contact,
     faq,
     banner,
@@ -118,7 +118,7 @@ export async function getStaticProps() {
       header,
       about,
       team,
-      sustainabilityNew,
+      sustainability,
       contact,
       faq,
       banner,

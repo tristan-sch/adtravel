@@ -62,21 +62,6 @@ export const sanitizeAllHtmlContent = (content = '') =>
     },
   })
 
-export const extractFirstH2 = (html: string) => {
-  if (!html) {
-    return ''
-  }
-  const match = html.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i)
-  return match ? match[1] : ''
-}
-
-export const removeFirstH2 = (html: string) => {
-  if (!html) {
-    return ''
-  }
-  return html.replace(/<h2[^>]*>[\s\S]*?<\/h2>/i, '')
-}
-
 export const getImageDisplaySize = (width?: number, height?: number) => {
   if (!width || !height) {
     // fallback to square if dimensions are missing
