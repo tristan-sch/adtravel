@@ -1,10 +1,15 @@
 import 'focus-visible'
 
+import { Analytics } from '@vercel/analytics/next'
 import { AppProps } from 'next/app'
 
 import 'styles/tailwind.css'
 
-const App = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <Analytics />
+    </>
+  )
 }
-export default App
