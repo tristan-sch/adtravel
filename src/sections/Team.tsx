@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { NextImage } from 'components/NextImage'
 
 import { MenusTypes, TeamTypes } from 'types/queryTypes'
 
@@ -34,7 +34,7 @@ export const Team = ({ team, menus }: Props) => {
           {team.staff.map((person) => (
             <li key={person.name}>
               <div className="flex items-center gap-x-6">
-                <Image
+                <NextImage
                   className="h-16 w-16 rounded-full"
                   width={96}
                   height={96}

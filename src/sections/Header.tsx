@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image'
 
+import { NextImage } from 'components/NextImage'
 import { Link } from 'components/NextLink'
 
 import { HeaderTypes, MenusTypes, SettingsTypes } from 'types/queryTypes'
@@ -34,7 +34,7 @@ export const Header = ({ menus, settings, isBanner, header }: Props) => {
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">{settings.title}</span>
               {header.images.logo.node.sourceUrl && (
-                <Image
+                <NextImage
                   src={header.images.logo.node.sourceUrl}
                   alt={header.images.logo.node.altText}
                   width={133}
@@ -76,7 +76,7 @@ export const Header = ({ menus, settings, isBanner, header }: Props) => {
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">{settings.title}</span>
               {header.images.logo.node.sourceUrl && (
-                <Image
+                <NextImage
                   src={header.images.logo.node.sourceUrl}
                   alt={header.images.logo.node.altText}
                   width={133}
