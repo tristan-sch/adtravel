@@ -79,6 +79,7 @@ export const Footer = ({ footer }: Props) => {
             <p className="mt-10 text-center text-xs leading-5 text-gray-500">
               {footer.textblock ?? ''}
             </p>
+            {/* TODO: add query for Privacy Policy footer item */}
             <div className="mt-2 text-center">
               <Link
                 href="/privacy-policy"
