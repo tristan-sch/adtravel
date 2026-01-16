@@ -35,22 +35,13 @@ export const SustainabilityContent = ({ menus, sustainabilityContent }: Props) =
         {/* Image on the left */}
         {imageSrc && (
           <div className="w-full flex-shrink-0 lg:w-1/2">
-            <div className="hidden aspect-[3/4] h-full w-full lg:block">
+            <div className="aspect-[3/4] w-full">
               <NextImage
                 src={imageSrc}
                 alt={imageAlt}
+                width={1920}
+                height={2560}
                 className="h-full w-full bg-gray-50 object-cover"
-                width={1920}
-                height={2560}
-              />
-            </div>
-            <div className="lg:hidden">
-              <NextImage
-                src={imageSrc}
-                alt={imageAlt}
-                width={1920}
-                height={2560}
-                className="aspect-[3/2] object-cover"
               />
             </div>
           </div>
