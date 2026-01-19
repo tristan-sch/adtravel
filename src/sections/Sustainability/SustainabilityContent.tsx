@@ -4,6 +4,8 @@ import { SustainabilityContentTypes } from 'fragments/sustainabilityFields'
 import { NextImage } from 'components/NextImage'
 import { SectionHeader } from 'components/Text/SectionHeader'
 
+import { sanitizeAllHtmlContent } from 'utils/utils'
+
 import { MenusTypes } from '../../types/queryTypes'
 
 // ---------------------------------------------------------------------------
@@ -58,15 +60,25 @@ export const SustainabilityContent = ({ menus, sustainabilityContent }: Props) =
                 />
 
                 {sustainabilityContent.sustainabilityContentTextblock && (
-                  <p className="mb-6 mt-5 text-justify text-base/7 leading-6 text-gray-700">
-                    {sustainabilityContent.sustainabilityContentTextblock}
-                  </p>
+                  <div
+                    className="mb-6 mt-5 text-justify"
+                    dangerouslySetInnerHTML={{
+                      __html: sanitizeAllHtmlContent(
+                        sustainabilityContent.sustainabilityContentTextblock,
+                      ),
+                    }}
+                  />
                 )}
 
                 {sustainabilityContent.sustainabilityContentTextblockSecondary && (
-                  <p className="mb-6 mt-5 text-justify text-base/7 leading-6 text-gray-700">
-                    {sustainabilityContent.sustainabilityContentTextblockSecondary}
-                  </p>
+                  <div
+                    className="mb-6 mt-5 text-justify"
+                    dangerouslySetInnerHTML={{
+                      __html: sanitizeAllHtmlContent(
+                        sustainabilityContent.sustainabilityContentTextblockSecondary,
+                      ),
+                    }}
+                  />
                 )}
 
                 {sustainabilityContent.sustainabilityContentHeadingSecondary && (
@@ -76,9 +88,14 @@ export const SustainabilityContent = ({ menus, sustainabilityContent }: Props) =
                 )}
 
                 {sustainabilityContent.sustainabilityContentTextblockTertiary && (
-                  <p className="mb-6 mt-5 text-justify text-base/7 leading-6 text-gray-700">
-                    {sustainabilityContent.sustainabilityContentTextblockTertiary}
-                  </p>
+                  <div
+                    className="mb-6 mt-5 text-justify"
+                    dangerouslySetInnerHTML={{
+                      __html: sanitizeAllHtmlContent(
+                        sustainabilityContent.sustainabilityContentTextblockTertiary,
+                      ),
+                    }}
+                  />
                 )}
               </div>
             </div>
